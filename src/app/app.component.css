@@ -1,0 +1,94 @@
+.g-head{
+  display: flex;
+  padding: 0 15px;
+  background-color:#fff;
+  box-shadow:5px 5px 5px rgba(204, 204, 204, 0.188235294117647);
+  font-family: "Microsoft Yahei", Verdana, Simsun, "Segoe UI Web Light", "Segoe UI Light", "Segoe UI Web Regular", "Segoe UI", "Segoe UI Symbol", "Helvetica Neue", Arial;
+}
+.g-head nav{
+  margin-left: 100px;
+  flex: 1;
+}
+.g-head ul.nav-tabs{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  border-bottom: none;
+}
+.g-head a{
+  font-size: 14px;
+  line-height: 60px;
+  color: #333;
+}
+
+.g-head a.active{
+  background-color: rgba(242, 242, 242, 1);
+  color: #13B5B1;
+}
+.g-head ul.nav-tabs>li>a{
+  margin-right: 0;
+  border: none;
+}
+.g-head ul.nav-tabs li a{
+  display: inline-block;
+  width: 100px;
+  text-align: center;
+  height: 60px;
+}
+.g-head ul.nav-tabs>li>a:hover{
+  border: none;
+  border-bottom: 2px solid #13B5B1;
+}
+
+.g-head ul.nav-tabs li:last-child{
+
+}
+
+.g-main{
+  overflow: hidden;
+  background-color: #f5f5f5;
+}
+
+
+/* log */
+.u-log{
+  color: #13B5B1;
+  display: flex;
+}
+.u-log strong{
+   font-weight: normal;
+   font-style: normal;
+   font-size: 32px;
+   line-height: 60px;
+ }
+.u-log p{
+  padding-top: 15px;
+}
+.u-log em{
+  font-style: normal;
+}
+.u-log em:first-child{
+  display: table-cell
+}
+
+/* search bar*/
+.u-search input{
+  padding: 0;
+  position: relative;
+  width: 100%;
+  border: none;
+  outline: none;
+  background-color: rgba(0, 0, 0, 0);
+  color: rgb(0, 64, 66);
+  cursor: inherit;
+  font-style: inherit;
+  font-variant: inherit;
+  font-weight: inherit;
+  font-stretch: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  font-family: inherit;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  height: 100%;
+  -webkit-appearance: textfield;
+}

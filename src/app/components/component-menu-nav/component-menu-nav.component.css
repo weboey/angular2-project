@@ -1,0 +1,52 @@
+/* 布局 */
+.m-component-menu-nav{
+  display: flex;
+  margin-top: 10px;
+}
+.m-component-menu-nav .g-menu-nav{
+  height: 680px;
+  background-color: #fff;
+  overflow-y:scroll;
+}
+.m-component-menu-nav .g-component-detail{
+  flex: 1;
+}
+/* 菜单 */
+.menu-nav-group{
+  box-shadow: 5px 5px 5px rgba(204, 204, 204, 0.349019607843137);
+  padding: 8px 0;
+}
+.menu-nav-group  li{
+  width: 200px;
+  line-height: 40px;
+  height: 40px;
+  color: #999;
+}
+.menu-nav-group >li{
+  height: auto;
+}
+.menu-nav-group >li>span{
+  padding-left: 15px;
+}
+.menu-nav-group .menu-nav-group-child li a{
+  display: block;
+  padding-left:40px;
+}
+.menu-nav-group  li a{
+  color: #999;
+}
+/* 菜单>悬浮和激活样式 */
+.menu-nav-group  li a.f-bottom-hover:hover {
+  color: #000;
+  font-size: 14px;
+}
+.menu-nav-group  li a.menu-active{
+  border: none;
+  border-bottom: 2px solid #13B5B1;
+  color: #000;
+  font-size: 14px;
+}
+
+
+
+

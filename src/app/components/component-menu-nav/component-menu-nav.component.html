@@ -1,0 +1,25 @@
+<div class="m-component-menu-nav">
+  <div  class="g-menu-nav">
+    <ul class="menu-nav-group">
+      <li *ngFor="let menuNavItem of ComponentMenuNavItems | menuFilter:1 ">
+        <span>{{menuNavItem.label}}</span>
+        <ul class="menu-nav-group-child">
+          <li *ngFor="let menuNavChildItem of ComponentMenuNavItems | menuFilter:2:menuNavItem.id">
+            <!--<a [routerLink]="[menuNavChildItem.name]"  routerLinkActive="active">{{menuNavChildItem.label}}</a>-->
+            <a (click)="gotoComponentDetail(menuNavChildItem)"
+               class="f-bottom-hover"
+               [class.menu-active]="isSelected(menuNavChildItem)">
+              {{menuNavChildItem.label}}
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="g-component-detail">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+

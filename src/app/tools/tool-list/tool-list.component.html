@@ -1,0 +1,7 @@
+<ul class="m-tool-list">
+  <li *ngFor="let tool of tools | async"
+      (click)="onSelect(tool)"
+      >
+    <img [src]="tool.img">
+  </li>
+</ul>

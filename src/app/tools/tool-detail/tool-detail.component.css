@@ -1,0 +1,46 @@
+.m-tool-detail{
+  width: 80%;
+  margin: 8px auto;
+  background-color: #fff;
+  overflow: hidden;
+}
+.tool-detail-title{
+  padding: 20px 10px 10px 10px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+}
+.tool-detail-edit{
+  display: flex;
+  flex-direction: column;
+}
+.tool-detail-title h1{
+  margin-bottom: 10px;
+}
+.tool-detail-title span{
+  font-size: 14px;
+}
+.tool-detail-desc{
+  font-size: 32px;
+}
+.tool-detail-download a{
+  text-align: center;
+  display: block;
+  float: right;
+  margin: 10px;
+  width: 210px;
+  height: 60px;
+  line-height: 60px;
+  background-color: rgba(19, 181, 177, 1);
+  border-width: 2px;
+  border-style: solid;
+  border-color: rgba(242, 242, 242, 1);
+  box-shadow: none;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 16px;
+  color: #FFFFFF;
+}
+.tool-detail-download a.disabled{
+  background-color: rgb(203, 203, 203);
+}

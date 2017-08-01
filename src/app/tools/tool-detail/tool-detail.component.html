@@ -1,0 +1,24 @@
+<div *ngIf="tool" class="m-tool-detail">
+  <div class="tool-detail-title">
+    <div>
+      <h1>{{tool.name}}</h1>
+      <span>作者：{{tool.author}}</span> |
+      <span>{{tool.date | date:'yyyy-MM-dd'  }}</span> |
+      <span>浏览次数 {{tool.browser}}</span>
+    </div>
+    <div class="tool-detail-edit">
+      <img src="assets/img/edit.jpg" alt="">
+      <span>编辑</span>
+    </div>
+  </div>
+  <div class="tool-detail-img">
+    <img [src]="tool.detailImg"  alt="">
+  </div>
+  <div class="tool-detail-download">
+    <a  *ngIf="tool.downloadUrl==''" class="disabled">下载</a>
+    <a  *ngIf="tool.downloadUrl!==''" [href]="tool.downloadUrl">下载</a>
+  </div>
+  <div class="tool-detail-desc">
+    <p> {{tool.descriptive}}</p>
+  </div>
+</div>

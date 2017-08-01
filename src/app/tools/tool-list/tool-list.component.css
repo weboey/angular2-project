@@ -1,0 +1,17 @@
+.m-tool-list{
+  width: 1240px;
+  overflow: hidden;
+  margin: 20px auto;
+}
+.m-tool-list li{
+  float: left;
+  margin: 0 20px 20px 0;
+  transition: box-shadow .5s linear;
+}
+.m-tool-list li img{
+  width: 600px;
+  height: 320px;
+}
+.m-tool-list li:hover{
+  box-shadow: 2px 8px 15px rgba(0,0,0,0.2);
+}
