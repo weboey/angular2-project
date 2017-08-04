@@ -1,6 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import {HttpModule, Http} from '@angular/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
@@ -24,6 +24,12 @@ import { LoginComponent } from './admin/login/login.component';
 /* load module  start*/
 import {ToolsModule} from "./tools/tools.module";
 import {ComponentsModule} from "./components/components.module";
+import {ProjectModule} from "./projects/projects.module";
+import {UserNavComponent} from "./home/user-nav/user-nav.component";
+import { UserLoginComponent } from './user/user-login/user-login.component';
+import { UserComponent } from './user/user.component';
+import { UserRegisterComponent } from './user/user-register/user-register.component';
+//import { FooterComponent } from './footer/footer.component';
 
 
 export function HttpLoaderFactory(http: Http) {
@@ -33,12 +39,17 @@ export function HttpLoaderFactory(http: Http) {
 @NgModule({
   declarations: [  //declarations数组包含应用中属于该模块的组件、管道和指令的列表
     AppComponent,
+    UserNavComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    UserLoginComponent,
+    UserComponent,
+    UserRegisterComponent,
+    //FooterComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule, //<-- import the FormsModule before binding with [(ngModel)]
+    FormsModule,ReactiveFormsModule , //<-- import the FormsModule before binding with [(ngModel)]
     HttpModule,
     BrowserAnimationsModule,
     JigsawModule,
@@ -53,8 +64,8 @@ export function HttpLoaderFactory(http: Http) {
     ),
     ToolsModule,
     ComponentsModule,
-    AppRoutingModule,
-
+    ProjectModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent],

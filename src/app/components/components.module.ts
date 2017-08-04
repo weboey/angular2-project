@@ -14,9 +14,6 @@ import { DemoComponent } from './component-detail/component-detail-content/demo/
 import { ApiComponent } from './component-detail/component-detail-content/api/api.component';
 import { ComponentQuickstartComponent } from './component-quickstart/component-quickstart.component';
 import { JigsawMarkdownComponent } from './jigsaw-markdown/jigsaw-markdown.component';
-import { UedHiddenDirective } from './ued-hidden.directive';
-import {AppTestComponent} from "./jigsaw-markdown/app-test.component";
-
 
 @NgModule({
   imports: [
@@ -34,9 +31,7 @@ import {AppTestComponent} from "./jigsaw-markdown/app-test.component";
     DemoComponent,
     ApiComponent,
     ComponentQuickstartComponent,
-    JigsawMarkdownComponent,
-    UedHiddenDirective,
-    AppTestComponent
+    JigsawMarkdownComponent
   ]
 })
 export class ComponentsModule { }

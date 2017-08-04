@@ -36,13 +36,7 @@
         "../node_modules/moment/min/moment.min.js",
         "../node_modules/bootstrap/dist/js/bootstrap.min.js",
         "../node_modules/ztree/js/jquery.ztree.all.js",
-        "../node_modules/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js",
-        "../node_modules/marked/lib/marked.js",
-        "../node_modules/markdown-it/dist/markdown-it.js",
-        "../node_modules/highlight.js/lib/highlight.pack.js",
-        "../node_modules/markdown-it-emoji/dist/markdown-it-emoji.js",
-        "../node_modules/markdown-it-for-inline/dist/markdown-it-for-inline.js",
-        "../node_modules/markdown-it-container/dist/markdown-it-container.js"
+        "../node_modules/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

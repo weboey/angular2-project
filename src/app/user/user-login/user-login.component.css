@@ -1,0 +1,14 @@
+.checkbox{
+  display: flex;
+  justify-content: space-between;
+}
+
+.mg-top-015{
+  margin-top: -15px;
+}
+.mg-left-15{
+  margin-left: 15px;
+}
+.btn{
+  padding: 6px 24px;
+}

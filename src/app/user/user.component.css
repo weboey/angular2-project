@@ -1,0 +1,21 @@
+
+.navbar-nav li a{
+  display: inline-block;
+  text-align: center;
+  height: 60px;
+  line-height: 30px;
+  color: #333;
+}
+
+.user-content{
+  position: absolute;
+  right: 0;
+  top:60px;
+}
+
+.login{
+  width: 320px
+}
+.register{
+  width: 380px;
+}

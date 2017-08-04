@@ -10,21 +10,37 @@
   <nav>
     <ul class="nav-tabs">
       <li><a routerLink="/home" routerLinkActive="active">首页</a></li>
-      <li><a routerLink="/null" routerLinkActive="active">项目</a></li>
+      <li><a routerLink="/projects" routerLinkActive="active">项目</a></li>
       <li><a routerLink="/components" routerLinkActive="active">组件</a></li>
       <li><a routerLink="/tools" routerLinkActive="active">工具</a></li>
       <li><a routerLink="/null" routerLinkActive="active">博文</a></li>
       <li><a routerLink="/null" routerLinkActive="active">团队</a></li>
-      <!--<li><a routerLink="/dashboard" routerLinkActive="active">英雄指南</a></li>-->
     </ul>
   </nav>
-  <div class="u-search">
-    <input type="text" placeholder="搜索项目，规范与组件">
-  </div>
-  <div>
-    <a href="">个人中心</a>
-    <img src="" alt="" width="30" height="30">
-  </div>
+  <form class="navbar-form">
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="搜索项目，规范与组件">
+    </div>
+    <button class="btn" style="border:none">
+      <span class="glyphicon glyphicon-search" style="font-size: 18px"></span>
+    </button>
+  </form>
+  <ul class="nav navbar-nav">
+    <li>
+      <a  class="glyphicon glyphicon-question-sign" style="font-size: 18px" title="帮助文档"></a>
+    </li>
+    <li *ngIf="true">
+      <ued-user></ued-user>
+    </li>
+    <li *ngIf="false">
+      <a  class="glyphicon glyphicon-plus-sign" style="font-size: 18px"></a>
+      <div  class="heath"><app-user-nav [navLists]="data[1]"></app-user-nav></div>
+    </li>
+    <li *ngIf="false">
+      <a  class="glyphicon glyphicon-globe" style="font-size: 18px"></a>
+      <div  class="heath"><app-user-nav [navLists]="data[2]"></app-user-nav></div>
+    </li>
+  </ul>
 </div>
 
 <div class="g-main">

@@ -1,0 +1,48 @@
+<div class="user-register-container" [@fadeIn]>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <form [formGroup]="userForm" (ngSubmit)="doRegister()" class="form-horizontal" role="form" novalidate>
+        <div class="form-group" [ngClass]="{'has-error': formErrors.email }">
+          <label class="col-sm-3 control-label">手机或邮箱</label>
+          <div class="col-sm-9">
+            <input formControlName="email" type="email" class="form-control" placeholder="请输入邮箱">
+            <div *ngIf="formErrors.email" class="text-danger">
+              手机或邮箱必须输入！
+            </div>
+          </div>
+        </div>
+        <div class="form-group" [ngClass]="{'has-error': formErrors.password }">
+          <label class="col-sm-3 control-label">密码</label>
+          <div class="col-sm-9">
+            <input formControlName="password" validateEqual="confirmPassword" reverse=true type="password" class="form-control" placeholder="请输入密码">
+            <div *ngIf="formErrors.password" class="text-danger">
+              密码必须输入,至少要8位！
+            </div>
+          </div>
+        </div>
+        <div class="form-group" [ngClass]="{'has-error': formErrors.confirmPassword }">
+          <label class="col-sm-3 control-label">确认密码</label>
+          <div class="col-sm-9">
+            <input formControlName="confirmPassword" validateEqual="password" type="password" class="form-control" placeholder="确认密码">
+            <div *ngIf="formErrors.confirmPassword" class="text-danger">
+              确认密码error
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">职业</label>
+          <div class="col-sm-9">
+            <jigsaw-select [data]="vocation" placeholder="请选择职业"></jigsaw-select>
+          </div>
+        </div>
+        <div *ngIf="formErrors.formError" class="col-sm-offset-3 col-sm-8 alert alert-danger">{{ formErrors.formError }}</div>
+        <div class="form-group">
+          <div class="col-sm-offset-3 col-sm-9">
+            <button type="submit" class="btn btn-success" (click)="doRegisterUser()">注册</button>
+            <button type="button" class="btn mg-left-15" (click)="doCancel()">取消</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

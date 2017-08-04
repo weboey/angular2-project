@@ -346,9 +346,8 @@ a:active,a:link,a:hover{
 
   /* IMAGES
     =============================================================================*/
-
   img {
-    max-width: 35%
+    max-width: 100%
   }
 
   /* CodeMirror
@@ -358,16 +357,15 @@ a:active,a:link,a:hover{
     font-size: 13px;
     height: 100%;
   }
-}
 
-.left,.right{
-  display: inline-block;
-}
-.right{
-  text-align: right;
-}
-
-.hljs-string, .hljs-type, .hljs-built_in, .hljs-builtin-name, .hljs-selector-id, .hljs-selector-attr, .hljs-selector-pseudo, .hljs-addition, .hljs-variable, .hljs-template-variable{
-  color: #333;
-  font-weight: bold;
+  .left,.right{
+    display: inline-block;
+  }
+  .right{
+    text-align: right;
+  }
+  .hljs-string, .hljs-type, .hljs-built_in, .hljs-builtin-name, .hljs-selector-id, .hljs-selector-attr, .hljs-selector-pseudo, .hljs-addition, .hljs-variable, .hljs-template-variable{
+    color: #333;
+    font-weight: bold;
+  }
 }

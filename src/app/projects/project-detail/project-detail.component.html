@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row project-detail">
+    <div class="col-lg-9 col-md-9 col-xs-9 cmg">
+      <div class="leftSide">
+        <h2 id="project-name">{{projectDetail.ProjectName}}</h2>
+        <h3 id="project-intro">项目简介</h3>
+        <pre class="projectBrief">{{projectDetail.ProjectBrief}}</pre>
+        <div class="prototype-content" >
+          <h3 id="prototype-presented">原型呈现 &nbsp;&nbsp;<span >共&nbsp;{{projectDetail.ProjectImgs.length}}&nbsp;张预览图</span></h3>
+          <button class=" btn btn-info"><a [href]="projectDetail.PrototypeView">查看原型</a></button>
+          <div class="clearfix">
+            <img [src]="img" alt="" *ngFor="let img of projectDetail.ProjectImgs">
+          </div>
+        </div>
+      </div>
+      <div class="download-list" *ngIf="!!projectDetail.PrototypeZip">
+        <h4 id="project-doc">项目文档</h4>
+        <ul>
+          <li><a [href]="projectDetail.PrototypeZip" class="clearfix" >需要下载的项目文档.doc <span class=" pull-right glyphicon glyphicon-download-alt"></span></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-xs-3">
+      <div class="rightSide">
+        <div><img [src]="projectDetail.ProjectImg" alt=""></div>
+        <p>首次发布 : <time>{{projectDetail.CreatTime.slice(0,10)}}</time>&nbsp;•&nbsp;{{projectDetail.Creator}}</p>
+        <p>最后更新 : <time>{{projectDetail.UpdateTime.slice(0,10)}}</time>&nbsp;•&nbsp;{{projectDetail.Updator}}</p>
+        <p>浏览次数 : {{projectDetail.VisitRecord}}</p>
+        <div class="project-action clearfix">
+          <a class="glyphicon glyphicon-heart pull-left" href="">&nbsp;&nbsp;关注</a>
+          <a class="glyphicon glyphicon-pencil -pull-left" href="">&nbsp;&nbsp;编辑</a>
+        </div>
+      </div>
+      <button type="button" class="btn btn-default btn-block"><span class="glyphicon glyphicon-share"></span>可生成分享码</button>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <app-footer></app-footer>
+</div>

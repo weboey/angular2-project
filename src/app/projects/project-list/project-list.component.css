@@ -1,0 +1,161 @@
+.contentProject {
+  position: relative;
+  margin-top: 10px;
+  background-color: #fff;
+  border: 1px solid #e7eaf1;
+  border-radius: 2px;
+  box-shadow: 0 1px 20px rgba(0,37,55,.08)
+}
+.contentProject .container {
+  border: none;
+}
+.contentProject .container > div {
+  text-align: center;
+}
+.contentProject .container > div >a {
+  display: inline-block;
+  border-radius: 3px;
+  padding: 8px 45px;
+  font-size: 16px;
+}
+.contentProject .contentList {
+  padding: 0 15px 15px 15px;
+}
+.contentProject .contentList strong{
+  font-size: 20px;
+}
+.contentProject .contentList li>.contentListDistance > a >div:first-child{
+  overflow: hidden;
+}
+.contentProject .contentList img {
+  width: 320px;
+  height: 240px;
+}
+.contentProject .contentList p{
+  overflow: hidden;
+  font-size: 14px;
+}
+.contentProject .contentList li {
+  padding: 10px;
+}
+.contentProject .contentList li>.contentListDistance {
+  position: relative;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 10px;
+  border: 1px solid rgba(0,0,0,.08);
+  border-radius: 5px;
+  overflow: hidden;
+  background: #fff;
+  cursor: pointer;
+  -webkit-transition: -webkit-box-shadow .3s;
+  transition: -webkit-box-shadow .3s;
+}
+.contentList li > .contentListDistance:hover {
+  box-shadow: 0 1px 10px rgba(0,38,43,.15);
+}
+.cardSubtitleContainer {
+  margin-bottom: 8px;
+  -webkit-transform: translateY(10px);
+  transform: translateY(10px);
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+.coverOverlayDetail {
+  box-sizing: border-box;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  padding: 8px 12px;
+  overflow: hidden;
+  opacity: 0;
+  border-bottom: 3px solid #00bcd4;
+  -webkit-transition: all .5s;
+  transition: all .5s;
+}
+.cardDetailContainer {
+  text-align: center;
+  font-size: 12px;
+  -webkit-transform: translateY(10px);
+  transform: translateY(10px);
+  -webkit-transition: all .2s .1s;
+  transition: all .2s .1s;
+  position: absolute;
+  width: 100%;
+  height: 30px;
+  left: 0;
+  bottom: 0;
+  z-index: 10;
+  background: rgba(0,0,0,.95);
+}
+.cardSubtitleContainer>span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 14px;
+  color: #fff;
+}
+.cardDetailContainer>span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  color: #c3c3c3;
+  line-height: 30px;
+}
+.cardContainer:hover .cardDetailContainer {
+  transform: translateY(0);
+}
+.cardContainer:hover .coverOverlayDetail {
+  opacity: 1;
+  background: rgba(0,0,0,.65);
+}
+.cardTitleContainer:hover {
+  opacity: .8;
+}
+.cardTitleContainer {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 5px 4px;
+  cursor: pointer;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  word-wrap: break-word;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  text-align: center;
+}
+.cardTitleContainer>span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 18px;
+  font-weight: 700;
+  color: #004042;
+}
+.selectorList {
+  background-color: #f2f2f2;
+  text-align: center;
+}
+.selectorList a {
+  position: relative;
+  display: inline-block;
+  line-height: 34px;
+  padding: 0 10px;
+  color: #cccccc;
+}
+.selectorList a + a:before {
+  content: "";
+  position: relative;
+  top: 0;
+  right: 10px;
+  border-right:1px solid #797979;
+}
+.selectorList a:hover {
+  color: #13B5B1
+}
+

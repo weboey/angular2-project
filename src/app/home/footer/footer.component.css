@@ -1,0 +1,101 @@
+.footerRow {
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 0 28px;
+  margin-bottom: 15px;
+  border-right: 1px solid #e8e8e8;
+}
+.siteIcon {
+  background-image: url(http://10.9.233.35/resources/other/logo-deep-green.png);
+  background-repeat: no-repeat;
+  margin-left: -60px;
+  margin-top: -12px;
+  width: 160px;
+  height: 80px;
+}
+.siteDetail {
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  max-width: 440px;
+}
+.siteName {
+  color: #004042;
+  font-size: 28px;
+  font-weight: 700;
+}
+.siteSlogan {
+  color: #004042;
+  font-size: 12px;
+}
+.siteVersion {
+  color: dimgrey;
+  font-size: 12px;
+}
+.footerContainer, .footerRow {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.footerContainer {
+  position: relative;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 40px 80px 20px;
+  -webkit-transform: none!important;
+  transform: none!important;
+}
+.footerColumnContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-direction: normal;
+}
+.footerColumnContainer {
+  padding: 0 10px;
+  -webkit-box-orient: horizontal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+.footerColumn {
+  -webkit-box-orient: vertical;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0 20px;
+  margin-bottom: 20px;
+}
+.footerColumn, .footerColumnContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-direction: normal;
+}
+.linkTitle {
+  color: #004042;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 30px;
+  margin-bottom: 5px;
+}
+.linkName {
+  color: dimgrey;
+  font-size: 12px;
+  line-height: 20px;
+  text-decoration: none;
+}

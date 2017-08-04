@@ -19,13 +19,11 @@ export class ComponentMenuNavComponent implements OnInit,OnChanges {
 
   ngOnInit() {
     this.getMenuNav();
-    debugger;
     this.componentService.getLastDetailNav().subscribe((last:string)=>
     {this.lastRecordDetailNav=last});
     // this.lastRecordDetailNav = this.componentService.getLastDetailNav();
   }
   ngOnChanges():void {
-    debugger;
 
   }
   selectedMenuNavId:number;

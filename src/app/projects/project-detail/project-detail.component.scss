@@ -1,0 +1,103 @@
+$box-shadow: 0 1px 6px rgba(0,0,0,.117647), 0 1px 4px rgba(0,0,0,.117647);
+$normal-padding:20px;
+.project-detail{
+  margin-top: 10px;
+  text-align: left;
+  img {
+    max-width: 100%;
+  }
+  h2 {
+    padding: $normal-padding;
+    border-bottom: 1px solid #ccc;
+  }
+  h3 {
+    padding: $normal-padding;
+    span {
+      font-size: 14px;
+    }
+  }
+  .leftSide {
+    margin-right: -15px;
+    background-color: #fff;
+    box-shadow: $box-shadow;
+    border-radius: 2px;
+    .projectBrief {
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      font-size: 14px;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      padding-left: 30px;
+      overflow: hidden;
+      background-color: #fff;
+      border: none;
+      margin-bottom: 0;
+      padding-bottom: 20px;
+      -webkit-transition: all .6s ease;
+      transition: all .6s ease;
+    }
+  }
+  .prototype-content {
+    position: relative;
+    button {
+      position: absolute;
+      right: 20px;
+      top:16px;
+      z-index: 10;
+    }
+    div{
+      padding: 0 $normal-padding;
+      img {
+        padding: 10px;
+        width: 33.3%;
+      }
+    }
+  }
+  p {
+    padding: 0 40px 0;
+  }
+  .download-list {
+    margin-top: $normal-padding;
+    margin-right: -15px;
+    padding: $normal-padding;
+    background-color: #fff;
+    box-shadow: $box-shadow;
+    border-radius: 2px;
+    ul > li a{
+      display: block;
+      padding-left: $normal-padding;
+      margin-top: $normal-padding;
+      margin-bottom: $normal-padding;
+      line-height: 30px;
+      border: 1px solid transparent;
+      &:hover {
+        box-shadow: 0 1px 3px rgba(0,37,55,.05);
+        border: 1px solid #e7eaf1
+      }
+      span {
+        line-height: 30px;
+        padding-right: $normal-padding;
+      }
+    }
+  }
+  .rightSide{
+    background-color: #fff;
+    box-shadow: $box-shadow;
+    border-radius: 2px;
+    p {
+      padding: 0 10px 0 20px;
+      line-height: 40px;
+    }
+    .project-action{
+      border-top: 1px solid #f2f2f2;
+      a {
+        text-align: center;
+        line-height: 46px;
+        width: 50%;
+      }
+    }
+    + button {
+      margin-top: $normal-padding;
+    }
+  }
+}

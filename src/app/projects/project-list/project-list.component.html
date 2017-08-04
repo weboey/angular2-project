@@ -1,0 +1,39 @@
+<div class="navbar contentProject container">
+  <div class="container">
+    <div>
+      <a>全部</a>
+      <a>我的</a>
+    </div>
+  </div>
+  <div class="contentList">
+        <ul class="row">
+          <li   class="col-lg-4 col-md-4 col-xs-6 cardContainer" *ngFor="let projectList of projectLists">
+            <div class="contentListDistance">
+              <a [routerLink]="['./', projectList.SerialNum ]" style="display: block">
+                <div style="position: relative">
+                  <a >
+                    <img [src]="projectList.ProjectImg" alt="">
+                  </a>
+                  <div class="coverOverlayDetail">
+                    <div class="cardSubtitleContainer"><span>{{projectList.ProjectBrief}}</span> </div>
+                    <div class="cardDetailContainer">
+                      <span>由&nbsp;{{projectList.Creator}}&nbsp;于&nbsp;{{projectList.UpdateTime}}</span>
+                    </div>
+                  </div>
+                </div>
+                <p class="cardTitleContainer" title="{{ projectList.ProjectName}}"><span>{{ projectList.ProjectName}}</span></p>
+              </a>
+             <div class="selectorList">
+               <a href="">原型</a>
+               <a href="">效果图</a>
+               <a href="">文档</a>
+             </div>
+            </div>
+          </li>
+        </ul>
+    </div>
+</div>
+<div class="container">
+  <app-footer></app-footer>
+</div>
+
