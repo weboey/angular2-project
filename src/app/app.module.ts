@@ -29,6 +29,7 @@ import {UserNavComponent} from "./home/user-nav/user-nav.component";
 import { UserLoginComponent } from './user/user-login/user-login.component';
 import { UserComponent } from './user/user.component';
 import { UserRegisterComponent } from './user/user-register/user-register.component';
+import {UserLoginService} from "./user/user-login/user-login.service";
 //import { FooterComponent } from './footer/footer.component';
 
 
@@ -67,7 +68,7 @@ export function HttpLoaderFactory(http: Http) {
     ProjectModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [UserLoginService],
   bootstrap: [AppComponent],
   entryComponents: []
 })

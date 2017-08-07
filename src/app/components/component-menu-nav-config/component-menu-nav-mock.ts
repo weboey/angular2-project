@@ -33,6 +33,10 @@ export const ComponentMenuNavItems: ComponentMenuNav[] = [
   {id: 19, name: 'other2',label:"其它2",level:2,parentLevelId:2,projectId:1},
   {id: 20, name: 'other3',label:"其它3",level:2,parentLevelId:2,projectId:1},
   {id: 21, name: 'other4',label:"其它4",level:2,parentLevelId:2,projectId:1},
+  {id: 22, name: 'other6',label:"其它4",level:2,parentLevelId:2,projectId:1},
+  {id: 23, name: 'other7',label:"其它4",level:2,parentLevelId:2,projectId:1},
+  {id: 24, name: 'other8',label:"其它4",level:2,parentLevelId:2,projectId:1},
+  {id: 25, name: 'other9',label:"其它4",level:2,parentLevelId:2,projectId:1},
 ];
 
 export class ComponentContentNav {

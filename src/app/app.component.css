@@ -1,16 +1,21 @@
+.ued-root{
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  font-family: "Microsoft Yahei", Verdana, Simsun, "Segoe UI Web Light", "Segoe UI Light", "Segoe UI Web Regular", "Segoe UI", "Segoe UI Symbol", "Helvetica Neue", Arial;
+
+}
+
 .g-head{
   display: flex;
   padding: 0 45px;
-  min-width: 1250px;
   background-color:#fff;
   box-shadow:5px 5px 5px rgba(204, 204, 204, 0.188235294117647);
-  font-family: "Microsoft Yahei", Verdana, Simsun, "Segoe UI Web Light", "Segoe UI Light", "Segoe UI Web Regular", "Segoe UI", "Segoe UI Symbol", "Helvetica Neue", Arial;
 }
 .g-head{
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+
 }
 .g-head nav{
   margin-left: 100px;
@@ -72,11 +77,11 @@
   z-index: 2;
   transition: all .2s;
 }
+
 .g-main{
   overflow: hidden;
   background-color: #f5f5f5;
 }
-
 
 /* log */
 .u-log{

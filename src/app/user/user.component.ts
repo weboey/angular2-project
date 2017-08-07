@@ -9,6 +9,7 @@ import {User} from "./model/user-model";
 export class UserComponent implements OnInit {
   public currentUser: User;
   constructor() { }
+  loginWindow:boolean;
   isRegister:boolean;
   isLogin:boolean;
   user:{
@@ -22,6 +23,7 @@ export class UserComponent implements OnInit {
     this.isLogin=!this.isRegister;
   }
   login(){
+    this.loginWindow=true;
     this.isLogin=!this.isLogin;
     this.isRegister=false;
   }

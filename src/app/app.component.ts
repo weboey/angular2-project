@@ -1,5 +1,7 @@
-import {Component, Renderer2, ViewContainerRef} from '@angular/core';
+import {Component, Renderer2, ViewContainerRef,OnInit} from '@angular/core';
 import {Home} from "./home/home";
+import {User} from "./user/model/user-model";
+import {UserLoginService} from "./user/user-login/user-login.service";
 
 /* start */
 /* end */
@@ -10,7 +12,7 @@ import {Home} from "./home/home";
   styleUrls: ['./app.component.css'],
   providers: []
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'big data ued';
   data: Home[][] = [[
     {id: 1,name:"用户管理", icon:"glyphicon glyphicon-picture"},
@@ -26,6 +28,19 @@ export class AppComponent {
     {id: 4,name:"登录用户", icon:"glyphicon glyphicon-log-in"},
   ]]
 
+  public currentUser: User;
+  constructor(private userLoginService:UserLoginService) { }
+  ngOnInit(){
+    this.currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+    this.userLoginService.currentUser
+      .subscribe(data=>{
+          this.currentUser = data;
+        },
+        error => console.error(error)
+      )
+
+  }
 }
 
 

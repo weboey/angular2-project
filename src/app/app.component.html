@@ -1,50 +1,56 @@
-
-<div class="g-head">
-  <div class="u-log">
-    <strong>UED</strong>
-    <p>
-      <em>中兴</em>
-      <em>大数据</em>
-    </p>
-  </div>
-  <nav>
-    <ul class="nav-tabs">
-      <li><a routerLink="/home" routerLinkActive="active">首页</a></li>
-      <li><a routerLink="/projects" routerLinkActive="active">项目</a></li>
-      <li><a routerLink="/components" routerLinkActive="active">组件</a></li>
-      <li><a routerLink="/tools" routerLinkActive="active">工具</a></li>
-      <li><a routerLink="/null" routerLinkActive="active">博文</a></li>
-      <li><a routerLink="/null" routerLinkActive="active">团队</a></li>
-    </ul>
-  </nav>
-  <form class="navbar-form">
-    <div class="form-group">
-      <input type="text" class="form-control" placeholder="搜索项目，规范与组件">
+<div class="ued-root">
+  <div style="display: flex;flex-direction: column;height: 100%">
+    <div class="g-head">
+      <div class="u-log">
+        <strong>UED</strong>
+        <p>
+          <em>中兴</em>
+          <em>大数据</em>
+        </p>
+      </div>
+      <nav>
+        <ul class="nav-tabs">
+          <li><a routerLink="/home" routerLinkActive="active">首页</a></li>
+          <li *ngIf="currentUser?.userName"><a routerLink="/projects" routerLinkActive="active">项目</a></li>
+          <li><a routerLink="/components" routerLinkActive="active">组件</a></li>
+          <li><a routerLink="/tools" routerLinkActive="active">工具</a></li>
+          <li><a routerLink="/null" routerLinkActive="active">博文</a></li>
+          <li><a routerLink="/null" routerLinkActive="active">团队</a></li>
+        </ul>
+      </nav>
+      <form class="navbar-form">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="搜索项目，规范与组件">
+        </div>
+        <button class="btn" style="border:none">
+          <span class="glyphicon glyphicon-search" style="font-size: 18px"></span>
+        </button>
+      </form>
+      <ul class="nav navbar-nav">
+        <li>
+          <a class="glyphicon glyphicon-question-sign" style="font-size: 18px" title="帮助文档"></a>
+        </li>
+        <li *ngIf="!currentUser?.userName">
+          <ued-user></ued-user>
+        </li>
+        <li *ngIf="currentUser?.userName">
+          <a class="glyphicon glyphicon-plus-sign" style="font-size: 18px"></a>
+          <div class="heath">
+            <app-user-nav [navLists]="data[1]"></app-user-nav>
+          </div>
+        </li>
+        <li *ngIf="currentUser?.userName">
+          <a class="glyphicon glyphicon-globe" style="font-size: 18px"></a>
+          <div class="heath">
+            <app-user-nav [navLists]="data[2]"></app-user-nav>
+          </div>
+        </li>
+      </ul>
     </div>
-    <button class="btn" style="border:none">
-      <span class="glyphicon glyphicon-search" style="font-size: 18px"></span>
-    </button>
-  </form>
-  <ul class="nav navbar-nav">
-    <li>
-      <a  class="glyphicon glyphicon-question-sign" style="font-size: 18px" title="帮助文档"></a>
-    </li>
-    <li *ngIf="true">
-      <ued-user></ued-user>
-    </li>
-    <li *ngIf="false">
-      <a  class="glyphicon glyphicon-plus-sign" style="font-size: 18px"></a>
-      <div  class="heath"><app-user-nav [navLists]="data[1]"></app-user-nav></div>
-    </li>
-    <li *ngIf="false">
-      <a  class="glyphicon glyphicon-globe" style="font-size: 18px"></a>
-      <div  class="heath"><app-user-nav [navLists]="data[2]"></app-user-nav></div>
-    </li>
-  </ul>
-</div>
-
-<div class="g-main">
-  <router-outlet></router-outlet>
+    <div class="g-main" style="overflow-y:auto;flex: 1;padding-top: 10px">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
 </div>
 
 
