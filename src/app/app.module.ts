@@ -12,9 +12,7 @@ import {JigsawModule} from '@rdkmaster/jigsaw';
 
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
-
 /* load service  start*/
-
 
 /* load component  start*/
 import { AppRoutingModule }     from './app-routing.module';
@@ -25,10 +23,14 @@ import { LoginComponent } from './admin/login/login.component';
 import {ToolsModule} from "./tools/tools.module";
 import {ComponentsModule} from "./components/components.module";
 import {ProjectModule} from "./projects/projects.module";
+import {HelpDocModule} from "./help-doc/help-doc.module";
 import {UserNavComponent} from "./home/user-nav/user-nav.component";
 import { UserLoginComponent } from './user/user-login/user-login.component';
 import { UserComponent } from './user/user.component';
 import { UserRegisterComponent } from './user/user-register/user-register.component';
+import {UserLoginService} from "./user/user-login/user-login.service";
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+
 //import { FooterComponent } from './footer/footer.component';
 
 
@@ -45,6 +47,7 @@ export function HttpLoaderFactory(http: Http) {
     UserLoginComponent,
     UserComponent,
     UserRegisterComponent,
+    PageNotFoundComponent,
     //FooterComponent
   ],
   imports: [
@@ -65,9 +68,10 @@ export function HttpLoaderFactory(http: Http) {
     ToolsModule,
     ComponentsModule,
     ProjectModule,
+    HelpDocModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [UserLoginService],
   bootstrap: [AppComponent],
   entryComponents: []
 })

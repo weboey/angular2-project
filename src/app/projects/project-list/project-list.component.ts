@@ -11,10 +11,22 @@ import { Observable } from 'rxjs/Observable';
 export class ProjectListComponent implements OnInit {
 
   projectLists: Project[];
+  fang: boolean = true;
+  keyWorkName: string;
   constructor(
     private projectService:ProjectService) {
 
   };
+  keyWord(keyWorkName: string){
+    this.keyWorkName = keyWorkName;
+    this.projectService.getProjectListTarget(this.keyWorkName)
+      .subscribe(projects =>{this.projectLists = projects;})
+  }
+  projectsFilter( liang: boolean ) {
+    if(!liang){
+      this.fang=!this.fang;
+    }
+  }
   ngOnInit() { //return JSON.parse(
     this.projectService.getProjectList()
     .subscribe(projects =>{this.projectLists = projects })

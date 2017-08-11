@@ -1,5 +1,6 @@
 .u-detail-nav{
   display: flex;
+  background-color: #efefef;
 }
 .u-detail-nav li{
   flex: 1;

@@ -1,7 +1,7 @@
 <div>
   <ul *ngIf="!currentUser?.userName" class="nav navbar-nav navbar-right">
     <li>
-      <a (click)="login()">登陆</a>
+      <a (click)="login()" [class.active]="isLogin">登陆</a>
     </li>
   </ul>
   <div class="user-content" [ngClass]="{'login': isLogin,'register':isRegister }">

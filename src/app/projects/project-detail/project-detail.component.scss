@@ -1,4 +1,7 @@
-$box-shadow: 0 1px 6px rgba(0,0,0,.117647), 0 1px 4px rgba(0,0,0,.117647);
+@mixin target-shadow {
+  background-color: #fff;
+  box-shadow: 0 1px 6px rgba(0,0,0,.117647), 0 1px 4px rgba(0,0,0,.117647);
+}
 $normal-padding:20px;
 .project-detail{
   margin-top: 10px;
@@ -18,8 +21,7 @@ $normal-padding:20px;
   }
   .leftSide {
     margin-right: -15px;
-    background-color: #fff;
-    box-shadow: $box-shadow;
+    @include target-shadow;
     border-radius: 2px;
     .projectBrief {
       white-space: pre-wrap;
@@ -60,8 +62,7 @@ $normal-padding:20px;
     margin-top: $normal-padding;
     margin-right: -15px;
     padding: $normal-padding;
-    background-color: #fff;
-    box-shadow: $box-shadow;
+    @include target-shadow;
     border-radius: 2px;
     ul > li a{
       display: block;
@@ -81,8 +82,7 @@ $normal-padding:20px;
     }
   }
   .rightSide{
-    background-color: #fff;
-    box-shadow: $box-shadow;
+    @include target-shadow;
     border-radius: 2px;
     p {
       padding: 0 10px 0 20px;

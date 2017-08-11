@@ -1,3 +1,12 @@
-<ul class="target-list">
-  <li *ngFor="let navList of navLists"><a  class="btn"><span [class]="navList.icon"></span>{{navList.name}}</a></li>
-</ul>
+<div class="target-list">
+  <p style="color:#aaaaaa;padding: 8px 0 0 22px">{{currentUser?.userName}}</p>
+  <ul>
+    <li *ngFor="let navList of navLists" (click)="doUserCenter(navList)">
+      <a>
+      <span [class]="navList.icon"></span>
+        {{navList.name}}
+      </a>
+    </li>
+  </ul>
+</div>
+

@@ -1,16 +1,24 @@
 .target-list {
-  display: inline-block;
   border: 1px solid #eee;
   background-color: #FFF;
+  width: 130px;
   box-shadow: 0 1px 20px rgba(0,37,55,.08);
-  li:hover{
-    background-color: #f7f8fa;
-  };
-  li{
-    padding:5px 10px;
-    a span{
-      display: inline-block;
-      margin-right: 10px;
+  ul{
+    padding: 10px 0;
+    li:hover{
+      background-color: #f7f8fa;
+    };
+    li{
+      line-height: 40px;
+      a{
+        display: block;
+        text-align: center;
+        font-size: 14px;
+        span{
+          display: inline-block;
+          margin-right: 10px;
+        }
+      }
     }
   }
 }

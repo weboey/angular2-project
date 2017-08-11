@@ -10,7 +10,8 @@
       "assets": [
         "assets",
         "favicon.ico",
-        "app/i18n"
+        "app/i18n",
+        "doc"
       ],
       "index": "index.html",
       "main": "main.ts",
@@ -27,6 +28,7 @@
         "../node_modules/ztree/css/zTreeStyle/zTreeStyle.css",
         "../node_modules/@rdkmaster/jigsaw/_theming.scss",
         "../node_modules/highlight.js/styles/monokai-sublime.css",
+        "compodoc.css",
         "styles.scss"
       ],
       "scripts": [

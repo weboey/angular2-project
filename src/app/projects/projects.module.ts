@@ -5,6 +5,7 @@ import {ProjectDetailComponent} from "./project-detail/project-detail.component"
 import {ProjectListComponent} from "./project-list/project-list.component";
 import {ProjectService} from "./project-service/project.service";
 import {FooterComponent} from "../home/footer/footer.component";
+import { KeywordPipe } from './pipe/keyword.pipe';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import {FooterComponent} from "../home/footer/footer.component";
   declarations: [
     ProjectDetailComponent,
     ProjectListComponent,
-    FooterComponent
+    FooterComponent,
+    KeywordPipe,
   ],
   providers:[ProjectService],
 })

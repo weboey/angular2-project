@@ -1,0 +1,8 @@
+.m-quickstart-component{
+  margin-left: 10px;
+  max-height:850px;
+  background-color: #fff;
+  overflow: auto;
+  padding: 10px;
+  height: 100%
+}

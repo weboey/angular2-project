@@ -14,6 +14,7 @@ import { DemoComponent } from './component-detail/component-detail-content/demo/
 import { ApiComponent } from './component-detail/component-detail-content/api/api.component';
 import { ComponentQuickstartComponent } from './component-quickstart/component-quickstart.component';
 import { JigsawMarkdownComponent } from './jigsaw-markdown/jigsaw-markdown.component';
+import {SanitizeHtmlPipe} from "./component-detail/component-detail-content/component-detail-content.component";
 
 @NgModule({
   imports: [
@@ -23,7 +24,7 @@ import { JigsawMarkdownComponent } from './jigsaw-markdown/jigsaw-markdown.compo
   providers:[ComponentMenuService],
   declarations: [
     ComponentMenuNavComponent,
-    MenuFilterPipe,
+    MenuFilterPipe,SanitizeHtmlPipe,
     ComponentDetailComponent,
     ComponentDetailNavComponent,
     ComponentDetailContentComponent,

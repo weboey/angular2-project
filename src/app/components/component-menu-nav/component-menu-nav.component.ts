@@ -31,7 +31,6 @@ export class ComponentMenuNavComponent implements OnInit,OnChanges {
     this.ComponentMenuNavItems=ComponentMenuNavItems;
   }
   isSelected(componentMenuNav):boolean{
-    console.log(componentMenuNav.id === this.selectedMenuNavId);
     return componentMenuNav.id === this.selectedMenuNavId;
   }
   gotoComponentDetail(componentMenuNav:ComponentMenuNav){

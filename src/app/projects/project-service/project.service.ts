@@ -15,30 +15,26 @@ export class ProjectService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
   private projectListUrl = 'rdk/service/app/ued/server/latestCreatedProjectList';  // URL to web api
+  private projectListTargetUrl = 'rdk/service/app/ued/server/latestCreatedProjectTargets';  // URL to web api
+  private projectListImgUrl = 'rdk/service/app/ued/server/latestCreatedProjectDetailImgs';  // URL to web api
 
   constructor(private http: Http) { }
 
   getProjectList(): Observable<Project[]> {
-    return this.http.get(this.projectListUrl)
-      .map(response => { return JSON.parse(response["_body"]).data })
+    return this.http.get(`${this.projectListUrl}`)
+      .map(response => JSON.parse(response["_body"]).data)
+  }
+  getProjectListTarget(target: string): Observable<Project[]> {
+    return this.http.get(`${this.projectListTargetUrl}?target=${target}`)
+      .map(response => JSON.parse(response["_body"]).data)
   }
   getProjectDetail(id:string): Observable<Project> {
-    return this.http.get(this.projectListUrl)
-      .map(response => {
-        debugger;
-        let data= JSON.parse(response["_body"])["data"]
-        let imgs= JSON.parse(response["_body"])["projectImgLists"] ;
-        for(let i=0;i<data.length;i++){
-          if(data[i]["SerialNum"] == id){
-            for(let k=0;k<imgs.length;k++){
-              if(imgs[k]["SerialNum"] == id){
-                data[i]["ProjectImgs"] = imgs[k]["ProjectImg"]
-               break;
-              }
-            }
-            return data[i];
-          }
-        }
-      })
+    return this.http.get(`${this.projectListUrl}?id=${id}`)
+      .map(response=>JSON.parse(response["_body"])["data"][0])
   }
+  getProjectDetailImgs(id:string):Observable<string[]> {
+    return this.http.get(`${this.projectListImgUrl}?id=${id}`)
+      .map(response => JSON.parse(response["_body"]).data)
+  }
+
 }

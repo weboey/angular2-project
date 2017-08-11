@@ -9,7 +9,7 @@ export class Project {
   ProjectBrief:string;
   PrototypeView: string;
   PrototypeZip: string;
-  RequirementDoc: string;
+  RequirementDoc: any[];
   Keywords: string;
   Creator: string;
   CreatTime: string;
@@ -21,5 +21,4 @@ export class Project {
   graphicZip: string;
   creatorId: string;
   updaterId: string;
-  ProjectImgs: string[];
 }

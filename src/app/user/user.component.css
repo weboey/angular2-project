@@ -6,11 +6,15 @@
   line-height: 30px;
   color: #333;
 }
-
+.navbar-nav li a.active {
+  text-decoration: none;
+  background-color: #eee;
+}
 .user-content{
   position: absolute;
   right: 0;
   top:60px;
+  z-index: 999;
 }
 
 .login{
