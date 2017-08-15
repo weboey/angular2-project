@@ -368,4 +368,13 @@ a:active,a:link,a:hover{
     color: #333;
     font-weight: bold;
   }
+
+  .this{
+    display: flex;
+    justify-content: space-between;
+  }
+  .this hr{
+    flex: 1;
+    margin: 30px 20px;
+  }
 }

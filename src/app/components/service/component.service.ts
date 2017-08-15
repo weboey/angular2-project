@@ -16,7 +16,7 @@ export class ComponentMenuService {
 
   getComponentMenuNav(name:string):Promise<ComponentMenuNav>{
     return ComponentMenuPromise
-      .then(componentMenuItems => {debugger;return componentMenuItems.find(componentMenu => componentMenu.name === name)});
+      .then(componentMenuItems => {return componentMenuItems.find(componentMenu => componentMenu.name === name)});
   }
 
   lastDetailName = new Subject<string>();

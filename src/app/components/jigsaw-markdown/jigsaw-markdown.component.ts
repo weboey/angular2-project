@@ -3,7 +3,8 @@ import {  Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import  md from 'markdown-it';
 import  hljs from 'highlight.js';
-import  mdContainer from 'markdown-it-container';
+import  mdContainer from 'markdown-it-container/dist/markdown-it-container';
+import  mdContainer2 from 'markdown-it-container/dist/markdown-it-container2';
 
 @Component({
   selector: 'jigsaw-markdown',
@@ -36,7 +37,8 @@ export class JigsawMarkdownComponent implements OnInit {
     };
     this.marked=md(option);
     this.marked.use(mdContainer, 'left')
-               .use(mdContainer, 'right');
+               .use(mdContainer, 'right')
+               .use(mdContainer2, 'this');
 
     this.marked.renderer.rules.image = function (tokens, idx, options, env, slf) {
       var token = tokens[idx];

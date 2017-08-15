@@ -23,7 +23,6 @@ export class ComponentDetailComponent implements OnInit {
   ngOnInit(): void {
     //Snapshot（快照）：当不需要Observable时的替代品
     //使用subscribe方法来检测id的变化，并据此重新获取英雄。
-    debugger;
     console.log(this.route.params);
     console.log(this.route.snapshot.params['name']);
     this.route.params
