@@ -3,20 +3,34 @@
  */
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import {PostCategoryComponent} from "./post-category/post-category.component";
+import {PostListComponent} from "./post-list/post-list.component";
+import {PostDetailMainComponent} from "./post-detail-main/post-detail-main.component";
 
 const PostRoutes: Routes = [
   {
-    path:'',
-    redirectTo:'page/1',
-    pathMatch:'full'
-  },
-  {
-    path:'page/:page',
-    component:PostlistComponent
-  },
-  {
-    path: 'postdetail/:postId',
-    component: PostDetailMainComponent
+    path: 'post',
+    children:[
+      {
+        path:'',
+        redirectTo:'all',
+        pathMatch:'full'
+      },
+      {
+        path:':name',
+        component:PostCategoryComponent,
+        children:[
+          {
+            path:'',
+            component:PostListComponent,
+          },
+          {
+            path:'detail',
+            component:PostDetailMainComponent,
+          }
+        ]
+      }
+    ]
   }
 ];
 
@@ -24,6 +38,6 @@ const PostRoutes: Routes = [
   imports: [
     RouterModule.forChild(PostRoutes)
   ],
-  exports: []
+  exports: [ RouterModule ]
 })
 export class PostRoutingModule { }

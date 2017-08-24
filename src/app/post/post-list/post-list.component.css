@@ -1,0 +1,36 @@
+.m-post-list{
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.g-post-list-box{
+
+}
+.post-list-group li{
+  width: 350px;
+  height: 320px;
+  background-color: #fff;
+  box-shadow: 4px 4px 4px #ccc;
+  padding: 12px;
+  margin: 0  18px 12px 0;
+  float: left;
+}
+
+.post-list-group li a{
+  display: block;
+}
+.post-item{
+  height: 290px;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-content: space-around;
+}
+.post-title,.post-desc{
+  display: inline-flex;
+  justify-content: space-between;
+}
+
+.f-cb:after{
+  display:block;visibility:hidden;clear:both;height:0;overflow:hidden;content:'.';
+}

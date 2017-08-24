@@ -22,6 +22,7 @@ import { LoginComponent } from './admin/login/login.component';
 /* load module  start*/
 import {ToolsModule} from "./tools/tools.module";
 import {ComponentsModule} from "./components/components.module";
+import { PostModule } from "./post/post.module";
 import {ProjectModule} from "./projects/projects.module";
 import {HelpDocModule} from "./help-doc/help-doc.module";
 import {UserNavComponent} from "./home/user-nav/user-nav.component";
@@ -68,6 +69,7 @@ export function HttpLoaderFactory(http: Http) {
     ToolsModule,
     ComponentsModule,
     ProjectModule,
+    PostModule,
     HelpDocModule,
     AppRoutingModule
   ],

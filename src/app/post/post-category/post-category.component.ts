@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Category} from "../model/category-model";
+import {PostCategoryService} from "./post-category.service";
 
 @Component({
   selector: 'app-post-category',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostCategoryComponent implements OnInit {
 
-  constructor() { }
+  categoryList:Category[];
+
+  constructor(
+    private postCategoryService:PostCategoryService
+  ) { }
 
   ngOnInit() {
+    this.loadCategoryData();
   }
 
+  loadCategoryData(){
+    this.categoryList = this.postCategoryService.getCategoryList();
+  }
 }

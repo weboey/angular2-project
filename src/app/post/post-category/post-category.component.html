@@ -1,3 +1,17 @@
-<p>
-  post-category works!
-</p>
+
+<div class="m-category">
+  <div  class="g-category-box">
+    <ul class="category-group">
+      <li *ngFor="let category of categoryList">
+        <!--[routerLink]="'../vision'"  routerLinkActive="active"-->
+        <a [routerLink]="['../'+category.name]"  routerLinkActive="active"
+          class="f-bottom-hover">{{category.label}} </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="g-post-list">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
