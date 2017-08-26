@@ -25,7 +25,7 @@ const PostRoutes: Routes = [
             component:PostListComponent,
           },
           {
-            path:'detail',
+            path:'detail/:postId',
             component:PostDetailMainComponent,
           }
         ]

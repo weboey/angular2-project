@@ -21,16 +21,21 @@
 }
 .post-item{
   height: 290px;
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-content: space-around;
 }
 .post-title,.post-desc{
-  display: inline-flex;
+  display: flex;
   justify-content: space-between;
 }
 
 .f-cb:after{
   display:block;visibility:hidden;clear:both;height:0;overflow:hidden;content:'.';
+}
+
+.post-footer-icon{
+  display: flex;
+  justify-content: space-between;
 }

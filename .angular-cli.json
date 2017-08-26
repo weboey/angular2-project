@@ -10,6 +10,7 @@
       "assets": [
         "assets",
         "favicon.ico",
+        "mock-data",
         "app/i18n",
         "doc"
       ],

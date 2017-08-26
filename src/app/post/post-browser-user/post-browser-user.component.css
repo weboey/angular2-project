@@ -1,0 +1,11 @@
+.m-post-browser h3{
+  margin-bottom: 12px;
+}
+.browser-group{
+  display: flex;
+  flex-direction: row;
+  flex-wrap:wrap;
+}
+.browser-group .browser-item{
+  margin: 0 8px 6px 0;
+}

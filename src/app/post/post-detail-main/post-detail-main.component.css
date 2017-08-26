@@ -1,22 +1,17 @@
 .m-post-detail-main{
   display: flex;
+  height: 100%;
+  overflow-y: scroll;
 }
 .g-post-detail{
   flex: 1;
   margin-right: 20px;
   background-color: #fff;
+
 }
-.g-post-user{
-  width: 320px;
+.g-post-browser{
+  width: 420px;
   background-color: #fff;
   padding: 12px;
 }
 
-.user-group{
-  display: flex;
-  flex-direction: row;
-  flex-wrap:wrap;
-}
-.user-group .user-item{
-  margin: 0 8px 6px 0;
-}

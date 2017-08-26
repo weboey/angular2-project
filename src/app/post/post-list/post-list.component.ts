@@ -5,6 +5,7 @@ import { ActivatedRoute, Router, Params } from '@angular/router';
 import {Post} from "../model/post-model";
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
+import {PostlistService} from "./service/post-list.service";
 
 
 @Component({
@@ -15,9 +16,12 @@ import { Subject } from 'rxjs/Subject';
 export class PostListComponent implements OnInit {
 
   public postList:Array<Post>;
+  public searchText:string;
+  public searchTextStream:Subject<string> = new Subject<string>();
 
   constructor(public router: Router,
-              public activeRoute: ActivatedRoute
+              public activeRoute: ActivatedRoute,
+              public postService:PostlistService
               ) { }
 
   ngOnInit() {
@@ -25,11 +29,17 @@ export class PostListComponent implements OnInit {
     this.activeRoute.params.subscribe(params => {
       console.log(params);
      // this.currentPage=params.page;
-     // this.loadData(this.searchText);
+      this.loadData(this.searchText);
     });
   }
 
   public loadData(searchText:string){
-
+    return this.postService.getPostList(searchText).subscribe(
+      res=>{
+        this.postList = res["items"];
+      },
+      error => {console.log(error)},
+      () => {}
+    );
   }
 }

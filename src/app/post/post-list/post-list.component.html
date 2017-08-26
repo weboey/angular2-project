@@ -1,8 +1,8 @@
 <div class="m-post-list">
   <div  class="g-post-list-box">
     <ul class="post-list-group  f-cb">
-      <li *ngFor="let postItem of [1,2,3,4,5,6,7,8,9]">
-        <a [routerLink]="['./detail']"  routerLinkActive="active">
+      <li *ngFor="let postItem of postList">
+        <a [routerLink]="['./detail/1']"  routerLinkActive="active">
           <div class="post-item">
             <div class="post-title">
               <h3>文章标题</h3>
@@ -10,13 +10,14 @@
             </div>
             <img src="http://via.placeholder.com/300x180"alt="">
             <div class="post-desc">
-              <span>作者</span>
-              <p>this is a post d wqrjasfasfjkljqwr asfsafasjfaslkfjlaksfqwe qwjrlwqjrlwqrlhwqr  asflkjaslfj jkajsf</p>
+              <span>{{postItem.userName}}</span>
+              <p>{{postItem.title}}</p>
             </div>
             <div class="post-footer-icon">
-              <span>1</span>
-              <span>2</span>
-              <span>3</span>
+              <span>点赞：{{postItem.postId}}</span>
+              <span>阅读：{{postItem.readTimes}}</span>
+              <span>评论{{postItem.commentTimes}}</span>
+              <span>{{postItem.postTime}}</span>
             </div>
           </div>
         </a>

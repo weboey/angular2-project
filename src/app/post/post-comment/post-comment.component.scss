@@ -1,0 +1,28 @@
+.add-component-container {
+  .comment-item-container {
+    padding: 15px 10px;
+    border-bottom: 1px dashed #d9d9d9;
+
+    position: relative;
+    .comment-reply {
+      position: absolute;
+      right: 10px;
+      top: 16px;
+    }
+    .comment-idea {
+      position: absolute;
+      right: 30px;
+      top: 40px;
+    }
+    p{
+      line-height: 32px;
+      color: #999;
+      span{
+        padding-left: 12px;
+      }
+    }
+  }
+  .user-info{
+    line-height: 40px;font-size: 16px;color: #999;
+  }
+}
