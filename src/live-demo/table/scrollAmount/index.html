@@ -1,0 +1,413 @@
+<html><head><meta charset="UTF-8"></head><body><form id="mainForm" method="post" action="https://embed.plnkr.co?show=preview" target="_self"><input type="hidden" name="entries[app/app.component.html][encoding]" value="utf8" />
+<input type="hidden" name="entries[app/app.component.html][content]" value="&lt;p&gt;测试滚动条一次滚动行数&lt;/p&gt;
+&lt;button (click)=&quot;table.scrollAmount = 1&quot;&gt;一次滚动1行&lt;/button&gt;
+&lt;button (click)=&quot;table.scrollAmount = 5&quot;&gt;一次滚动5行&lt;/button&gt;
+&lt;jigsaw-table #table height=&quot;400px&quot; [data]=&quot;tableData&quot; [additionalColumnDefines]=&quot;additionalColumns&quot;&gt;&lt;/jigsaw-table&gt;
+" />
+<input type="hidden" name="entries[app/app.component.ts][encoding]" value="utf8" />
+<input type="hidden" name="entries[app/app.component.ts][content]" value="import {
+    AdditionalColumnDefine, TableCellNum, TableData,
+} from &quot;@rdkmaster/jigsaw&quot;;
+import {Component, Renderer2, ViewContainerRef} from &quot;@angular/core&quot;;
+import {Http} from &quot;@angular/http&quot;;
+
+@Component({
+    selector: &quot;jigsaw-live-demo&quot;,
+    templateUrl: &quot;./app.component.html&quot;
+})
+export class TableScrollAmountDemoComponent {
+    tableData: TableData;
+
+    constructor(public viewContainerRef: ViewContainerRef,
+                public renderer: Renderer2, http: Http) {
+        this.tableData = new TableData();
+        this.tableData.http = http;
+        this.tableData.fromAjax(&#x27;mock-data/table/data.json&#x27;);
+    }
+
+    additionalColumns: AdditionalColumnDefine[] = [
+        {
+            pos: 0,
+            width: &#x27;60px&#x27;,
+            header: {
+                text: &#x27;#&#x27;
+            },
+            cell: {
+                renderer: TableCellNum
+            }
+        }
+    ];
+
+}
+" />
+<input type="hidden" name="entries[app/app.module.ts][encoding]" value="utf8" />
+<input type="hidden" name="entries[app/app.module.ts][content]" value="import {BrowserModule} from &#x27;@angular/platform-browser&#x27;;
+import {BrowserAnimationsModule} from &#x27;@angular/platform-browser/animations&#x27;;
+import {HttpModule} from &#x27;@angular/http&#x27;;
+import {
+    JigsawTableModule,
+} from &quot;@rdkmaster/jigsaw&quot;;
+import { NgModule } from &#x27;@angular/core&#x27;;
+import { TableScrollAmountDemoComponent }  from &#x27;./app.component&#x27;;
+
+@NgModule({
+    imports: [
+        BrowserModule, BrowserAnimationsModule, HttpModule,
+        JigsawTableModule
+    ],
+    declarations: [ TableScrollAmountDemoComponent ],
+    bootstrap: [ TableScrollAmountDemoComponent ]
+})
+export class AppModule {}
+" />
+<input type="hidden" name="entries[mock-data/table/data.json][encoding]" value="utf8" />
+<input type="hidden" name="entries[mock-data/table/data.json][content]" value="{
+    &quot;field&quot;: [
+        &quot;name&quot;,
+        &quot;position&quot;,
+        &quot;salary&quot;,
+        &quot;start_date&quot;,
+        &quot;office&quot;,
+        &quot;extn&quot;
+    ],
+    &quot;header&quot;: [
+        &quot;姓名&quot;,
+        &quot;职位&quot;,
+        &quot;薪资&quot;,
+        &quot;入职日期&quot;,
+        &quot;部门&quot;,
+        &quot;其他&quot;
+    ],
+    &quot;data&quot;: [
+        [&quot;Emily&quot;,&quot;Coder&quot;,&quot;$15128&quot;,&quot;2017/4/21&quot;,&quot;HR II&quot;,316],
+        [&quot;Shirley&quot;,&quot;Accountant&quot;,&quot;$11845&quot;,&quot;2017/4/25&quot;,&quot;R&D Dept II&quot;,711],
+        [&quot;Eason&quot;,&quot;Coder&quot;,&quot;$17636&quot;,&quot;2017/4/24&quot;,&quot;Marketing I&quot;,796],
+        [&quot;Andy&quot;,&quot;Coder&quot;,&quot;$17149&quot;,&quot;2017/4/26&quot;,&quot;R&D Dept I&quot;,65],
+        [&quot;Vivian&quot;,&quot;Accountant&quot;,&quot;$18272&quot;,&quot;2017/4/22&quot;,&quot;R&D Dept II&quot;,892],
+        [&quot;Wendy&quot;,&quot;Coder&quot;,&quot;$17257&quot;,&quot;2017/4/26&quot;,&quot;HR I&quot;,394],
+        [&quot;Joyce&quot;,&quot;System Architect&quot;,&quot;$12106&quot;,&quot;2017/4/27&quot;,&quot;R&D Dept III&quot;,93],
+        [&quot;Tracy&quot;,&quot;System Architect&quot;,&quot;$10531&quot;,&quot;2017/4/23&quot;,&quot;HR II&quot;,580],
+        [&quot;Nancy&quot;,&quot;Coder&quot;,&quot;$13585&quot;,&quot;2017/4/26&quot;,&quot;Marketing II&quot;,900],
+        [&quot;Johnny&quot;,&quot;Accountant&quot;,&quot;$16346&quot;,&quot;2017/4/26&quot;,&quot;R&D Dept III&quot;,403],
+        [&quot;Catherine&quot;,&quot;Coder&quot;,&quot;$10003&quot;,&quot;2017/4/28&quot;,&quot;R&D Dept III&quot;,116],
+        [&quot;Amy&quot;,&quot;System Architect&quot;,&quot;$10031&quot;,&quot;2017/4/26&quot;,&quot;R&D Dept I&quot;,493],
+        [&quot;Lillian&quot;,&quot;Accountant&quot;,&quot;$13577&quot;,&quot;2017/4/24&quot;,&quot;Marketing II&quot;,863],
+        [&quot;Jessica&quot;,&quot;Accountant&quot;,&quot;$17348&quot;,&quot;2017/4/23&quot;,&quot;HR I&quot;,35],
+        [&quot;Joy&quot;,&quot;Coder&quot;,&quot;$10870&quot;,&quot;2017/4/24&quot;,&quot;Marketing II&quot;,742],
+        [&quot;Shawnee&quot;,&quot;Accountant&quot;,&quot;$13367&quot;,&quot;2017/4/27&quot;,&quot;R&D Dept III&quot;,745],
+        [&quot;Kaya&quot;,&quot;Accountant&quot;,&quot;$19982&quot;,&quot;2017/4/27&quot;,&quot;R&D Dept II&quot;,566],
+        [&quot;Kimana&quot;,&quot;Coder&quot;,&quot;$12452&quot;,&quot;2017/4/21&quot;,&quot;HR I&quot;,540],
+        [&quot;Catahecassa&quot;,&quot;System Architect&quot;,&quot;$11398&quot;,&quot;2017/4/24&quot;,&quot;R&D Dept I&quot;,875],
+        [&quot;Hokolesqua&quot;,&quot;System Architect&quot;,&quot;$14108&quot;,&quot;2017/4/23&quot;,&quot;R&D Dept III&quot;,314],
+        [&quot;Pocahontas&quot;,&quot;Coder&quot;,&quot;$15067&quot;,&quot;2017/4/28&quot;,&quot;R&D Dept III&quot;,308],
+        [&quot;Malibu&quot;,&quot;Accountant&quot;,&quot;$14924&quot;,&quot;2017/4/25&quot;,&quot;R&D Dept II&quot;,395],
+        [&quot;Nahimana&quot;,&quot;System Architect&quot;,&quot;$14822&quot;,&quot;2017/4/22&quot;,&quot;HR II&quot;,266],
+        [&quot;Winona&quot;,&quot;Accountant&quot;,&quot;$16928&quot;,&quot;2017/4/25&quot;,&quot;Marketing I&quot;,460],
+        [&quot;Quanah&quot;,&quot;Coder&quot;,&quot;$12299&quot;,&quot;2017/4/21&quot;,&quot;Marketing II&quot;,985],
+        [&quot;Nokomis&quot;,&quot;Accountant&quot;,&quot;$10506&quot;,&quot;2017/4/28&quot;,&quot;Marketing II&quot;,757],
+        [&quot;Poloma&quot;,&quot;Coder&quot;,&quot;$13147&quot;,&quot;2017/4/23&quot;,&quot;R&D Dept III&quot;,564],
+        [&quot;Shiye&quot;,&quot;Accountant&quot;,&quot;$13751&quot;,&quot;2017/4/21&quot;,&quot;R&D Dept I&quot;,687],
+        [&quot;Shilah&quot;,&quot;Accountant&quot;,&quot;$12491&quot;,&quot;2017/4/22&quot;,&quot;Marketing I&quot;,21],
+        [&quot;Kasa&quot;,&quot;System Architect&quot;,&quot;$16409&quot;,&quot;2017/4/28&quot;,&quot;Marketing I&quot;,316],
+        [&quot;Elina&quot;,&quot;Accountant&quot;,&quot;$11215&quot;,&quot;2017/4/21&quot;,&quot;R&D Dept III&quot;,43],
+        [&quot;Mika&quot;,&quot;System Architect&quot;,&quot;$15278&quot;,&quot;2017/4/21&quot;,&quot;R&D Dept II&quot;,63],
+        [&quot;Altti&quot;,&quot;Coder&quot;,&quot;$13550&quot;,&quot;2017/4/25&quot;,&quot;R&D Dept I&quot;,519],
+        [&quot;Taina&quot;,&quot;Coder&quot;,&quot;$19549&quot;,&quot;2017/4/21&quot;,&quot;R&D Dept II&quot;,975],
+        [&quot;Ale&quot;,&quot;Coder&quot;,&quot;$16437&quot;,&quot;2017/4/22&quot;,&quot;HR II&quot;,963],
+        [&quot;Josefina&quot;,&quot;System Architect&quot;,&quot;$18559&quot;,&quot;2017/4/27&quot;,&quot;Marketing II&quot;,667],
+        [&quot;Raija&quot;,&quot;Coder&quot;,&quot;$12689&quot;,&quot;2017/4/28&quot;,&quot;R&D Dept III&quot;,831],
+        [&quot;Eljas&quot;,&quot;System Architect&quot;,&quot;$17217&quot;,&quot;2017/4/28&quot;,&quot;R&D Dept III&quot;,398],
+        [&quot;Jari&quot;,&quot;Coder&quot;,&quot;$18511&quot;,&quot;2017/4/25&quot;,&quot;HR I&quot;,771],
+        [&quot;Jaana&quot;,&quot;Coder&quot;,&quot;$11708&quot;,&quot;2017/4/21&quot;,&quot;R&D Dept III&quot;,341],
+        [&quot;Hannu&quot;,&quot;System Architect&quot;,&quot;$13246&quot;,&quot;2017/4/26&quot;,&quot;HR I&quot;,97],
+        [&quot;Niko&quot;,&quot;Coder&quot;,&quot;$17942&quot;,&quot;2017/4/26&quot;,&quot;R&D Dept I&quot;,599],
+        [&quot;Henna&quot;,&quot;Accountant&quot;,&quot;$15612&quot;,&quot;2017/4/25&quot;,&quot;R&D Dept II&quot;,761],
+        [&quot;Ilmarinen&quot;,&quot;Coder&quot;,&quot;$10413&quot;,&quot;2017/4/24&quot;,&quot;HR I&quot;,858],
+        [&quot;Alli&quot;,&quot;System Architect&quot;,&quot;$11259&quot;,&quot;2017/4/21&quot;,&quot;Marketing I&quot;,563],
+        [&quot;Anna&quot;,&quot;Accountant&quot;,&quot;$15159&quot;,&quot;2017/4/21&quot;,&quot;R&D Dept II&quot;,62],
+        [&quot;Joost&quot;,&quot;Coder&quot;,&quot;$11146&quot;,&quot;2017/4/21&quot;,&quot;HR II&quot;,681],
+        [&quot;Xander&quot;,&quot;System Architect&quot;,&quot;$19034&quot;,&quot;2017/4/22&quot;,&quot;R&D Dept II&quot;,234],
+        [&quot;Maarten&quot;,&quot;Coder&quot;,&quot;$19636&quot;,&quot;2017/4/23&quot;,&quot;HR I&quot;,56],
+        [&quot;Sanne&quot;,&quot;Coder&quot;,&quot;$18926&quot;,&quot;2017/4/22&quot;,&quot;R&D Dept III&quot;,659],
+        [&quot;Willem&quot;,&quot;System Architect&quot;,&quot;$13962&quot;,&quot;2017/4/22&quot;,&quot;R&D Dept III&quot;,67],
+        [&quot;Casper&quot;,&quot;Accountant&quot;,&quot;$12362&quot;,&quot;2017/4/21&quot;,&quot;R&D Dept III&quot;,517],
+        [&quot;Caspar&quot;,&quot;Coder&quot;,&quot;$18025&quot;,&quot;2017/4/21&quot;,&quot;R&D Dept II&quot;,547],
+        [&quot;Sander&quot;,&quot;System Architect&quot;,&quot;$18582&quot;,&quot;2017/4/22&quot;,&quot;HR II&quot;,821],
+        [&quot;Femke&quot;,&quot;Coder&quot;,&quot;$19144&quot;,&quot;2017/4/27&quot;,&quot;Marketing II&quot;,556],
+        [&quot;Jeroen&quot;,&quot;Coder&quot;,&quot;$12876&quot;,&quot;2017/4/24&quot;,&quot;R&D Dept I&quot;,325],
+        [&quot;Sem&quot;,&quot;Accountant&quot;,&quot;$13900&quot;,&quot;2017/4/23&quot;,&quot;R&D Dept II&quot;,967],
+        [&quot;Saskia&quot;,&quot;Accountant&quot;,&quot;$12486&quot;,&quot;2017/4/25&quot;,&quot;Marketing II&quot;,34],
+        [&quot;Helder&quot;,&quot;Accountant&quot;,&quot;$12048&quot;,&quot;2017/4/23&quot;,&quot;HR I&quot;,967],
+        [&quot;Jos&quot;,&quot;Coder&quot;,&quot;$18294&quot;,&quot;2017/4/25&quot;,&quot;R&D Dept II&quot;,588],
+        [&quot;Gabriela&quot;,&quot;Coder&quot;,&quot;$12293&quot;,&quot;2017/4/23&quot;,&quot;R&D Dept I&quot;,228],
+        [&quot;Radu&quot;,&quot;Accountant&quot;,&quot;$17142&quot;,&quot;2017/4/23&quot;,&quot;HR I&quot;,534],
+        [&quot;Crina&quot;,&quot;Accountant&quot;,&quot;$12604&quot;,&quot;2017/4/25&quot;,&quot;HR I&quot;,266],
+        [&quot;Viorica&quot;,&quot;Coder&quot;,&quot;$17268&quot;,&quot;2017/4/28&quot;,&quot;Marketing I&quot;,359],
+        [&quot;Narcisa&quot;,&quot;System Architect&quot;,&quot;$14503&quot;,&quot;2017/4/25&quot;,&quot;HR II&quot;,102],
+        [&quot;Andreea&quot;,&quot;Coder&quot;,&quot;$10145&quot;,&quot;2017/4/23&quot;,&quot;Marketing II&quot;,137],
+        [&quot;Alin&quot;,&quot;Coder&quot;,&quot;$17996&quot;,&quot;2017/4/28&quot;,&quot;Marketing II&quot;,618],
+        [&quot;Fane&quot;,&quot;Coder&quot;,&quot;$15838&quot;,&quot;2017/4/21&quot;,&quot;Marketing I&quot;,914],
+        [&quot;Constantin&quot;,&quot;System Architect&quot;,&quot;$11616&quot;,&quot;2017/4/28&quot;,&quot;Marketing II&quot;,58],
+        [&quot;Manuela&quot;,&quot;Accountant&quot;,&quot;$10520&quot;,&quot;2017/4/23&quot;,&quot;R&D Dept II&quot;,619],
+        [&quot;Catalin&quot;,&quot;Coder&quot;,&quot;$12716&quot;,&quot;2017/4/26&quot;,&quot;Marketing II&quot;,405],
+        [&quot;Mircea&quot;,&quot;Accountant&quot;,&quot;$12244&quot;,&quot;2017/4/25&quot;,&quot;Marketing I&quot;,595],
+        [&quot;Cristian&quot;,&quot;Coder&quot;,&quot;$17764&quot;,&quot;2017/4/26&quot;,&quot;HR II&quot;,75],
+        [&quot;Miruna&quot;,&quot;Coder&quot;,&quot;$10557&quot;,&quot;2017/4/21&quot;,&quot;Marketing II&quot;,590],
+        [&quot;Mihai&quot;,&quot;System Architect&quot;,&quot;$19604&quot;,&quot;2017/4/28&quot;,&quot;R&D Dept I&quot;,663],
+        [&quot;Yann&quot;,&quot;System Architect&quot;,&quot;$15240&quot;,&quot;2017/4/26&quot;,&quot;R&D Dept II&quot;,679],
+        [&quot;Yanick&quot;,&quot;System Architect&quot;,&quot;$17218&quot;,&quot;2017/4/26&quot;,&quot;HR I&quot;,848],
+        [&quot;Yannick&quot;,&quot;Coder&quot;,&quot;$10305&quot;,&quot;2017/4/21&quot;,&quot;R&D Dept I&quot;,980],
+        [&quot;Paulu&quot;,&quot;System Architect&quot;,&quot;$12726&quot;,&quot;2017/4/27&quot;,&quot;Marketing II&quot;,956],
+        [&quot;Annick&quot;,&quot;System Architect&quot;,&quot;$19095&quot;,&quot;2017/4/24&quot;,&quot;R&D Dept I&quot;,403],
+        [&quot;Yannic&quot;,&quot;Accountant&quot;,&quot;$17815&quot;,&quot;2017/4/23&quot;,&quot;HR I&quot;,370],
+        [&quot;Loic&quot;,&quot;System Architect&quot;,&quot;$11469&quot;,&quot;2017/4/23&quot;,&quot;R&D Dept I&quot;,763],
+        [&quot;Viu&quot;,&quot;Accountant&quot;,&quot;$14728&quot;,&quot;2017/4/24&quot;,&quot;HR II&quot;,177],
+        [&quot;Grand&quot;,&quot;System Architect&quot;,&quot;$11206&quot;,&quot;2017/4/27&quot;,&quot;R&D Dept II&quot;,266],
+        [&quot;Mireio&quot;,&quot;Accountant&quot;,&quot;$17180&quot;,&quot;2017/4/22&quot;,&quot;R&D Dept I&quot;,511],
+        [&quot;Haerviu&quot;,&quot;Coder&quot;,&quot;$17327&quot;,&quot;2017/4/21&quot;,&quot;R&D Dept II&quot;,893],
+        [&quot;Astur&quot;,&quot;System Architect&quot;,&quot;$16762&quot;,&quot;2017/4/23&quot;,&quot;Marketing I&quot;,689],
+        [&quot;Oanez&quot;,&quot;Accountant&quot;,&quot;$19867&quot;,&quot;2017/4/24&quot;,&quot;HR II&quot;,6],
+        [&quot;Paol&quot;,&quot;Accountant&quot;,&quot;$11772&quot;,&quot;2017/4/21&quot;,&quot;Marketing II&quot;,583],
+        [&quot;Melisende&quot;,&quot;System Architect&quot;,&quot;$15526&quot;,&quot;2017/4/21&quot;,&quot;HR I&quot;,849],
+        [&quot;Selina&quot;,&quot;Coder&quot;,&quot;$13732&quot;,&quot;2017/4/23&quot;,&quot;R&D Dept III&quot;,156],
+        [&quot;Yan&quot;,&quot;Coder&quot;,&quot;$17912&quot;,&quot;2017/4/21&quot;,&quot;R&D Dept II&quot;,575],
+        [&quot;Tanya&quot;,&quot;Coder&quot;,&quot;$11097&quot;,&quot;2017/4/23&quot;,&quot;R&D Dept I&quot;,117],
+        [&quot;Svyanto&quot;,&quot;Coder&quot;,&quot;$12210&quot;,&quot;2017/4/27&quot;,&quot;Marketing I&quot;,881],
+        [&quot;Ippolit&quot;,&quot;System Architect&quot;,&quot;$14749&quot;,&quot;2017/4/24&quot;,&quot;R&D Dept I&quot;,446],
+        [&quot;Yuri&quot;,&quot;Accountant&quot;,&quot;$11562&quot;,&quot;2017/4/23&quot;,&quot;R&D Dept III&quot;,15],
+        [&quot;Yulia&quot;,&quot;Coder&quot;,&quot;$15142&quot;,&quot;2017/4/27&quot;,&quot;Marketing II&quot;,365],
+        [&quot;Anya&quot;,&quot;Coder&quot;,&quot;$14552&quot;,&quot;2017/4/27&quot;,&quot;Marketing II&quot;,432],
+        [&quot;Natasha&quot;,&quot;Coder&quot;,&quot;$19257&quot;,&quot;2017/4/28&quot;,&quot;R&D Dept I&quot;,676],
+        [&quot;Sasha&quot;,&quot;Accountant&quot;,&quot;$14970&quot;,&quot;2017/4/26&quot;,&quot;Marketing I&quot;,79],
+        [&quot;Nikita&quot;,&quot;System Architect&quot;,&quot;$13626&quot;,&quot;2017/4/22&quot;,&quot;Marketing II&quot;,865],
+        [&quot;Andrey&quot;,&quot;Coder&quot;,&quot;$10089&quot;,&quot;2017/4/21&quot;,&quot;R&D Dept III&quot;,75],
+        [&quot;Yasha&quot;,&quot;System Architect&quot;,&quot;$12472&quot;,&quot;2017/4/26&quot;,&quot;R&D Dept I&quot;,985],
+        [&quot;Zoya&quot;,&quot;Coder&quot;,&quot;$13072&quot;,&quot;2017/4/21&quot;,&quot;HR II&quot;,878],
+        [&quot;Caiden&quot;,&quot;Coder&quot;,&quot;$15822&quot;,&quot;2017/4/26&quot;,&quot;Marketing II&quot;,698],
+        [&quot;Abiola&quot;,&quot;Accountant&quot;,&quot;$10799&quot;,&quot;2017/4/26&quot;,&quot;R&D Dept I&quot;,511],
+        [&quot;Odion&quot;,&quot;Coder&quot;,&quot;$14037&quot;,&quot;2017/4/27&quot;,&quot;Marketing II&quot;,911],
+        [&quot;Olisa&quot;,&quot;Accountant&quot;,&quot;$17530&quot;,&quot;2017/4/24&quot;,&quot;Marketing II&quot;,954],
+        [&quot;Bem&quot;,&quot;Accountant&quot;,&quot;$11365&quot;,&quot;2017/4/25&quot;,&quot;HR I&quot;,335],
+        [&quot;Bayo&quot;,&quot;Accountant&quot;,&quot;$19707&quot;,&quot;2017/4/21&quot;,&quot;R&D Dept I&quot;,99],
+        [&quot;Akanke&quot;,&quot;Accountant&quot;,&quot;$18232&quot;,&quot;2017/4/27&quot;,&quot;R&D Dept I&quot;,865],
+        [&quot;Alike&quot;,&quot;System Architect&quot;,&quot;$10643&quot;,&quot;2017/4/22&quot;,&quot;Marketing II&quot;,918],
+        [&quot;Edson&quot;,&quot;Accountant&quot;,&quot;$17448&quot;,&quot;2017/4/21&quot;,&quot;Marketing I&quot;,844],
+        [&quot;Marelaine&quot;,&quot;System Architect&quot;,&quot;$12222&quot;,&quot;2017/4/27&quot;,&quot;R&D Dept II&quot;,463],
+        [&quot;Enio&quot;,&quot;System Architect&quot;,&quot;$17207&quot;,&quot;2017/4/26&quot;,&quot;R&D Dept II&quot;,778],
+        [&quot;Dirco&quot;,&quot;Coder&quot;,&quot;$15119&quot;,&quot;2017/4/21&quot;,&quot;HR II&quot;,544],
+        [&quot;Evalda&quot;,&quot;System Architect&quot;,&quot;$19526&quot;,&quot;2017/4/21&quot;,&quot;R&D Dept I&quot;,173],
+        [&quot;Ezequias&quot;,&quot;System Architect&quot;,&quot;$10863&quot;,&quot;2017/4/22&quot;,&quot;Marketing I&quot;,768],
+        [&quot;Eldo&quot;,&quot;System Architect&quot;,&quot;$15352&quot;,&quot;2017/4/22&quot;,&quot;HR I&quot;,265],
+        [&quot;Danio&quot;,&quot;Accountant&quot;,&quot;$17836&quot;,&quot;2017/4/26&quot;,&quot;R&D Dept III&quot;,710],
+        [&quot;Dorio&quot;,&quot;System Architect&quot;,&quot;$17829&quot;,&quot;2017/4/28&quot;,&quot;R&D Dept II&quot;,847],
+        [&quot;Doros&quot;,&quot;Accountant&quot;,&quot;$18624&quot;,&quot;2017/4/28&quot;,&quot;HR II&quot;,943],
+        [&quot;Evaro&quot;,&quot;Accountant&quot;,&quot;$16743&quot;,&quot;2017/4/26&quot;,&quot;Marketing II&quot;,86],
+        [&quot;Edmar&quot;,&quot;System Architect&quot;,&quot;$11724&quot;,&quot;2017/4/23&quot;,&quot;R&D Dept II&quot;,425],
+        [&quot;Edito&quot;,&quot;Coder&quot;,&quot;$15279&quot;,&quot;2017/4/25&quot;,&quot;Marketing II&quot;,251],
+        [&quot;Dorisso&quot;,&quot;Accountant&quot;,&quot;$15725&quot;,&quot;2017/4/23&quot;,&quot;HR II&quot;,972],
+        [&quot;Ediberto&quot;,&quot;Coder&quot;,&quot;$14813&quot;,&quot;2017/4/25&quot;,&quot;Marketing II&quot;,395],
+        [&quot;Aadi&quot;,&quot;System Architect&quot;,&quot;$11561&quot;,&quot;2017/4/21&quot;,&quot;R&D Dept I&quot;,325],
+        [&quot;Jai&quot;,&quot;Coder&quot;,&quot;$17040&quot;,&quot;2017/4/23&quot;,&quot;Marketing II&quot;,217],
+        [&quot;Nayan&quot;,&quot;Accountant&quot;,&quot;$13228&quot;,&quot;2017/4/28&quot;,&quot;R&D Dept III&quot;,541],
+        [&quot;Daruka&quot;,&quot;System Architect&quot;,&quot;$19068&quot;,&quot;2017/4/28&quot;,&quot;Marketing II&quot;,484],
+        [&quot;Lila&quot;,&quot;Coder&quot;,&quot;$18661&quot;,&quot;2017/4/24&quot;,&quot;Marketing I&quot;,882],
+        [&quot;Chinmay&quot;,&quot;Coder&quot;,&quot;$18549&quot;,&quot;2017/4/27&quot;,&quot;Marketing II&quot;,443],
+        [&quot;Ram&quot;,&quot;Accountant&quot;,&quot;$17243&quot;,&quot;2017/4/26&quot;,&quot;R&D Dept I&quot;,1],
+        [&quot;Sumit&quot;,&quot;Accountant&quot;,&quot;$16455&quot;,&quot;2017/4/22&quot;,&quot;HR II&quot;,155],
+        [&quot;Gulab&quot;,&quot;Accountant&quot;,&quot;$19836&quot;,&quot;2017/4/27&quot;,&quot;HR I&quot;,796],
+        [&quot;Harinder&quot;,&quot;Accountant&quot;,&quot;$15703&quot;,&quot;2017/4/22&quot;,&quot;R&D Dept III&quot;,107],
+        [&quot;Deo&quot;,&quot;Accountant&quot;,&quot;$14397&quot;,&quot;2017/4/23&quot;,&quot;HR II&quot;,441],
+        [&quot;Kanan&quot;,&quot;Coder&quot;,&quot;$12044&quot;,&quot;2017/4/23&quot;,&quot;HR II&quot;,122],
+        [&quot;Ambia&quot;,&quot;Coder&quot;,&quot;$14336&quot;,&quot;2017/4/28&quot;,&quot;HR I&quot;,926],
+        [&quot;Veer&quot;,&quot;System Architect&quot;,&quot;$14235&quot;,&quot;2017/4/24&quot;,&quot;R&D Dept III&quot;,327],
+        [&quot;Shailen&quot;,&quot;Accountant&quot;,&quot;$17621&quot;,&quot;2017/4/23&quot;,&quot;Marketing I&quot;,764]
+    ]
+}
+" />
+<input type="hidden" name="entries[index.html][encoding]" value="utf8" />
+<input type="hidden" name="entries[index.html][content]" value="&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Jigsaw Live Demo&lt;/title&gt;
+    &lt;script&gt;document.write(&#x27;&lt;base href=&quot;&#x27; + document.location + &#x27;&quot; /&gt;&#x27;);&lt;/script&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/bootstrap/dist/css/bootstrap.min.css&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/font-awesome/css/font-awesome.min.css&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/ztree/css/zTreeStyle/zTreeStyle.css&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/@rdkmaster/jigsaw/theming.css&quot;&gt;
+
+    &lt;style&gt;
+      html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    &lt;/style&gt;
+
+    &lt;!-- 引入Jigsaw需要的依赖，这些依赖没有出umd包，只能配置在这里 --&gt;
+    &lt;script src=&quot;https://unpkg.com/jquery/dist/jquery.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://unpkg.com/jquery-mousewheel/jquery.mousewheel.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://unpkg.com/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://unpkg.com/moment/min/moment.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://unpkg.com/bootstrap/dist/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://unpkg.com/ztree/js/jquery.ztree.all.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://unpkg.com/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js&quot;&gt;&lt;/script&gt;
+
+    &lt;!-- Polyfills --&gt;
+    &lt;script src=&quot;https://unpkg.com/core-js/client/shim.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://unpkg.com/zone.js@0.8.5?main=browser&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://unpkg.com/systemjs@0.19.39/dist/system.src.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;systemjs.config.js&quot;&gt;&lt;/script&gt;
+    &lt;script&gt;
+      System.import(&#x27;main.js&#x27;).catch(function(err){ console.error(err); });
+    &lt;/script&gt;
+  &lt;/head&gt;
+
+  &lt;body&gt;
+    &lt;jigsaw-live-demo&gt;
+      &lt;h3 style=&quot;padding: 6px&quot;&gt;Jigsaw live demo is being loaded...&lt;/h3&gt;
+      &lt;h4 style=&quot;padding: 6px&quot;&gt;Visit &lt;a href=&quot;http://rdk.zte.com.cn&quot; target=&quot;_blank&quot;&gt;http://rdk.zte.com.cn&lt;/a&gt; for more detail.&lt;/h4&gt;
+      &lt;p&gt;We are suffering some error if this message remains for minutes, will you please send us a report by &lt;a href=&quot;https://github.com/rdkmaster/jigsaw/issues/new&quot;&gt;submitting an issue&lt;/a&gt; with the error message. By the way, you can copy the error message in the console of your browser.&lt;/p&gt;
+    &lt;/jigsaw-live-demo&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+" />
+<input type="hidden" name="entries[main.ts][encoding]" value="utf8" />
+<input type="hidden" name="entries[main.ts][content]" value="import { platformBrowserDynamic } from &#x27;@angular/platform-browser-dynamic&#x27;;
+
+import { AppModule } from &#x27;./app/app.module&#x27;;
+
+platformBrowserDynamic().bootstrapModule(AppModule);" />
+<input type="hidden" name="entries[systemjs.config.js][encoding]" value="utf8" />
+<input type="hidden" name="entries[systemjs.config.js][content]" value="(function (global) {
+  System.config({
+    // DEMO ONLY! REAL CODE SHOULD NOT TRANSPILE IN THE BROWSER
+    transpiler: &#x27;ts&#x27;,
+    typescriptOptions: {
+      // Copy of compiler options in standard tsconfig.json
+      &quot;target&quot;: &quot;es5&quot;,
+      &quot;module&quot;: &quot;commonjs&quot;,
+      &quot;moduleResolution&quot;: &quot;node&quot;,
+      &quot;sourceMap&quot;: true,
+      &quot;emitDecoratorMetadata&quot;: true,
+      &quot;experimentalDecorators&quot;: true,
+      &quot;lib&quot;: [&quot;es2015&quot;, &quot;dom&quot;],
+      &quot;noImplicitAny&quot;: true,
+      &quot;suppressImplicitAnyIndexErrors&quot;: true
+    },
+    meta: {
+      &#x27;typescript&#x27;: {
+        &quot;exports&quot;: &quot;ts&quot;
+      }
+    },
+    paths: {
+      // paths serve as alias
+      &#x27;npm:&#x27;: &#x27;https://unpkg.com/&#x27;
+    },
+    // map tells the System loader where to look for things
+    map: {
+      // our app is within the app folder
+      &#x27;app&#x27;: &#x27;app&#x27;,
+
+      // angular bundles
+      &#x27;@angular/animations&#x27;:                  &#x27;npm:@angular/animations/bundles/animations.umd.js&#x27;,
+      &#x27;@angular/animations/browser&#x27;:          &#x27;npm:@angular/animations/bundles/animations-browser.umd.js&#x27;,
+      &#x27;@angular/core&#x27;:                        &#x27;npm:@angular/core/bundles/core.umd.js&#x27;,
+      &#x27;@angular/common&#x27;:                      &#x27;npm:@angular/common/bundles/common.umd.js&#x27;,
+      &#x27;@angular/compiler&#x27;:                    &#x27;npm:@angular/compiler/bundles/compiler.umd.js&#x27;,
+      &#x27;@angular/platform-browser&#x27;:            &#x27;npm:@angular/platform-browser/bundles/platform-browser.umd.js&#x27;,
+      &#x27;@angular/platform-browser/animations&#x27;: &#x27;npm:@angular/platform-browser/bundles/platform-browser-animations.umd.js&#x27;,
+      &#x27;@angular/platform-browser-dynamic&#x27;:    &#x27;npm:@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js&#x27;,
+      &#x27;@angular/http&#x27;:                        &#x27;npm:@angular/http/bundles/http.umd.js&#x27;,
+      &#x27;@angular/router&#x27;:                      &#x27;npm:@angular/router/bundles/router.umd.js&#x27;,
+      &#x27;@angular/router/upgrade&#x27;:              &#x27;npm:@angular/router/bundles/router-upgrade.umd.js&#x27;,
+      &#x27;@angular/forms&#x27;:                       &#x27;npm:@angular/forms/bundles/forms.umd.js&#x27;,
+      &#x27;@angular/upgrade&#x27;:                     &#x27;npm:@angular/upgrade/bundles/upgrade.umd.js&#x27;,
+      &#x27;@angular/upgrade/static&#x27;:              &#x27;npm:@angular/upgrade/bundles/upgrade-static.umd.js&#x27;,
+
+      // other libraries
+      &#x27;rxjs&#x27;:                       &#x27;npm:rxjs@5.0.1&#x27;,
+      &#x27;angular-in-memory-web-api&#x27;:  &#x27;npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js&#x27;,
+      &#x27;ts&#x27;:                         &#x27;npm:plugin-typescript@5.2.7/lib/plugin.js&#x27;,
+      &#x27;typescript&#x27;:                 &#x27;npm:typescript@2.3.2/lib/typescript.js&#x27;,
+
+      // jigsaw needs these
+      &quot;@ngx-translate/core&quot;:        &#x27;npm:@ngx-translate/core&#x27;,
+      &quot;@ngx-translate/http-loader&quot;: &#x27;npm:@ngx-translate/http-loader&#x27;,
+      &quot;echarts&quot;:                    &#x27;npm:echarts@3.5.2/dist/echarts.js&#x27;,
+      &#x27;@rdkmaster/jigsaw&#x27;:          &#x27;npm:@rdkmaster/jigsaw&#x27;
+    },
+    // packages tells the System loader how to load when no filename and/or no extension
+    packages: {
+      app: {
+        main: &#x27;./main.ts&#x27;,
+        defaultExtension: &#x27;ts&#x27;,
+        meta: {
+          &#x27;./*.ts&#x27;: {
+            loader: &#x27;systemjs-angular-loader.js&#x27;
+          }
+        }
+      },
+      rxjs: {
+        defaultExtension: &#x27;js&#x27;
+      }
+    }
+  });
+
+})(this);" />
+<input type="hidden" name="entries[systemjs-angular-loader.js][encoding]" value="utf8" />
+<input type="hidden" name="entries[systemjs-angular-loader.js][content]" value="var templateUrlRegex = /templateUrl\s*:(\s*[&#x27;&quot;\`](.*?)[&#x27;&quot;\`]\s*)/gm;
+var stylesRegex = /styleUrls *:(\s*\[[^\]]*?\])/g;
+var stringRegex = /([&#x27;\`&quot;])((?:[^\\]\\\1|.)*?)\1/g;
+
+module.exports.translate = function(load){
+  if (load.source.indexOf(&#x27;moduleId&#x27;) != -1) return load;
+
+  var url = document.createElement(&#x27;a&#x27;);
+  url.href = load.address;
+
+  var basePathParts = url.pathname.split(&#x27;/&#x27;);
+
+  basePathParts.pop();
+  var basePath = basePathParts.join(&#x27;/&#x27;);
+
+  var baseHref = document.createElement(&#x27;a&#x27;);
+  baseHref.href = this.baseURL;
+  baseHref = baseHref.pathname;
+
+  if (!baseHref.startsWith(&#x27;/base/&#x27;)) { // it is not karma
+    basePath = basePath.replace(baseHref, &#x27;&#x27;);
+  }
+
+  load.source = load.source
+    .replace(templateUrlRegex, function(match, quote, url){
+      var resolvedUrl = url;
+
+      if (url.startsWith(&#x27;.&#x27;)) {
+        resolvedUrl = basePath + url.substr(1);
+      }
+
+      return &#x27;templateUrl: &quot;&#x27; + resolvedUrl + &#x27;&quot;&#x27;;
+    })
+    .replace(stylesRegex, function(match, relativeUrls) {
+      var urls = [];
+
+      while ((match = stringRegex.exec(relativeUrls)) !== null) {
+        if (match[2].startsWith(&#x27;.&#x27;)) {
+          urls.push(&#x27;&quot;&#x27; + basePath + match[2].substr(1) + &#x27;&quot;&#x27;);
+        } else {
+          urls.push(&#x27;&quot;&#x27; + match[2] + &#x27;&quot;&#x27;);
+        }
+      }
+
+      return &quot;styleUrls: [&quot; + urls.join(&#x27;, &#x27;) + &quot;]&quot;;
+    });
+
+  return load;
+};" />
+<input type="hidden" name="title" value="table/scrollAmount - Jigsaw Live Demo - Visit http://rdk.zte.com.cn for more detail." /><input type="hidden" name="tags[0]" value="Jigsaw" /><input type="hidden" name="tags[1]" value="component" /><input type="hidden" name="tags[2]" value="zte" /><input type="hidden" name="tags[3]" value="rdk" /><input type="hidden" name="tags[4]" value="angular" /><input type="hidden" name="tags[5]" value="typescript" /><input type="hidden" name="source[type]" value="Jigsaw Live Demo" /><input type="hidden" name="source[url]" value="http://rdk.zte.com.cn" /></form><script>document.getElementById("mainForm").submit();</script></body></html>

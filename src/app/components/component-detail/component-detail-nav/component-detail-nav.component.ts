@@ -2,8 +2,8 @@ import 'rxjs/add/operator/switchMap'; //这里导入switchMap操作符是因为�
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import {ComponentMenuService} from "../../service/component.service";
-import {ComponentMenuNav} from "../../component-menu-nav-config/component-menu-nav-mock";
 
+import { ComponentMenuNav } from "../../model/menu-nav-model"
 @Component({
   selector: 'app-component-detail-nav',
   templateUrl: './component-detail-nav.component.html',
@@ -21,8 +21,8 @@ export class ComponentDetailNavComponent implements OnInit {
 
   ngOnInit() {
     this.route.params
-      .switchMap((params: Params) => this.componentService.getComponentMenuNav(params['name']))
-      .subscribe((componentMenuNav: ComponentMenuNav) => this.componentMenuNav = componentMenuNav);
+      //.switchMap((params: Params) => this.componentService.getComponentMenuNav(params['name']))
+      .subscribe((params: Params) => this.componentMenuNav =  this.componentService.getComponentMenuNav(params['name']));
   }
 
   recordLastNav(navName:string){

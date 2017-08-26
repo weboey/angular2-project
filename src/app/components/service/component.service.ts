@@ -3,23 +3,38 @@
  */
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { Http, Headers, Response,RequestOptions, Request, RequestMethod } from '@angular/http';
 import { Subject } from 'rxjs/Subject';
-import { ComponentMenuNav,ComponentMenuNavItems } from '../component-menu-nav-config/component-menu-nav-mock';
 
-let ComponentMenuPromise = Promise.resolve(ComponentMenuNavItems);
+import { ComponentMenuNav } from "../model/menu-nav-model"
 
 @Injectable()
 export class ComponentMenuService {
 
-  constructor() {
+  constructor(private http:Http) {
   }
 
-  getComponentMenuNav(name:string):Promise<ComponentMenuNav>{
-    return ComponentMenuPromise
-      .then(componentMenuItems => {return componentMenuItems.find(componentMenu => componentMenu.name === name)});
+  menuNavList:ComponentMenuNav[] = [];
+
+  menuNavUrl:string="rdk/service/app/ued/server/components/menu-nav";
+
+  getComponentMenuNavList():Observable<ComponentMenuNav[]>{
+    return this.http
+      .get(this.menuNavUrl)
+      .map(res => {console.log("组件的菜单导航：", res.json());return res.json()})
+  }
+
+  getComponentMenuNav(name:string):ComponentMenuNav{
+    //return Observable.create(subscriber =>{
+        return this.menuNavList.find(componentMenu => componentMenu.name === name);
+     //   subscriber.next(componentMenu);
+      //  subscriber.complete()
+     // }
+   // );
   }
 
   lastDetailName = new Subject<string>();
+
   setLastDetailNav(name:string){
     this.lastDetailName.next(name);
   }
@@ -28,6 +43,5 @@ export class ComponentMenuService {
   getLastDetailNav():Observable<string>{
     return this.lastDetailName;
   }
-
 
 }
