@@ -1,0 +1,520 @@
+<html><head><meta charset="UTF-8"></head><body><form id="mainForm" method="post" action="https://embed.plnkr.co?show=preview" target="_self"><input type="hidden" name="entries[app/app.component.html][encoding]" value="utf8" />
+<input type="hidden" name="entries[app/app.component.html][content]" value="&lt;h3&gt;Drag a tag and drop it to the table&lt;/h3&gt;
+&lt;br&gt;
+&lt;span class=&quot;tag-wrapper&quot; *ngFor=&quot;let employee of employees&quot;
+     jigsaw-draggable (jigsawDragStart)=&quot;dragStartHandle($event, employee)&quot;&gt;
+    &lt;jigsaw-tag&gt;{{employee[0]}}&lt;/jigsaw-tag&gt;
+&lt;/span&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+&lt;div class=&quot;drop-wrap&quot;&gt;
+    &lt;jigsaw-table
+        jigsaw-droppable
+        #tableDrop
+        [data]=&quot;tableData&quot;
+        [additionalColumnDefines]=&quot;additionalColumns&quot;
+        (jigsawDragEnter)=&quot;tableDragEnterHandle($event)&quot;
+        (jigsawDragOver)=&quot;tableDragOverHandle($event)&quot;
+        (jigsawDragLeave)=&quot;tableDragLeaveHandle($event)&quot;
+        (jigsawDrop)=&quot;tableDropHandle($event)&quot;&gt;&lt;/jigsaw-table&gt;
+
+    &lt;div class=&quot;trash-box&quot;
+         jigsaw-droppable
+         #trashDrop
+         (jigsawDragEnter)=&quot;trashDragEnterHandle($event)&quot;
+         (jigsawDragOver)=&quot;trashDragOverHandle($event)&quot;
+         (jigsawDragLeave)=&quot;trashDragLeaveHandle($event)&quot;
+         (jigsawDrop)=&quot;trashDropHandle($event)&quot;&gt;trash box - drag and drop an item here to remove it from the table
+    &lt;/div&gt;
+&lt;/div&gt;
+" />
+<input type="hidden" name="entries[app/app.component.scss][encoding]" value="utf8" />
+<input type="hidden" name="entries[app/app.component.scss][content]" value="
+.tag-wrapper {
+    padding: 12px 12px 12px 0;
+}
+
+.drop-wrap {
+    float: left;
+    width: 84%;
+    jigsaw-table {
+        transition: all .3s ease-in-out;
+        border: 2px solid #d9d9d9;
+        &.over {
+            border-color: #108ee9;
+            box-shadow: 4px 4px 6px #d9d9d9;
+        }
+    }
+    .trash-box {
+        margin-top: 10px;
+        border: 2px solid #d9d9d9;
+        height: 100px;
+        line-height: 92px;
+        text-align: center;
+        font-size: 16px;
+        transition: all .3s ease-in-out;
+        &.over {
+            border-color: #108ee9;
+            box-shadow: 4px 4px 6px #d9d9d9;
+        }
+    }
+}
+" />
+<input type="hidden" name="entries[app/app.component.ts][encoding]" value="utf8" />
+<input type="hidden" name="entries[app/app.component.ts][content]" value="import {
+    AdditionalColumnDefine, DragDropInfo, TableData,
+} from &quot;@rdkmaster/jigsaw&quot;;
+import {Component, ElementRef, Renderer2} from &quot;@angular/core&quot;;
+import {TableDragDeleteRow, TableDragReplaceRow} from &quot;./table-renderer&quot;;
+
+
+@Component({
+    selector: &quot;jigsaw-live-demo&quot;,
+    templateUrl: &quot;./app.component.html&quot;,
+    styleUrls: [&quot;./app.component.scss&quot;]
+})
+export class TableDragDemoComponent {
+    tableData: TableData;
+
+    employees: any[] = [
+        [&quot;Andy&quot;, &quot;Coder&quot;, &quot;$17149&quot;, &quot;2017/4/26&quot;, &quot;R&D Dept I&quot;, 65],
+        [&quot;Vivian&quot;, &quot;Accountant&quot;, &quot;$18272&quot;, &quot;2017/4/22&quot;, &quot;R&D Dept II&quot;, 892],
+        [&quot;Wendy&quot;, &quot;Coder&quot;, &quot;$17257&quot;, &quot;2017/4/26&quot;, &quot;HR I&quot;, 394],
+        [&quot;Joyce&quot;, &quot;System Architect&quot;, &quot;$12106&quot;, &quot;2017/4/27&quot;, &quot;R&D Dept III&quot;, 93],
+        [&quot;Tracy&quot;, &quot;System Architect&quot;, &quot;$10531&quot;, &quot;2017/4/23&quot;, &quot;HR II&quot;, 580],
+        [&quot;Nancy&quot;, &quot;Coder&quot;, &quot;$13585&quot;, &quot;2017/4/26&quot;, &quot;Marketing II&quot;, 900],
+        [&quot;Johnny&quot;, &quot;Accountant&quot;, &quot;$16346&quot;, &quot;2017/4/26&quot;, &quot;R&D Dept III&quot;, 403]
+    ];
+
+    constructor(public renderer: Renderer2, public elementRef: ElementRef) {
+        this.tableData = new TableData([
+                [&quot;Emily&quot;, &quot;Coder&quot;, &quot;$15128&quot;, &quot;2017/4/21&quot;, &quot;HR II&quot;, 316],
+                [&quot;Shirley&quot;, &quot;Accountant&quot;, &quot;$11845&quot;, &quot;2017/4/25&quot;, &quot;R&D Dept II&quot;, 711],
+                [&quot;Eason&quot;, &quot;Coder&quot;, &quot;$17636&quot;, &quot;2017/4/24&quot;, &quot;Marketing I&quot;, 796]],
+            [&quot;name&quot;, &quot;position&quot;, &quot;salary&quot;, &quot;start_date&quot;, &quot;office&quot;, &quot;extn&quot;],
+            [&quot;姓名&quot;, &quot;职位&quot;, &quot;薪资&quot;, &quot;入职日期&quot;, &quot;部门&quot;, &quot;其他&quot;]);
+    }
+
+    additionalColumns: AdditionalColumnDefine[] = [
+        {
+            pos: 0,
+            width: &#x27;10%&#x27;,
+            header: {
+                text: &#x27;拖拽换行&#x27;,
+                class: &#x27;red-text&#x27;
+            },
+            cell: {
+                renderer: TableDragReplaceRow
+            }
+        },
+        {
+            pos: 0,
+            width: &#x27;10%&#x27;,
+            header: {
+                text: &#x27;拖拽删除&#x27;,
+                class: &#x27;red-text&#x27;
+            },
+            cell: {
+                renderer: TableDragDeleteRow
+            }
+        }
+    ];
+
+    //拖拽用户块
+    dragStartHandle(dragInfo: DragDropInfo, employee:any) {
+        console.log(&#x27;drag start&#x27;);
+        dragInfo.dragDropData = employee;
+    }
+
+    //数据拖入表格
+    tableDragEnterHandle(dragInfo: DragDropInfo) {
+        console.log(&#x27;drag enter&#x27;);
+        dragInfo.event.dataTransfer.dropEffect = &#x27;move&#x27;;
+        if (dragInfo.event.dataTransfer.effectAllowed == &#x27;move&#x27;) {
+            this.renderer.addClass(this.elementRef.nativeElement.querySelector(&#x27;jigsaw-table&#x27;), &#x27;over&#x27;);
+        }
+    }
+
+    tableDragOverHandle(dragInfo: DragDropInfo) {
+        console.log(&#x27;drag over&#x27;);
+        dragInfo.event.dataTransfer.dropEffect = &#x27;move&#x27;;
+        if (dragInfo.event.dataTransfer.effectAllowed == &#x27;move&#x27;) {
+            this.renderer.addClass(this.elementRef.nativeElement.querySelector(&#x27;jigsaw-table&#x27;), &#x27;over&#x27;);
+        }
+    }
+
+    tableDragLeaveHandle(dragInfo: DragDropInfo) {
+        console.log(&#x27;drag leave&#x27;);
+        this.renderer.removeClass(this.elementRef.nativeElement.querySelector(&#x27;jigsaw-table&#x27;), &#x27;over&#x27;);
+    }
+
+    tableDropHandle(dragInfo: DragDropInfo) {
+        console.log(&#x27;drop&#x27;);
+        this.renderer.removeClass(this.elementRef.nativeElement.querySelector(&#x27;jigsaw-table&#x27;), &#x27;over&#x27;);
+        const index = this.employees.findIndex(employee =&gt; employee.toString() === dragInfo.dragDropData.toString());
+        if (index != -1) {
+            this.employees.splice(index, 1);
+            this.tableData.data.push(dragInfo.dragDropData);
+            this.tableData.refresh();
+        }
+    }
+
+    //表格行数据放入垃圾桶
+    trashDragEnterHandle(dragInfo: DragDropInfo) {
+        console.log(&#x27;drag enter&#x27;);
+        dragInfo.event.dataTransfer.dropEffect = &#x27;copy&#x27;;
+    }
+
+    trashDragOverHandle(dragInfo: DragDropInfo) {
+        console.log(&#x27;drag over&#x27;);
+        dragInfo.event.dataTransfer.dropEffect = &#x27;copy&#x27;;
+        if (dragInfo.event.dataTransfer.effectAllowed == &#x27;copy&#x27;) {
+            this.renderer.addClass(this.elementRef.nativeElement.querySelector(&#x27;.trash-box&#x27;), &#x27;over&#x27;);
+        }
+    }
+
+    trashDragLeaveHandle(dragInfo: DragDropInfo) {
+        console.log(&#x27;drag leave&#x27;);
+        this.renderer.removeClass(this.elementRef.nativeElement.querySelector(&#x27;.trash-box&#x27;), &#x27;over&#x27;);
+    }
+
+    trashDropHandle(dragInfo: DragDropInfo) {
+        this.renderer.removeClass(this.elementRef.nativeElement.querySelector(&#x27;.trash-box&#x27;), &#x27;over&#x27;);
+        const delRowIndex = dragInfo.dragDropData;
+        this.tableData.data.splice(delRowIndex, 1);
+        this.tableData.refresh();
+    }
+
+}
+" />
+<input type="hidden" name="entries[app/app.module.ts][encoding]" value="utf8" />
+<input type="hidden" name="entries[app/app.module.ts][content]" value="import {BrowserModule} from &#x27;@angular/platform-browser&#x27;;
+import {BrowserAnimationsModule} from &#x27;@angular/platform-browser/animations&#x27;;
+import {HttpModule} from &#x27;@angular/http&#x27;;
+import {
+    JigsawDraggableModule, JigsawDroppableModule, JigsawScrollBarModule,
+    JigsawTableModule, JigsawTagModule,
+} from &quot;@rdkmaster/jigsaw&quot;;
+import {NgModule} from &quot;@angular/core&quot;;
+import {TableDragDemoComponent} from &quot;./app.component&quot;;
+import {TableDragDeleteRow, TableDragReplaceRow} from &quot;./table-renderer&quot;;
+
+@NgModule({
+    imports: [
+        BrowserModule, BrowserAnimationsModule, HttpModule,
+        JigsawDraggableModule, JigsawDroppableModule, JigsawTableModule, JigsawScrollBarModule, JigsawTagModule
+    ],
+    declarations: [TableDragDemoComponent, TableDragReplaceRow, TableDragDeleteRow],
+    bootstrap: [TableDragDemoComponent],
+    entryComponents: [TableDragReplaceRow, TableDragDeleteRow]
+})
+export class AppModule {
+
+}
+" />
+<input type="hidden" name="entries[app/table-renderer.ts][encoding]" value="utf8" />
+<input type="hidden" name="entries[app/table-renderer.ts][content]" value="import {
+    CommonUtils, DragDropInfo, TableCellRenderer,
+} from &quot;@rdkmaster/jigsaw&quot;;
+import {AfterViewInit, Component, ElementRef, Renderer2} from &quot;@angular/core&quot;;
+
+/*
+ * 换行
+ * */
+@Component({
+    template: `
+        &lt;div class=&quot;option-box&quot;
+             jigsaw-draggable jigsaw-droppable
+             (jigsawDragStart)=&quot;dragStartHandle($event)&quot;
+             (jigsawDragEnd)=&quot;dragEndHandle($event)&quot;
+             (jigsawDragEnter)=&quot;dragEnterHandle($event)&quot;
+             (jigsawDragOver)=&quot;dragOverHandle($event)&quot;
+             (jigsawDragLeave)=&quot;dragLeaveHandle($event)&quot;
+             (jigsawDrop)=&quot;dropHandle($event)&quot;&gt;
+            &lt;span class=&quot;fa fa-arrows-alt&quot;&gt;&lt;/span&gt;
+        &lt;/div&gt;`,
+    styles: [`.option-box {
+        color: #108ee9;
+        cursor: move
+    }`]
+})
+export class TableDragReplaceRow extends TableCellRenderer implements AfterViewInit {
+
+    private allRows: any;
+
+    constructor(private _renderer: Renderer2, private _elementRef: ElementRef) {
+        super();
+    }
+
+    resetSelectedRow() {
+        for (let i = 0; i &lt; this.allRows.length; ++i) {
+            this._renderer.setStyle(this.allRows[i], &#x27;border-top&#x27;, &#x27;1px solid #d9d9d9&#x27;)
+        }
+    }
+
+    dragStartHandle(dragInfo: DragDropInfo) {
+        console.log(&#x27;drag start&#x27;);
+        dragInfo.dragDropData = this.row;
+        dragInfo.event.dataTransfer.effectAllowed = &#x27;link&#x27;;
+        dragInfo.event.dataTransfer.setDragImage(CommonUtils.getParentNodeBySelector(dragInfo.element, &#x27;tr&#x27;), 50, 10);
+    }
+
+    dragEndHandle(dragInfo: DragDropInfo) {
+        console.log(&#x27;drag end&#x27;);
+        this.resetSelectedRow();
+    }
+
+    dragEnterHandle(dragInfo: DragDropInfo) {
+        console.log(&#x27;drag enter&#x27;);
+        dragInfo.event.dataTransfer.dropEffect = &#x27;link&#x27;;
+        this.resetSelectedRow();
+        if (dragInfo.event.dataTransfer.effectAllowed == &#x27;link&#x27;) {
+            this._renderer.setStyle(CommonUtils.getParentNodeBySelector(dragInfo.element, &#x27;tr&#x27;),
+                &#x27;border-top&#x27;, &#x27;2px solid #108ee9&#x27;)
+        }
+    }
+
+    dragOverHandle(dragInfo: DragDropInfo) {
+        dragInfo.event.dataTransfer.dropEffect = &#x27;link&#x27;;
+        if (dragInfo.event.dataTransfer.effectAllowed == &#x27;link&#x27;) {
+            this._renderer.setStyle(CommonUtils.getParentNodeBySelector(dragInfo.element, &#x27;tr&#x27;),
+                &#x27;border-top&#x27;, &#x27;2px solid #108ee9&#x27;)
+        }
+    }
+
+    dragLeaveHandle(dragInfo: DragDropInfo) {
+        console.log(&#x27;drag leave&#x27;);
+        this.resetSelectedRow();
+    }
+
+    dropHandle(dragInfo: DragDropInfo) {
+        console.log(&#x27;drop&#x27;);
+        const insertRowIndex = dragInfo.dragDropData;
+        if (insertRowIndex &gt;= 0 && this.row != insertRowIndex) {
+            const thisRow = this.tableData.data[this.row];
+            const insertRow = this.tableData.data.splice(insertRowIndex, 1)[0];
+            const thisRowIndex = this.tableData.data.indexOf(thisRow);
+            this.tableData.data.splice(thisRowIndex, 0, insertRow);
+            this.tableData.refresh();
+        }
+    }
+
+    ngAfterViewInit() {
+        this.allRows = CommonUtils
+            .getParentNodeBySelector(this._elementRef.nativeElement, &#x27;table&#x27;)
+            .querySelectorAll(&#x27;tr&#x27;);
+    }
+}
+
+/*
+ * 删除
+ * */
+@Component({
+    template: `
+        &lt;div class=&quot;option-box&quot;
+             jigsaw-draggable
+             (jigsawDragStart)=&quot;dragStartHandle($event)&quot;&gt;
+            &lt;span class=&quot;fa fa-trash&quot;&gt;&lt;/span&gt;
+        &lt;/div&gt;`,
+    styles: [`.option-box {
+        color: #108ee9;
+        cursor: move
+    }`]
+})
+export class TableDragDeleteRow extends TableCellRenderer {
+    dragStartHandle(dragInfo: DragDropInfo) {
+        console.log(&#x27;drag start&#x27;);
+        dragInfo.dragDropData = this.row;
+        dragInfo.event.dataTransfer.effectAllowed = &#x27;copy&#x27;;
+        dragInfo.event.dataTransfer.setDragImage(CommonUtils.getParentNodeBySelector(dragInfo.element, &#x27;tr&#x27;), 600, 10);
+    }
+}
+" />
+<input type="hidden" name="entries[index.html][encoding]" value="utf8" />
+<input type="hidden" name="entries[index.html][content]" value="&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Jigsaw Live Demo&lt;/title&gt;
+    &lt;script&gt;document.write(&#x27;&lt;base href=&quot;&#x27; + document.location + &#x27;&quot; /&gt;&#x27;);&lt;/script&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/bootstrap/dist/css/bootstrap.min.css&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/font-awesome/css/font-awesome.min.css&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/ztree/css/zTreeStyle/zTreeStyle.css&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/@rdkmaster/jigsaw/theming.css&quot;&gt;
+
+    &lt;style&gt;
+      html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    &lt;/style&gt;
+
+    &lt;!-- 引入Jigsaw需要的依赖，这些依赖没有出umd包，只能配置在这里 --&gt;
+    &lt;script src=&quot;https://unpkg.com/jquery/dist/jquery.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://unpkg.com/jquery-mousewheel/jquery.mousewheel.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://unpkg.com/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://unpkg.com/moment/min/moment.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://unpkg.com/bootstrap/dist/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://unpkg.com/ztree/js/jquery.ztree.all.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://unpkg.com/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js&quot;&gt;&lt;/script&gt;
+
+    &lt;!-- Polyfills --&gt;
+    &lt;script src=&quot;https://unpkg.com/core-js/client/shim.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://unpkg.com/zone.js@0.8.5?main=browser&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://unpkg.com/systemjs@0.19.39/dist/system.src.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;systemjs.config.js&quot;&gt;&lt;/script&gt;
+    &lt;script&gt;
+      System.import(&#x27;main.js&#x27;).catch(function(err){ console.error(err); });
+    &lt;/script&gt;
+  &lt;/head&gt;
+
+  &lt;body&gt;
+    &lt;jigsaw-live-demo&gt;
+      &lt;h3 style=&quot;padding: 6px&quot;&gt;Jigsaw live demo is being loaded...&lt;/h3&gt;
+      &lt;h4 style=&quot;padding: 6px&quot;&gt;Visit &lt;a href=&quot;http://rdk.zte.com.cn&quot; target=&quot;_blank&quot;&gt;http://rdk.zte.com.cn&lt;/a&gt; for more detail.&lt;/h4&gt;
+      &lt;p&gt;We are suffering some error if this message remains for minutes, will you please send us a report by &lt;a href=&quot;https://github.com/rdkmaster/jigsaw/issues/new&quot;&gt;submitting an issue&lt;/a&gt; with the error message. By the way, you can copy the error message in the console of your browser.&lt;/p&gt;
+    &lt;/jigsaw-live-demo&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+" />
+<input type="hidden" name="entries[main.ts][encoding]" value="utf8" />
+<input type="hidden" name="entries[main.ts][content]" value="import { platformBrowserDynamic } from &#x27;@angular/platform-browser-dynamic&#x27;;
+
+import { AppModule } from &#x27;./app/app.module&#x27;;
+
+platformBrowserDynamic().bootstrapModule(AppModule);" />
+<input type="hidden" name="entries[systemjs.config.js][encoding]" value="utf8" />
+<input type="hidden" name="entries[systemjs.config.js][content]" value="(function (global) {
+  System.config({
+    // DEMO ONLY! REAL CODE SHOULD NOT TRANSPILE IN THE BROWSER
+    transpiler: &#x27;ts&#x27;,
+    typescriptOptions: {
+      // Copy of compiler options in standard tsconfig.json
+      &quot;target&quot;: &quot;es5&quot;,
+      &quot;module&quot;: &quot;commonjs&quot;,
+      &quot;moduleResolution&quot;: &quot;node&quot;,
+      &quot;sourceMap&quot;: true,
+      &quot;emitDecoratorMetadata&quot;: true,
+      &quot;experimentalDecorators&quot;: true,
+      &quot;lib&quot;: [&quot;es2015&quot;, &quot;dom&quot;],
+      &quot;noImplicitAny&quot;: true,
+      &quot;suppressImplicitAnyIndexErrors&quot;: true
+    },
+    meta: {
+      &#x27;typescript&#x27;: {
+        &quot;exports&quot;: &quot;ts&quot;
+      }
+    },
+    paths: {
+      // paths serve as alias
+      &#x27;npm:&#x27;: &#x27;https://unpkg.com/&#x27;
+    },
+    // map tells the System loader where to look for things
+    map: {
+      // our app is within the app folder
+      &#x27;app&#x27;: &#x27;app&#x27;,
+
+      // angular bundles
+      &#x27;@angular/animations&#x27;:                  &#x27;npm:@angular/animations/bundles/animations.umd.js&#x27;,
+      &#x27;@angular/animations/browser&#x27;:          &#x27;npm:@angular/animations/bundles/animations-browser.umd.js&#x27;,
+      &#x27;@angular/core&#x27;:                        &#x27;npm:@angular/core/bundles/core.umd.js&#x27;,
+      &#x27;@angular/common&#x27;:                      &#x27;npm:@angular/common/bundles/common.umd.js&#x27;,
+      &#x27;@angular/compiler&#x27;:                    &#x27;npm:@angular/compiler/bundles/compiler.umd.js&#x27;,
+      &#x27;@angular/platform-browser&#x27;:            &#x27;npm:@angular/platform-browser/bundles/platform-browser.umd.js&#x27;,
+      &#x27;@angular/platform-browser/animations&#x27;: &#x27;npm:@angular/platform-browser/bundles/platform-browser-animations.umd.js&#x27;,
+      &#x27;@angular/platform-browser-dynamic&#x27;:    &#x27;npm:@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js&#x27;,
+      &#x27;@angular/http&#x27;:                        &#x27;npm:@angular/http/bundles/http.umd.js&#x27;,
+      &#x27;@angular/router&#x27;:                      &#x27;npm:@angular/router/bundles/router.umd.js&#x27;,
+      &#x27;@angular/router/upgrade&#x27;:              &#x27;npm:@angular/router/bundles/router-upgrade.umd.js&#x27;,
+      &#x27;@angular/forms&#x27;:                       &#x27;npm:@angular/forms/bundles/forms.umd.js&#x27;,
+      &#x27;@angular/upgrade&#x27;:                     &#x27;npm:@angular/upgrade/bundles/upgrade.umd.js&#x27;,
+      &#x27;@angular/upgrade/static&#x27;:              &#x27;npm:@angular/upgrade/bundles/upgrade-static.umd.js&#x27;,
+
+      // other libraries
+      &#x27;rxjs&#x27;:                       &#x27;npm:rxjs@5.0.1&#x27;,
+      &#x27;angular-in-memory-web-api&#x27;:  &#x27;npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js&#x27;,
+      &#x27;ts&#x27;:                         &#x27;npm:plugin-typescript@5.2.7/lib/plugin.js&#x27;,
+      &#x27;typescript&#x27;:                 &#x27;npm:typescript@2.3.2/lib/typescript.js&#x27;,
+
+      // jigsaw needs these
+      &quot;@ngx-translate/core&quot;:        &#x27;npm:@ngx-translate/core&#x27;,
+      &quot;@ngx-translate/http-loader&quot;: &#x27;npm:@ngx-translate/http-loader&#x27;,
+      &quot;echarts&quot;:                    &#x27;npm:echarts@3.5.2/dist/echarts.js&#x27;,
+      &#x27;@rdkmaster/jigsaw&#x27;:          &#x27;npm:@rdkmaster/jigsaw&#x27;
+    },
+    // packages tells the System loader how to load when no filename and/or no extension
+    packages: {
+      app: {
+        main: &#x27;./main.ts&#x27;,
+        defaultExtension: &#x27;ts&#x27;,
+        meta: {
+          &#x27;./*.ts&#x27;: {
+            loader: &#x27;systemjs-angular-loader.js&#x27;
+          }
+        }
+      },
+      rxjs: {
+        defaultExtension: &#x27;js&#x27;
+      }
+    }
+  });
+
+})(this);" />
+<input type="hidden" name="entries[systemjs-angular-loader.js][encoding]" value="utf8" />
+<input type="hidden" name="entries[systemjs-angular-loader.js][content]" value="var templateUrlRegex = /templateUrl\s*:(\s*[&#x27;&quot;\`](.*?)[&#x27;&quot;\`]\s*)/gm;
+var stylesRegex = /styleUrls *:(\s*\[[^\]]*?\])/g;
+var stringRegex = /([&#x27;\`&quot;])((?:[^\\]\\\1|.)*?)\1/g;
+
+module.exports.translate = function(load){
+  if (load.source.indexOf(&#x27;moduleId&#x27;) != -1) return load;
+
+  var url = document.createElement(&#x27;a&#x27;);
+  url.href = load.address;
+
+  var basePathParts = url.pathname.split(&#x27;/&#x27;);
+
+  basePathParts.pop();
+  var basePath = basePathParts.join(&#x27;/&#x27;);
+
+  var baseHref = document.createElement(&#x27;a&#x27;);
+  baseHref.href = this.baseURL;
+  baseHref = baseHref.pathname;
+
+  if (!baseHref.startsWith(&#x27;/base/&#x27;)) { // it is not karma
+    basePath = basePath.replace(baseHref, &#x27;&#x27;);
+  }
+
+  load.source = load.source
+    .replace(templateUrlRegex, function(match, quote, url){
+      var resolvedUrl = url;
+
+      if (url.startsWith(&#x27;.&#x27;)) {
+        resolvedUrl = basePath + url.substr(1);
+      }
+
+      return &#x27;templateUrl: &quot;&#x27; + resolvedUrl + &#x27;&quot;&#x27;;
+    })
+    .replace(stylesRegex, function(match, relativeUrls) {
+      var urls = [];
+
+      while ((match = stringRegex.exec(relativeUrls)) !== null) {
+        if (match[2].startsWith(&#x27;.&#x27;)) {
+          urls.push(&#x27;&quot;&#x27; + basePath + match[2].substr(1) + &#x27;&quot;&#x27;);
+        } else {
+          urls.push(&#x27;&quot;&#x27; + match[2] + &#x27;&quot;&#x27;);
+        }
+      }
+
+      return &quot;styleUrls: [&quot; + urls.join(&#x27;, &#x27;) + &quot;]&quot;;
+    });
+
+  return load;
+};" />
+<input type="hidden" name="title" value="dragdrop/table-drag - Jigsaw Live Demo - Visit http://rdk.zte.com.cn for more detail." /><input type="hidden" name="tags[0]" value="Jigsaw" /><input type="hidden" name="tags[1]" value="component" /><input type="hidden" name="tags[2]" value="zte" /><input type="hidden" name="tags[3]" value="rdk" /><input type="hidden" name="tags[4]" value="angular" /><input type="hidden" name="tags[5]" value="typescript" /><input type="hidden" name="source[type]" value="Jigsaw Live Demo" /><input type="hidden" name="source[url]" value="http://rdk.zte.com.cn" /></form><script>document.getElementById("mainForm").submit();</script></body></html>

@@ -12,7 +12,8 @@
         "favicon.ico",
         "mock-data",
         "app/i18n",
-        "doc"
+        "doc",
+        "live-demo"
       ],
       "index": "index.html",
       "main": "main.ts",

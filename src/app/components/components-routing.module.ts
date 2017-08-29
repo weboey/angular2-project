@@ -4,6 +4,9 @@ import {ComponentDetailComponent} from "./component-detail/component-detail.comp
 import {ComponentMenuNavComponent} from "./component-menu-nav/component-menu-nav.component";
 import {ComponentDetailContentComponent} from "./component-detail/component-detail-content/component-detail-content.component";
 import {ComponentQuickstartComponent} from "./component-quickstart/component-quickstart.component";
+import {NormComponent} from "./component-detail/component-detail-content/norm/norm.component";
+import {DemoComponent} from "./component-detail/component-detail-content/demo/demo.component";
+import {ApiComponent} from "./component-detail/component-detail-content/api/api.component";
 
 
 const ComponentRoutes: Routes = [
@@ -15,7 +18,9 @@ const ComponentRoutes: Routes = [
         children:[
           { path: ':name', component: ComponentDetailComponent,
             children:[
-              {path: ':navName',  component: ComponentDetailContentComponent},
+              {path: 'norm',  component: NormComponent},
+              {path: 'demo',  component: DemoComponent},
+              {path: 'api',  component: ApiComponent}
             ]
           },
           {path: 'jigsaw/docs/quickstart', component: ComponentQuickstartComponent}
