@@ -1,0 +1,36 @@
+<div>
+  <h1>file</h1>
+  <div class="img-upload-box">
+    <p-fileUpload
+      name="uploadPhoto[]" (onBeforeUpload)="onPhotoBeforeUpload()"
+      url="/api/imgUpload" chooseLabel="上传图片" (onProgress)="onPhotoProgress($event)"
+      (onUpload)="onPhotoUpload($event)" auto="auto" accept="image/*" maxFileSize="10000000">
+      <ng-template pTemplate="content">
+        <div class="img-review"  (click)="remove()">
+          <img *ngIf="demo.photo" src="upload/images/1505634961279.jpeg" alt="" >
+        </div>
+      </ng-template>
+    </p-fileUpload>
+  </div>
+  <div class="img-progress-box" *ngIf="over">
+    <p-progressBar [value]="value"></p-progressBar>
+  </div>
+
+  <p-fileUpload
+    name="uploadPhoto[]"
+    url="/api/imgUpload"
+    chooseLabel="附近资源"
+    (onUpload)="onResourceUpload($event)"
+    multiple="multiple"
+    maxFileSize="10000000">
+    <ng-template pTemplate="content">
+      <ul *ngIf="resourceFiles.length">
+        <li *ngFor="let file of resourceFiles">
+          {{file.name}}
+        </li>
+      </ul>
+    </ng-template>
+  </p-fileUpload>
+  <!--如果图片上传成功，显示图片 -->
+
+</div>

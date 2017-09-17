@@ -13,12 +13,14 @@ import { PostBrowserUserComponent } from './post-browser-user/post-browser-user.
 import { PostCommentComponent } from './post-comment/post-comment.component';
 import {PostCommentService} from "./post-comment/post-comment.service";
 import {PostlistService} from "./post-list/service/post-list.service";
-
+import { WritePostComponent } from './write-post/write-post.component';
+import {FileUploadModule} from 'primeng/primeng';
+import {ProgressBarModule} from 'primeng/primeng';
 @NgModule({
   imports: [
-    PostRoutingModule,CommonModule
+    PostRoutingModule,CommonModule,FileUploadModule,ProgressBarModule
   ],
-  declarations: [PostListComponent, PostDetailComponent, PostDetailMainComponent, PostCategoryComponent, PostBrowserUserComponent, PostCommentComponent],
+  declarations: [PostListComponent, PostDetailComponent, PostDetailMainComponent, PostCategoryComponent, PostBrowserUserComponent, PostCommentComponent, WritePostComponent],
   providers: [PostCategoryService,PostCommentService,PostlistService],
 })
 export class PostModule { }

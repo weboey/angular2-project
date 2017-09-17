@@ -371,3 +371,33 @@ a:active,a:link,a:hover{
     font-weight: bold;
   }
 }
+
+
+.img-upload-box{
+
+}
+.img-upload-box .ui-fileupload{
+  position: relative;
+}
+.img-upload-box .ui-fileupload-content{
+  width: 360px;
+  height: 360px;
+  padding: 0;
+}
+.img-upload-box .ui-fileupload-content div{
+  display: none;
+}
+.img-upload-box .ui-fileupload-content div.img-review{
+  display: block;
+}
+.img-upload-box .ui-fileupload-buttonbar{
+  height: 0;
+  padding: 0;
+  border: 0;
+}
+.img-upload-box .ui-fileupload-buttonbar .ui-fileupload-choose{
+  position: absolute;
+  left: 36%;
+  top: 46%;
+  z-index: 99;
+}

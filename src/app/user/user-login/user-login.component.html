@@ -27,7 +27,7 @@
         <div *ngIf="error" class="col-sm-offset-2 col-sm-10 alert alert-danger">{{error}}</div>
         <div class="form-group">
           <div class="col-sm-12">
-            <button type="submit" class="btn btn-success">登录</button>
+            <button type="submit" class="btn btn-success" [disabled]="!form.form.valid">登录</button>
             <button type="button" class="btn mg-left-15" (click)="registerUser()">注册</button>
           </div>
         </div>

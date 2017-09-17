@@ -1,0 +1,39 @@
+
+.img-warp{
+  width: 450px;
+  height: 450px;
+  background-color: #5a5a5a;
+}
+.img-progress-box{
+  width: 360px;
+  margin-left: 100px;
+  margin-top: -5px;
+}
+
+.img-upload-box{
+  padding-left: 100px;
+  display: inline-flex;
+}
+.img-review{
+  position: relative;
+
+}
+.img-review img{
+  width: 360px;
+  height: 360px;
+}
+.img-review:after{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  font-size: 64px;
+}
+.img-review:hover:after{
+  content: "";
+  background:
+    linear-gradient(45deg, transparent 49.5%, #5a5a5a 49.5%, #5a5a5a 50.5%, transparent 50.5%),
+    linear-gradient(135deg, transparent 49.5%, #5a5a5a 49.5%, #5a5a5a 50.5%, transparent 50.5%);
+  background-color: rgba(0,0,0,.3);
+}

@@ -12,7 +12,6 @@
   },
   "private": true,
   "dependencies": {
-    "@rdkmaster/jigsaw": "^1.0.0-beta.10",
     "@angular/animations": "^4.2.3",
     "@angular/common": "^4.2.3",
     "@angular/compiler": "^4.2.3",
@@ -22,10 +21,12 @@
     "@angular/platform-browser": "^4.2.3",
     "@angular/platform-browser-dynamic": "^4.2.3",
     "@angular/router": "^4.2.3",
+    "@rdkmaster/jigsaw": "^1.0.0-beta.10",
     "core-js": "^2.4.1",
     "highlight.js": "^9.12.0",
     "markdown-it": "^8.3.1",
     "markdown-it-container": "^2.0.0",
+    "primeng": "^4.2.1",
     "rxjs": "^5.1.0",
     "web-animations-js": "^2.2.5",
     "zone.js": "^0.8.4"

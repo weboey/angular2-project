@@ -13,9 +13,9 @@ export class UserRegisterComponent implements OnInit {
   public userForm: FormGroup;
   public userInfo: User = new User();
   public vocation:Array<object>=[
-    {name:1},
-    {name:2},
-    {name:3},
+    {label:1},
+    {label:2},
+    {label:3},
   ];
   public formErrors = {
     'userName': '',
@@ -61,5 +61,9 @@ export class UserRegisterComponent implements OnInit {
 
   doCancel():void{
 
+  }
+
+  doRegister(){
+    console.log("do register!!!");
   }
 }
