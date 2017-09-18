@@ -19,12 +19,29 @@ export class UserRegisterComponent implements OnInit {
   ];
   public formErrors = {
     'userName': '',
-    'nickName': '',
     'email': '',
     'password': '',
     'confirmPassword': '',
     'formError': '',
-    'vcode': ''
+  };
+  validationMessages = {
+    'userName': {
+      'required': '用户名必须输入。',
+      'minlength': '用户名4到32个字符。'
+    },
+    'email': {
+      'required': '邮箱必须输入。',
+      'pattern': '请输入正确的邮箱地址。'
+    },
+    'password': {
+      'required': '密码必须输入。',
+      'minlength': '密码至少要8位。'
+    },
+    'confirmPassword': {
+      'required': '重复密码必须输入。',
+      'minlength': '密码至少要8位。',
+      'validateEqual': "两次输入的密码不一致。"
+    }
   };
 
   constructor(public fb: FormBuilder) { }
@@ -35,6 +52,14 @@ export class UserRegisterComponent implements OnInit {
 
   buildForm(): void {
     this.userForm = this.fb.group({
+      "userName": [
+        this.userInfo.userName,
+        [
+          Validators.required,
+          Validators.minLength(4),
+          Validators.maxLength(32)
+        ]
+      ],
       "email": [
         this.userInfo.email,
         [
@@ -57,6 +82,25 @@ export class UserRegisterComponent implements OnInit {
         ]
       ]
     });
+    this.userForm.valueChanges
+      .subscribe(data => this.onValueChanged(data));
+    this.onValueChanged();
+  }
+  onValueChanged(data?: any) {
+    if (!this.userForm) {
+      return;
+    }
+    const form = this.userForm;
+    for (const field in this.formErrors) {
+      this.formErrors[field] = '';
+      const control = form.get(field);
+      if (control && control.dirty && !control.valid) {
+        const messages = this.validationMessages[field];
+        for (const key in control.errors) {
+          this.formErrors[field] += messages[key] + ' ';
+        }
+      }
+    }
   }
 
   doCancel():void{
@@ -65,5 +109,7 @@ export class UserRegisterComponent implements OnInit {
 
   doRegister(){
     console.log("do register!!!");
+
+    console.log(this.userForm.value);
   }
 }

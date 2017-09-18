@@ -31,6 +31,7 @@ import { UserComponent } from './user/user.component';
 import { UserRegisterComponent } from './user/user-register/user-register.component';
 import {UserLoginService} from "./user/user-login/user-login.service";
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import {EqualValidator} from "./user/user-register/directives/equal-validator.directive";
 
 //import { FooterComponent } from './footer/footer.component';
 
@@ -48,7 +49,7 @@ export function HttpLoaderFactory(http: Http) {
     UserLoginComponent,
     UserComponent,
     UserRegisterComponent,
-    PageNotFoundComponent,
+    PageNotFoundComponent,EqualValidator
     //FooterComponent
   ],
   imports: [
