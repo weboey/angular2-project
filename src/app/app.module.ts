@@ -32,6 +32,7 @@ import { UserRegisterComponent } from './user/user-register/user-register.compon
 import {UserLoginService} from "./user/user-login/user-login.service";
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import {EqualValidator} from "./user/user-register/directives/equal-validator.directive";
+import { RippleDirective } from './animations/ripple.directive';
 
 //import { FooterComponent } from './footer/footer.component';
 
@@ -49,7 +50,7 @@ export function HttpLoaderFactory(http: Http) {
     UserLoginComponent,
     UserComponent,
     UserRegisterComponent,
-    PageNotFoundComponent,EqualValidator
+    PageNotFoundComponent,EqualValidator, RippleDirective
     //FooterComponent
   ],
   imports: [

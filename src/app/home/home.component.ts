@@ -7,7 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   ww:string;
+  temp:boolean=false;
   ngOnInit() {
   }
-
+  changeStatus(){
+    this.temp=!this.temp;
+  }
 }
