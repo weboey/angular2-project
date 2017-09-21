@@ -1,4 +1,4 @@
-import { Directive, ElementRef, HostListener, Input} from '@angular/core';
+import { Directive, ElementRef, HostListener,HostBinding, Input} from '@angular/core';
 
 @Directive({
   selector: '[appRipple]'
@@ -14,31 +14,29 @@ export class RippleDirective {
   //}
   //HostListener 是属性装饰器，用来为宿主元素添加事件监听。
 
+  @HostBinding('class.a-ripple') isRippleStart: boolean=true;
 
-
-  @HostListener('click',['$event'])
+  @HostListener('mousedown',['$event'])
   createRipple(event) {
     let target = event.target;
-    target.classList.add("a-ripple");
     var rect = target.getBoundingClientRect();
-    let ripple = target.querySelector('.ripple');
-    if (!ripple) {
-      ripple = document.createElement('div');
+    //let ripple = target.querySelector('.ripple');
+   // if (!ripple) {
+     var  ripple = document.createElement('div');
       ripple.className = 'ripple';
-      ripple.style.height = ripple.style.width = Math.max(rect.width, rect.height) + 'px';
+      ripple.style.height = ripple.style.width = Math.max(rect.width, rect.height)*2.5 + 'px';
       target.appendChild(ripple);
-    }
-    ripple.classList.remove('show');
+   // }
     var top = event.pageY - rect.top - ripple.offsetHeight / 2 - document.body.scrollTop;
     var left = event.pageX - rect.left - ripple.offsetWidth / 2 - document.body.scrollLeft;
     ripple.style.top = top + 'px';
     ripple.style.left = left + 'px';
-    ripple.classList.add('show');
+    ripple.style.transform = 'scale(1)';
 
-    setTimeout(()=>{
-      target.removeChild(ripple);
-    },1000);
     return false;
   }
+  @HostListener('mouseup',['$event'])
+  removeRipple(event) {
 
+  }
 }
