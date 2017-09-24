@@ -24,7 +24,9 @@ export class RippleDirective {
    // if (!ripple) {
      var  ripple = document.createElement('div');
       ripple.className = 'ripple';
-      ripple.style.height = ripple.style.width = Math.max(rect.width, rect.height)*2.5 + 'px';
+    let radius = this.calcuRippleRect(event.pageX,event.pageY,rect);
+     // ripple.style.height = ripple.style.width = Math.max(rect.width, rect.height)*2.5 + 'px';
+      ripple.style.height = ripple.style.width = `${radius * 2}px`;
       target.appendChild(ripple);
    // }
     var top = event.pageY - rect.top - ripple.offsetHeight / 2 - document.body.scrollTop;
@@ -33,10 +35,20 @@ export class RippleDirective {
     ripple.style.left = left + 'px';
     ripple.style.transform = 'scale(1)';
 
+    setTimeout(()=>{
+      target.removeChild(ripple);
+    },2000)
+
     return false;
   }
   @HostListener('mouseup',['$event'])
   removeRipple(event) {
 
+  }
+
+  calcuRippleRect(x: number, y: number, rect: ClientRect) {
+    const distX = Math.max(Math.abs(x - rect.left), Math.abs(x - rect.right));
+    const distY = Math.max(Math.abs(y - rect.top), Math.abs(y - rect.bottom));
+    return Math.sqrt(distX * distX + distY * distY);
   }
 }
