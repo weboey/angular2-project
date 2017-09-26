@@ -12,16 +12,16 @@
 }
 
 .a-input:after {
-  content: "";
-  position: absolute;
-  bottom: -1px;
-  height: 2px;
-  width: 100%;
-  background-color: rgb(0, 188, 212);
-  transform: scale(0, 1);
-  transform-origin: center center;
-  transition: all .5s;
-}
+   content: "";
+   position: absolute;
+   bottom: -1px;
+   height: 2px;
+   width: 100%;
+   background-color: rgb(0, 188, 212);
+   transform: scale(0, 1);
+   transform-origin: center center;
+   transition: all .5s;
+ }
 
 .a-input.extend:after {
   /*content: "";*/
@@ -104,4 +104,69 @@
 }
 textarea.mat-input-element {
   overflow: auto
+}
+
+
+
+/* 33*/
+.form-group {
+  position: relative;
+  font-size: 15px;
+  color: #666;
+
+}
+.form-group + .form-group {
+  margin-top: 30px;
+}
+.form-group .form-label {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 5px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+.form-group .form-control {
+  width: 100%;
+  position: relative;
+  z-index: 3;
+  height: 35px;
+  background: none;
+  border: none;
+  padding: 5px 0;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  border-bottom: 1px solid #777;
+  border-radius: 0;
+  box-shadow: none;
+}
+.form-group .form-control:invalid {
+  outline: none;
+}
+.form-group .form-control:focus, .form-group .form-control:valid {
+  outline: none;
+  /*color: #FF4081;*/
+  /*box-shadow: 0 1px #FF4081;*/
+  /*border-color: #FF4081;*/
+}
+.form-group .form-control:focus ~ span.input-underline{
+  transform: scale(1, 1);
+}
+.input-underline{
+  position: absolute;
+  display: block;
+  bottom: -1px;
+  height: 2px;
+  width: 100%;
+  background-color: rgb(0, 188, 212);
+  transform: scale(0, 1);
+  transform-origin: center center;
+  transition: all .5s;
+  z-index: 5;
+}
+.form-group .form-control:focus + .form-label, .form-group .form-control:valid + .form-label {
+  font-size: 12px;
+  -ms-transform: translateY(-15px);
+  -webkit-transform: translateY(-15px);
+  transform: translateY(-15px);
 }
