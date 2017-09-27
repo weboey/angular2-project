@@ -33,6 +33,9 @@ import {UserLoginService} from "./user/user-login/user-login.service";
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import {EqualValidator} from "./user/user-register/directives/equal-validator.directive";
 import { RippleDirective } from './animations/ripple.directive';
+import { UedInputComponent } from './input/ued-input/ued-input.component';
+import {UedInputDirective} from "./input/directive/ued-input.directive";
+
 
 //import { FooterComponent } from './footer/footer.component';
 
@@ -50,7 +53,7 @@ export function HttpLoaderFactory(http: Http) {
     UserLoginComponent,
     UserComponent,
     UserRegisterComponent,
-    PageNotFoundComponent,EqualValidator, RippleDirective
+    PageNotFoundComponent,EqualValidator, RippleDirective, UedInputComponent, UedInputDirective
     //FooterComponent
   ],
   imports: [
