@@ -1,0 +1,1031 @@
+<div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/jigsaw/service/time.service.ts</code>
+        </p>
+
+
+
+
+
+            <section>
+                <h3 id="index">Index</h3>
+                <table class="table table-sm table-bordered index-table">
+                    <tbody>
+                        <tr>
+                            <td class="col-md-4">
+                                <h6><b>Methods</b></h6>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <ul class="index-list">
+                                    <li>
+                                        <span class="modifier">Public</span> <a href="#addDate">addDate</a>
+                                    </li>
+                                    <li>
+                                        <span class="modifier">Public</span> <a href="#convertValue">convertValue</a>
+                                    </li>
+                                    <li>
+                                        <span class="modifier">Public</span> <a href="#format">format</a>
+                                    </li>
+                                    <li>
+                                        <span class="modifier">Public</span> <a href="#formatWithGr">formatWithGr</a>
+                                    </li>
+                                    <li>
+                                        <span class="modifier">Public</span> <a href="#getDate">getDate</a>
+                                    </li>
+                                    <li>
+                                        <span class="modifier">Public</span> <a href="#getDateFromYearAndWeek">getDateFromYearAndWeek</a>
+                                    </li>
+                                    <li>
+                                        <span class="modifier">Public</span> <a href="#getDay">getDay</a>
+                                    </li>
+                                    <li>
+                                        <span class="modifier">Public</span> <a href="#getFormatDate">getFormatDate</a>
+                                    </li>
+                                    <li>
+                                        <span class="modifier">Public</span> <a href="#getFormatter">getFormatter</a>
+                                    </li>
+                                    <li>
+                                        <span class="modifier">Public</span> <a href="#getMonth">getMonth</a>
+                                    </li>
+                                    <li>
+                                        <span class="modifier">Public</span> <a href="#getWeekOfYear">getWeekOfYear</a>
+                                    </li>
+                                    <li>
+                                        <span class="modifier">Public</span> <a href="#getYear">getYear</a>
+                                    </li>
+                                    <li>
+                                        <span class="modifier">Public</span> <a href="#isMacro">isMacro</a>
+                                    </li>
+                                    <li>
+                                        <span class="modifier">Public</span> <a href="#setWeekStart">setWeekStart</a>
+                                    </li>
+                                    <li>
+                                        <span class="modifier">Public</span> <a href="#timeUnitConvert">timeUnitConvert</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+
+            <section>
+                
+                    <h3 id="methods">
+                        Methods
+                    </h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="addDate"></a>
+                                    <span class="name"><b><span class="modifier">Public</span> addDate</b><a href="#addDate"><span class="fa fa-link"></span></a></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                        <span class="modifier-icon fa fa-reset"></span>
+                                    <code>addDate(date: <a routerLink="doc/api/miscellaneouss/Time">Time</a>, num: string | number, unit: <a routerLink="doc/api/miscellaneouss/Time">TimeUnit</a>)</code>
+                                </td>
+                            </tr>
+            
+            
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>时间加减法</p>
+            </div>
+            
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>date</td>
+                                                              <td>
+                                                                      <code><a href="../miscellaneous/typealiases.html#Time" target="_self" >Time</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td><p>时间</p>
+            </td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>num</td>
+                                                              <td>
+                                                                      <code>string | number</code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td><p>数量 负数即为减法</p>
+            </td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>unit</td>
+                                                              <td>
+                                                                      <code><a href="../miscellaneous/typealiases.html#Time" target="_self" >TimeUnit</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td><p>单位</p>
+            </td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="../miscellaneous/typealiases.html#Moment" target="_self" >Moment</a></code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="convertValue"></a>
+                                    <span class="name"><b><span class="modifier">Public</span> convertValue</b><a href="#convertValue"><span class="fa fa-link"></span></a></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                        <span class="modifier-icon fa fa-reset"></span>
+                                    <code>convertValue(value: <a routerLink="doc/api/miscellaneouss/WeekTime">WeekTime</a>, gr: <a routerLink="doc/api/miscellaneouss/Time">TimeGr</a>)</code>
+                                </td>
+                            </tr>
+            
+            
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>value</td>
+                                                              <td>
+                                                                      <code><a href="../miscellaneous/typealiases.html#WeekTime" target="_self" >WeekTime</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>gr</td>
+                                                              <td>
+                                                                      <code><a href="../miscellaneous/typealiases.html#Time" target="_self" >TimeGr</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="format"></a>
+                                    <span class="name"><b><span class="modifier">Public</span> format</b><a href="#format"><span class="fa fa-link"></span></a></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                        <span class="modifier-icon fa fa-reset"></span>
+                                    <code>format(date: <a routerLink="doc/api/miscellaneouss/Time">Time</a>, formatter: <a routerLink="doc/api/miscellaneouss/Time">string | TimeFormatters</a>)</code>
+                                </td>
+                            </tr>
+            
+            
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>时间格式化</p>
+            </div>
+            
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>date</td>
+                                                              <td>
+                                                                      <code><a href="../miscellaneous/typealiases.html#Time" target="_self" >Time</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>formatter</td>
+                                                              <td>
+                                                                      <code><a href="../miscellaneous/typealiases.html#Time" target="_self" >string | TimeFormatters</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="formatWithGr"></a>
+                                    <span class="name"><b><span class="modifier">Public</span> formatWithGr</b><a href="#formatWithGr"><span class="fa fa-link"></span></a></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                        <span class="modifier-icon fa fa-reset"></span>
+                                    <code>formatWithGr(date: <a routerLink="doc/api/miscellaneouss/Time">Time</a>, gr: <a routerLink="doc/api/miscellaneouss/Time">TimeGr</a>)</code>
+                                </td>
+                            </tr>
+            
+            
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>根据粒度格式化时间</p>
+            </div>
+            
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>date</td>
+                                                              <td>
+                                                                      <code><a href="../miscellaneous/typealiases.html#Time" target="_self" >Time</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>gr</td>
+                                                              <td>
+                                                                      <code><a href="../miscellaneous/typealiases.html#Time" target="_self" >TimeGr</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="getDate"></a>
+                                    <span class="name"><b><span class="modifier">Public</span> getDate</b><a href="#getDate"><span class="fa fa-link"></span></a></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                        <span class="modifier-icon fa fa-reset"></span>
+                                    <code>getDate(str: <a routerLink="doc/api/miscellaneouss/Time">Time</a>, gr: <a routerLink="doc/api/miscellaneouss/Time">TimeGr</a>)</code>
+                                </td>
+                            </tr>
+            
+            
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>str</td>
+                                                              <td>
+                                                                      <code><a href="../miscellaneous/typealiases.html#Time" target="_self" >Time</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>gr</td>
+                                                              <td>
+                                                                      <code><a href="../miscellaneous/typealiases.html#Time" target="_self" >TimeGr</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="../miscellaneous/typealiases.html#Moment" target="_self" >Moment</a></code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="getDateFromYearAndWeek"></a>
+                                    <span class="name"><b><span class="modifier">Public</span> getDateFromYearAndWeek</b><a href="#getDateFromYearAndWeek"><span class="fa fa-link"></span></a></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                        <span class="modifier-icon fa fa-reset"></span>
+                                    <code>getDateFromYearAndWeek(year: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, week: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                                </td>
+                            </tr>
+            
+            
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>year</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>week</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" >Date</a></code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="getDay"></a>
+                                    <span class="name"><b><span class="modifier">Public</span> getDay</b><a href="#getDay"><span class="fa fa-link"></span></a></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                        <span class="modifier-icon fa fa-reset"></span>
+                                    <code>getDay(date: <a routerLink="doc/api/miscellaneouss/Time">Time</a>)</code>
+                                </td>
+                            </tr>
+            
+            
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>date</td>
+                                                              <td>
+                                                                      <code><a href="../miscellaneous/typealiases.html#Time" target="_self" >Time</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="getFormatDate"></a>
+                                    <span class="name"><b><span class="modifier">Public</span> getFormatDate</b><a href="#getFormatDate"><span class="fa fa-link"></span></a></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                        <span class="modifier-icon fa fa-reset"></span>
+                                    <code>getFormatDate(time: <a routerLink="doc/api/miscellaneouss/Time">Time</a>, gr?: <a routerLink="doc/api/miscellaneouss/Time">TimeGr</a>)</code>
+                                </td>
+                            </tr>
+            
+            
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>根据字符串获取真实时间</p>
+            </div>
+            
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>time</td>
+                                                              <td>
+                                                                      <code><a href="../miscellaneous/typealiases.html#Time" target="_self" >Time</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>gr</td>
+                                                              <td>
+                                                                      <code><a href="../miscellaneous/typealiases.html#Time" target="_self" >TimeGr</a></code>
+                                                              </td>
+                                                              <td>
+                                                                  true
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="../miscellaneous/typealiases.html#Time" target="_self" >Time</a></code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="getFormatter"></a>
+                                    <span class="name"><b><span class="modifier">Public</span> getFormatter</b><a href="#getFormatter"><span class="fa fa-link"></span></a></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                        <span class="modifier-icon fa fa-reset"></span>
+                                    <code>getFormatter(gr: <a routerLink="doc/api/miscellaneouss/Time">TimeGr</a>)</code>
+                                </td>
+                            </tr>
+            
+            
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>根据粒度获取格式化字符串</p>
+            </div>
+            
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>gr</td>
+                                                              <td>
+                                                                      <code><a href="../miscellaneous/typealiases.html#Time" target="_self" >TimeGr</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="getMonth"></a>
+                                    <span class="name"><b><span class="modifier">Public</span> getMonth</b><a href="#getMonth"><span class="fa fa-link"></span></a></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                        <span class="modifier-icon fa fa-reset"></span>
+                                    <code>getMonth(date: <a routerLink="doc/api/miscellaneouss/Time">Time</a>)</code>
+                                </td>
+                            </tr>
+            
+            
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>date</td>
+                                                              <td>
+                                                                      <code><a href="../miscellaneous/typealiases.html#Time" target="_self" >Time</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="getWeekOfYear"></a>
+                                    <span class="name"><b><span class="modifier">Public</span> getWeekOfYear</b><a href="#getWeekOfYear"><span class="fa fa-link"></span></a></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                        <span class="modifier-icon fa fa-reset"></span>
+                                    <code>getWeekOfYear(date: <a routerLink="doc/api/miscellaneouss/Time">Time</a>)</code>
+                                </td>
+                            </tr>
+            
+            
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>date</td>
+                                                              <td>
+                                                                      <code><a href="../miscellaneous/typealiases.html#Time" target="_self" >Time</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="getYear"></a>
+                                    <span class="name"><b><span class="modifier">Public</span> getYear</b><a href="#getYear"><span class="fa fa-link"></span></a></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                        <span class="modifier-icon fa fa-reset"></span>
+                                    <code>getYear(date: <a routerLink="doc/api/miscellaneouss/Time">Time</a>)</code>
+                                </td>
+                            </tr>
+            
+            
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>date</td>
+                                                              <td>
+                                                                      <code><a href="../miscellaneous/typealiases.html#Time" target="_self" >Time</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="isMacro"></a>
+                                    <span class="name"><b><span class="modifier">Public</span> isMacro</b><a href="#isMacro"><span class="fa fa-link"></span></a></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                        <span class="modifier-icon fa fa-reset"></span>
+                                    <code>isMacro(time: <a routerLink="doc/api/miscellaneouss/Time">Time</a>)</code>
+                                </td>
+                            </tr>
+            
+            
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>是否是时间宏字符串</p>
+            </div>
+            
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>time</td>
+                                                              <td>
+                                                                      <code><a href="../miscellaneous/typealiases.html#Time" target="_self" >Time</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="setWeekStart"></a>
+                                    <span class="name"><b><span class="modifier">Public</span> setWeekStart</b><a href="#setWeekStart"><span class="fa fa-link"></span></a></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                        <span class="modifier-icon fa fa-reset"></span>
+                                    <code>setWeekStart(weekStart: <a routerLink="doc/api/miscellaneouss/Time">TimeWeekStart</a>)</code>
+                                </td>
+                            </tr>
+            
+            
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>设置默认周开始</p>
+            </div>
+            
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>weekStart</td>
+                                                              <td>
+                                                                      <code><a href="../miscellaneous/typealiases.html#Time" target="_self" >TimeWeekStart</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="timeUnitConvert"></a>
+                                    <span class="name"><b><span class="modifier">Public</span> timeUnitConvert</b><a href="#timeUnitConvert"><span class="fa fa-link"></span></a></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                        <span class="modifier-icon fa fa-reset"></span>
+                                    <code>timeUnitConvert(unit: <a routerLink="doc/api/miscellaneouss/Time">TimeUnit</a>)</code>
+                                </td>
+                            </tr>
+            
+            
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>unit</td>
+                                                              <td>
+                                                                      <code><a href="../miscellaneous/typealiases.html#Time" target="_self" >TimeUnit</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </section>
+
+
+    </div>

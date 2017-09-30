@@ -1,0 +1,39 @@
+.m-post-detail{
+  padding: 20px;
+  background-color: #fff;
+}
+.post-title{
+  display: flex;
+  padding: 8px;
+  justify-content: center;
+}
+.post-title span{
+  width: 60px;
+  text-align: center;
+  height: 26px;
+  line-height: 26px;
+  border-radius: 12px;
+  background-color: #9ad0e2;
+  color: #fff;
+  margin-left: 15px;
+}
+
+
+.post-evaluate{
+  display: flex;
+  padding: 8px;
+  font-size: 12px;
+  color: #999;
+  justify-content: flex-end;
+}
+
+.post-evaluate span{
+  padding: 0 8px;
+}
+
+.list-paddingleft-2 li{
+  list-style-type: disc;
+}
+.m-post-detail .glyphicon, .m-post-detail .fa {
+  margin-right: 6px;
+}

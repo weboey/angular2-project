@@ -1,28 +1,45 @@
-@mixin target-shadow {
-  background-color: #fff;
-  box-shadow: 0 1px 6px rgba(0,0,0,.117647), 0 1px 4px rgba(0,0,0,.117647);
-}
-$normal-padding:20px;
-.project-detail{
+
+$normal-padding: 20px;
+.project-detail {
   margin-top: 10px;
   text-align: left;
+  padding-right: 60px;
+  padding-left: 60px;
+  .cmg {
+    padding-right: 0;
+  }
   img {
     max-width: 100%;
   }
   h2 {
     padding: $normal-padding;
-    border-bottom: 1px solid #ccc;
   }
-  h3 {
+  h4 {
     padding: $normal-padding;
+    padding-left: 0;
+    font-size: 16px;
+    color: #414141;
+    &:before {
+      content: "";
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      margin-right: 10px;
+      border-radius: 50%;
+      background-color: #9ec3ed;
+    }
     span {
-      font-size: 14px;
+      font-size: 12px;
+      color: #d9d9d9;
     }
   }
   .leftSide {
-    margin-right: -15px;
-    @include target-shadow;
     border-radius: 2px;
+    padding-right: 68px;
+    jigsaw-markdown {
+      font-size: 14px;
+      color: #333;
+    }
     .projectBrief {
       white-space: pre-wrap;
       word-wrap: break-word;
@@ -38,21 +55,98 @@ $normal-padding:20px;
       -webkit-transition: all .6s ease;
       transition: all .6s ease;
     }
+    .interactive-design {
+      position: relative;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      jigsaw-button {
+        position: absolute;
+        top: 35px;
+        right: 20px;
+        border: none;
+        color: #959595;
+        a {
+           color: #959595;
+         }
+        a:hover {
+          color: #288bf0;
+        }
+        &:hover {
+          border: none;
+          color: #288bf0;
+        }
+        &:active {
+          border: none;
+        }
+        &:nth-child(2) {
+          right: 130px;
+        }
+      }
+    }
   }
   .prototype-content {
     position: relative;
-    button {
-      position: absolute;
-      right: 20px;
-      top:16px;
-      z-index: 10;
+    .img-across {
+      margin-top: 10px;
+      position: relative;
+      .imgWidth {
+        transition: all 0.5s ;
+      }
+      .imgBorder {
+        padding: 0;
+        border: 6px solid #288bf0;
+      }
+      li {
+        padding: 10px;
+        img {
+          width: 100%;
+          height: 100px;
+          padding: 0;
+        }
+      }
     }
     div{
-      padding: 0 $normal-padding;
-      img {
-        padding: 10px;
-        width: 33.3%;
+      text-align: center;
+      jigsaw-button {
+        border: none;
+        color: #959595;
       }
+    }
+    div {
+      img {
+        padding: 6px;
+        cursor: pointer;
+        width: 100%;
+      }
+    }
+    .btn-right {
+      position: absolute;
+      top: 50%;
+      left:40px;
+      height: 30px;
+      width: 30px;
+      border-radius: 20px;
+      padding-left: 3px;
+      padding-top: 2px;
+      transform: translateY(-50%);
+      background-color: rgba(160,160,160,.75);
+      color: #fff;
+      cursor: pointer;
+
+    }
+    .btn-left {
+      position: absolute;
+      top: 50%;
+      right:40px;
+      height: 30px;
+      width: 30px;
+      border-radius: 20px;
+      padding-left: 12px;
+      padding-top: 2px;
+      transform: translateY(-50%);
+      background-color: rgba(160,160,160,.75);
+      color: #fff;
+      cursor: pointer;
     }
   }
   p {
@@ -60,11 +154,8 @@ $normal-padding:20px;
   }
   .download-list {
     margin-top: $normal-padding;
-    margin-right: -15px;
-    padding: $normal-padding;
-    @include target-shadow;
     border-radius: 2px;
-    ul > li a{
+    ul > li a {
       display: block;
       padding-left: $normal-padding;
       margin-top: $normal-padding;
@@ -72,7 +163,7 @@ $normal-padding:20px;
       line-height: 30px;
       border: 1px solid transparent;
       &:hover {
-        box-shadow: 0 1px 3px rgba(0,37,55,.05);
+        box-shadow: 0 1px 3px rgba(0, 37, 55, .05);
         border: 1px solid #e7eaf1
       }
       span {
@@ -81,23 +172,339 @@ $normal-padding:20px;
       }
     }
   }
-  .rightSide{
-    @include target-shadow;
+  .rightSide {
     border-radius: 2px;
+    .img-bubble {
+      position: relative;
+      img {
+        width: 100%;
+      }
+      span {
+        color: #fff;
+        &:nth-child(2) {
+          position: absolute;
+          top: 16%;
+          left: 14%;
+        }
+        &:nth-child(3) {
+          position: absolute;
+          top: 16%;
+          right: 9%;
+        }
+        &:nth-child(4) {
+          position: absolute;
+          bottom: 46%;
+          right: 46%;
+          img{
+            border-radius: 50%;
+          }
+        }
+        &:nth-child(5) {
+          position: absolute;
+          bottom: 19%;
+          left: 11%;
+        }
+        &:nth-child(6) {
+          position: absolute;
+          bottom: 24%;
+          right: 16%;
+        }
+      }
+    }
     p {
       padding: 0 10px 0 20px;
       line-height: 40px;
     }
-    .project-action{
-      border-top: 1px solid #f2f2f2;
+    .project-action {
       a {
         text-align: center;
         line-height: 46px;
-        width: 50%;
+        color: #666;
+        &:first-child {
+          padding-right: 50px;
+        }
+        .fa-heart:before {
+          font-size: 20px;
+        }
+        .fa-envelope-o:before {
+          font-size: 20px;
+        }
+      }
+      .marking {
+        color: #4398ef;
       }
     }
-    + button {
+    + .permission {
       margin-top: $normal-padding;
+      position: relative;
+      .permissionBtn {
+        position: relative;
+        > h4 {
+          padding-bottom: 10px;
+        }
+        >jigsaw-button {
+          position: absolute;
+          top: 13px;
+          right: 20px;
+          background-color: #288bf0;
+          color: #fff;
+          border-radius: 16px;
+          font-size: 14px;
+          line-height: 30px;
+          height: 32px;
+        }
+      }
+      .detailPermission {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 100%;
+        border-radius: 5px;
+        margin-top: 5px;
+        padding: 5px;
+        display: none;
+        background-color: #f2f2f2;
+        z-index: 100;
+        &:before {
+          display: block;
+          content: "";
+          position: absolute;
+          width: 20px;
+          height: 20px;
+          top: -6px;
+          right: 30px;
+          transform:  rotate(145deg) skewX(26deg);
+          background-color: #f2f2f2;
+          z-index: -2;
+        }
+        .title {
+          margin-top: 5px;
+          font-size: 14px;
+          color: #666;
+            span {
+              padding-right: 20px;
+              color:#ccc;
+            }
+        }
+        .jigsaw-input {
+          width: 100%;
+        }
+        .authoriseContent {
+          position: absolute;
+          top: 72px;
+          left: 50%;
+          width: 90%;
+          border-radius: 5px;
+          transform: translate(-50%,0);
+          background-color: #fff;
+          text-align: center;
+          z-index: 9998;
+          &:before {
+            content: "";
+            position: absolute;
+            top: -20px;
+            right: 15px;
+            border: 10px solid transparent;
+            border-top: 10px solid #fff;
+            transform: rotate(180deg);
+          }
+          .errorBox {
+            margin: 10px 30px;
+            padding: 10px 20px;
+            text-align: center;
+            background-color: #fff;
+            i{
+              color: #fd9749;
+            }
+          }
+          & div >h5 {
+            padding: 10px;
+            font-size: 16px;
+            i.fa-exclamation-circle{
+              color: #e77275;
+            }
+            i.fa-check-circle{
+              color: #96cb73;
+            }
+          }
+          & div > ul {
+            display: flex;
+            padding: 15px 10px;
+            li {
+              &:first-child{
+                width: 50px;
+              }
+              &:nth-child(2){
+                width: 100px;
+              }
+              &:nth-child(3){
+                flex: 1;
+              }
+            }
+          }
+          & div > jigsaw-button {
+            margin-bottom: 15px;
+            margin-top: 15px;
+            border-radius: 15px;
+            border: 2px solid #288bf0;
+            color: #288bf0;
+          }
+        }
+        .PermissionUser {
+          & > div {
+            float: left;
+            width: 33.333%;
+            padding: 5px;
+            jigsaw-tag {
+              width: 100%;
+              height: 28px;
+              border-radius: 14px;
+              background-color: #dfdfdf;
+              line-height: 28px;
+              text-align: center;
+              color: #333;
+            }
+          }
+
+        }
+        .seletPermission {
+          .title {
+            position: relative;
+            margin: 8px;
+            font-size: 14px;
+            color: #666;
+            jigsaw-button {
+              position: absolute;
+              top: -6px;
+              right: 0;
+            }
+          }
+          .seletOptionBtn {
+            margin-top: 15px;
+            margin-bottom: 20px;
+            text-align: center;
+            jigsaw-button {
+              border-radius: 15px;
+              &:nth-child(2) {
+                border: 2px solid #288bf0;
+              }
+            }
+          }
+        }
+      }
     }
   }
+  .commentForm {
+    margin-top: 20px;
+    .title {
+      margin: 8px;
+      color: #ccc;
+      font-size: 12px;
+    }
+    .showPermissions {
+      & > jigsaw-tag, & >jigsaw-button {
+        float: left;
+        width: 30%;
+        height: 28px;
+        line-height: 28px;
+        text-align: center;
+        margin-right: 2%;
+        margin-bottom: 2%;
+        background-color: #e5e5e5;
+        color: #333;
+      }
+      & > jigsaw-tag {
+        border-radius: 14px;
+        cursor: default;
+      }
+      & >jigsaw-button {
+        border: none;
+        color: #288bf0;
+        background-color: #fff;
+      }
+    }
+    .relatedProjects {
+      ul li > a {
+        line-height: 33px;
+        color: #333;
+        font-size: 12px;
+        &:hover {
+          color: #288bf0;
+        }
+      }
+    }
+  }
+}
+.img-position {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+}
+.thelid {
+  position: relative;
+  width: 100%;
+  min-height: 100%;
+  &:hover {
+    strong{
+      opacity: 1;
+      transition: all 0.5s;
+    }
+  }
+  strong {
+    position: absolute;
+    top: 30px;
+    right: 50%;
+    opacity: 0;
+    padding: 5px 15px;
+    transition: all 0.5s;
+    transform: translateX(50%);
+    background-color: #444;
+    font-size: 18px;
+    color: #fff;
+    z-index: 200;
+    span {
+      font-size: 14px;
+    }
+  }
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.blue {
+  background-color: blue;
+}
+
+.mailSeed {
+  width: 300px;
+  padding: 20px;
+  background-color: #fff;
+  h4 {
+    text-align: center;
+  }
+}
+
+@keyframes lidshow {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes lidhidden {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+jigsaw-table {
+  border: none;
 }

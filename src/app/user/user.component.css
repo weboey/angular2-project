@@ -1,15 +1,16 @@
 
-.navbar-nav li a{
+.user-login a{
   display: inline-block;
   text-align: center;
   height: 60px;
-  line-height: 30px;
-  color: #333;
+  line-height: 60px;
+  padding: 0 12px;
 }
-.navbar-nav li a.active {
+.user-login a.active {
   text-decoration: none;
-  background-color: #eee;
+  color: #00a6dd !important;
 }
+
 .user-content{
   position: absolute;
   right: 0;

@@ -1,0 +1,37 @@
+<div>
+  <div class="container">
+    <div class="search-input">
+      <input #inputBox (keyup.enter)="onEnter(inputBox.value)" [(ngModel)] = "keyword" placeholder="输入项目名称、或关键字搜索">
+    </div>
+    <div class="tab-content">
+      <div class="result-prompting">总共找到&nbsp;{{totalDatas?.length}}&nbsp;个相关结果 <span *ngIf="selectedIndex">, 在当前分类下共有&nbsp;{{targetNum}}&nbsp;个</span></div>
+      <jigsaw-tab (selectChange)="onChange()" [(selectedIndex)] = "selectedIndex">
+        <jigsaw-tab-pane>
+          <div jigsaw-title>所有</div>
+          <ng-template>
+            <div class="search-item"  *ngFor="let totalData of totalDatas">
+              <div class="item-img"><img [src]="totalData?.img" alt=""></div>
+              <div class="item-content">
+                <em>{{totalData?.tag}}</em>  <strong>{{totalData?.title}}</strong>
+                <p>{{totalData?.details}}</p>
+              </div>
+              <a class="full-cover" [routerLink]="[totalData?.path,totalData?.id]" routerLinkActive="active"></a>
+            </div>
+          </ng-template>
+        </jigsaw-tab-pane>
+        <jigsaw-tab-pane [title]="allData.target" *ngFor="let allData of allDatas">
+          <ng-template>
+            <div class="search-item" *ngFor="let item of allData.content">
+              <div class="item-img"><img [src]="item.img" alt=""></div>
+              <div class="item-content">
+                <em>{{item.tag}}</em>  <strong>{{item.title}}</strong>
+                <p>{{item?.details}}</p>
+              </div>
+              <a class="full-cover" [routerLink]="[item.path,item.id]" routerLinkActive="active"></a>
+            </div>
+          </ng-template>
+        </jigsaw-tab-pane>
+      </jigsaw-tab>
+    </div>
+  </div>
+</div>

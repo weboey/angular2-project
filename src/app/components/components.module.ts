@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {ComponentRoutingModule} from "./components-routing.module";
-
+import { FormsModule }   from '@angular/forms';
 import {ComponentMenuNavComponent} from "./component-menu-nav/component-menu-nav.component";
 
 import {ComponentDetailComponent} from "./component-detail/component-detail.component";
@@ -13,18 +13,21 @@ import { NormComponent } from './component-detail/component-detail-content/norm/
 import { DemoComponent } from './component-detail/component-detail-content/demo/demo.component';
 import { ApiComponent } from './component-detail/component-detail-content/api/api.component';
 import { ComponentQuickstartComponent } from './component-quickstart/component-quickstart.component';
-import { JigsawMarkdownComponent } from './jigsaw-markdown/jigsaw-markdown.component';
 import {SanitizeHtmlPipe} from "./component-detail/component-detail-content/component-detail-content.component";
+import {SanitizeResourceUrLPipe} from "./component-detail/component-detail-content/component-detail-content.component";
 
+import { UedCommonModule } from "../common/ued-common.module";
+import { ApiListComponent } from './component-detail/component-detail-content/api-list/api-list.component'
+import {ApiListService} from "./component-detail/component-detail-content/api-list/service/post-list.service";
 @NgModule({
   imports: [
-    CommonModule,
-    ComponentRoutingModule
+    CommonModule,UedCommonModule,
+    ComponentRoutingModule,FormsModule
   ],
-  providers:[ComponentMenuService],
+  providers:[ComponentMenuService,ApiListService],
   declarations: [
     ComponentMenuNavComponent,
-    MenuFilterPipe,SanitizeHtmlPipe,
+    MenuFilterPipe,SanitizeHtmlPipe,SanitizeResourceUrLPipe,
     ComponentDetailComponent,
     ComponentDetailNavComponent,
     ComponentDetailContentComponent,
@@ -32,7 +35,7 @@ import {SanitizeHtmlPipe} from "./component-detail/component-detail-content/comp
     DemoComponent,
     ApiComponent,
     ComponentQuickstartComponent,
-    JigsawMarkdownComponent
+    ApiListComponent,
   ]
 })
 export class ComponentsModule { }

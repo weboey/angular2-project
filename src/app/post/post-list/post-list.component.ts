@@ -11,12 +11,12 @@ import {PostlistService} from "./service/post-list.service";
 @Component({
   selector: 'app-post-list',
   templateUrl: './post-list.component.html',
-  styleUrls: ['./post-list.component.css']
+  styleUrls: ['./post-list.component.scss']
 })
 export class PostListComponent implements OnInit {
 
   public postList:Array<Post>;
-  public searchText:string;
+
   public searchTextStream:Subject<string> = new Subject<string>();
 
   constructor(public router: Router,
@@ -25,18 +25,16 @@ export class PostListComponent implements OnInit {
               ) { }
 
   ngOnInit() {
-    //从路由里面获取URL参数
     this.activeRoute.params.subscribe(params => {
-      console.log(params);
-     // this.currentPage=params.page;
-      this.loadData(this.searchText);
+      this.loadData(params["name"]);
     });
   }
 
-  public loadData(searchText:string){
-    return this.postService.getPostList(searchText).subscribe(
+  public loadData(cateType:string){
+    return this.postService.getPostList(cateType)
+      .subscribe(
       res=>{
-        this.postList = res["items"];
+        this.postList = res;
       },
       error => {console.log(error)},
       () => {}

@@ -9,7 +9,7 @@ import {User} from "../model/user-model";
   animations: [ fadeIn ]
 })
 export class UserRegisterComponent implements OnInit {
-
+  @Output() onCancel = new EventEmitter();
   public userForm: FormGroup;
   public userInfo: User = new User();
   public vocation:Array<object>=[
@@ -60,6 +60,10 @@ export class UserRegisterComponent implements OnInit {
   }
 
   doCancel():void{
+    this.onCancel.emit();
+  }
 
+  doRegister():void{
+    console.log("doing!");
   }
 }

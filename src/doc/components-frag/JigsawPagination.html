@@ -33,7 +33,7 @@
 
             <tr>
                 <td class="col-md-3">host</td>
-                <td class="col-md-9"><code>{<br>&nbsp;&nbsp;&nbsp;&nbsp;"[style.width]":"width",<br>&nbsp;&nbsp;&nbsp;&nbsp;"[style.height]":"height"<br>}</code></td>
+                <td class="col-md-9"><code>{<br>&nbsp;&nbsp;&nbsp;&nbsp;"[style.width]":"width",<br>&nbsp;&nbsp;&nbsp;&nbsp;"[style.height]":"height","[class.jigsaw-paging]":"true"<br>}</code></td>
             </tr>
 
 
@@ -47,10 +47,6 @@
                 <td class="col-md-9"><code>jigsaw-pagination</code></td>
             </tr>
 
-            <tr>
-                <td class="col-md-3">styleUrls</td>
-                <td class="col-md-9"><code>pagination.scss</code></td>
-            </tr>
 
 
 
@@ -65,16 +61,92 @@
 </section>
 
     <section>
+        <h3 id="index">Index</h3>
+        <table class="table table-sm table-bordered index-table">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <span class="modifier">Public</span> <a href="#pagesNext">pagesNext</a>
+                            </li>
+                            <li>
+                                <span class="modifier">Public</span> <a href="#pagesPrev">pagesPrev</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#current">current</a>
+                            </li>
+                            <li>
+                                <a href="#pageSize">pageSize</a>
+                            </li>
+                            <li>
+                                <a href="#pageSizeOptions">pageSizeOptions</a>
+                            </li>
+                            <li>
+                                <a href="#searchable">searchable</a>
+                            </li>
+                            <li>
+                                <a href="#showQuickJumper">showQuickJumper</a>
+                            </li>
+                            <li>
+                                <a href="#size">size</a>
+                            </li>
+                            <li>
+                                <a href="#total">total</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#currentChange">currentChange</a>
+                            </li>
+                            <li>
+                                <a href="#pageSizeChange">pageSizeChange</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+
+    <section>
         <h3 id="inputs">Inputs</h3>
             <table class="table table-sm table-bordered">
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="current"></a>
                             <code>current</code>
                         </td>
                         <td class="col-md-10">
                               <p>
-                                <em>Type:</em>    <code>number</code>
+                                <em>Type:</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 
                               </p>
                         </td>
@@ -85,11 +157,12 @@
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="pageSize"></a>
                             <code>pageSize</code>
                         </td>
                         <td class="col-md-10">
                               <p>
-                                <em>Type:</em>    <code>number</code>
+                                <em>Type:</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 
                               </p>
                         </td>
@@ -100,6 +173,7 @@
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="pageSizeOptions"></a>
                             <code>pageSizeOptions</code>
                         </td>
                         <td class="col-md-10">
@@ -111,11 +185,12 @@
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="searchable"></a>
                             <code>searchable</code>
                         </td>
                         <td class="col-md-10">
                               <p>
-                                <em>Type:</em>    <code>boolean</code>
+                                <em>Type:</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
                               </p>
                             <p>
@@ -129,11 +204,12 @@
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="showQuickJumper"></a>
                             <code>showQuickJumper</code>
                         </td>
                         <td class="col-md-10">
                               <p>
-                                <em>Type:</em>    <code>boolean</code>
+                                <em>Type:</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
                               </p>
                             <p>
@@ -147,11 +223,12 @@
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="size"></a>
                             <code>size</code>
                         </td>
                         <td class="col-md-10">
                               <p>
-                                <em>Type:</em>    <code>string</code>
+                                <em>Type:</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 
                               </p>
                         </td>
@@ -162,11 +239,12 @@
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="total"></a>
                             <code>total</code>
                         </td>
                         <td class="col-md-10">
                               <p>
-                                <em>Type:</em>    <code>number</code>
+                                <em>Type:</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 
                               </p>
                         </td>
@@ -181,6 +259,7 @@
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="currentChange"></a>
                             <code>currentChange</code>
                         </td>
                         <td class="col-md-10">
@@ -194,6 +273,7 @@
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="pageSizeChange"></a>
                             <code>pageSizeChange</code>
                         </td>
                         <td class="col-md-10">
@@ -207,6 +287,69 @@
 
 
 
+    <section>
+        
+            <h3 id="methods">
+                Methods
+            </h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="pagesNext"></a>
+                            <span class="name"><b><span class="modifier">Public</span> pagesNext</b><a href="#pagesNext"><span class="fa fa-link"></span></a></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <span class="modifier-icon fa fa-reset"></span>
+                            <code>pagesNext()</code>
+                        </td>
+                    </tr>
+    
+    
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="pagesPrev"></a>
+                            <span class="name"><b><span class="modifier">Public</span> pagesPrev</b><a href="#pagesPrev"><span class="fa fa-link"></span></a></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <span class="modifier-icon fa fa-reset"></span>
+                            <code>pagesPrev()</code>
+                        </td>
+                    </tr>
+    
+    
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </section>
+
 </div>
 
 
@@ -216,12 +359,12 @@
     &lt;span jigsaw-prefix-icon class&#x3D;&quot;fa fa-search&quot;&gt;&lt;/span&gt;
 &lt;/jigsaw-input&gt;
 
-&lt;div class&#x3D;&quot;jigsaw-paging-prev jigsaw-paging-page&quot; [class.jigsaw-paging-disabled]&#x3D;&quot;_$prevDisabled&quot; (click)&#x3D;&quot;_$pagePrev()&quot;&gt;&lt;/div&gt;
+&lt;div class&#x3D;&quot;jigsaw-paging-prev jigsaw-paging-page fa fa-angle-left&quot; [class.jigsaw-paging-disabled]&#x3D;&quot;_$prevDisabled&quot; (click)&#x3D;&quot;_$pagePrev()&quot;&gt;&lt;/div&gt;
 &lt;jigsaw-paging-item *ngFor&#x3D;&quot;let pageNumber of _$pageNumbers&quot; [pageNumber]&#x3D;&quot;pageNumber&quot;&gt;&lt;/jigsaw-paging-item&gt;
-&lt;div class&#x3D;&quot;jigsaw-paging-next jigsaw-paging-page&quot; [class.jigsaw-paging-disabled]&#x3D;&quot;_$nextDisabled&quot; (click)&#x3D;&quot;_$pageNext()&quot;&gt;&lt;/div&gt;
+&lt;div class&#x3D;&quot;jigsaw-paging-next jigsaw-paging-page fa fa-angle-right&quot; [class.jigsaw-paging-disabled]&#x3D;&quot;_$nextDisabled&quot; (click)&#x3D;&quot;_$pageNext()&quot;&gt;&lt;/div&gt;
 
 &lt;jigsaw-select *ngIf&#x3D;&quot;pageSizeOptions&quot;
-            [value]&#x3D;&quot;_pageSize&quot;
+            [value]&#x3D;&quot;_$pageSize&quot;
             (valueChange)&#x3D;&quot;_changePageSize($event)&quot;
             trackItemBy&#x3D;&quot;value&quot;
             labelField&#x3D;&quot;label&quot;
@@ -260,9 +403,9 @@
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><jigsaw-input class="jigsaw-paging-search" *ngIf="searchable" width="80">    <span jigsaw-prefix-icon class="fa fa-search"></span></jigsaw-input><div class="jigsaw-paging-prev jigsaw-paging-page" [class.jigsaw-paging-disabled]="_$prevDisabled" (click)="_$pagePrev()"></div><jigsaw-paging-item *ngFor="let pageNumber of _$pageNumbers" [pageNumber]="pageNumber"></jigsaw-paging-item><div class="jigsaw-paging-next jigsaw-paging-page" [class.jigsaw-paging-disabled]="_$nextDisabled" (click)="_$pageNext()"></div><jigsaw-select *ngIf="pageSizeOptions"            [value]="_pageSize"            (valueChange)="_changePageSize($event)"            trackItemBy="value"            labelField="label"            width="80"            [data]="pageSizeOptions"></jigsaw-select><div class="jigsaw-paging-goto" *ngIf="showQuickJumper">    <span>Goto</span>    <jigsaw-input #input (keyup.enter)="_goto(input.value)" width="50"></jigsaw-input></div></div>'
-    var COMPONENTS = [{'name': 'DefaultCellRenderer', 'selector': ''},{'name': 'JigsawAlert', 'selector': 'jigsaw-alert'},{'name': 'JigsawBallLoading', 'selector': 'jigsaw-ball-loading'},{'name': 'JigsawBlock', 'selector': 'jigsaw-block'},{'name': 'JigsawButton', 'selector': 'jigsaw-button, a[jigsaw-button]'},{'name': 'JigsawCheckBox', 'selector': 'jigsaw-checkbox'},{'name': 'JigsawCollapse', 'selector': 'jigsaw-collapse'},{'name': 'JigsawCollapsePane', 'selector': 'jigsaw-collapse-pane'},{'name': 'JigsawComboSelect', 'selector': 'jigsaw-combo-select'},{'name': 'JigsawDialog', 'selector': 'jigsaw-dialog'},{'name': 'JigsawErrorAlert', 'selector': 'jigsaw-error-alert'},{'name': 'JigsawGraph', 'selector': 'jigsaw-graph'},{'name': 'JigsawInfoAlert', 'selector': 'jigsaw-info-alert'},{'name': 'JigsawInput', 'selector': 'jigsaw-input'},{'name': 'JigsawLoading', 'selector': 'jigsaw-loading'},{'name': 'JigsawOption', 'selector': 'jigsaw-select-option'},{'name': 'JigsawPagination', 'selector': 'jigsaw-pagination'},{'name': 'JigsawPagingItem', 'selector': 'jigsaw-paging-item'},{'name': 'JigsawRadioButton', 'selector': 'jigsaw-radio-button'},{'name': 'JigsawRadioGroup', 'selector': 'jigsaw-radio-group'},{'name': 'JigsawRangeTime', 'selector': 'jigsaw-range-time'},{'name': 'JigsawSelect', 'selector': 'jigsaw-select'},{'name': 'JigsawSlider', 'selector': 'jigsaw-slider'},{'name': 'JigsawSliderHandle', 'selector': 'slider-handle'},{'name': 'JigsawSwitch', 'selector': 'jigsaw-switch'},{'name': 'JigsawTab', 'selector': 'jigsaw-tab'},{'name': 'JigsawTabContent', 'selector': 'jigsaw-tab-content'},{'name': 'JigsawTabLabel', 'selector': 'jigsaw-tab-label'},{'name': 'JigsawTabPane', 'selector': 'jigsaw-tab-pane'},{'name': 'JigsawTable', 'selector': 'jigsaw-table'},{'name': 'JigsawTableCell', 'selector': '[jigsaw-table-cell]'},{'name': 'JigsawTableHeader', 'selector': '[jigsaw-table-header]'},{'name': 'JigsawTag', 'selector': 'jigsaw-tag'},{'name': 'JigsawTileOption', 'selector': 'jigsaw-tile-option'},{'name': 'JigsawTileSelect', 'selector': 'jigsaw-tile-select'},{'name': 'JigsawTime', 'selector': 'jigsaw-time'},{'name': 'JigsawTooltipDialog', 'selector': 'jigsaw-tooltip-dialog'},{'name': 'JigsawTreeExt', 'selector': 'jigsaw-tree-ext'},{'name': 'JigsawWarningAlert', 'selector': 'jigsaw-warning-alert'},{'name': 'SimpleTooltipComponent', 'selector': ''},{'name': 'TableCellCheckbox', 'selector': ''},{'name': 'TableCellEditor', 'selector': ''},{'name': 'TableCellNum', 'selector': ''},{'name': 'TableHeadCheckbox', 'selector': ''}];
-    var DIRECTIVES = [{'name': 'JigsawDraggable', 'selector': '[jigsaw-draggable], [jigsawDraggable]'},{'name': 'JigsawDroppable', 'selector': '[jigsaw-droppable], [jigsawDroppable]'},{'name': 'JigsawMovable', 'selector': '[jigsaw-movable], [jigsawMovable]'},{'name': 'JigsawPrefixIcon', 'selector': '[jigsaw-prefix-icon]'},{'name': 'JigsawRendererHost', 'selector': '[jigsaw-renderer-host]'},{'name': 'JigsawScrollBar', 'selector': '[jigsaw-scroll-bar], [jigsawScrollBar]'},{'name': 'JigsawTooltip', 'selector': '[jigsaw-tooltip], [jigsawTooltip]'},{'name': 'OptionList', 'selector': '.jigsaw-option-list'}];
+        var COMPONENT_TEMPLATE = '<div><jigsaw-input class="jigsaw-paging-search" *ngIf="searchable" width="80">    <span jigsaw-prefix-icon class="fa fa-search"></span></jigsaw-input><div class="jigsaw-paging-prev jigsaw-paging-page fa fa-angle-left" [class.jigsaw-paging-disabled]="_$prevDisabled" (click)="_$pagePrev()"></div><jigsaw-paging-item *ngFor="let pageNumber of _$pageNumbers" [pageNumber]="pageNumber"></jigsaw-paging-item><div class="jigsaw-paging-next jigsaw-paging-page fa fa-angle-right" [class.jigsaw-paging-disabled]="_$nextDisabled" (click)="_$pageNext()"></div><jigsaw-select *ngIf="pageSizeOptions"            [value]="_$pageSize"            (valueChange)="_changePageSize($event)"            trackItemBy="value"            labelField="label"            width="80"            [data]="pageSizeOptions"></jigsaw-select><div class="jigsaw-paging-goto" *ngIf="showQuickJumper">    <span>Goto</span>    <jigsaw-input #input (keyup.enter)="_goto(input.value)" width="50"></jigsaw-input></div></div>'
+    var COMPONENTS = [{'name': 'AjaxLineGraphComponent', 'selector': ''},{'name': 'AlertInDomDemoComponent', 'selector': ''},{'name': 'AlertPopupDemoComponent', 'selector': ''},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ArrayCollectionAjaxDemoComponent', 'selector': ''},{'name': 'ArrayCollectionBasicDemoComponent', 'selector': ''},{'name': 'BallLoadingDemoComponent', 'selector': ''},{'name': 'BasicGraphComponent', 'selector': ''},{'name': 'BasicLineGraphComponent', 'selector': ''},{'name': 'BoxComponent', 'selector': '[box]'},{'name': 'BubbleLoadingDemoComponent', 'selector': ''},{'name': 'ButtonBasicDemoComponent', 'selector': ''},{'name': 'ButtonDisableDemoComponent', 'selector': ''},{'name': 'ButtonLiveDemoComponent', 'selector': ''},{'name': 'ButtonPresetDemoComponent', 'selector': ''},{'name': 'ButtonWidthHeightDemoComponent', 'selector': ''},{'name': 'ButtonWithLoadingComponent', 'selector': ''},{'name': 'CheckBoxBasicDemoComponent', 'selector': ''},{'name': 'CheckBoxDisableDemoComponent', 'selector': ''},{'name': 'CheckBoxLiveDemoComponent', 'selector': ''},{'name': 'CollapseBasicDemo', 'selector': ''},{'name': 'CollapseBasicDemoComponent', 'selector': ''},{'name': 'ColorfulLoadingDemoComponent', 'selector': ''},{'name': 'ComboSelectAutoWidthDemo', 'selector': ''},{'name': 'ComboSelectBasicDemo', 'selector': ''},{'name': 'ComboSelectChangeDemo', 'selector': ''},{'name': 'ComboSelectDemoComponent', 'selector': ''},{'name': 'ComboSelectEditableDemo', 'selector': ''},{'name': 'ComboSelectLabelFieldDemo', 'selector': ''},{'name': 'ComboSelectMultipleDemo', 'selector': ''},{'name': 'ComboSelectSetWidthDemo', 'selector': ''},{'name': 'ComboSelectWidthDemo', 'selector': ''},{'name': 'CustomizeAlertDemoComponent', 'selector': ''},{'name': 'CustomizedAlert', 'selector': 'my-alert'},{'name': 'DefaultCellRenderer', 'selector': ''},{'name': 'DefinedLoading', 'selector': ''},{'name': 'DefinedLoadingDemoComponent', 'selector': ''},{'name': 'DemoListComponent', 'selector': 'jigsaw-demo-list'},{'name': 'DialogButtonsDemo', 'selector': ''},{'name': 'DialogInDomDemoComponent', 'selector': ''},{'name': 'DialogMiscDemoComponent', 'selector': ''},{'name': 'DialogPopOptionDemo', 'selector': ''},{'name': 'DialogTitleDemo', 'selector': ''},{'name': 'DialogTopDemo', 'selector': ''},{'name': 'DisabledComboSelectDemo', 'selector': ''},{'name': 'DomInnerDemoComponent', 'selector': ''},{'name': 'DragToReplaceDemoComponent', 'selector': ''},{'name': 'DynamicTabDemoComponent', 'selector': ''},{'name': 'FontLoadingDemoComponent', 'selector': ''},{'name': 'GraphResizeComponent', 'selector': ''},{'name': 'GraphSetSizeComponent', 'selector': ''},{'name': 'GraphWithNoDataComponent', 'selector': ''},{'name': 'I18nFullDemoComponent', 'selector': ''},{'name': 'InputBasicDemoComponent', 'selector': ''},{'name': 'InputClearableDemoComponent', 'selector': ''},{'name': 'InputFocusDemoComponent', 'selector': ''},{'name': 'InputLiveDemoComponent', 'selector': ''},{'name': 'InputPrefixIconDemoComponent', 'selector': ''},{'name': 'InputValueChangeDemoComponent', 'selector': ''},{'name': 'JigsawAlert', 'selector': 'jigsaw-alert'},{'name': 'JigsawBallLoading', 'selector': 'jigsaw-ball-loading'},{'name': 'JigsawBlock', 'selector': 'jigsaw-block'},{'name': 'JigsawBubbleLoading', 'selector': 'jigsaw-bubble-loading'},{'name': 'JigsawButton', 'selector': 'jigsaw-button, a[jigsaw-button], button[jigsaw-button]'},{'name': 'JigsawCheckBox', 'selector': 'jigsaw-checkbox'},{'name': 'JigsawCollapse', 'selector': 'jigsaw-collapse'},{'name': 'JigsawCollapsePane', 'selector': 'jigsaw-collapse-pane'},{'name': 'JigsawComboSelect', 'selector': 'jigsaw-combo-select'},{'name': 'JigsawConfirmAlert', 'selector': 'jigsaw-confirm-alert'},{'name': 'JigsawDestoryTabComponent', 'selector': ''},{'name': 'JigsawDialog', 'selector': 'jigsaw-dialog'},{'name': 'JigsawErrorAlert', 'selector': 'jigsaw-error-alert'},{'name': 'JigsawFontLoading', 'selector': 'jigsaw-font-loading'},{'name': 'JigsawGraph', 'selector': 'jigsaw-graph'},{'name': 'JigsawHideTabComponent', 'selector': ''},{'name': 'JigsawInfoAlert', 'selector': 'jigsaw-info-alert'},{'name': 'JigsawInput', 'selector': 'jigsaw-input'},{'name': 'JigsawList', 'selector': 'jigsaw-list,j-list'},{'name': 'JigsawListOption', 'selector': 'jigsaw-list-option,j-list-option'},{'name': 'JigsawLoading', 'selector': 'jigsaw-loading'},{'name': 'JigsawOption', 'selector': 'jigsaw-select-option'},{'name': 'JigsawPagination', 'selector': 'jigsaw-pagination'},{'name': 'JigsawPagingItem', 'selector': 'jigsaw-paging-item'},{'name': 'JigsawRadioGroup', 'selector': 'jigsaw-radios'},{'name': 'JigsawRadioOption', 'selector': 'jigsaw-radio-option'},{'name': 'JigsawRangeTime', 'selector': 'jigsaw-range-time'},{'name': 'JigsawRoot', 'selector': 'jigsaw-root'},{'name': 'JigsawSelect', 'selector': 'jigsaw-select'},{'name': 'JigsawShowTabComponent', 'selector': ''},{'name': 'JigsawSlider', 'selector': 'jigsaw-slider'},{'name': 'JigsawSliderDemoBasic', 'selector': ''},{'name': 'JigsawSliderHandle', 'selector': 'slider-handle'},{'name': 'JigsawSwitch', 'selector': 'jigsaw-switch'},{'name': 'JigsawTab', 'selector': 'jigsaw-tab'},{'name': 'JigsawTabContent', 'selector': 'jigsaw-tab-content'},{'name': 'JigsawTabLabel', 'selector': 'jigsaw-tab-label'},{'name': 'JigsawTabPane', 'selector': 'jigsaw-tab-pane'},{'name': 'JigsawTable', 'selector': 'jigsaw-table'},{'name': 'JigsawTableCell', 'selector': '[jigsaw-table-cell]'},{'name': 'JigsawTableHeader', 'selector': '[jigsaw-table-header]'},{'name': 'JigsawTabsDemoComponent', 'selector': ''},{'name': 'JigsawTabsWithInputComponent', 'selector': ''},{'name': 'JigsawTabsWithNgForComponent', 'selector': ''},{'name': 'JigsawTag', 'selector': 'jigsaw-tag'},{'name': 'JigsawTile', 'selector': 'jigsaw-tile,j-tile'},{'name': 'JigsawTileOption', 'selector': 'jigsaw-tile-option,j-tile-option'},{'name': 'JigsawTime', 'selector': 'jigsaw-time'},{'name': 'JigsawTooltipDialog', 'selector': 'jigsaw-tooltip-dialog'},{'name': 'JigsawTreeExt', 'selector': 'jigsaw-tree-ext'},{'name': 'JigsawWarningAlert', 'selector': 'jigsaw-warning-alert'},{'name': 'ListBasicDemoComponent', 'selector': ''},{'name': 'LoadingFullDemoComponent', 'selector': ''},{'name': 'LocalPagingDataDemoComponent', 'selector': ''},{'name': 'MyTableCell', 'selector': ''},{'name': 'MyTableCellEditor', 'selector': ''},{'name': 'MyTableCellOption', 'selector': ''},{'name': 'MyTableHeadOption', 'selector': ''},{'name': 'OpenComboSelectDemo', 'selector': ''},{'name': 'PaginationBasicDemoComponent', 'selector': ''},{'name': 'PieGraphDemoComponent', 'selector': ''},{'name': 'RadioBasicDemoComponent', 'selector': ''},{'name': 'RadioLiveDemoComponent', 'selector': ''},{'name': 'RadioTrackItemByDemoComponent', 'selector': ''},{'name': 'RangeTimeBasicDemoComponent', 'selector': ''},{'name': 'RangeTimeGrComponent', 'selector': ''},{'name': 'RangeTimeGrItemsComponent', 'selector': ''},{'name': 'RangeTimeLimitEndComponent', 'selector': ''},{'name': 'RangeTimeLimitStartComponent', 'selector': ''},{'name': 'RangeTimeRecommendedComponent', 'selector': ''},{'name': 'RangeTimeRefreshIntervalComponent', 'selector': ''},{'name': 'RangeTimeWeekStartComponent', 'selector': ''},{'name': 'ScrollbarBasicDemoComponent', 'selector': ''},{'name': 'ScrollbarSetOptionsDemoComponent', 'selector': ''},{'name': 'ScrollbarUserdefineDemoComponent', 'selector': ''},{'name': 'SelectBasicDemoComponent', 'selector': ''},{'name': 'SelectCheckboxDemoComponent', 'selector': ''},{'name': 'SelectScrollDemoComponent', 'selector': ''},{'name': 'ServerSidePaginationDemoComponent', 'selector': ''},{'name': 'ServerSidePagingDemoComponent', 'selector': ''},{'name': 'SimpleTooltipComponent', 'selector': ''},{'name': 'SimpleTooltipDemoComponent', 'selector': ''},{'name': 'SliderVerticalDemo', 'selector': ''},{'name': 'SwimLaneDiagramDemoComponent', 'selector': ''},{'name': 'SwitchBasicDemoComponent', 'selector': ''},{'name': 'TabContentComponent', 'selector': ''},{'name': 'TabContentDefine', 'selector': ''},{'name': 'TableAddCheckboxColumnDemoComponent', 'selector': ''},{'name': 'TableAddColumnDemoComponent', 'selector': ''},{'name': 'TableAddIDColumnDemoComponent', 'selector': ''},{'name': 'TableAddIDWithDebouncePagingComponent', 'selector': ''},{'name': 'TableAddIDWithPagingComponent', 'selector': ''},{'name': 'TableBasicDemoComponent', 'selector': ''},{'name': 'TableCellCheckbox', 'selector': ''},{'name': 'TableCellEditor', 'selector': ''},{'name': 'TableCellNum', 'selector': ''},{'name': 'TableCellOption', 'selector': ''},{'name': 'TableCellOption', 'selector': ''},{'name': 'TableColumnGroupDemoComponent', 'selector': ''},{'name': 'TableColumnSetVisibleDemoComponent', 'selector': ''},{'name': 'TableColumnSetWidthDemoComponent', 'selector': ''},{'name': 'TableDataChangeDemoComponent', 'selector': ''},{'name': 'TableDataFromAjaxDemoComponent', 'selector': ''},{'name': 'TableDataWithPopupDemoComponent', 'selector': ''},{'name': 'TableDragDeleteRow', 'selector': ''},{'name': 'TableDragDemoComponent', 'selector': ''},{'name': 'TableDragReplaceRow', 'selector': ''},{'name': 'TableFixedHeadDemoComponent', 'selector': ''},{'name': 'TableHeadCheckbox', 'selector': ''},{'name': 'TableHeadIcon', 'selector': ''},{'name': 'TableHeadIcon', 'selector': ''},{'name': 'TableHeadSelect', 'selector': ''},{'name': 'TableHideHeadDemoComponent', 'selector': ''},{'name': 'TableLineEllipsisDemoComponent', 'selector': ''},{'name': 'TablePageableDemoComponent', 'selector': ''},{'name': 'TablePerformsDemoComponent', 'selector': ''},{'name': 'TableRendererDemoComponent', 'selector': ''},{'name': 'TableRendererOfTemplateRefDemoComponent', 'selector': ''},{'name': 'TableScrollAmountDemoComponent', 'selector': ''},{'name': 'TableSelectRowDemoComponent', 'selector': ''},{'name': 'TableSetCellClassDemoComponent', 'selector': ''},{'name': 'TableSetCellEditableDemoComponent', 'selector': ''},{'name': 'TableSetCellRenderDemoComponent', 'selector': ''},{'name': 'TableSetHeaderClassDemoComponent', 'selector': ''},{'name': 'TableSetHeaderRenderDemoComponent', 'selector': ''},{'name': 'TableSetHeaderSortDemoComponent', 'selector': ''},{'name': 'TableSwimLaneCell', 'selector': ''},{'name': 'TagBasicDemoComponent', 'selector': ''},{'name': 'TemplateDrivenDemoComponent', 'selector': ''},{'name': 'TileselecItemsChangeComponent', 'selector': ''},{'name': 'TileselectBasicDemoComponent', 'selector': ''},{'name': 'TileselectLabelFieldComponent', 'selector': ''},{'name': 'TileselectMultipleSelectDemoComponent', 'selector': ''},{'name': 'TileselectOptionWidthComponent', 'selector': ''},{'name': 'TileselectSelectedItemsComponent', 'selector': ''},{'name': 'TileselectTrackItemByDemoComponent', 'selector': ''},{'name': 'TimeBasicDemoComponent', 'selector': ''},{'name': 'TimeGrComponent', 'selector': ''},{'name': 'TimeGrItemsComponent', 'selector': ''},{'name': 'TimeLimitEndComponent', 'selector': ''},{'name': 'TimeLimitStartComponent', 'selector': ''},{'name': 'TimeRecommendedComponent', 'selector': ''},{'name': 'TimeRefreshIntervalComponent', 'selector': ''},{'name': 'TimeWeekStartComponent', 'selector': ''},{'name': 'TooltipDialogDemoComponent', 'selector': ''},{'name': 'TooltipInDomDemoComponent', 'selector': ''},{'name': 'UserDialog2Component', 'selector': ''},{'name': 'UserDialogComponent', 'selector': ''},{'name': 'UserTooltipDialogComponent', 'selector': ''},{'name': 'ZoneForBetterPerformanceDemoComponent', 'selector': ''},{'name': 'ZtreeAsynDemoComponent', 'selector': ''},{'name': 'ZtreeDemoComponent', 'selector': ''},{'name': 'ZtreeDemoDataFromAjaxComponent', 'selector': ''},{'name': 'ZtreeDemoEditableComponent', 'selector': ''},{'name': 'ngForDemoComponent', 'selector': ''}];
+    var DIRECTIVES = [{'name': 'JigsawDraggable', 'selector': '[jigsaw-draggable], [jigsawDraggable]'},{'name': 'JigsawDroppable', 'selector': '[jigsaw-droppable], [jigsawDroppable]'},{'name': 'JigsawMovable', 'selector': '[jigsaw-movable], [jigsawMovable]'},{'name': 'JigsawPrefixIcon', 'selector': '[jigsaw-prefix-icon]'},{'name': 'JigsawRendererHost', 'selector': '[jigsaw-renderer-host]'},{'name': 'JigsawScrollBar', 'selector': '[jigsaw-scroll-bar], [jigsawScrollBar]'},{'name': 'JigsawTooltip', 'selector': '[jigsaw-tooltip], [jigsawTooltip]'},{'name': 'OptionList', 'selector': '.jigsaw-select-option-list'}];
     var ACTUAL_COMPONENT = {'name': 'JigsawPagination'};
 </script>
 <script src="../js/tree.js"></script>

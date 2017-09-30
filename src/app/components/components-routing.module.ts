@@ -4,6 +4,7 @@ import {ComponentDetailComponent} from "./component-detail/component-detail.comp
 import {ComponentMenuNavComponent} from "./component-menu-nav/component-menu-nav.component";
 import {ComponentDetailContentComponent} from "./component-detail/component-detail-content/component-detail-content.component";
 import {ComponentQuickstartComponent} from "./component-quickstart/component-quickstart.component";
+import {MenuNavResolver} from "./service/menu-nav-resolver.service";
 
 
 const ComponentRoutes: Routes = [
@@ -16,10 +17,14 @@ const ComponentRoutes: Routes = [
           { path: ':name', component: ComponentDetailComponent,
             children:[
               {path: ':navName',  component: ComponentDetailContentComponent},
+              {path: ':navName/:apiItem', redirectTo:'api', pathMatch:'full'},
             ]
           },
           {path: 'jigsaw/docs/quickstart', component: ComponentQuickstartComponent}
-        ]
+        ],
+        resolve: {
+          menuNavList: MenuNavResolver
+        }
       }
     ]
   }
@@ -31,6 +36,9 @@ const ComponentRoutes: Routes = [
   ],
   exports: [
     RouterModule
+  ],
+  providers: [
+    MenuNavResolver
   ]
 })
 export class ComponentRoutingModule { }

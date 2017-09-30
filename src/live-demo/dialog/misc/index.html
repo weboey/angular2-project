@@ -1,0 +1,677 @@
+<html><head><meta charset="UTF-8"></head><body><form id="mainForm" method="post" action="https://embed.plnkr.co?show=preview" target="_self"><input type="hidden" name="entries[app/app.component.html][encoding]" value="utf8" />
+<input type="hidden" name="entries[app/app.component.html][content]" value="
+&lt;jigsaw-button id=&quot;trigger1&quot; width=&quot;175&quot; (click)=&quot;popup()&quot;&gt;
+    modal dialog
+&lt;/jigsaw-button&gt;
+
+&lt;jigsaw-button id=&quot;trigger2&quot; width=&quot;175&quot; (click)=&quot;popupAtPoint($event)&quot;&gt;
+    point dialog
+&lt;/jigsaw-button&gt;&lt;br&gt;&lt;br&gt;
+
+&lt;jigsaw-button id=&quot;trigger3&quot; width=&quot;175&quot; (click)=&quot;popupModalDialogTemplate(tpDialog1)&quot;&gt;
+    template modal dialog
+&lt;/jigsaw-button&gt;
+
+&lt;jigsaw-button id=&quot;trigger4&quot; width=&quot;175&quot; (click)=&quot;popupDialogTemplate(tpDialog2, $event)&quot;&gt;
+    template dialog
+&lt;/jigsaw-button&gt;&lt;br&gt;&lt;br&gt;
+
+&lt;jigsaw-button width=&quot;175&quot; (click)=&quot;popupTemplate(tp)&quot;&gt;
+    template
+&lt;/jigsaw-button&gt;
+
+&lt;ng-template #tpDialog1&gt;
+    &lt;jigsaw-dialog width=&quot;40%&quot; [buttons]=&quot;buttons&quot; (answer)=&quot;disposeAnswer($event, closeModalDialogTemplate)&quot;&gt;
+        &lt;div jigsaw-title&gt;
+            &lt;span class=&quot;fa fa-thumbs-up&quot;&gt;&lt;/span&gt;Title of the dialog
+        &lt;/div&gt;
+        &lt;div jigsaw-body&gt;
+            &lt;ul class=&quot;dialog-content&quot;&gt;
+                &lt;li&gt;Dialog content...&lt;/li&gt;
+                &lt;li&gt;Dialog content...&lt;/li&gt;
+                &lt;li&gt;Dialog content...&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/jigsaw-dialog&gt;
+&lt;/ng-template&gt;
+
+&lt;ng-template #tpDialog2&gt;
+    &lt;jigsaw-dialog width=&quot;40%&quot; [buttons]=&quot;buttons2&quot; (answer)=&quot;disposeAnswer($event, closeDialogTemplate)&quot;&gt;
+        &lt;div jigsaw-title&gt;
+            &lt;span class=&quot;fa fa-thumbs-up&quot;&gt;&lt;/span&gt;Title of the dialog
+        &lt;/div&gt;
+        &lt;div jigsaw-body&gt;
+            &lt;ul class=&quot;dialog-content&quot;&gt;
+                &lt;li&gt;Dialog content...&lt;/li&gt;
+                &lt;li&gt;Dialog content...&lt;/li&gt;
+                &lt;li&gt;Dialog content...&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/jigsaw-dialog&gt;
+&lt;/ng-template&gt;
+
+&lt;ng-template #tp&gt;
+    &lt;div class=&quot;pop-win&quot;&gt;
+        &lt;span class=&quot;close-btn&quot; (click)=&quot;closeTemplate()&quot;&gt;X&lt;/span&gt;
+        &lt;h3&gt;这是模板弹框&lt;/h3&gt;
+        &lt;div class=&quot;btn-group-box&quot;&gt;
+            &lt;jigsaw-button&gt;确定&lt;/jigsaw-button&gt;
+            &lt;jigsaw-button (click)=&quot;closeTemplate()&quot;&gt;取消&lt;/jigsaw-button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/ng-template&gt;
+
+" />
+<input type="hidden" name="entries[app/app.component.scss][encoding]" value="utf8" />
+<input type="hidden" name="entries[app/app.component.scss][content]" value="
+h3.title{
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.dom-dialog{
+    margin-bottom: 30px;
+}
+
+ul.dialog-content{
+    padding: 20px;
+    li{
+        font-size: 12px;
+        color: #999;
+    }
+}
+
+.fa{margin-right: 5px}
+
+/*弹框template样式*/
+.pop-win{
+    width: 400px;
+    height: 300px;
+    background: #FFF;
+    border: 1px solid #ddd;
+    h3{
+        height: 100px;
+        text-align: center;
+        margin-top: 56px;
+        line-height: 100px;
+        font-weight: normal !important;
+        margin-bottom: 0 !important;
+    }
+    .btn-group-box{
+        text-align: center;
+        btn-demo{
+            display: inline-block;
+            *zoom: 1;
+            *display: inline;
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+    }
+    .close-btn{
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 20px;
+        font-weight: 700;
+        color: #666;
+        cursor: pointer;
+        line-height: 1;
+    }
+}
+" />
+<input type="hidden" name="entries[app/app.component.ts][encoding]" value="utf8" />
+<input type="hidden" name="entries[app/app.component.ts][content]" value="import {
+    ButtonInfo, PopupEffect, PopupInfo,
+    PopupOptions, PopupPositionType, PopupService,
+} from &quot;@rdkmaster/jigsaw&quot;;
+import {Component, ComponentRef, Renderer2, ViewContainerRef, ViewEncapsulation} from &quot;@angular/core&quot;;
+import {UserDialogComponent} from &quot;./user-dialog/user-dialog&quot;;
+import {UserDialog2Component} from &quot;./user-dialog2/user-dialog&quot;;
+
+@Component({
+    selector: &quot;jigsaw-live-demo&quot;,
+    templateUrl: &quot;./app.component.html&quot;,
+    styleUrls: [&quot;./app.component.scss&quot;],
+    encapsulation: ViewEncapsulation.None
+})
+export class DialogMiscDemoComponent {
+
+     _templateRef: PopupInfo;
+     _modalDialogInfo: PopupInfo;
+     _dialogInfo: PopupInfo;
+
+    public title: string = &#x27;Title of the dialog&#x27;;
+    public buttons: Array&lt;ButtonInfo&gt; = [
+        {
+            role: &#x27;cancel&#x27;,
+            label: &#x27;cancel&#x27;,
+            clazz: &#x27;&#x27;
+        },
+        {
+            role: &#x27;confirm&#x27;,
+            label: &#x27;confirm&#x27;,
+            clazz: &#x27;&#x27;,
+            type: &#x27;primary&#x27;
+        },
+    ];
+    public buttons2: Array&lt;ButtonInfo&gt; = [
+        {
+            role: &#x27;cancel&#x27;,
+            label: &#x27;cancel&#x27;,
+            clazz: &#x27;&#x27;
+        },
+        {
+            role: &#x27;delete&#x27;,
+            label: &#x27;delete&#x27;,
+            clazz: &#x27;&#x27;,
+            type: &#x27;danger&#x27;
+        },
+    ];
+
+    constructor(public viewContainerRef: ViewContainerRef,
+                public renderer: Renderer2,
+                private _popupService: PopupService) {
+    }
+
+    /*
+    * popup component
+    * */
+    popup() {
+        const popupInfo = this._popupService.popup(UserDialogComponent, this._getModalOptions());
+        popupInfo.answer.subscribe(answer =&gt; {
+            this.disposeAnswer(answer, popupInfo)
+        })
+    }
+
+    /*
+     * popup component at point
+     * */
+    popupAtPoint(event) {
+        const popupInfo = this._popupService.popup(UserDialog2Component, this._getUnModalOptions(event));
+        popupInfo.answer.subscribe(answer =&gt; {
+            this.disposeAnswer(answer, popupInfo)
+        })
+    }
+
+    /*
+    * popup template
+    * */
+    popupModalDialogTemplate(tp){
+        if(this._modalDialogInfo){
+            this.closeModalDialogTemplate()
+        }
+        this._modalDialogInfo = this._popupService.popup(tp, this._getModalOptions());
+    }
+
+    closeModalDialogTemplate(){
+        this._modalDialogInfo.dispose();
+        this._modalDialogInfo = null
+    }
+
+    /*
+    * popup template at point
+    * */
+    popupDialogTemplate(tp, event){
+        if(this._dialogInfo){
+            this.closeDialogTemplate()
+        }
+        this._dialogInfo = this._popupService.popup(tp, this._getUnModalOptions(event));
+    }
+
+    closeDialogTemplate(){
+        this._dialogInfo.dispose();
+        this._dialogInfo = null
+    }
+
+    disposeAnswer(answer: ButtonInfo, cb){
+        if(answer){
+            if(answer.role == &#x27;confirm&#x27;){
+                console.log(&#x27;confirm callback success!&#x27;)
+            }else if(answer.role == &#x27;cancel&#x27;){
+                console.log(&#x27;cancel callback success!&#x27;);
+                if(typeof cb == &#x27;function&#x27;){
+                    cb.call(this)
+                }else{
+                    cb.dispose()
+                }
+            }
+        }else{
+            if(typeof cb == &#x27;function&#x27;){
+                cb.call(this)
+            }else{
+                cb.dispose()
+            }
+        }
+    }
+
+    /*
+    * popup user defined template
+    * */
+    popupTemplate(tp){
+        this._templateRef = this._popupService.popup(tp);
+    }
+
+    closeTemplate(){
+        this._templateRef.dispose();
+    }
+
+     _getModalOptions(): PopupOptions {
+        return {
+            modal: true, //是否模态
+            showEffect: PopupEffect.bubbleIn,
+            hideEffect: PopupEffect.bubbleOut
+        };
+    }
+
+     _getUnModalOptions(event): PopupOptions {
+        return {
+            modal: false, //是否模态
+            showEffect: PopupEffect.bubbleIn,
+            hideEffect: PopupEffect.bubbleOut,
+            pos: {x: event.pageX, y: event.pageY}, //插入点
+            posOffset: { //偏移位置
+                top: -10,
+                left: 10,
+            },
+            posType: PopupPositionType.absolute, //定位类型
+        };
+    }
+}
+
+" />
+<input type="hidden" name="entries[app/app.module.ts][encoding]" value="utf8" />
+<input type="hidden" name="entries[app/app.module.ts][content]" value="import {BrowserModule} from &#x27;@angular/platform-browser&#x27;;
+import {BrowserAnimationsModule} from &#x27;@angular/platform-browser/animations&#x27;;
+import {HttpModule} from &#x27;@angular/http&#x27;;
+import {
+    JigsawButtonModule, JigsawDialogModule, PopupService,
+} from &quot;@rdkmaster/jigsaw&quot;;
+import {NgModule} from &quot;@angular/core&quot;;
+import {DialogMiscDemoComponent} from &quot;./app.component&quot;;
+import {UserDialogComponent} from &quot;./user-dialog/user-dialog&quot;;
+import {UserDialog2Component} from &quot;./user-dialog2/user-dialog&quot;;
+@NgModule({
+    declarations: [DialogMiscDemoComponent,UserDialogComponent,UserDialog2Component],
+    bootstrap: [ DialogMiscDemoComponent ],
+    imports: [
+        BrowserModule, BrowserAnimationsModule, HttpModule,
+        JigsawDialogModule,JigsawButtonModule
+    ],
+    entryComponents:[UserDialogComponent,UserDialog2Component],
+    providers: [PopupService]
+})
+export class AppModule {
+
+}
+" />
+<input type="hidden" name="entries[app/user-dialog/user-dialog.html][encoding]" value="utf8" />
+<input type="hidden" name="entries[app/user-dialog/user-dialog.html][content]" value="&lt;jigsaw-dialog top=&quot;20%&quot; width=&quot;80%&quot;&gt;
+    &lt;div jigsaw-title&gt;
+        &lt;span class=&quot;fa fa-thumbs-up&quot;&gt;&lt;/span&gt;A customized title
+    &lt;/div&gt;
+    &lt;div jigsaw-body&gt;
+        &lt;ul&gt;
+            &lt;li&gt;Dialog content...&lt;/li&gt;
+            &lt;li&gt;Dialog content...&lt;/li&gt;
+            &lt;li&gt;Dialog content...&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/jigsaw-dialog&gt;
+
+" />
+<input type="hidden" name="entries[app/user-dialog/user-dialog.scss][encoding]" value="utf8" />
+<input type="hidden" name="entries[app/user-dialog/user-dialog.scss][content]" value="ul{
+    padding: 20px;
+    li{
+        font-size: 12px;
+        color: #999;
+    }
+}
+.fa{margin-right: 5px}
+" />
+<input type="hidden" name="entries[app/user-dialog/user-dialog.ts][encoding]" value="utf8" />
+<input type="hidden" name="entries[app/user-dialog/user-dialog.ts][content]" value="import {
+    ButtonInfo, DialogBase, JigsawDialog,
+} from &quot;@rdkmaster/jigsaw&quot;;
+import {Component, ViewChild} from &quot;@angular/core&quot;;
+
+@Component({
+    templateUrl: &quot;./user-dialog.html&quot;,
+    styleUrls: [&quot;./user-dialog.scss&quot;]
+})
+export class UserDialogComponent extends DialogBase {
+    @ViewChild(JigsawDialog) public dialog:JigsawDialog;
+
+    public buttons: Array&lt;ButtonInfo&gt; = [
+        {
+            role: &#x27;cancel&#x27;,
+            label: &#x27;cancel&#x27;,
+            clazz: &#x27;&#x27;
+        },
+        {
+            role: &#x27;confirm&#x27;,
+            label: &#x27;confirm&#x27;,
+            clazz: &#x27;&#x27;,
+            type: &#x27;primary&#x27;
+        },
+    ];
+}
+
+" />
+<input type="hidden" name="entries[app/user-dialog2/user-dialog.html][encoding]" value="utf8" />
+<input type="hidden" name="entries[app/user-dialog2/user-dialog.html][content]" value="&lt;jigsaw-dialog [buttons]=&quot;buttons&quot; width=&quot;300px&quot;&gt;
+    &lt;ul&gt;
+        &lt;li&gt;Dialog content...&lt;/li&gt;
+        &lt;li&gt;Dialog content...&lt;/li&gt;
+        &lt;li&gt;Dialog content...&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/jigsaw-dialog&gt;
+
+" />
+<input type="hidden" name="entries[app/user-dialog2/user-dialog.scss][encoding]" value="utf8" />
+<input type="hidden" name="entries[app/user-dialog2/user-dialog.scss][content]" value="ul{
+    padding: 20px;
+    li{
+        font-size: 12px;
+        color: #999;
+    }
+}
+" />
+<input type="hidden" name="entries[app/user-dialog2/user-dialog.ts][encoding]" value="utf8" />
+<input type="hidden" name="entries[app/user-dialog2/user-dialog.ts][content]" value="import {
+    ButtonInfo, DialogBase, JigsawDialog,
+} from &quot;@rdkmaster/jigsaw&quot;;
+import {Component, ViewChild} from &quot;@angular/core&quot;;
+
+
+@Component({
+    templateUrl: &quot;./user-dialog.html&quot;,
+    styleUrls: [&quot;./user-dialog.scss&quot;]
+})
+export class UserDialog2Component extends DialogBase {
+    @ViewChild(JigsawDialog) dialog: JigsawDialog;
+
+    public caption: string = `Title of the dialog`;
+    public buttons: Array&lt;ButtonInfo&gt; = [
+        {
+            role: &#x27;cancel&#x27;,
+            label: &#x27;cancel&#x27;,
+            clazz: &#x27;&#x27;
+        },
+        {
+            role: &#x27;edit&#x27;,
+            label: &#x27;edit&#x27;,
+            clazz: &#x27;&#x27;,
+            type: &#x27;warning&#x27;
+        },
+    ];
+
+}
+
+" />
+<input type="hidden" name="entries[index.html][encoding]" value="utf8" />
+<input type="hidden" name="entries[index.html][content]" value="&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Jigsaw Live Demo&lt;/title&gt;
+    &lt;script&gt;document.write(&#x27;&lt;base href=&quot;&#x27; + document.location + &#x27;&quot; /&gt;&#x27;);&lt;/script&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/bootstrap/dist/css/bootstrap.min.css&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/font-awesome/css/font-awesome.min.css&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/@rdkmaster/icon-font/css/iconfont.css&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/ztree/css/zTreeStyle/zTreeStyle.css&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/@rdkmaster/jigsaw/prebuilt-themes/zte.css&quot;&gt;
+
+    &lt;style&gt;
+      html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      /* common start */
+      /* 容器 */
+      .live-demo-wrap {
+          padding: 10px;
+      }
+
+      /* 大标题 */
+      .live-demo-wrap h2 {
+          margin-bottom: 40px;
+          color: #333;
+          font-size: 24px;
+          font-weight: 700;
+      }
+
+      /* demo容器 */
+      .live-demo-wrap .live-demo {
+          margin-bottom: 30px;
+          padding-left: 10px;
+      }
+
+      /* demo标题 */
+      .live-demo h3 {
+          margin: 0 0 10px -10px;
+          color: #333;
+          font-size: 18px;
+          padding: 2px 14px;
+          position: relative;
+          border-left: 1px solid #c7254e;
+      }
+      .live-demo h3:before{
+          position: absolute;
+          left: -1px;
+          top: 0;
+          content: &#x27;&#x27;;
+          border-style: solid;
+          border-width: 6px 10px;
+          border-color: transparent transparent transparent #c7254e;
+      }
+
+      /* demo文字描述 */
+      .live-demo p.comment {
+          margin-bottom: 10px;
+          color: #666;
+          font-size: 14px;
+      }
+
+      /* demo消息文字 */
+      .live-demo p.message {
+          margin-top: 10px;
+          margin-bottom: 0;
+          color: #999;
+      }
+
+      /* demo消息高亮字 */
+      .live-demo p.message span {
+          margin: 0 4px;
+          color: #666;
+      }
+
+      /* toggle */
+      .live-demo .toggle {
+          padding-top: 10px;
+          color: #999;
+      }
+      .live-demo .toggle label{
+          margin-right: 10px;
+          font-weight: normal;
+      }
+
+      /* demo code */
+      .live-demo code {
+          padding: 2px 4px;
+          margin: 0;
+          font-size: 85%;
+          background-color: rgba(27, 31, 35, 0.05);
+          border-radius: 3px;
+      }
+      /* common end */
+    &lt;/style&gt;
+
+    &lt;!-- 引入Jigsaw需要的依赖，这些依赖没有出umd包，只能配置在这里 --&gt;
+    &lt;script src=&quot;https://unpkg.com/jquery/dist/jquery.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://unpkg.com/jquery-mousewheel/jquery.mousewheel.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://unpkg.com/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://unpkg.com/moment/min/moment.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://unpkg.com/bootstrap/dist/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://unpkg.com/ztree/js/jquery.ztree.all.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://unpkg.com/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js&quot;&gt;&lt;/script&gt;
+
+    &lt;!-- Polyfills --&gt;
+    &lt;script src=&quot;https://unpkg.com/core-js/client/shim.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://unpkg.com/zone.js@0.8.5?main=browser&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://unpkg.com/systemjs@0.19.39/dist/system.src.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;systemjs.config.js&quot;&gt;&lt;/script&gt;
+    &lt;script&gt;
+      System.import(&#x27;main.js&#x27;).catch(function(err){ console.error(err); });
+    &lt;/script&gt;
+  &lt;/head&gt;
+
+  &lt;body&gt;
+    &lt;jigsaw-live-demo&gt;
+      &lt;h3 style=&quot;padding: 6px&quot;&gt;Jigsaw live demo is being loaded...&lt;/h3&gt;
+      &lt;h4 style=&quot;padding: 6px&quot;&gt;Visit &lt;a href=&quot;http://rdk.zte.com.cn&quot; target=&quot;_blank&quot;&gt;http://rdk.zte.com.cn&lt;/a&gt; for more detail.&lt;/h4&gt;
+      &lt;p&gt;We are suffering some error if this message remains for minutes, will you please send us a report by &lt;a href=&quot;https://github.com/rdkmaster/jigsaw/issues/new&quot;&gt;submitting an issue&lt;/a&gt; with the error message. By the way, you can copy the error message in the console of your browser.&lt;/p&gt;
+    &lt;/jigsaw-live-demo&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+" />
+<input type="hidden" name="entries[main.ts][encoding]" value="utf8" />
+<input type="hidden" name="entries[main.ts][content]" value="import { platformBrowserDynamic } from &#x27;@angular/platform-browser-dynamic&#x27;;
+
+import { AppModule } from &#x27;./app/app.module&#x27;;
+
+platformBrowserDynamic().bootstrapModule(AppModule);" />
+<input type="hidden" name="entries[systemjs.config.js][encoding]" value="utf8" />
+<input type="hidden" name="entries[systemjs.config.js][content]" value="(function (global) {
+  System.config({
+    // DEMO ONLY! REAL CODE SHOULD NOT TRANSPILE IN THE BROWSER
+    transpiler: &#x27;ts&#x27;,
+    typescriptOptions: {
+      // Copy of compiler options in standard tsconfig.json
+      &quot;target&quot;: &quot;es5&quot;,
+      &quot;module&quot;: &quot;commonjs&quot;,
+      &quot;moduleResolution&quot;: &quot;node&quot;,
+      &quot;sourceMap&quot;: true,
+      &quot;emitDecoratorMetadata&quot;: true,
+      &quot;experimentalDecorators&quot;: true,
+      &quot;lib&quot;: [&quot;es2015&quot;, &quot;dom&quot;],
+      &quot;noImplicitAny&quot;: true,
+      &quot;suppressImplicitAnyIndexErrors&quot;: true
+    },
+    meta: {
+      &#x27;typescript&#x27;: {
+        &quot;exports&quot;: &quot;ts&quot;
+      }
+    },
+    paths: {
+      // paths serve as alias
+      &#x27;npm:&#x27;: &#x27;https://unpkg.com/&#x27;
+    },
+    // map tells the System loader where to look for things
+    map: {
+      // our app is within the app folder
+      &#x27;app&#x27;: &#x27;app&#x27;,
+
+      // angular bundles
+      &#x27;@angular/animations&#x27;:                  &#x27;npm:@angular/animations/bundles/animations.umd.js&#x27;,
+      &#x27;@angular/animations/browser&#x27;:          &#x27;npm:@angular/animations/bundles/animations-browser.umd.js&#x27;,
+      &#x27;@angular/core&#x27;:                        &#x27;npm:@angular/core/bundles/core.umd.js&#x27;,
+      &#x27;@angular/common&#x27;:                      &#x27;npm:@angular/common/bundles/common.umd.js&#x27;,
+      &#x27;@angular/compiler&#x27;:                    &#x27;npm:@angular/compiler/bundles/compiler.umd.js&#x27;,
+      &#x27;@angular/platform-browser&#x27;:            &#x27;npm:@angular/platform-browser/bundles/platform-browser.umd.js&#x27;,
+      &#x27;@angular/platform-browser/animations&#x27;: &#x27;npm:@angular/platform-browser/bundles/platform-browser-animations.umd.js&#x27;,
+      &#x27;@angular/platform-browser-dynamic&#x27;:    &#x27;npm:@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js&#x27;,
+      &#x27;@angular/http&#x27;:                        &#x27;npm:@angular/http/bundles/http.umd.js&#x27;,
+      &#x27;@angular/router&#x27;:                      &#x27;npm:@angular/router/bundles/router.umd.js&#x27;,
+      &#x27;@angular/router/upgrade&#x27;:              &#x27;npm:@angular/router/bundles/router-upgrade.umd.js&#x27;,
+      &#x27;@angular/forms&#x27;:                       &#x27;npm:@angular/forms/bundles/forms.umd.js&#x27;,
+      &#x27;@angular/upgrade&#x27;:                     &#x27;npm:@angular/upgrade/bundles/upgrade.umd.js&#x27;,
+      &#x27;@angular/upgrade/static&#x27;:              &#x27;npm:@angular/upgrade/bundles/upgrade-static.umd.js&#x27;,
+
+      // other libraries
+      &#x27;rxjs&#x27;:                       &#x27;npm:rxjs@5.0.1&#x27;,
+      &#x27;angular-in-memory-web-api&#x27;:  &#x27;npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js&#x27;,
+      &#x27;ts&#x27;:                         &#x27;npm:plugin-typescript@5.2.7/lib/plugin.js&#x27;,
+      &#x27;typescript&#x27;:                 &#x27;npm:typescript@2.3.2/lib/typescript.js&#x27;,
+
+      // jigsaw needs these
+      &quot;@ngx-translate/core&quot;:        &#x27;npm:@ngx-translate/core&#x27;,
+      &quot;@ngx-translate/http-loader&quot;: &#x27;npm:@ngx-translate/http-loader&#x27;,
+      &quot;echarts&quot;:                    &#x27;npm:echarts@3.5.2/dist/echarts.js&#x27;,
+      &#x27;@rdkmaster/jigsaw&#x27;:          &#x27;npm:@rdkmaster/jigsaw&#x27;
+    },
+    // packages tells the System loader how to load when no filename and/or no extension
+    packages: {
+      app: {
+        main: &#x27;./main.ts&#x27;,
+        defaultExtension: &#x27;ts&#x27;,
+        meta: {
+          &#x27;./*.ts&#x27;: {
+            loader: &#x27;systemjs-angular-loader.js&#x27;
+          }
+        }
+      },
+      rxjs: {
+        defaultExtension: &#x27;js&#x27;
+      }
+    }
+  });
+
+})(this);" />
+<input type="hidden" name="entries[systemjs-angular-loader.js][encoding]" value="utf8" />
+<input type="hidden" name="entries[systemjs-angular-loader.js][content]" value="var templateUrlRegex = /templateUrl\s*:(\s*[&#x27;&quot;\`](.*?)[&#x27;&quot;\`]\s*)/gm;
+var stylesRegex = /styleUrls *:(\s*\[[^\]]*?\])/g;
+var stringRegex = /([&#x27;\`&quot;])((?:[^\\]\\\1|.)*?)\1/g;
+
+module.exports.translate = function(load){
+  if (load.source.indexOf(&#x27;moduleId&#x27;) != -1) return load;
+
+  var url = document.createElement(&#x27;a&#x27;);
+  url.href = load.address;
+
+  var basePathParts = url.pathname.split(&#x27;/&#x27;);
+
+  basePathParts.pop();
+  var basePath = basePathParts.join(&#x27;/&#x27;);
+
+  var baseHref = document.createElement(&#x27;a&#x27;);
+  baseHref.href = this.baseURL;
+  baseHref = baseHref.pathname;
+
+  if (!baseHref.startsWith(&#x27;/base/&#x27;)) { // it is not karma
+    basePath = basePath.replace(baseHref, &#x27;&#x27;);
+  }
+
+  load.source = load.source
+    .replace(templateUrlRegex, function(match, quote, url){
+      var resolvedUrl = url;
+
+      if (url.startsWith(&#x27;.&#x27;)) {
+        resolvedUrl = basePath + url.substr(1);
+      }
+
+      return &#x27;templateUrl: &quot;&#x27; + resolvedUrl + &#x27;&quot;&#x27;;
+    })
+    .replace(stylesRegex, function(match, relativeUrls) {
+      var urls = [];
+
+      while ((match = stringRegex.exec(relativeUrls)) !== null) {
+        if (match[2].startsWith(&#x27;.&#x27;)) {
+          urls.push(&#x27;&quot;&#x27; + basePath + match[2].substr(1) + &#x27;&quot;&#x27;);
+        } else {
+          urls.push(&#x27;&quot;&#x27; + match[2] + &#x27;&quot;&#x27;);
+        }
+      }
+
+      return &quot;styleUrls: [&quot; + urls.join(&#x27;, &#x27;) + &quot;]&quot;;
+    });
+
+  return load;
+};" />
+<input type="hidden" name="title" value="dialog/misc - Jigsaw Live Demo - Visit http://rdk.zte.com.cn for more detail." /><input type="hidden" name="tags[0]" value="Jigsaw" /><input type="hidden" name="tags[1]" value="component" /><input type="hidden" name="tags[2]" value="zte" /><input type="hidden" name="tags[3]" value="rdk" /><input type="hidden" name="tags[4]" value="angular" /><input type="hidden" name="tags[5]" value="typescript" /><input type="hidden" name="source[type]" value="Jigsaw Live Demo" /><input type="hidden" name="source[url]" value="http://rdk.zte.com.cn" /></form><script>document.getElementById("mainForm").submit();</script></body></html>

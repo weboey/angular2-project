@@ -1,10 +1,16 @@
 export class Post {
-  id: number;
+  serialNum: string;
   title: string;
-  text: string;
+  subTitle: string;
+  headPicture: string;
+  content: string;
+  attachment:string;
   author: string;
-  postTime: Date;
+  uid:string;
+  createdate: string;
+  updatedate: string;
   readTimes: number;
   commentTimes: number;
   type:string;
+  status:string;
 }

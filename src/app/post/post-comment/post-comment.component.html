@@ -1,32 +1,61 @@
 <div class="add-component-container">
-  <div class="row user-info">
-    <div class="col-sm-12">
-      <span>昵称：</span> <span>张三</span>
-    </div>
-  </div>
   <div class="panel panel-default">
     <div class="panel-body">
       <div class="row">
+        <div class="col-sm-12 comment-title"><i class="fa fa-comment" aria-hidden="true"></i>评论</div>
+      </div>
+      <div class="row">
         <div class="col-sm-12">
-          <form role="form">
-            <div class="form-group">
-              <textarea class="form-control" rows="5" placeholder="5-140个字符，非法字符自动截断。"></textarea>
+          <div *ngFor="let comment of comments | commentFilter:comment.replyId" class="comment-item-container">
+            <div class="comment-user">
+              <div>
+                <img [src]="comment.uId | showHeadImg" alt="">
+              </div>
+              <div>
+                <p>{{comment.userName}}</p>
+                <span>{{comment.time | date:"yyyy-MM-dd HH:mm"}}</span>
+              </div>
             </div>
-            <button type="button" class="btn btn-success">提交</button>
-          </form>
+            <p class="comment-content" [innerHTML]="comment.content"></p>
+            <a *ngIf="comment.uId!=currentUser.uid" class="comment-reply" (click)="doReply(comment)"><i class="fa fa-reply" aria-hidden="true"></i></a>
+            <a *ngIf="comment.uId==currentUser.uid" class="comment-reply" (click)="doRemove(comment)"><i class="fa fa-times" aria-hidden="true"></i></a>
+           <!-- <div class="comment-idea">
+              <a><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>(5)</a>
+            </div>-->
+            <div #commentReplyEl *ngFor="let commentReply of comments | commentFilter:commentReply?.replyId:comment?.commentId" class="comment-reply-container">
+              <div class="comment-user">
+                <div>
+                  <img [src]="commentReply.uId | showHeadImg" alt="">
+                </div>
+                <div>
+                  <p>{{commentReply.userName}} 回复@{{commentReply.replyName}}</p>
+                  <span>{{commentReply.time | date:"yyyy-MM-dd HH:mm"}}</span>
+                </div>
+              </div>
+              <p class="comment-content" [innerHTML]="commentReply.content"></p>
+              <a *ngIf="commentReply.uId!=currentUser.uid" class="comment-reply" (click)="doReply(comment,commentReply)"><i class="fa fa-reply" aria-hidden="true"></i></a>
+              <a *ngIf="commentReply.uId==currentUser.uid" class="comment-reply" (click)="doRemove(commentReply)"><i class="fa fa-times" aria-hidden="true"></i></a>
+            </div>
+            <app-write-comment
+              *ngIf="currentComment==comment"
+              (onSubmitComment)="onCommentSucceed()"
+              (onWriteCommentClose)="onWriteCommentClose()"
+              [replyComment]="replyComment"
+            ></app-write-comment>
+          </div>
+          <div *ngIf="comments?.length==0" class="comment-empty">
+            还没有评论!!
+          </div>
         </div>
       </div>
       <div class="row">
         <div class="col-sm-12">
-          <div *ngFor="let comment of comments" class="comment-item-container">
-            <h5>{{comment.content}}</h5>
-            <p>{{comment.username}} <span>{{comment.date}}</span></p>
-            <a class="comment-reply" href="#">回复</a>
-            <div class="comment-idea">
-              <a href="#">支持</a>
-              <a href="#">反对</a>
-            </div>
-          </div>
+          <input *ngIf="!showCommentForm" type="text" class="form-control"  (focus)="doOpenCommentForm()" [placeholder]="commentTip">
+          <app-write-comment
+            *ngIf="showCommentForm"
+            (onWriteCommentClose)="onWriteCommentClose()"
+            (onSubmitComment)="onCommentSucceed()">
+          </app-write-comment>
         </div>
       </div>
     </div>

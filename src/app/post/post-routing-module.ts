@@ -6,16 +6,14 @@ import { RouterModule, Routes } from '@angular/router';
 import {PostCategoryComponent} from "./post-category/post-category.component";
 import {PostListComponent} from "./post-list/post-list.component";
 import {PostDetailMainComponent} from "./post-detail-main/post-detail-main.component";
+import {WritePostComponent} from "./write-post/write-post.component";
+import {CanDeactivateGuard} from "../admin/can-deactivate-guard.service";
 
 const PostRoutes: Routes = [
   {
     path: 'post',
     children:[
-      {
-        path:'',
-        redirectTo:'all',
-        pathMatch:'full'
-      },
+      {path:'', redirectTo:'all', pathMatch:'full'},
       {
         path:':name',
         component:PostCategoryComponent,
@@ -29,7 +27,9 @@ const PostRoutes: Routes = [
             component:PostDetailMainComponent,
           }
         ]
-      }
+      },
+      {path:'user/write', component:WritePostComponent, canDeactivate: [CanDeactivateGuard]},
+      {path:'user/write/:postId', component:WritePostComponent,canDeactivate: [CanDeactivateGuard]}
     ]
   }
 ];

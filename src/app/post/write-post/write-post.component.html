@@ -1,0 +1,62 @@
+<div class="m-write-post">
+  <div class="editor-box">
+    <div class="title-input">
+      <div>
+        <label>标题</label>
+        <input class="form-control" [(ngModel)]="post.title" name="title"  required>
+        <!--<label>简介</label>
+        <input class="form-control" [(ngModel)]="subTitle" name="title"  required >-->
+        <div class="select-type">
+          <jigsaw-select [data]="categoryList" [(value)]="selectedType" placeholder="请选择分类"></jigsaw-select>
+        </div>
+      </div>
+    </div>
+
+    <md-editor (value$)="getContent($event)" [value]="post.content"></md-editor>
+
+    <div class="input-group-btn">
+      <button class="btn btn-default" (click)="reBack()"><i class="fa fa-reply" aria-hidden="true"></i>返回</button>
+      <button class="btn btn-info" [disabled]="disableSaveDraft()" (click)="onSaveDraft()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>存为草稿</button>
+      <button class="btn btn-info" [disabled]="disableSave()" (click)="onSave()"><i class="glyphicon glyphicon-saved"></i>发布</button>
+    </div>
+  </div>
+
+  <div class="file-upload-box">
+    <div class="img-upload">
+      <p-fileUpload name="files" url="xplan/pictures/upload" chooseLabel="上传图片"
+        (onBeforeUpload)="onPhotoBeforeUpload()" (onProgress)="onPhotoProgress($event)"
+        (onUpload)="onPhotoUpload($event)" auto="auto" maxFileSize="1000000">
+        <ng-template pTemplate="content">
+          <div *ngIf="imgUploadUrl" class="img-review"  (click)="doRemovePhoto()">
+            <img  [src]="imgUploadUrl" alt="" >
+          </div>
+        </ng-template>
+      </p-fileUpload>
+    </div>
+    <div class="img-progress" *ngIf="imgUploadStatus">
+      <p-progressBar [value]="imgProgVal"></p-progressBar>
+    </div>
+
+    <div class="attachment-upload">
+      <p-fileUpload name="files" url="xplan/pictures/upload" auto="auto" chooseLabel="附件资源"
+        (onBeforeUpload)="onAttBeforeUpload()" (onProgress)="onAttProgress($event)"
+        (onUpload)="onAttachmentUpload($event)" multiple="multiple" maxFileSize="10000000">
+        <ng-template pTemplate="content">
+          <div class="attachment-files">
+            <ul *ngIf="attachmentFiles.length">
+              <li *ngFor="let file of attachmentFiles;let i=index">
+                {{file.name}} <a (click)="removeAttFile(i)"><i class="fa fa-remove" aria-hidden="true"></i></a>
+              </li>
+            </ul>
+          </div>
+        </ng-template>
+      </p-fileUpload>
+    </div>
+    <div class="att-progress" *ngIf="attUploadStatus">
+      <p-progressBar [value]="attProgVal"></p-progressBar>
+    </div>
+  </div>
+  <div>
+    <p-growl [(value)]="msgs"></p-growl>
+  </div>
+</div>

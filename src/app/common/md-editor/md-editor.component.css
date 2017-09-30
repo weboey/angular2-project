@@ -1,0 +1,11 @@
+.title-input {
+  margin-bottom:10px;
+}
+.type-select-box{
+  margin-top: 12px;
+}
+
+
+.CodeMirror, .CodeMirror-scroll {
+  min-height: 360px;
+}

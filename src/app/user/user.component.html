@@ -1,12 +1,10 @@
 <div>
-  <ul *ngIf="!currentUser?.userName" class="nav navbar-nav navbar-right">
-    <li>
-      <a (click)="login()" [class.active]="isLogin">登陆</a>
-    </li>
-  </ul>
+  <div class="user-login">
+    <a (click)="login()" [class.active]="isLogin">登陆</a>
+  </div>
   <div class="user-content" [ngClass]="{'login': isLogin,'register':isRegister }">
     <ued-user-login *ngIf="isLogin" (onRegister)="onRegister($event)"></ued-user-login>
-    <ued-user-register *ngIf="isRegister"></ued-user-register>
+    <ued-user-register *ngIf="isRegister" (onCancel)="onCancel($event)"></ued-user-register>
   </div>
 </div>
 

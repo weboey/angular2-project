@@ -17,6 +17,7 @@
         <h3>Implements</h3>
     </p>
     <p class="comment">
+                <code><a href="https://angular.io/docs/ts/latest/api/forms/index/ControlValueAccessor-interface.html" target="_blank" >ControlValueAccessor</a></code>
                 <code><a href="https://angular.io/docs/ts/latest/api/core/index/OnInit-interface.html" target="_blank" >OnInit</a></code>
                 <code><a href="https://angular.io/docs/ts/latest/api/core/index/OnDestroy-interface.html" target="_blank" >OnDestroy</a></code>
     </p>
@@ -40,6 +41,14 @@
 
 
 
+            <tr>
+                <td class="col-md-3">providers</td>
+                <td class="col-md-9">
+                    <code>
+                        { provide: NG_VALUE_ACCESSOR, useExisting: , multi:  }
+                    </code>
+                </td>
+            </tr>
 
 
             <tr>
@@ -47,10 +56,6 @@
                 <td class="col-md-9"><code>jigsaw-time</code></td>
             </tr>
 
-            <tr>
-                <td class="col-md-3">styleUrls</td>
-                <td class="col-md-9"><code>time.scss</code></td>
-            </tr>
 
 
 
@@ -65,16 +70,180 @@
 </section>
 
     <section>
+        <h3 id="index">Index</h3>
+        <table class="table table-sm table-bordered index-table">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <span class="modifier">Public</span> <a href="#gr">gr</a>
+                            </li>
+                            <li>
+                                <span class="modifier">Public</span> <a href="#limitEnd">limitEnd</a>
+                            </li>
+                            <li>
+                                <span class="modifier">Public</span> <a href="#limitStart">limitStart</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <span class="modifier">Public</span> <a href="#registerOnChange">registerOnChange</a>
+                            </li>
+                            <li>
+                                <span class="modifier">Public</span> <a href="#registerOnTouched">registerOnTouched</a>
+                            </li>
+                            <li>
+                                <span class="modifier">Public</span> <a href="#writeValue">writeValue</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#date">date</a>
+                            </li>
+                            <li>
+                                <a href="#gr">gr</a>
+                            </li>
+                            <li>
+                                <a href="#grItems">grItems</a>
+                            </li>
+                            <li>
+                                <a href="#limitEnd">limitEnd</a>
+                            </li>
+                            <li>
+                                <a href="#limitStart">limitStart</a>
+                            </li>
+                            <li>
+                                <a href="#recommendedBegin">recommendedBegin</a>
+                            </li>
+                            <li>
+                                <a href="#recommendedEnd">recommendedEnd</a>
+                            </li>
+                            <li>
+                                <a href="#refreshInterval">refreshInterval</a>
+                            </li>
+                            <li>
+                                <a href="#weekStart">weekStart</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#dateChange">dateChange</a>
+                            </li>
+                            <li>
+                                <a href="#grChange">grChange</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h3 id="constructor">Constructor</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>constructor(_el: <a href="https://angular.io/docs/ts/latest/api/core/index/ElementRef-class.html" target="_blank">ElementRef</a>, _renderer: <a href="https://angular.io/docs/ts/latest/api/core/index/Renderer2-class.html" target="_blank">Renderer2</a>, _popService: <a routerLink="doc/api/injectables/PopupService">PopupService</a>)</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div>
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                    <td>Type</td>
+                                                    <td>Optional</td>
+                                                    <td>Description</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                      <td>_el</td>
+                                                      <td>
+                                                                <code><a href="https://angular.io/docs/ts/latest/api/core/index/ElementRef-class.html" target="_blank" >ElementRef</a></code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                      <td>_renderer</td>
+                                                      <td>
+                                                                <code><a href="https://angular.io/docs/ts/latest/api/core/index/Renderer2-class.html" target="_blank" >Renderer2</a></code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                      <td>_popService</td>
+                                                      <td>
+                                                                <code><a routerLink="doc/api/injectables/PopupService" target="_self" >PopupService</a></code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </section>
+
+    <section>
         <h3 id="inputs">Inputs</h3>
             <table class="table table-sm table-bordered">
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="date"></a>
                             <code>date</code>
                         </td>
                         <td class="col-md-10">
                               <p>
-                                <em>Type:</em>    <code>WeekTime</code>
+                                <em>Type:</em>    <code><a href="../miscellaneous/typealiases.html#WeekTime" target="_self" >WeekTime</a></code>
 
                               </p>
                         </td>
@@ -85,6 +254,7 @@
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="gr"></a>
                             <code>gr</code>
                         </td>
                         <td class="col-md-10">
@@ -96,11 +266,12 @@
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="grItems"></a>
                             <code>grItems</code>
                         </td>
                         <td class="col-md-10">
                               <p>
-                                <em>Type:</em>    <code>[]</code>
+                                <em>Type:</em>    <code><a routerLink="doc/api/classes/GrItem" target="_self" >GrItem[]</a></code>
 
                               </p>
                         </td>
@@ -111,6 +282,7 @@
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="limitEnd"></a>
                             <code>limitEnd</code>
                         </td>
                         <td class="col-md-10">
@@ -122,6 +294,7 @@
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="limitStart"></a>
                             <code>limitStart</code>
                         </td>
                         <td class="col-md-10">
@@ -133,11 +306,12 @@
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="recommendedBegin"></a>
                             <code>recommendedBegin</code>
                         </td>
                         <td class="col-md-10">
                               <p>
-                                <em>Type:</em>    <code>Time</code>
+                                <em>Type:</em>    <code><a href="../miscellaneous/typealiases.html#Time" target="_self" >Time</a></code>
 
                               </p>
                         </td>
@@ -148,11 +322,12 @@
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="recommendedEnd"></a>
                             <code>recommendedEnd</code>
                         </td>
                         <td class="col-md-10">
                               <p>
-                                <em>Type:</em>    <code>Time</code>
+                                <em>Type:</em>    <code><a href="../miscellaneous/typealiases.html#Time" target="_self" >Time</a></code>
 
                               </p>
                         </td>
@@ -163,6 +338,7 @@
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="refreshInterval"></a>
                             <code>refreshInterval</code>
                         </td>
                         <td class="col-md-10">
@@ -174,6 +350,7 @@
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="weekStart"></a>
                             <code>weekStart</code>
                         </td>
                         <td class="col-md-10">
@@ -189,6 +366,7 @@
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="dateChange"></a>
                             <code>dateChange</code>
                         </td>
                         <td class="col-md-10">
@@ -202,6 +380,7 @@
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="grChange"></a>
                             <code>grChange</code>
                         </td>
                         <td class="col-md-10">
@@ -213,20 +392,185 @@
             </table>
     </section>
 
+
+
     <section>
-        <h3 id="constructor">Constructor</h3>
+        
+            <h3 id="methods">
+                Methods
+            </h3>
             <table class="table table-sm table-bordered">
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <code>constructor(_el: <a href="https://angular.io/docs/ts/latest/api/core/index/ElementRef-class.html" target="_blank">ElementRef</a>, _renderer: <a href="https://angular.io/docs/ts/latest/api/core/index/Renderer2-class.html" target="_blank">Renderer2</a>, _popService: <a routerLink="doc/api/injectables/PopupService">PopupService</a>)</code>
+                            <a name="registerOnChange"></a>
+                            <span class="name"><b><span class="modifier">Public</span> registerOnChange</b><a href="#registerOnChange"><span class="fa fa-link"></span></a></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <span class="modifier-icon fa fa-reset"></span>
+                            <code>registerOnChange(fn: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
                         </td>
                     </tr>
     
+    
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                    <td>Type</td>
+                                                    <td>Optional</td>
+                                                    <td>Description</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                      <td>fn</td>
+                                                      <td>
+                                                              <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+    
+                                </div>
+                                    <div class="io-description">
+                                        
+                                    </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="registerOnTouched"></a>
+                            <span class="name"><b><span class="modifier">Public</span> registerOnTouched</b><a href="#registerOnTouched"><span class="fa fa-link"></span></a></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <span class="modifier-icon fa fa-reset"></span>
+                            <code>registerOnTouched(fn: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                        </td>
+                    </tr>
+    
+    
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                    <td>Type</td>
+                                                    <td>Optional</td>
+                                                    <td>Description</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                      <td>fn</td>
+                                                      <td>
+                                                              <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+    
+                                </div>
+                                    <div class="io-description">
+                                        
+                                    </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="writeValue"></a>
+                            <span class="name"><b><span class="modifier">Public</span> writeValue</b><a href="#writeValue"><span class="fa fa-link"></span></a></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <span class="modifier-icon fa fa-reset"></span>
+                            <code>writeValue(newValue: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                        </td>
+                    </tr>
+    
+    
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                    <td>Type</td>
+                                                    <td>Optional</td>
+                                                    <td>Description</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                      <td>newValue</td>
+                                                      <td>
+                                                              <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+    
+                                </div>
+                                    <div class="io-description">
+                                        
+                                    </div>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
     </section>
-
 
     <section>
         
@@ -237,57 +581,72 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b><span class="modifier">Public</span> gr</b>
+                            <a name="gr"></a>
+                            <span class="name"><b><span class="modifier">Public</span> gr</b><a href="#gr"><span class="fa fa-link"></span></a></span>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <span class="modifier-icon fa fa-"></span><code>gr:     <code></code>
-    </bcode>
+                            <span class="modifier-icon fa fa-reset"></span><code>gr:     <code><a href="../miscellaneous/typealiases.html#Time" target="_self" >TimeGr | string</a></code>
+    </code>
                         </td>
                     </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Type : </i>    <code><a href="../miscellaneous/typealiases.html#Time" target="_self" >TimeGr | string</a></code>
+    
+                            </td>
+                        </tr>
+    
+    
                 </tbody>
             </table>
             <table class="table table-sm table-bordered">
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b><span class="modifier">Public</span> limitEnd</b>
+                            <a name="limitEnd"></a>
+                            <span class="name"><b><span class="modifier">Public</span> limitEnd</b><a href="#limitEnd"><span class="fa fa-link"></span></a></span>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <span class="modifier-icon fa fa-"></span><code>limitEnd:     <code>Time</code>
-    </bcode>
+                            <span class="modifier-icon fa fa-reset"></span><code>limitEnd:     <code><a href="../miscellaneous/typealiases.html#Time" target="_self" >Time</a></code>
+    </code>
                         </td>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                <i>Type : </i>    <code>Time</code>
+                                <i>Type : </i>    <code><a href="../miscellaneous/typealiases.html#Time" target="_self" >Time</a></code>
     
                             </td>
                         </tr>
+    
+    
                 </tbody>
             </table>
             <table class="table table-sm table-bordered">
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b><span class="modifier">Public</span> limitStart</b>
+                            <a name="limitStart"></a>
+                            <span class="name"><b><span class="modifier">Public</span> limitStart</b><a href="#limitStart"><span class="fa fa-link"></span></a></span>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <span class="modifier-icon fa fa-"></span><code>limitStart:     <code>Time</code>
-    </bcode>
+                            <span class="modifier-icon fa fa-reset"></span><code>limitStart:     <code><a href="../miscellaneous/typealiases.html#Time" target="_self" >Time</a></code>
+    </code>
                         </td>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                <i>Type : </i>    <code>Time</code>
+                                <i>Type : </i>    <code><a href="../miscellaneous/typealiases.html#Time" target="_self" >Time</a></code>
     
                             </td>
                         </tr>
+    
+    
                 </tbody>
             </table>
     </section>
@@ -298,7 +657,7 @@
     <div class="tab-pane fade" id="templateData">
         <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;jigsaw-time&quot;&gt;
     &lt;div *ngIf&#x3D;&quot;grItems &amp;&amp; grItems.length&quot; class&#x3D;&quot;jigsaw-time-granularity&quot;&gt;
-    &lt;span *ngFor&#x3D;&quot;let item of grItems&quot; (click)&#x3D;&quot;_changeGranularity(item)&quot; [class.active]&#x3D;&quot;item.value&#x3D;&#x3D;gr&quot;&gt;
+    &lt;span *ngFor&#x3D;&quot;let item of grItems&quot; (click)&#x3D;&quot;_changeGranularity(item)&quot; [class.active]&#x3D;&quot;item.value&#x3D;&#x3D;_$gr&quot;&gt;
         {{item.label}}
     &lt;/span&gt;
     &lt;/div&gt;
@@ -334,9 +693,9 @@
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="jigsaw-time">    <div *ngIf="grItems && grItems.length" class="jigsaw-time-granularity">    <span *ngFor="let item of grItems" (click)="_changeGranularity(item)" [class.active]="item.value==gr">        {{item.label}}    </span>    </div>    <div class="jigsaw-time-box">    </div></div></div>'
-    var COMPONENTS = [{'name': 'DefaultCellRenderer', 'selector': ''},{'name': 'JigsawAlert', 'selector': 'jigsaw-alert'},{'name': 'JigsawBallLoading', 'selector': 'jigsaw-ball-loading'},{'name': 'JigsawBlock', 'selector': 'jigsaw-block'},{'name': 'JigsawButton', 'selector': 'jigsaw-button, a[jigsaw-button]'},{'name': 'JigsawCheckBox', 'selector': 'jigsaw-checkbox'},{'name': 'JigsawCollapse', 'selector': 'jigsaw-collapse'},{'name': 'JigsawCollapsePane', 'selector': 'jigsaw-collapse-pane'},{'name': 'JigsawComboSelect', 'selector': 'jigsaw-combo-select'},{'name': 'JigsawDialog', 'selector': 'jigsaw-dialog'},{'name': 'JigsawErrorAlert', 'selector': 'jigsaw-error-alert'},{'name': 'JigsawGraph', 'selector': 'jigsaw-graph'},{'name': 'JigsawInfoAlert', 'selector': 'jigsaw-info-alert'},{'name': 'JigsawInput', 'selector': 'jigsaw-input'},{'name': 'JigsawLoading', 'selector': 'jigsaw-loading'},{'name': 'JigsawOption', 'selector': 'jigsaw-select-option'},{'name': 'JigsawPagination', 'selector': 'jigsaw-pagination'},{'name': 'JigsawPagingItem', 'selector': 'jigsaw-paging-item'},{'name': 'JigsawRadioButton', 'selector': 'jigsaw-radio-button'},{'name': 'JigsawRadioGroup', 'selector': 'jigsaw-radio-group'},{'name': 'JigsawRangeTime', 'selector': 'jigsaw-range-time'},{'name': 'JigsawSelect', 'selector': 'jigsaw-select'},{'name': 'JigsawSlider', 'selector': 'jigsaw-slider'},{'name': 'JigsawSliderHandle', 'selector': 'slider-handle'},{'name': 'JigsawSwitch', 'selector': 'jigsaw-switch'},{'name': 'JigsawTab', 'selector': 'jigsaw-tab'},{'name': 'JigsawTabContent', 'selector': 'jigsaw-tab-content'},{'name': 'JigsawTabLabel', 'selector': 'jigsaw-tab-label'},{'name': 'JigsawTabPane', 'selector': 'jigsaw-tab-pane'},{'name': 'JigsawTable', 'selector': 'jigsaw-table'},{'name': 'JigsawTableCell', 'selector': '[jigsaw-table-cell]'},{'name': 'JigsawTableHeader', 'selector': '[jigsaw-table-header]'},{'name': 'JigsawTag', 'selector': 'jigsaw-tag'},{'name': 'JigsawTileOption', 'selector': 'jigsaw-tile-option'},{'name': 'JigsawTileSelect', 'selector': 'jigsaw-tile-select'},{'name': 'JigsawTime', 'selector': 'jigsaw-time'},{'name': 'JigsawTooltipDialog', 'selector': 'jigsaw-tooltip-dialog'},{'name': 'JigsawTreeExt', 'selector': 'jigsaw-tree-ext'},{'name': 'JigsawWarningAlert', 'selector': 'jigsaw-warning-alert'},{'name': 'SimpleTooltipComponent', 'selector': ''},{'name': 'TableCellCheckbox', 'selector': ''},{'name': 'TableCellEditor', 'selector': ''},{'name': 'TableCellNum', 'selector': ''},{'name': 'TableHeadCheckbox', 'selector': ''}];
-    var DIRECTIVES = [{'name': 'JigsawDraggable', 'selector': '[jigsaw-draggable], [jigsawDraggable]'},{'name': 'JigsawDroppable', 'selector': '[jigsaw-droppable], [jigsawDroppable]'},{'name': 'JigsawMovable', 'selector': '[jigsaw-movable], [jigsawMovable]'},{'name': 'JigsawPrefixIcon', 'selector': '[jigsaw-prefix-icon]'},{'name': 'JigsawRendererHost', 'selector': '[jigsaw-renderer-host]'},{'name': 'JigsawScrollBar', 'selector': '[jigsaw-scroll-bar], [jigsawScrollBar]'},{'name': 'JigsawTooltip', 'selector': '[jigsaw-tooltip], [jigsawTooltip]'},{'name': 'OptionList', 'selector': '.jigsaw-option-list'}];
+        var COMPONENT_TEMPLATE = '<div><div class="jigsaw-time">    <div *ngIf="grItems && grItems.length" class="jigsaw-time-granularity">    <span *ngFor="let item of grItems" (click)="_changeGranularity(item)" [class.active]="item.value==_$gr">        {{item.label}}    </span>    </div>    <div class="jigsaw-time-box">    </div></div></div>'
+    var COMPONENTS = [{'name': 'AjaxLineGraphComponent', 'selector': ''},{'name': 'AlertInDomDemoComponent', 'selector': ''},{'name': 'AlertPopupDemoComponent', 'selector': ''},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ArrayCollectionAjaxDemoComponent', 'selector': ''},{'name': 'ArrayCollectionBasicDemoComponent', 'selector': ''},{'name': 'BallLoadingDemoComponent', 'selector': ''},{'name': 'BasicGraphComponent', 'selector': ''},{'name': 'BasicLineGraphComponent', 'selector': ''},{'name': 'BoxComponent', 'selector': '[box]'},{'name': 'BubbleLoadingDemoComponent', 'selector': ''},{'name': 'ButtonBasicDemoComponent', 'selector': ''},{'name': 'ButtonDisableDemoComponent', 'selector': ''},{'name': 'ButtonLiveDemoComponent', 'selector': ''},{'name': 'ButtonPresetDemoComponent', 'selector': ''},{'name': 'ButtonWidthHeightDemoComponent', 'selector': ''},{'name': 'ButtonWithLoadingComponent', 'selector': ''},{'name': 'CheckBoxBasicDemoComponent', 'selector': ''},{'name': 'CheckBoxDisableDemoComponent', 'selector': ''},{'name': 'CheckBoxLiveDemoComponent', 'selector': ''},{'name': 'CollapseBasicDemo', 'selector': ''},{'name': 'CollapseBasicDemoComponent', 'selector': ''},{'name': 'ColorfulLoadingDemoComponent', 'selector': ''},{'name': 'ComboSelectAutoWidthDemo', 'selector': ''},{'name': 'ComboSelectBasicDemo', 'selector': ''},{'name': 'ComboSelectChangeDemo', 'selector': ''},{'name': 'ComboSelectDemoComponent', 'selector': ''},{'name': 'ComboSelectEditableDemo', 'selector': ''},{'name': 'ComboSelectLabelFieldDemo', 'selector': ''},{'name': 'ComboSelectMultipleDemo', 'selector': ''},{'name': 'ComboSelectSetWidthDemo', 'selector': ''},{'name': 'ComboSelectWidthDemo', 'selector': ''},{'name': 'CustomizeAlertDemoComponent', 'selector': ''},{'name': 'CustomizedAlert', 'selector': 'my-alert'},{'name': 'DefaultCellRenderer', 'selector': ''},{'name': 'DefinedLoading', 'selector': ''},{'name': 'DefinedLoadingDemoComponent', 'selector': ''},{'name': 'DemoListComponent', 'selector': 'jigsaw-demo-list'},{'name': 'DialogButtonsDemo', 'selector': ''},{'name': 'DialogInDomDemoComponent', 'selector': ''},{'name': 'DialogMiscDemoComponent', 'selector': ''},{'name': 'DialogPopOptionDemo', 'selector': ''},{'name': 'DialogTitleDemo', 'selector': ''},{'name': 'DialogTopDemo', 'selector': ''},{'name': 'DisabledComboSelectDemo', 'selector': ''},{'name': 'DomInnerDemoComponent', 'selector': ''},{'name': 'DragToReplaceDemoComponent', 'selector': ''},{'name': 'DynamicTabDemoComponent', 'selector': ''},{'name': 'FontLoadingDemoComponent', 'selector': ''},{'name': 'GraphResizeComponent', 'selector': ''},{'name': 'GraphSetSizeComponent', 'selector': ''},{'name': 'GraphWithNoDataComponent', 'selector': ''},{'name': 'I18nFullDemoComponent', 'selector': ''},{'name': 'InputBasicDemoComponent', 'selector': ''},{'name': 'InputClearableDemoComponent', 'selector': ''},{'name': 'InputFocusDemoComponent', 'selector': ''},{'name': 'InputLiveDemoComponent', 'selector': ''},{'name': 'InputPrefixIconDemoComponent', 'selector': ''},{'name': 'InputValueChangeDemoComponent', 'selector': ''},{'name': 'JigsawAlert', 'selector': 'jigsaw-alert'},{'name': 'JigsawBallLoading', 'selector': 'jigsaw-ball-loading'},{'name': 'JigsawBlock', 'selector': 'jigsaw-block'},{'name': 'JigsawBubbleLoading', 'selector': 'jigsaw-bubble-loading'},{'name': 'JigsawButton', 'selector': 'jigsaw-button, a[jigsaw-button], button[jigsaw-button]'},{'name': 'JigsawCheckBox', 'selector': 'jigsaw-checkbox'},{'name': 'JigsawCollapse', 'selector': 'jigsaw-collapse'},{'name': 'JigsawCollapsePane', 'selector': 'jigsaw-collapse-pane'},{'name': 'JigsawComboSelect', 'selector': 'jigsaw-combo-select'},{'name': 'JigsawConfirmAlert', 'selector': 'jigsaw-confirm-alert'},{'name': 'JigsawDestoryTabComponent', 'selector': ''},{'name': 'JigsawDialog', 'selector': 'jigsaw-dialog'},{'name': 'JigsawErrorAlert', 'selector': 'jigsaw-error-alert'},{'name': 'JigsawFontLoading', 'selector': 'jigsaw-font-loading'},{'name': 'JigsawGraph', 'selector': 'jigsaw-graph'},{'name': 'JigsawHideTabComponent', 'selector': ''},{'name': 'JigsawInfoAlert', 'selector': 'jigsaw-info-alert'},{'name': 'JigsawInput', 'selector': 'jigsaw-input'},{'name': 'JigsawList', 'selector': 'jigsaw-list,j-list'},{'name': 'JigsawListOption', 'selector': 'jigsaw-list-option,j-list-option'},{'name': 'JigsawLoading', 'selector': 'jigsaw-loading'},{'name': 'JigsawOption', 'selector': 'jigsaw-select-option'},{'name': 'JigsawPagination', 'selector': 'jigsaw-pagination'},{'name': 'JigsawPagingItem', 'selector': 'jigsaw-paging-item'},{'name': 'JigsawRadioGroup', 'selector': 'jigsaw-radios'},{'name': 'JigsawRadioOption', 'selector': 'jigsaw-radio-option'},{'name': 'JigsawRangeTime', 'selector': 'jigsaw-range-time'},{'name': 'JigsawRoot', 'selector': 'jigsaw-root'},{'name': 'JigsawSelect', 'selector': 'jigsaw-select'},{'name': 'JigsawShowTabComponent', 'selector': ''},{'name': 'JigsawSlider', 'selector': 'jigsaw-slider'},{'name': 'JigsawSliderDemoBasic', 'selector': ''},{'name': 'JigsawSliderHandle', 'selector': 'slider-handle'},{'name': 'JigsawSwitch', 'selector': 'jigsaw-switch'},{'name': 'JigsawTab', 'selector': 'jigsaw-tab'},{'name': 'JigsawTabContent', 'selector': 'jigsaw-tab-content'},{'name': 'JigsawTabLabel', 'selector': 'jigsaw-tab-label'},{'name': 'JigsawTabPane', 'selector': 'jigsaw-tab-pane'},{'name': 'JigsawTable', 'selector': 'jigsaw-table'},{'name': 'JigsawTableCell', 'selector': '[jigsaw-table-cell]'},{'name': 'JigsawTableHeader', 'selector': '[jigsaw-table-header]'},{'name': 'JigsawTabsDemoComponent', 'selector': ''},{'name': 'JigsawTabsWithInputComponent', 'selector': ''},{'name': 'JigsawTabsWithNgForComponent', 'selector': ''},{'name': 'JigsawTag', 'selector': 'jigsaw-tag'},{'name': 'JigsawTile', 'selector': 'jigsaw-tile,j-tile'},{'name': 'JigsawTileOption', 'selector': 'jigsaw-tile-option,j-tile-option'},{'name': 'JigsawTime', 'selector': 'jigsaw-time'},{'name': 'JigsawTooltipDialog', 'selector': 'jigsaw-tooltip-dialog'},{'name': 'JigsawTreeExt', 'selector': 'jigsaw-tree-ext'},{'name': 'JigsawWarningAlert', 'selector': 'jigsaw-warning-alert'},{'name': 'ListBasicDemoComponent', 'selector': ''},{'name': 'LoadingFullDemoComponent', 'selector': ''},{'name': 'LocalPagingDataDemoComponent', 'selector': ''},{'name': 'MyTableCell', 'selector': ''},{'name': 'MyTableCellEditor', 'selector': ''},{'name': 'MyTableCellOption', 'selector': ''},{'name': 'MyTableHeadOption', 'selector': ''},{'name': 'OpenComboSelectDemo', 'selector': ''},{'name': 'PaginationBasicDemoComponent', 'selector': ''},{'name': 'PieGraphDemoComponent', 'selector': ''},{'name': 'RadioBasicDemoComponent', 'selector': ''},{'name': 'RadioLiveDemoComponent', 'selector': ''},{'name': 'RadioTrackItemByDemoComponent', 'selector': ''},{'name': 'RangeTimeBasicDemoComponent', 'selector': ''},{'name': 'RangeTimeGrComponent', 'selector': ''},{'name': 'RangeTimeGrItemsComponent', 'selector': ''},{'name': 'RangeTimeLimitEndComponent', 'selector': ''},{'name': 'RangeTimeLimitStartComponent', 'selector': ''},{'name': 'RangeTimeRecommendedComponent', 'selector': ''},{'name': 'RangeTimeRefreshIntervalComponent', 'selector': ''},{'name': 'RangeTimeWeekStartComponent', 'selector': ''},{'name': 'ScrollbarBasicDemoComponent', 'selector': ''},{'name': 'ScrollbarSetOptionsDemoComponent', 'selector': ''},{'name': 'ScrollbarUserdefineDemoComponent', 'selector': ''},{'name': 'SelectBasicDemoComponent', 'selector': ''},{'name': 'SelectCheckboxDemoComponent', 'selector': ''},{'name': 'SelectScrollDemoComponent', 'selector': ''},{'name': 'ServerSidePaginationDemoComponent', 'selector': ''},{'name': 'ServerSidePagingDemoComponent', 'selector': ''},{'name': 'SimpleTooltipComponent', 'selector': ''},{'name': 'SimpleTooltipDemoComponent', 'selector': ''},{'name': 'SliderVerticalDemo', 'selector': ''},{'name': 'SwimLaneDiagramDemoComponent', 'selector': ''},{'name': 'SwitchBasicDemoComponent', 'selector': ''},{'name': 'TabContentComponent', 'selector': ''},{'name': 'TabContentDefine', 'selector': ''},{'name': 'TableAddCheckboxColumnDemoComponent', 'selector': ''},{'name': 'TableAddColumnDemoComponent', 'selector': ''},{'name': 'TableAddIDColumnDemoComponent', 'selector': ''},{'name': 'TableAddIDWithDebouncePagingComponent', 'selector': ''},{'name': 'TableAddIDWithPagingComponent', 'selector': ''},{'name': 'TableBasicDemoComponent', 'selector': ''},{'name': 'TableCellCheckbox', 'selector': ''},{'name': 'TableCellEditor', 'selector': ''},{'name': 'TableCellNum', 'selector': ''},{'name': 'TableCellOption', 'selector': ''},{'name': 'TableCellOption', 'selector': ''},{'name': 'TableColumnGroupDemoComponent', 'selector': ''},{'name': 'TableColumnSetVisibleDemoComponent', 'selector': ''},{'name': 'TableColumnSetWidthDemoComponent', 'selector': ''},{'name': 'TableDataChangeDemoComponent', 'selector': ''},{'name': 'TableDataFromAjaxDemoComponent', 'selector': ''},{'name': 'TableDataWithPopupDemoComponent', 'selector': ''},{'name': 'TableDragDeleteRow', 'selector': ''},{'name': 'TableDragDemoComponent', 'selector': ''},{'name': 'TableDragReplaceRow', 'selector': ''},{'name': 'TableFixedHeadDemoComponent', 'selector': ''},{'name': 'TableHeadCheckbox', 'selector': ''},{'name': 'TableHeadIcon', 'selector': ''},{'name': 'TableHeadIcon', 'selector': ''},{'name': 'TableHeadSelect', 'selector': ''},{'name': 'TableHideHeadDemoComponent', 'selector': ''},{'name': 'TableLineEllipsisDemoComponent', 'selector': ''},{'name': 'TablePageableDemoComponent', 'selector': ''},{'name': 'TablePerformsDemoComponent', 'selector': ''},{'name': 'TableRendererDemoComponent', 'selector': ''},{'name': 'TableRendererOfTemplateRefDemoComponent', 'selector': ''},{'name': 'TableScrollAmountDemoComponent', 'selector': ''},{'name': 'TableSelectRowDemoComponent', 'selector': ''},{'name': 'TableSetCellClassDemoComponent', 'selector': ''},{'name': 'TableSetCellEditableDemoComponent', 'selector': ''},{'name': 'TableSetCellRenderDemoComponent', 'selector': ''},{'name': 'TableSetHeaderClassDemoComponent', 'selector': ''},{'name': 'TableSetHeaderRenderDemoComponent', 'selector': ''},{'name': 'TableSetHeaderSortDemoComponent', 'selector': ''},{'name': 'TableSwimLaneCell', 'selector': ''},{'name': 'TagBasicDemoComponent', 'selector': ''},{'name': 'TemplateDrivenDemoComponent', 'selector': ''},{'name': 'TileselecItemsChangeComponent', 'selector': ''},{'name': 'TileselectBasicDemoComponent', 'selector': ''},{'name': 'TileselectLabelFieldComponent', 'selector': ''},{'name': 'TileselectMultipleSelectDemoComponent', 'selector': ''},{'name': 'TileselectOptionWidthComponent', 'selector': ''},{'name': 'TileselectSelectedItemsComponent', 'selector': ''},{'name': 'TileselectTrackItemByDemoComponent', 'selector': ''},{'name': 'TimeBasicDemoComponent', 'selector': ''},{'name': 'TimeGrComponent', 'selector': ''},{'name': 'TimeGrItemsComponent', 'selector': ''},{'name': 'TimeLimitEndComponent', 'selector': ''},{'name': 'TimeLimitStartComponent', 'selector': ''},{'name': 'TimeRecommendedComponent', 'selector': ''},{'name': 'TimeRefreshIntervalComponent', 'selector': ''},{'name': 'TimeWeekStartComponent', 'selector': ''},{'name': 'TooltipDialogDemoComponent', 'selector': ''},{'name': 'TooltipInDomDemoComponent', 'selector': ''},{'name': 'UserDialog2Component', 'selector': ''},{'name': 'UserDialogComponent', 'selector': ''},{'name': 'UserTooltipDialogComponent', 'selector': ''},{'name': 'ZoneForBetterPerformanceDemoComponent', 'selector': ''},{'name': 'ZtreeAsynDemoComponent', 'selector': ''},{'name': 'ZtreeDemoComponent', 'selector': ''},{'name': 'ZtreeDemoDataFromAjaxComponent', 'selector': ''},{'name': 'ZtreeDemoEditableComponent', 'selector': ''},{'name': 'ngForDemoComponent', 'selector': ''}];
+    var DIRECTIVES = [{'name': 'JigsawDraggable', 'selector': '[jigsaw-draggable], [jigsawDraggable]'},{'name': 'JigsawDroppable', 'selector': '[jigsaw-droppable], [jigsawDroppable]'},{'name': 'JigsawMovable', 'selector': '[jigsaw-movable], [jigsawMovable]'},{'name': 'JigsawPrefixIcon', 'selector': '[jigsaw-prefix-icon]'},{'name': 'JigsawRendererHost', 'selector': '[jigsaw-renderer-host]'},{'name': 'JigsawScrollBar', 'selector': '[jigsaw-scroll-bar], [jigsawScrollBar]'},{'name': 'JigsawTooltip', 'selector': '[jigsaw-tooltip], [jigsawTooltip]'},{'name': 'OptionList', 'selector': '.jigsaw-select-option-list'}];
     var ACTUAL_COMPONENT = {'name': 'JigsawTime'};
 </script>
 <script src="../js/tree.js"></script>

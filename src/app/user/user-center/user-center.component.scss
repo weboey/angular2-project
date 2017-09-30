@@ -1,0 +1,38 @@
+.m-user-center{
+  background-color: #f2f2f2;
+  padding: 15px;
+  height: 100%;
+  width: 100%;
+  .content-box{
+    display: flex;
+    width: 80%;
+    height: 100%;
+    margin: 0 auto;
+    .center-nav{
+      width: 135px;
+      background-color: #fff;
+      margin-right: 10px;
+      padding: 0 15px;
+      ul li{
+        list-style-type: none;
+        a{
+          color: #666;
+          display: block;
+          line-height: 40px;
+          text-align: center;
+          &.active{
+            border-bottom: 1px solid #13B5B1;
+          }
+        }
+      }
+    }
+    .center-content{
+      flex: 1;
+      max-width: 1080px;
+      background-color: #fff;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+  }
+}
+

@@ -1,11 +1,11 @@
 <div class="navbar contentProject container">
     <div class="selfName">
-      <a [class.projectsState]="fang" (click)="projectsFilter(fang)">全部</a>
-      <a [class.projectsState]="!fang" (click)="projectsFilter(!fang)">我的</a>
+      <a [class.projectsState]="boo" (click)="boo=true">全部</a>
+      <a [class.projectsState]="!boo" (click)="boo=false">收藏</a>
       <!--<div class="keyWork" style="display: inline-block">-->
         <!--<input class="btn btn-info"  type="button" (click)="keyWork('软银')" value="软银">-->
       <!--</div>-->
-      <div class="keyWord">
+      <div class="keyWord hidden">
         <button class="btn btn-info"><span class="glyphicon glyphicon-object-align-top"></span></button>
         <div>
           <strong [class.ligthHigh]="item == keyWorkName" (click) = "keyWord(item)" *ngFor="let item of ['软银','海洋']">{{item}}</strong>
@@ -16,29 +16,68 @@
         <ul class="row">
           <li   class="col-lg-4 col-md-4 col-xs-6 cardContainer" *ngFor="let projectList of projectLists">
             <div class="contentListDistance">
-              <a [routerLink]="['./', projectList.SerialNum ]" style="display: block">
+              <a [routerLink]="['./', projectList?.SerialNum ]" style="display: block">
                 <div style="position: relative">
-                    <img [src]="projectList.ProjectImg" alt="">
+                    <img [src]="projectList?.ProjectImg" alt="">
                   <div class="coverOverlayDetail">
-                    <div class="cardSubtitleContainer"><span>{{projectList.ProjectBrief}}</span> </div>
+                    <div class="cardSubtitleContainer"><span>{{projectList?.ProjectBrief}}</span> </div>
                     <div class="cardDetailContainer">
-                      <span>由&nbsp;{{projectList.Creator}}&nbsp;于&nbsp;{{projectList.UpdateTime}}</span>
+                      <span>由&nbsp;{{projectList?.Creator}}&nbsp;于&nbsp;{{projectList?.CreatTime.slice(0,10)}}&nbsp;创建</span>
                     </div>
                   </div>
                 </div>
-                <p class="cardTitleContainer" title="{{ projectList.ProjectName}}"><span>{{ projectList.ProjectName}}</span></p>
+                <p class="cardTitleContainer" title="{{ projectList?.ProjectName}}"><span>{{ projectList?.ProjectName}}</span></p>
               </a>
              <div class="selectorList">
-               <a href="">原型</a>
-               <a href="">效果图</a>
-               <a href="">文档</a>
+               <a [href]="projectList?.PrototypeView" target="_blank">原型</a>
+               <a [routerLink]="['./', projectList?.SerialNum +'#project-show']">效果图</a>
+               <a [routerLink]="['./', projectList?.SerialNum +'#project-doc' ]">文档</a>
              </div>
             </div>
           </li>
         </ul>
     </div>
+  <div  class="viewport">
+    <img [hidden]="!viewPorthide && !projectBase" src="assets/img/timg.gif" alt="">
+    <span [hidden]="projectBase" >已没有项目可以加载了……</span>
+  </div>
 </div>
+
 <div class="container">
   <app-footer></app-footer>
 </div>
+<ng-template #tperson>
+  <div class="pop-win">
+    <span class="close-btn" (click)="closeTemplate()">x</span>
+    <div class="collect">
+      <div class="title">新发布和你相关项目</div>
+      <div class="collectItem">
+       <div>
+         <span>FGI</span>
+         <button class="btn btn-info">立即收藏该项目</button>
+         <button class="btn btn-info">直接查看</button>
+       </div>
+       <div>
+         <span>高速路优化</span>
+         <button class="btn btn-info">立即收藏该项目</button>
+         <button class="btn btn-info">直接查看</button>
+       </div>
+      </div>
+    </div>
+
+    <div class="revert">
+      <div class="title">你的消息回复</div>
+      <div class="revertItem">
+        <div>
+          <span> 列表表头不符合规范！O(∩_∩)O哈哈~</span>
+          <button class="btn btn-info">回复</button>
+        </div>
+        <div>
+          <span> 做的不错 :-D</span>
+          <button class="btn btn-info">回复</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
 

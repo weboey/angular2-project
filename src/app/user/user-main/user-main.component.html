@@ -1,0 +1,27 @@
+<div class="m-user-main">
+  <div *ngIf="!currentUser">
+    <ued-user></ued-user>
+  </div>
+  <div *ngIf="currentUser">
+    <div class="user-center-box">
+      <img [src]="currentUser.uid | showHeadImg:1" alt="我的头像">
+      <div class="user-center">
+        <span>{{currentUser.userName}}</span>
+        <i class="fa fa-angle-down" aria-hidden="true"></i>
+        <div class="user-menu">
+          <ued-user-menu></ued-user-menu>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--<ul>-->
+  <!--<li *ngIf="!currentUser?.userName">-->
+
+  <!--</li>-->
+  <!--<li *ngIf="currentUser">-->
+    <!--&lt;!&ndash;<a class="fa fa-user-circle-o" style="font-size: 18px;"></a>&ndash;&gt;-->
+
+  <!--</li>-->
+<!--</ul>-->

@@ -4,11 +4,13 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import {Tool} from "../tool";
 import {ToolsService} from "../tools.service";
+import {animateFactory} from "../../animations/animate-factory";
 
 @Component({
   selector: 'app-tools',
   templateUrl: './tool-list.component.html',
-  styleUrls: ['./tool-list.component.css']
+  styleUrls: ['./tool-list.component.scss'],
+  animations:[animateFactory(500)]
 })
 export class ToolListComponent implements OnInit {
 

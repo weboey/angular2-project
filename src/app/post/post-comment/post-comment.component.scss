@@ -1,9 +1,41 @@
 .add-component-container {
+  padding-bottom: 20px;
+  .panel-default{
+    border: 0;
+  }
+  .row{
+    margin-right: 0;
+    margin-left: 0;
+  }
+  .comment-title{
+    height: 40px;
+    line-height: 40px;
+    background-color: #f8f9fb;
+    color: #999;
+    padding: 0 26px;
+  }
   .comment-item-container {
     padding: 15px 10px;
     border-bottom: 1px dashed #d9d9d9;
-
     position: relative;
+    .comment-user{
+      display: inline-flex;
+      justify-content: center;
+      color: #999;
+      img{
+        max-width: 35px;
+        max-height: 35px;
+        margin-right: 8px;
+      }
+      p{
+        line-height: 16px;
+      }
+    }
+    .comment-content{
+      padding: 0 44px;
+      font-size: 16px;
+      color: #333;
+    }
     .comment-reply {
       position: absolute;
       right: 10px;
@@ -21,8 +53,24 @@
         padding-left: 12px;
       }
     }
+    .glyphicon, .fa {
+      margin-right: 2px;
+    }
+  }
+  .comment-item-container:last-child{
+    border-bottom: 0;
+  }
+  .comment-reply-container{
+    margin: 15px 20px 0 40px;
+    position: relative;
   }
   .user-info{
     line-height: 40px;font-size: 16px;color: #999;
+  }
+  .comment-empty{
+    height: 50px;
+    background-color: #f1f1f1;
+    line-height: 50px;
+    text-align: center;
   }
 }

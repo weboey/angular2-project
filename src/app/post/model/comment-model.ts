@@ -2,10 +2,13 @@
  * Created by Administrator on 2017/8/25.
  */
 
-export class Comment{
-  id: number;
-  postId: number;
+export class PostComment{
+  commentId: number;
+  serialNum: string;
   content: string;
-  date: Date;
-  username: string;
+  time: string;
+  uId: string;
+  userName:string;
+  replyId: number;
+  replyName: string;
 }

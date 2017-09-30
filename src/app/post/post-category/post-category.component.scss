@@ -1,0 +1,33 @@
+@import "../../../ued-theming.scss";
+.m-category{
+  height: 100%;  display: flex;max-width: 1240px;margin: 0 auto;
+  background-color: #f1f1f1;  padding: 15px;  padding-bottom: 0;
+  .g-category-box{
+    width: 120px;
+    .category-group li{
+      height: 42px;  padding: 8px 0;
+      margin-left: -18px;
+      a{
+        display: block;
+        text-align: left;
+        color: $menu-left-color;
+        padding-left: 36px;
+        border-left: 2px solid transparent;
+        font-size: 14px;
+        //border-bottom: 1px solid #d2d2d2;
+      }
+      &.active a{
+        border: none;
+        border-left: 2px solid $active-menu-color;
+        color: $active-menu-color;
+
+      }
+      &:hover a{
+        color: $active-menu-color;
+      }
+    }
+  }
+  .g-content-box{
+    flex: 1;
+  }
+}

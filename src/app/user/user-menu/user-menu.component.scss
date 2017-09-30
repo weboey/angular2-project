@@ -1,0 +1,25 @@
+.target-list {
+  border: 1px solid #eee;
+  background-color: #FFF;
+  width: 130px;
+  box-shadow: 0 1px 20px rgba(0,37,55,.08);
+  ul{
+    padding: 10px 0;
+    li:hover{
+      background-color: #f7f8fa;
+    };
+    li{
+      line-height: 40px;
+      a{
+        display: block;
+        text-align: center;
+        font-size: 14px;
+        color: #000;
+        span{
+          display: inline-block;
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+}

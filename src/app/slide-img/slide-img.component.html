@@ -1,0 +1,10 @@
+<div class="imgs">
+  <div class="img" *ngFor="let img of imgs;let i=index" (mySwipe)="Change($event)"
+       [@imgMove]="ImgState(i)">
+  <img src="{{img}}" alt="">
+  </div>
+  <div *ngIf="!!imgs?.length" class="btn-prev" (click)="Prev()"></div>
+  <div *ngIf="!!imgs?.length" class="btn-next" (click)="Next()"></div>
+</div>
+
+

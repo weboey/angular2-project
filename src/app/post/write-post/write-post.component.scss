@@ -1,0 +1,81 @@
+.m-write-post{
+  display: flex;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 20px 0;
+  .left-box{
+    width: 160px;
+    padding: 24px 12px;
+    ul.category-group li{
+      line-height: 30px;
+    }
+    label{
+      font-size: 14px;
+      color: #666;
+      font-weight:normal;
+    }
+  }
+  .editor-box{
+    flex: 1;
+    margin: 0 20px;
+    .select-type{
+      margin-top: 12px;
+    }
+    .input-group-btn{
+      text-align: right;
+      .btn{
+        margin-left: 15px;
+      }
+    }
+  }
+  .file-upload-box{
+    width: 320px;
+    margin-left: 10px;
+    .img-upload{
+      .img-progress{
+        width: 320px;
+        margin-top: -5px;
+      }
+    }
+    .attachment-upload{
+      margin-top: 12px;
+      .attachment-files{
+        li{
+          line-height: 32px;
+          a{
+            font-size: 14px;
+            margin-left: 22px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.img-upload{
+  margin-top: 22px;
+  //display: inline-flex;
+}
+.img-review{
+  position: relative;
+}
+.img-review img{
+  width: 100%;
+  height: 100%;
+}
+.img-review:after{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,.2);
+  background-image: url('/assets/img/trash.jpg');
+  background-repeat:no-repeat;
+  background-position: center center;
+}
+.img-review:hover:after{
+  content: "";
+  //<i class="fa fa-trash-o" aria-hidden="true"></i>
+}
+

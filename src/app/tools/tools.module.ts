@@ -4,12 +4,12 @@ import {ToolsRoutingModule} from "./tools-routing.module";
 import {ToolsService} from "./tools.service";
 import {ToolListComponent} from "./tool-list/tool-list.component";
 import {ToolDetailComponent} from "./tool-detail/tool-detail.component";
-
+import { UedCommonModule } from '../common/ued-common.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    ToolsRoutingModule
+    ToolsRoutingModule,UedCommonModule
   ],
   providers:[ToolsService],
   declarations: [ToolListComponent,ToolDetailComponent]

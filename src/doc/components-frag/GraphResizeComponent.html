@@ -1,0 +1,457 @@
+<div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/e2e-testee/graph/resize/app.component.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code><a href="https://angular.io/docs/ts/latest/api/core/index/OnInit-interface.html" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">template</td>
+                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">autoResize:
+&lt;jigsaw-switch [(checked)]&#x3D;&quot;autoResize&quot; (change)&#x3D;&quot;resizeGraph()&quot;&gt;&lt;/jigsaw-switch&gt;
+width:
+&lt;jigsaw-input id&#x3D;&quot;graph-width&quot; [value]&#x3D;&quot;graphWidth&quot; #widthInput&gt;&lt;/jigsaw-input&gt;
+height:
+&lt;jigsaw-input id&#x3D;&quot;graph-height&quot; [value]&#x3D;&quot;graphHeight&quot; #heightInput&gt;&lt;/jigsaw-input&gt;&lt;br&gt;&lt;br&gt;
+&lt;jigsaw-graph id&#x3D;&quot;test-graph&quot; #graph [data]&#x3D;&quot;data&quot; [width]&#x3D;&quot;graphWidth&quot; [height]&#x3D;&quot;graphHeight&quot;
+           [autoResize]&#x3D;&quot;autoResize&quot;&gt;&lt;/jigsaw-graph&gt;
+</code></pre></td>
+            </tr>
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+        <h3 id="index">Index</h3>
+        <table class="table table-sm table-bordered index-table">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                 <a href="#autoResize">autoResize</a>
+                            </li>
+                            <li>
+                                 <a href="#data">data</a>
+                            </li>
+                            <li>
+                                 <a href="#graph">graph</a>
+                            </li>
+                            <li>
+                                 <a href="#graphHeight">graphHeight</a>
+                            </li>
+                            <li>
+                                 <a href="#graphWidth">graphWidth</a>
+                            </li>
+                            <li>
+                                 <a href="#heightInput">heightInput</a>
+                            </li>
+                            <li>
+                                <span class="modifier">Public</span> <a href="#renderer">renderer</a>
+                            </li>
+                            <li>
+                                <span class="modifier">Public</span> <a href="#viewContainerRef">viewContainerRef</a>
+                            </li>
+                            <li>
+                                 <a href="#widthInput">widthInput</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                 <a href="#resizeGraph">resizeGraph</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h3 id="constructor">Constructor</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>constructor(viewContainerRef: <a href="https://angular.io/docs/ts/latest/api/core/index/ViewContainerRef-class.html" target="_blank">ViewContainerRef</a>, renderer: <a href="https://angular.io/docs/ts/latest/api/core/index/Renderer2-class.html" target="_blank">Renderer2</a>)</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div>
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                    <td>Type</td>
+                                                    <td>Optional</td>
+                                                    <td>Description</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                      <td>viewContainerRef</td>
+                                                      <td>
+                                                                <code><a href="https://angular.io/docs/ts/latest/api/core/index/ViewContainerRef-class.html" target="_blank" >ViewContainerRef</a></code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                      <td>renderer</td>
+                                                      <td>
+                                                                <code><a href="https://angular.io/docs/ts/latest/api/core/index/Renderer2-class.html" target="_blank" >Renderer2</a></code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </section>
+
+
+
+
+
+    <section>
+        
+            <h3 id="methods">
+                Methods
+            </h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="resizeGraph"></a>
+                            <span class="name"><b> resizeGraph</b><a href="#resizeGraph"><span class="fa fa-link"></span></a></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>resizeGraph()</code>
+                        </td>
+                    </tr>
+    
+    
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </section>
+
+    <section>
+        
+            <h3 id="inputs">
+                Properties
+            </h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="autoResize"></a>
+                            <span class="name"><b> autoResize</b><a href="#autoResize"><span class="fa fa-link"></span></a></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>autoResize:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+    </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+    
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Default value : </i><code>true</code>
+                            </td>
+                        </tr>
+    
+    
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="data"></a>
+                            <span class="name"><b> data</b><a href="#data"><span class="fa fa-link"></span></a></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>data:     <code><a routerLink="doc/api/classes/AbstractGraphData" target="_self" >AbstractGraphData</a></code>
+    </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Type : </i>    <code><a routerLink="doc/api/classes/AbstractGraphData" target="_self" >AbstractGraphData</a></code>
+    
+                            </td>
+                        </tr>
+    
+    
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="graph"></a>
+                            <span class="name"><b> graph</b><a href="#graph"><span class="fa fa-link"></span></a></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>graph:     <code><a routerLink="doc/api/components/JigsawGraph" target="_self" >JigsawGraph</a></code>
+    </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Type : </i>    <code><a routerLink="doc/api/components/JigsawGraph" target="_self" >JigsawGraph</a></code>
+    
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Decorators : </i><code>ViewChild</code>
+                            </td>
+                        </tr>
+    
+    
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="graphHeight"></a>
+                            <span class="name"><b> graphHeight</b><a href="#graphHeight"><span class="fa fa-link"></span></a></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>graphHeight:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+    </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+    
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Default value : </i><code>300</code>
+                            </td>
+                        </tr>
+    
+    
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="graphWidth"></a>
+                            <span class="name"><b> graphWidth</b><a href="#graphWidth"><span class="fa fa-link"></span></a></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>graphWidth:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+    </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+    
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Default value : </i><code>100%</code>
+                            </td>
+                        </tr>
+    
+    
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="heightInput"></a>
+                            <span class="name"><b> heightInput</b><a href="#heightInput"><span class="fa fa-link"></span></a></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>heightInput:     <code><a routerLink="doc/api/components/JigsawInput" target="_self" >JigsawInput</a></code>
+    </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Type : </i>    <code><a routerLink="doc/api/components/JigsawInput" target="_self" >JigsawInput</a></code>
+    
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Decorators : </i><code>ViewChild</code>
+                            </td>
+                        </tr>
+    
+    
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="renderer"></a>
+                            <span class="name"><b><span class="modifier">Public</span> renderer</b><a href="#renderer"><span class="fa fa-link"></span></a></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-reset"></span><code>renderer:     <code><a href="https://angular.io/docs/ts/latest/api/core/index/Renderer2-class.html" target="_blank" >Renderer2</a></code>
+    </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Type : </i>    <code><a href="https://angular.io/docs/ts/latest/api/core/index/Renderer2-class.html" target="_blank" >Renderer2</a></code>
+    
+                            </td>
+                        </tr>
+    
+    
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="viewContainerRef"></a>
+                            <span class="name"><b><span class="modifier">Public</span> viewContainerRef</b><a href="#viewContainerRef"><span class="fa fa-link"></span></a></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-reset"></span><code>viewContainerRef:     <code><a href="https://angular.io/docs/ts/latest/api/core/index/ViewContainerRef-class.html" target="_blank" >ViewContainerRef</a></code>
+    </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Type : </i>    <code><a href="https://angular.io/docs/ts/latest/api/core/index/ViewContainerRef-class.html" target="_blank" >ViewContainerRef</a></code>
+    
+                            </td>
+                        </tr>
+    
+    
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="widthInput"></a>
+                            <span class="name"><b> widthInput</b><a href="#widthInput"><span class="fa fa-link"></span></a></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>widthInput:     <code><a routerLink="doc/api/components/JigsawInput" target="_self" >JigsawInput</a></code>
+    </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Type : </i>    <code><a routerLink="doc/api/components/JigsawInput" target="_self" >JigsawInput</a></code>
+    
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Decorators : </i><code>ViewChild</code>
+                            </td>
+                        </tr>
+    
+    
+                </tbody>
+            </table>
+    </section>
+</div>

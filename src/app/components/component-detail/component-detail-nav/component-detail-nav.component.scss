@@ -1,0 +1,29 @@
+@import "../../../../ued-theming.scss";
+.u-detail-nav{
+  display: inline-flex;
+  li{
+    width: 130px;
+    a{
+      display: block;
+      color: #a9a9a9;
+      text-align: center;
+      line-height: 56px;
+      height: 60px;
+      font-size: 18px;
+      padding: 0 24px;
+      letter-spacing: .3em;
+      //border-top: 4px solid transparent;
+      transition: none;
+      &.active{
+        border: none;
+        color: $active-menu-2-color;
+        //border-top: 4px solid;
+        background-color: #fff;
+        box-shadow:
+          2px -2px 5px -2px rgba(0, 0, 0, 0.3),
+          -2px -2px 5px -2px rgba(0, 0, 0, 0.3)
+      }
+    }
+  }
+}
+

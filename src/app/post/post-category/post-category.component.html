@@ -1,16 +1,21 @@
 
-<div class="m-category">
+<div class="m-category" [@animate]="'slideInRight'">
+  <!--[@animate]="item.key"-->
   <div  class="g-category-box">
     <ul class="category-group">
-      <li *ngFor="let category of categoryList">
+      <li uedRipple [routerLink]="['../all']"   routerLinkActive="active">
+        <a >全部</a>
+      </li>
+      <li uedRipple *ngFor="let category of categoryList" [routerLink]="['../'+category.name]"   routerLinkActive="active">
         <!--[routerLink]="'../vision'"  routerLinkActive="active"-->
-        <a [routerLink]="['../'+category.name]"  routerLinkActive="active"
-          class="f-bottom-hover">{{category.label}} </a>
+        <a >{{category.label}} </a>
       </li>
     </ul>
+    <div style="margin-top: 20px">
+      <a class="btn btn-info" [routerLink]="['/post/user/write']">+ 发布文章</a>
+    </div>
   </div>
-
-  <div class="g-post-list">
+  <div class="g-content-box">
     <router-outlet></router-outlet>
   </div>
 </div>

@@ -1,13 +1,14 @@
 /**
  * Created by 6176000041 on 2017/7/27.
  */
+
 export class Project {
   SerialNum:string;
   ProjectName: string;
   ProjectImg: string;
   ProjectType: string;
   ProjectBrief:string;
-  PrototypeView: string;
+  PrototypeView: any;
   PrototypeZip: string;
   RequirementDoc: any[];
   Keywords: string;

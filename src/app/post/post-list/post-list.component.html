@@ -1,28 +1,33 @@
 <div class="m-post-list">
   <div  class="g-post-list-box">
-    <ul class="post-list-group  f-cb">
-      <li *ngFor="let postItem of postList">
-        <a [routerLink]="['./detail/1']"  routerLinkActive="active">
+    <ul class="post-list-group ">
+      <li *ngFor="let postItem of postList" >
+        <a [routerLink]="['./detail',postItem.serialNum]"  routerLinkActive="active">
           <div class="post-item">
+            <img [src]="postItem.headPicture" alt="">
             <div class="post-title">
-              <h3>文章标题</h3>
-              <span>视觉</span>
+              <h3>{{postItem.title}}</h3>
             </div>
-            <img src="http://via.placeholder.com/300x180"alt="">
             <div class="post-desc">
-              <span>{{postItem.userName}}</span>
-              <p>{{postItem.title}}</p>
+              <p>{{postItem.subTitle}}</p><br/>
             </div>
-            <div class="post-footer-icon">
-              <span>点赞：{{postItem.postId}}</span>
-              <span>阅读：{{postItem.readTimes}}</span>
-              <span>评论{{postItem.commentTimes}}</span>
-              <span>{{postItem.postTime}}</span>
+            <div class="post-footer-icon f-top-line">
+              <div class="footer-user">
+                <img class="f-img-border" [src]="postItem.uid | showHeadImg" alt="">
+                <span>{{postItem.author}}</span>
+                <span>{{postItem.updatedate}}</span>
+              </div>
+              <span>
+                {{postItem.saType}}
+              </span>
             </div>
           </div>
         </a>
       </li>
     </ul>
+    <div *ngIf="postList?.length==0">
+      <h1>没有此类文章！</h1>
+    </div>
   </div>
 </div>
 

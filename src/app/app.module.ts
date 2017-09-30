@@ -11,28 +11,45 @@ import {AppComponent} from './app.component';
 import {JigsawModule} from '@rdkmaster/jigsaw';
 
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
-
+//
 /* load service  start*/
-
+import {GlobalService} from "./admin/global.service";
 /* load component  start*/
 import { AppRoutingModule }     from './app-routing.module';
 import { HomeComponent }  from './home/home.component';
-import { LoginComponent } from './admin/login/login.component';
+
 
 /* load module  start*/
-import {ToolsModule} from "./tools/tools.module";
-import {ComponentsModule} from "./components/components.module";
+import { ToolsModule } from "./tools/tools.module";
+import { ComponentsModule } from "./components/components.module";
+import { ProjectModule } from "./projects/projects.module";
+import { HelpDocModule } from "./help-doc/help-doc.module";
 import { PostModule } from "./post/post.module";
-import {ProjectModule} from "./projects/projects.module";
-import {HelpDocModule} from "./help-doc/help-doc.module";
-import {UserNavComponent} from "./home/user-nav/user-nav.component";
-import { UserLoginComponent } from './user/user-login/user-login.component';
-import { UserComponent } from './user/user.component';
-import { UserRegisterComponent } from './user/user-register/user-register.component';
-import {UserLoginService} from "./user/user-login/user-login.service";
+import { HomeModule } from "./home/home.module";
+/* load module  end*/
+
+// import { UserNavComponent } from "./home/user-nav/user-nav.component";
+
+import { UserLoginService } from "./user/user-login/user-login.service";
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PermissionComponent } from './permission/permission.component';
+import { UserPipe } from './permission/pipe/user.pipe';
+import { ShowPipe } from './permission/pipe/show.pipe';
+import { GlobalSearchComponent } from './home/global-search/global-search.component';
+import { SearchService } from "./home/global-search/search.service";
 
 //import { FooterComponent } from './footer/footer.component';
+import {GrowlModule} from 'primeng/primeng';
+import {Message} from 'primeng/primeng';
+import {MessageService} from 'primeng/components/common/messageservice';
+import {CanDeactivateGuard} from "./admin/can-deactivate-guard.service";
+import { UserCenterComponent } from './user/user-center/user-center.component';
+
+
+import {UserModule} from "./user/user.module";
+import {CanActivateGuard} from "./admin/can-acitvate.service";
+import {UedCommonModule} from "./common/ued-common.module";
+import {TeamModule} from "./team/team.module";
 
 
 export function HttpLoaderFactory(http: Http) {
@@ -42,17 +59,16 @@ export function HttpLoaderFactory(http: Http) {
 @NgModule({
   declarations: [  //declarations数组包含应用中属于该模块的组件、管道和指令的列表
     AppComponent,
-    UserNavComponent,
     HomeComponent,
-    LoginComponent,
-    UserLoginComponent,
-    UserComponent,
-    UserRegisterComponent,
     PageNotFoundComponent,
-    //FooterComponent
+    PermissionComponent,
+    UserPipe,
+    ShowPipe,
+    GlobalSearchComponent,
+    UserCenterComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule,GrowlModule,HomeModule,UserModule,UedCommonModule,
     FormsModule,ReactiveFormsModule , //<-- import the FormsModule before binding with [(ngModel)]
     HttpModule,
     BrowserAnimationsModule,
@@ -66,14 +82,14 @@ export function HttpLoaderFactory(http: Http) {
         isolate: true
       }
     ),
-    ToolsModule,
+    ToolsModule,PostModule,
     ComponentsModule,
     ProjectModule,
-    PostModule,
     HelpDocModule,
+    TeamModule,
     AppRoutingModule
   ],
-  providers: [UserLoginService],
+  providers: [UserLoginService,SearchService,MessageService,CanDeactivateGuard,CanActivateGuard,GlobalService],
   bootstrap: [AppComponent],
   entryComponents: []
 })

@@ -15,13 +15,18 @@ import { rsa }  from './rsa';
 export class UserLoginService {
   public userLoginURL = 'xplan/common/authentication';
   public preparekeyURL = 'xplan/common/preparekey';
+  public userCardURL = 'http://api.zte.com.cn/api/zte-km-icenter-address/v1/rest/user/queryUserCard';
+  public userLocalURL = 'rdk/service/app/ued/server/user/local-user';
+
+
+
   public userInfo$: Subject<User> = new Subject<User>();
   publicKey:any;
   rsa = rsa.init();
 
   constructor(
     private http:Http,
-    private route: ActivatedRoute,
+    private activeRoute: ActivatedRoute,
     private router: Router
   ){
     // RSA
@@ -33,10 +38,15 @@ export class UserLoginService {
         error => {console.error("获取公钥失败",error);}
       );
   }
-  //获取已登陆用户
+  //获取已登陆用户 Observable
   public get currentUser():Observable<User>{
     return this.userInfo$.asObservable();
   }
+  //获取已登陆用户 Object
+  public get currentUserGlobal():User{
+    return JSON.parse(localStorage.getItem("currentUser"))
+  }
+
   // 请求公钥
   requestPublicKey():any{
     return this.http
@@ -57,6 +67,31 @@ export class UserLoginService {
       })
       .map(this.transformUserObj);
   }
+  //查询用户信息
+  private requestQueryUserCard(user:User){
+    //let queryParams = new URLSearchParams();
+    //queryParams.set('curEmployeeShortId', '1');
+    //queryParams.set('employeeShortId', ''+user.uid);
+    return this.http
+      .get(this.userCardURL+`?curEmployeeShortId=''&employeeShortId=${user.uid}`)
+      .distinctUntilChanged()
+      .map((response: Response) => {
+        return response.json();
+      })
+      .map(this.transformUserCardInfo);
+  }
+  //查询用户信息
+  private requestQueryUserLocal(user:User){
+    //let queryParams = new URLSearchParams();
+    //queryParams.set('curEmployeeShortId', '1');
+    //queryParams.set('employeeShortId', ''+user.uid);
+    return this.http
+      .get(this.userLocalURL+`?uid=${user.uid}`)
+      .map((response: Response) => {
+        return response.json();
+      })
+  }
+
 
   transformUserObj(resUserData){
     let user: User={
@@ -67,14 +102,28 @@ export class UserLoginService {
       team:resUserData.contents.team,
       dept:resUserData.contents.dept,
       email:resUserData.contents.mail,
+      sex:"",
       password: "",
       confirmPassword: "",
       phoneNumber: "",
+      company:"",
+      headPicture:"",
       remeberMe:false
     };
     return user
   }
 
+  transformUserCardInfo(data:any){
+    var user = new User();
+    if(data['bo'] && data['bo'][0]){
+      user.sex=data['bo'][0].sex;
+      user.email=data['bo'][0].email;
+      if(data['bo'][0].contactList && data['bo'][0].contactList[0] && data['bo'][0].contactList[0].mainNumber){
+        user.phoneNumber= data['bo'][0].contactList[0].mainNumber;
+      }
+    }
+    return user
+  }
   // RSA加密
   private encrypt = (keyInfo, str) => {
      let key = new this.rsa.getKeyPair(keyInfo.exponent,"",keyInfo.modules);
@@ -92,17 +141,37 @@ export class UserLoginService {
       .subscribe(
         (user:User)=>{
           if(user && user.token){
-            //保存登陆用户
-            console.log(JSON.stringify(user));
-            //todo:暂时保存在localStorage,需要保存在cookie里
-            localStorage.setItem("currentUser",JSON.stringify(user));
-            this.userInfo$.next(Object.assign({},user));
+            this.requestQueryUserCard(user)
+              .mergeMap(data=>{
+                Object.assign(user,data);
+                return this.requestQueryUserLocal(user)
+              })
+              .subscribe(data=>{
+                //保存登陆用户
+                //Object.assign(user,data[0]);
+                this._shallowCopy(user,data[0]);
+                this.saveCurrentUser(user);
+              })
           }
           this.router.navigate(['/home']);
         },
         this.handleError
       );
   }
+  //todo:暂时保存在localStorage,需要保存在cookie里
+  public saveCurrentUser(user:User){
+    localStorage.setItem("currentUser",JSON.stringify(user));
+    this.userInfo$.next(Object.assign({},user));
+  }
+
+  private _shallowCopy = function(target, source) {
+    for (var key in source) {
+      if(source[key]!=''){
+        target[key] = source[key];
+      }
+    }
+    return target;
+  };
   //登陆成功
   private handleLoginSucces(user){}
   //错误处理
@@ -111,6 +180,16 @@ export class UserLoginService {
   }
   public logout():void{
     localStorage.removeItem("currentUser");
-    this.userInfo$.next(Object.assign({}));
+    this.userInfo$.next(null);
+    this.router.navigate(['/home'], { relativeTo: this.activeRoute });
   }
 }
+
+/*
+var _deepCopy= function(source) {
+  var result={};
+  for (var key in source) {
+    result[key] = typeof source[key]==='object'? _deepCopy(source[key]): source[key];
+  }
+  return result;
+};*/

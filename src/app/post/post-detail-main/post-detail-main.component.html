@@ -1,9 +1,15 @@
 <div class="m-post-detail-main">
   <div class="g-post-detail">
-    <app-post-detail></app-post-detail>
+    <app-post-detail [post]="post"></app-post-detail>
     <app-post-comment></app-post-comment>
   </div>
-  <div class="g-post-browser">
+  <div class="g-post-browser" *ngIf="post">
+    <div class="author-wrap">
+      <img [src]="post.uid | showHeadImg:2" alt="">
+      <span class="author">{{post.author}}</span>
+      <a class="follow">关注</a>
+    </div>
     <app-post-browser-user></app-post-browser-user>
+    <app-post-recommend-list></app-post-recommend-list>
   </div>
 </div>

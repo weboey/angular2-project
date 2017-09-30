@@ -1,0 +1,20 @@
+<div class="m-user-center">
+  <div class="content-box">
+    <div class="center-nav">
+      <ul>
+        <li><a routerLink="./information" routerLinkActive="active">个人信息</a></li>
+        <li><a routerLink="./post" routerLinkActive="active">我的博文</a></li>
+        <!--<li><a routerLink="./modify-password">修改密码</a></li>-->
+      </ul>
+    </div>
+
+    <div class="center-content">
+      <router-outlet></router-outlet>
+    </div>
+
+    <div class="user-center-growl">
+      <p-growl [(value)]="msgs" life="2000"></p-growl>
+    </div>
+  </div>
+</div>
+

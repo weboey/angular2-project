@@ -1,0 +1,19 @@
+<div class="m-head-picture-upload">
+  <div>
+    <div class="show-img-box" *ngIf="!toggleShow"  [class.a-flipinX]="!toggleShow">
+      <img  [src]="imgUploadUrl" alt="" >
+    </div>
+
+    <div class="upload-img-box" *ngIf="toggleShow"  [class.a-flipinX]="toggleShow">
+      <p-fileUpload name="files" url="xplan/pictures/upload" chooseLabel="修改头像"
+                    (onBeforeUpload)="onPhotoBeforeUpload()"
+                    (onUpload)="onPhotoUpload($event)" auto="auto" maxFileSize="1000000">
+        <ng-template pTemplate="content">
+          <div *ngIf="imgUploadUrl" class="img-review">
+            <img  [src]="imgUploadUrl" alt="" >
+          </div>
+        </ng-template>
+      </p-fileUpload>
+    </div>
+  </div>
+</div>

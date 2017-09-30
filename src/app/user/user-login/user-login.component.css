@@ -1,8 +1,11 @@
+
 .checkbox{
   display: flex;
   justify-content: space-between;
 }
-
+.panel-default{
+  padding: 10px;
+}
 .mg-top-015{
   margin-top: -15px;
 }

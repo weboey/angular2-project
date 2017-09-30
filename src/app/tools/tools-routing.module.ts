@@ -7,8 +7,12 @@ const ToolsRoutes: Routes = [
   {
     path: 'tools',
     children:[
-      { path: '',  component: ToolListComponent },
-      { path: ':id', component: ToolDetailComponent }
+      { path: '',  component: ToolListComponent,
+        children:[
+          {path:'', redirectTo:'11', pathMatch:'full'},
+          { path: ':id', component: ToolDetailComponent }
+        ]
+      },
     ]
   }
 ];

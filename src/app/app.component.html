@@ -1,53 +1,36 @@
 <div class="ued-root">
   <div class="ued-body">
-    <div class="g-head">
-      <div class="u-log">
-        <strong>UED</strong>
-        <p>
-          <em>中兴</em>
-          <em>大数据</em>
-        </p>
+    <div class="g-head ued-top-menu" [class.home-active]="isHomePage">
+      <div class="top-menu-box">
+        <ued-top-menu></ued-top-menu>
       </div>
-      <nav>
-        <ul class="nav-tabs">
-          <li><a routerLink="/home" routerLinkActive="active">首页</a></li>
-          <li *ngIf="currentUser?.userName"><a routerLink="/projects" routerLinkActive="active">项目</a></li>
-          <li><a routerLink="/components" routerLinkActive="active">组件</a></li>
-          <li><a routerLink="/tools" routerLinkActive="active">工具</a></li>
-          <li><a routerLink="/post" routerLinkActive="active">博文</a></li>
-          <li><a routerLink="/null" routerLinkActive="active">团队</a></li>
-        </ul>
-      </nav>
-      <form class="navbar-form">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="搜索项目，规范与组件">
-        </div>
-        <button class="btn" style="border:none">
-          <span class="glyphicon glyphicon-search" style="font-size: 18px"></span>
-        </button>
-      </form>
       <ul class="nav navbar-nav">
-        <li>
-          <a routerLink="/help" routerLinkActive="active" class="glyphicon glyphicon-question-sign" style="font-size: 18px" title="帮助文档"></a>
-        </li>
-        <li *ngIf="!currentUser?.userName">
-          <ued-user></ued-user>
-        </li>
-        <li *ngIf="false">
-          <a class="glyphicon glyphicon-plus-sign" style="font-size: 18px"></a>
-          <div class="heath">
-            <app-user-nav [navLists]="data[1]"></app-user-nav>
+        <li *ngIf="searchIf" class="closeInput">
+          <a class="searchIcon "><i class="fa fa-search"></i></a>
+          <a class="closeIcon "  (click)="clearInput($event)"><i class="fa fa-times"></i></a>
+          <input  placeholder="搜索项目，规范与组件" [(ngModel)]="value"  [formControl]="titleFilter">
+          <div class="searchDropDown" [hidden]="dropDown">
+            <ul (click)="dropDown = true">
+              <li title="[{{result?.tag}}]&nbsp;-&nbsp;{{result?.name}}" *ngFor="let result of resultShow.slice(0,4)"><a class="self" [routerLink]="[result?.path,result?.id]" routerLinkActive="active">[{{result?.tag}}]&nbsp;-&nbsp;{{result?.name}}</a></li>
+              <li (click)="msgSend({'keyword':keyword,'target':tag});" class="mainColor" [hidden] = "resultShow?.length<=4"><a  class="self" [routerLink]="['/search']" routerLinkActive="active">更多{{tag=="all"?"内容":resultShow[0]?.tag}}…</a></li>
+            </ul>
+            <section *ngIf="otherModules?.length>0">
+              <h6>其它模块</h6>
+              <ul >
+                <li (click)="msgSend({'keyword':keyword,'target':otherModule.tagEn})" *ngFor="let otherModule of otherModules"><a  class="self" [routerLink]="['/search']">[{{otherModule.tag}}]&nbsp;-&nbsp;{{otherModule.tatolNum}}条相关信息</a></li>
+              </ul>
+            </section>
           </div>
         </li>
-        <li *ngIf="currentUser?.userName">
-          <a class="fa fa-user-circle-o" style="font-size: 18px"></a>
-          <div class="heath">
-            <app-user-nav [navLists]="data[2]"></app-user-nav>
-          </div>
+        <li *ngIf="!searchIf">
+          <a class="glyphicon glyphicon-search backg" (click)="searchShow($event)" style="font-size: 18px"></a>
         </li>
       </ul>
-    </div>
 
+      <div class="user-box">
+        <ued-user-main></ued-user-main>
+      </div>
+    </div>
     <div class="g-main">
       <router-outlet></router-outlet>
     </div>

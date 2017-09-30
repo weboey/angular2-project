@@ -11,6 +11,7 @@
         <h3>Implements</h3>
     </p>
     <p class="comment">
+                <code><a href="https://angular.io/docs/ts/latest/api/forms/index/ControlValueAccessor-interface.html" target="_blank" >ControlValueAccessor</a></code>
                 <code><a href="https://angular.io/docs/ts/latest/api/core/index/OnInit-interface.html" target="_blank" >OnInit</a></code>
     </p>
 
@@ -34,6 +35,14 @@
 
 
 
+            <tr>
+                <td class="col-md-3">providers</td>
+                <td class="col-md-9">
+                    <code>
+                        { provide: NG_VALUE_ACCESSOR, useExisting: , multi:  }
+                    </code>
+                </td>
+            </tr>
 
 
             <tr>
@@ -41,10 +50,6 @@
                 <td class="col-md-9"><code>jigsaw-switch</code></td>
             </tr>
 
-            <tr>
-                <td class="col-md-3">styleUrls</td>
-                <td class="col-md-9"><code>switch.scss</code></td>
-            </tr>
 
 
 
@@ -59,18 +64,91 @@
 </section>
 
     <section>
+        <h3 id="index">Index</h3>
+        <table class="table table-sm table-bordered index-table">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <span class="modifier">Public</span> <a href="#registerOnChange">registerOnChange</a>
+                            </li>
+                            <li>
+                                <span class="modifier">Public</span> <a href="#registerOnTouched">registerOnTouched</a>
+                            </li>
+                            <li>
+                                <span class="modifier">Public</span> <a href="#writeValue">writeValue</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#checked">checked</a>
+                            </li>
+                            <li>
+                                <a href="#disabled">disabled</a>
+                            </li>
+                            <li>
+                                <a href="#offLabel">offLabel</a>
+                            </li>
+                            <li>
+                                <a href="#onLabel">onLabel</a>
+                            </li>
+                            <li>
+                                <a href="#size">size</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#change">change</a>
+                            </li>
+                            <li>
+                                <a href="#checkedChange">checkedChange</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+
+    <section>
         <h3 id="inputs">Inputs</h3>
             <table class="table table-sm table-bordered">
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="checked"></a>
                             <code>checked</code>
                         </td>
                         <td class="col-md-10">
                             <div><p>选中 默认值false;</p>
 </div>
                               <p>
-                                <em>Type:</em>    <code>boolean</code>
+                                <em>Type:</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
                               </p>
                         </td>
@@ -81,13 +159,14 @@
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="disabled"></a>
                             <code>disabled</code>
                         </td>
                         <td class="col-md-10">
                             <div><p>是否禁用 类型 boolean 默认值 false;</p>
 </div>
                               <p>
-                                <em>Type:</em>    <code>boolean</code>
+                                <em>Type:</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
                               </p>
                         </td>
@@ -98,13 +177,14 @@
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="offLabel"></a>
                             <code>offLabel</code>
                         </td>
                         <td class="col-md-10">
                             <div><p>开关状态关闭时显示的文本(只支持字符串)</p>
 </div>
                               <p>
-                                <em>Type:</em>    <code>any</code>
+                                <em>Type:</em>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                               </p>
                         </td>
@@ -115,13 +195,14 @@
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="onLabel"></a>
                             <code>onLabel</code>
                         </td>
                         <td class="col-md-10">
                             <div><p>开关状态打开时的文本.(只支持字符串)</p>
 </div>
                               <p>
-                                <em>Type:</em>    <code>any</code>
+                                <em>Type:</em>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                               </p>
                         </td>
@@ -132,13 +213,14 @@
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="size"></a>
                             <code>size</code>
                         </td>
                         <td class="col-md-10">
                             <div><p>size 默认 &#39;default&#39; 可选值 ‘small’</p>
 </div>
                               <p>
-                                <em>Type:</em>    <code>string</code>
+                                <em>Type:</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 
                               </p>
                             <p>
@@ -156,6 +238,7 @@
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="change"></a>
                             <code>change</code>
                         </td>
                         <td class="col-md-10">
@@ -169,6 +252,7 @@
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="checkedChange"></a>
                             <code>checkedChange</code>
                         </td>
                         <td class="col-md-10">
@@ -183,5 +267,183 @@
     </section>
 
 
+
+    <section>
+        
+            <h3 id="methods">
+                Methods
+            </h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="registerOnChange"></a>
+                            <span class="name"><b><span class="modifier">Public</span> registerOnChange</b><a href="#registerOnChange"><span class="fa fa-link"></span></a></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <span class="modifier-icon fa fa-reset"></span>
+                            <code>registerOnChange(fn: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                        </td>
+                    </tr>
+    
+    
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                    <td>Type</td>
+                                                    <td>Optional</td>
+                                                    <td>Description</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                      <td>fn</td>
+                                                      <td>
+                                                              <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+    
+                                </div>
+                                    <div class="io-description">
+                                        
+                                    </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="registerOnTouched"></a>
+                            <span class="name"><b><span class="modifier">Public</span> registerOnTouched</b><a href="#registerOnTouched"><span class="fa fa-link"></span></a></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <span class="modifier-icon fa fa-reset"></span>
+                            <code>registerOnTouched(fn: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                        </td>
+                    </tr>
+    
+    
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                    <td>Type</td>
+                                                    <td>Optional</td>
+                                                    <td>Description</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                      <td>fn</td>
+                                                      <td>
+                                                              <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+    
+                                </div>
+                                    <div class="io-description">
+                                        
+                                    </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="writeValue"></a>
+                            <span class="name"><b><span class="modifier">Public</span> writeValue</b><a href="#writeValue"><span class="fa fa-link"></span></a></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <span class="modifier-icon fa fa-reset"></span>
+                            <code>writeValue(value: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                        </td>
+                    </tr>
+    
+    
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                    <td>Type</td>
+                                                    <td>Optional</td>
+                                                    <td>Description</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                      <td>value</td>
+                                                      <td>
+                                                              <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+    
+                                </div>
+                                    <div class="io-description">
+                                        
+                                    </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </section>
 
 </div>

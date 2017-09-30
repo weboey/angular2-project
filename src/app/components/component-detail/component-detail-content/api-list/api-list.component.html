@@ -1,0 +1,10 @@
+<div class="m-api-list">
+  <input type="text" placeholder="Search" class="form-control" [(ngModel)]="search">
+  <div class="api-list-container">
+    <ul>
+      <li *ngFor="let apiItem of apiList | filter:search">
+        <a (click)="gotoApiDetail(apiItem.name)">{{apiItem.name}}</a>
+      </li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,95 @@
+.m-post-list{
+  height: 100%;
+  overflow-y: auto;
+  padding-right: 8px;
+  .g-post-list-box{
+    height: 100%;
+    .post-list-group{
+      margin: 0 auto;
+      column-width: 520px;
+      column-gap:18px;
+      break-inside:avoid;
+      &>li{
+        margin-bottom: 18px;
+        break-inside: avoid;
+        a{
+          display: block;
+          .post-item{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-content: space-around;
+            background-color: #fff;
+            box-shadow: 1px 1px 4px -2px rgba(0, 0, 0, 0.3), -1px -1px 2px -1px rgba(0, 0, 0, 0.3);
+            img{
+              max-height: 380px;
+              max-width: 100%;
+            }
+            .footer-user{
+              img{
+                width: 48px;
+                height: 48px;
+                border-radius: 50%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.post-item .post-title,.post-item .post-desc{
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+}
+.post-item>:not(:first-child){
+  padding: 0 20px;
+}
+.f-cb:after{
+  display:block;visibility:hidden;clear:both;height:0;overflow:hidden;content:'.';
+}
+
+.post-item .post-footer-icon{
+  display: flex;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  justify-content: space-between;
+  align-content: center;
+}
+.post-item .post-footer-icon span{
+  line-height: 50px;
+}
+
+.f-top-line{
+  position: relative;
+}
+.f-top-line:after{
+  content: "";
+  position: absolute;
+  top: 0;
+  height: 1px;
+  width: 94%;
+  background-color: silver;
+}
+
+/* Layout */
+.stack {  position: relative; z-index: 10; }
+
+.stack:last-of-type { margin-right: 0; }
+
+/* Stacks creted by the use of generated content */
+.stack:before, .stack:after {
+  content: "";
+  width: 100%;
+  margin: 0 auto;
+  height: 100%;
+  position: absolute;
+  border-bottom: 2px solid #fff;
+  left: 0;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4),0 0px 0px rgba(0, 0, 0, 0.4);
+  transition: 0.3s all ease-out;
+}
+.stack:before { top: 3px; z-index: -10; } /* 1st element in stack (behind image) */
+.stack:after { top: 6px; z-index: -20; } /* 2nd element in stack (behind image) */

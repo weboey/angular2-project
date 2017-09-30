@@ -1,0 +1,762 @@
+<html><head><meta charset="UTF-8"></head><body><form id="mainForm" method="post" action="https://embed.plnkr.co?show=preview" target="_self"><input type="hidden" name="entries[app/app.component.html][encoding]" value="utf8" />
+<input type="hidden" name="entries[app/app.component.html][content]" value="&lt;jigsaw-table style=&quot;margin-bottom: 10px;&quot; maxHeight=&quot;400px&quot; [data]=&quot;pageable&quot; [columnDefines]=&quot;_columns&quot; [additionalColumnDefines]=&quot;_additionalColumns&quot;&gt;&lt;/jigsaw-table&gt;
+&lt;jigsaw-pagination
+        [total]=&quot;pageable.pagingInfo.totalRecord&quot;
+        [(pageSize)]=&quot;pageable.pagingInfo.pageSize&quot;
+        [(current)]=&quot;pageable.pagingInfo.currentPage&quot;
+        [pageSizeOptions]=&quot;[5, 10, 20]&quot;
+        [searchable]=&quot;true&quot;
+        [showQuickJumper]=&quot;true&quot;
+        (currentChange)=&quot;getCurrentPage()&quot;
+        (pageSizeChange)=&quot;getPageSize()&quot;
+&gt;&lt;/jigsaw-pagination&gt;
+" />
+<input type="hidden" name="entries[app/app.component.ts][encoding]" value="utf8" />
+<input type="hidden" name="entries[app/app.component.ts][content]" value="import {
+    AdditionalColumnDefine, ColumnDefine, PageableTableData,
+    SortAs, SortOrder, TableCellNum,
+} from &quot;@rdkmaster/jigsaw&quot;;
+import {Component, Renderer2, ViewContainerRef} from &quot;@angular/core&quot;;
+import {Http} from &quot;@angular/http&quot;;
+
+@Component({
+    selector: &quot;jigsaw-live-demo&quot;,
+    templateUrl: &quot;./app.component.html&quot;
+})
+export class TableAddIDWithPagingComponent {
+    pageable: PageableTableData;
+
+    constructor(public viewContainerRef: ViewContainerRef,
+                public renderer: Renderer2, http: Http) {
+        this.pageable = new PageableTableData(http, {
+            url: &#x27;http://localhost:4200/mock-data/array-collection/paging-data.json&#x27;,
+            params: {aa: 11, bb: 22}, method: &#x27;get&#x27;
+        });
+        this.pageable.onAjaxComplete(() =&gt; {
+            console.log(this.pageable);
+        });
+        this.pageable.fromAjax();
+    }
+
+    getCurrentPage() {
+        this.pageable.fromAjax();
+    }
+
+    getPageSize() {
+        this.pageable.fromAjax();
+    }
+
+    _columns: ColumnDefine[] = [{
+        target: &#x27;id&#x27;,
+        header: {
+            sortable: true,
+            sortAs: SortAs.number,
+            defaultSortOrder: SortOrder.asc,
+        }
+    }];
+
+    _additionalColumns: AdditionalColumnDefine[] = [{
+        pos: 0,
+        header: {
+            text: &#x27;#&#x27;
+        },
+        cell: {
+            renderer: TableCellNum
+        }
+    }]
+}
+" />
+<input type="hidden" name="entries[app/app.module.ts][encoding]" value="utf8" />
+<input type="hidden" name="entries[app/app.module.ts][content]" value="import {BrowserModule} from &#x27;@angular/platform-browser&#x27;;
+import {BrowserAnimationsModule} from &#x27;@angular/platform-browser/animations&#x27;;
+import {HttpModule} from &#x27;@angular/http&#x27;;
+import {
+    JigsawPaginationModule, JigsawTableModule,
+} from &quot;@rdkmaster/jigsaw&quot;;
+import { NgModule } from &#x27;@angular/core&#x27;;
+import { TableAddIDWithPagingComponent }  from &#x27;./app.component&#x27;;
+
+@NgModule({
+    imports: [
+        BrowserModule, BrowserAnimationsModule, HttpModule,
+        JigsawTableModule, JigsawPaginationModule
+    ],
+    declarations: [ TableAddIDWithPagingComponent ],
+    bootstrap: [ TableAddIDWithPagingComponent ]
+})
+export class AppModule {}
+" />
+<input type="hidden" name="entries[mock-data/array-collection/paging-data.json][encoding]" value="utf8" />
+<input type="hidden" name="entries[mock-data/array-collection/paging-data.json][content]" value="{
+    &quot;header&quot;: [&quot;ID&quot;, &quot;Name&quot;],
+    &quot;field&quot;: [&quot;id&quot;, &quot;name&quot;],
+    &quot;data&quot;: [
+        [
+            &quot;1&quot;,
+            &quot;name1&quot;
+        ],
+        [
+            &quot;2&quot;,
+            &quot;name2&quot;
+        ],
+        [
+            &quot;3&quot;,
+            &quot;name3&quot;
+        ],
+        [
+            &quot;4&quot;,
+            &quot;name4&quot;
+        ],
+        [
+            &quot;5&quot;,
+            &quot;name5&quot;
+        ],
+        [
+            &quot;6&quot;,
+            &quot;name6&quot;
+        ],
+        [
+            &quot;7&quot;,
+            &quot;name7&quot;
+        ],
+        [
+            &quot;8&quot;,
+            &quot;name8&quot;
+        ],
+        [
+            &quot;9&quot;,
+            &quot;name9&quot;
+        ],
+        [
+            &quot;10&quot;,
+            &quot;name10&quot;
+        ],
+        [
+            &quot;11&quot;,
+            &quot;name11&quot;
+        ],
+        [
+            &quot;12&quot;,
+            &quot;name12&quot;
+        ],
+        [
+            &quot;13&quot;,
+            &quot;name13&quot;
+        ],
+        [
+            &quot;14&quot;,
+            &quot;name14&quot;
+        ],
+        [
+            &quot;15&quot;,
+            &quot;name15&quot;
+        ],
+        [
+            &quot;16&quot;,
+            &quot;name16&quot;
+        ],
+        [
+            &quot;17&quot;,
+            &quot;name17&quot;
+        ],
+        [
+            &quot;18&quot;,
+            &quot;name18&quot;
+        ],
+        [
+            &quot;19&quot;,
+            &quot;name19&quot;
+        ],
+        [
+            &quot;20&quot;,
+            &quot;name20&quot;
+        ],
+        [
+            &quot;21&quot;,
+            &quot;name21&quot;
+        ],
+        [
+            &quot;22&quot;,
+            &quot;name22&quot;
+        ],
+        [
+            &quot;23&quot;,
+            &quot;name23&quot;
+        ],
+        [
+            &quot;24&quot;,
+            &quot;name24&quot;
+        ],
+        [
+            &quot;25&quot;,
+            &quot;name25&quot;
+        ],
+        [
+            &quot;26&quot;,
+            &quot;name26&quot;
+        ],
+        [
+            &quot;27&quot;,
+            &quot;name27&quot;
+        ],
+        [
+            &quot;28&quot;,
+            &quot;name28&quot;
+        ],
+        [
+            &quot;29&quot;,
+            &quot;name29&quot;
+        ],
+        [
+            &quot;30&quot;,
+            &quot;name30&quot;
+        ],
+        [
+            &quot;31&quot;,
+            &quot;name31&quot;
+        ],
+        [
+            &quot;32&quot;,
+            &quot;name32&quot;
+        ],
+        [
+            &quot;33&quot;,
+            &quot;name33&quot;
+        ],
+        [
+            &quot;34&quot;,
+            &quot;name34&quot;
+        ],
+        [
+            &quot;35&quot;,
+            &quot;name35&quot;
+        ],
+        [
+            &quot;36&quot;,
+            &quot;name36&quot;
+        ],
+        [
+            &quot;37&quot;,
+            &quot;name37&quot;
+        ],
+        [
+            &quot;38&quot;,
+            &quot;name38&quot;
+        ],
+        [
+            &quot;39&quot;,
+            &quot;name39&quot;
+        ],
+        [
+            &quot;40&quot;,
+            &quot;name40&quot;
+        ],
+        [
+            &quot;41&quot;,
+            &quot;name41&quot;
+        ],
+        [
+            &quot;42&quot;,
+            &quot;name42&quot;
+        ],
+        [
+            &quot;43&quot;,
+            &quot;name43&quot;
+        ],
+        [
+            &quot;44&quot;,
+            &quot;name44&quot;
+        ],
+        [
+            &quot;45&quot;,
+            &quot;name45&quot;
+        ],
+        [
+            &quot;46&quot;,
+            &quot;name46&quot;
+        ],
+        [
+            &quot;47&quot;,
+            &quot;name47&quot;
+        ],
+        [
+            &quot;48&quot;,
+            &quot;name48&quot;
+        ],
+        [
+            &quot;49&quot;,
+            &quot;name49&quot;
+        ],
+        [
+            &quot;50&quot;,
+            &quot;name50&quot;
+        ],
+        [
+            &quot;51&quot;,
+            &quot;name51&quot;
+        ],
+        [
+            &quot;52&quot;,
+            &quot;name52&quot;
+        ],
+        [
+            &quot;53&quot;,
+            &quot;name53&quot;
+        ],
+        [
+            &quot;54&quot;,
+            &quot;name54&quot;
+        ],
+        [
+            &quot;55&quot;,
+            &quot;name55&quot;
+        ],
+        [
+            &quot;56&quot;,
+            &quot;name56&quot;
+        ],
+        [
+            &quot;57&quot;,
+            &quot;name57&quot;
+        ],
+        [
+            &quot;58&quot;,
+            &quot;name58&quot;
+        ],
+        [
+            &quot;59&quot;,
+            &quot;name59&quot;
+        ],
+        [
+            &quot;60&quot;,
+            &quot;name60&quot;
+        ],
+        [
+            &quot;61&quot;,
+            &quot;name61&quot;
+        ],
+        [
+            &quot;62&quot;,
+            &quot;name62&quot;
+        ],
+        [
+            &quot;63&quot;,
+            &quot;name63&quot;
+        ],
+        [
+            &quot;64&quot;,
+            &quot;name64&quot;
+        ],
+        [
+            &quot;65&quot;,
+            &quot;name65&quot;
+        ],
+        [
+            &quot;66&quot;,
+            &quot;name66&quot;
+        ],
+        [
+            &quot;67&quot;,
+            &quot;name67&quot;
+        ],
+        [
+            &quot;68&quot;,
+            &quot;name68&quot;
+        ],
+        [
+            &quot;69&quot;,
+            &quot;name69&quot;
+        ],
+        [
+            &quot;70&quot;,
+            &quot;name70&quot;
+        ],
+        [
+            &quot;71&quot;,
+            &quot;name71&quot;
+        ],
+        [
+            &quot;72&quot;,
+            &quot;name72&quot;
+        ],
+        [
+            &quot;73&quot;,
+            &quot;name73&quot;
+        ],
+        [
+            &quot;74&quot;,
+            &quot;name74&quot;
+        ],
+        [
+            &quot;75&quot;,
+            &quot;name75&quot;
+        ],
+        [
+            &quot;76&quot;,
+            &quot;name76&quot;
+        ],
+        [
+            &quot;77&quot;,
+            &quot;name77&quot;
+        ],
+        [
+            &quot;78&quot;,
+            &quot;name78&quot;
+        ],
+        [
+            &quot;79&quot;,
+            &quot;name79&quot;
+        ],
+        [
+            &quot;80&quot;,
+            &quot;name80&quot;
+        ],
+        [
+            &quot;81&quot;,
+            &quot;name81&quot;
+        ],
+        [
+            &quot;82&quot;,
+            &quot;name82&quot;
+        ],
+        [
+            &quot;83&quot;,
+            &quot;name83&quot;
+        ],
+        [
+            &quot;84&quot;,
+            &quot;name84&quot;
+        ],
+        [
+            &quot;85&quot;,
+            &quot;name85&quot;
+        ],
+        [
+            &quot;86&quot;,
+            &quot;name86&quot;
+        ],
+        [
+            &quot;87&quot;,
+            &quot;name87&quot;
+        ],
+        [
+            &quot;88&quot;,
+            &quot;name88&quot;
+        ],
+        [
+            &quot;89&quot;,
+            &quot;name89&quot;
+        ],
+        [
+            &quot;90&quot;,
+            &quot;name90&quot;
+        ],
+        [
+            &quot;91&quot;,
+            &quot;name91&quot;
+        ],
+        [
+            &quot;92&quot;,
+            &quot;name92&quot;
+        ],
+        [
+            &quot;93&quot;,
+            &quot;name93&quot;
+        ],
+        [
+            &quot;94&quot;,
+            &quot;name94&quot;
+        ],
+        [
+            &quot;95&quot;,
+            &quot;name95&quot;
+        ],
+        [
+            &quot;96&quot;,
+            &quot;name96&quot;
+        ],
+        [
+            &quot;97&quot;,
+            &quot;name97&quot;
+        ],
+        [
+            &quot;98&quot;,
+            &quot;name98&quot;
+        ],
+        [
+            &quot;99&quot;,
+            &quot;name99&quot;
+        ],
+        [
+            &quot;100&quot;,
+            &quot;name100&quot;
+        ]
+    ]
+}
+" />
+<input type="hidden" name="entries[index.html][encoding]" value="utf8" />
+<input type="hidden" name="entries[index.html][content]" value="&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Jigsaw Live Demo&lt;/title&gt;
+    &lt;script&gt;document.write(&#x27;&lt;base href=&quot;&#x27; + document.location + &#x27;&quot; /&gt;&#x27;);&lt;/script&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/bootstrap/dist/css/bootstrap.min.css&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/font-awesome/css/font-awesome.min.css&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/@rdkmaster/icon-font/css/iconfont.css&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/ztree/css/zTreeStyle/zTreeStyle.css&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/@rdkmaster/jigsaw/prebuilt-themes/zte.css&quot;&gt;
+
+    &lt;style&gt;
+      html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      /* common start */
+      /* 容器 */
+      .live-demo-wrap {
+          padding: 10px;
+      }
+
+      /* 大标题 */
+      .live-demo-wrap h2 {
+          margin-bottom: 40px;
+          color: #333;
+          font-size: 24px;
+          font-weight: 700;
+      }
+
+      /* demo容器 */
+      .live-demo-wrap .live-demo {
+          margin-bottom: 30px;
+          padding-left: 10px;
+      }
+
+      /* demo标题 */
+      .live-demo h3 {
+          margin: 0 0 10px -10px;
+          color: #333;
+          font-size: 18px;
+          padding: 2px 14px;
+          position: relative;
+          border-left: 1px solid #c7254e;
+      }
+      .live-demo h3:before{
+          position: absolute;
+          left: -1px;
+          top: 0;
+          content: &#x27;&#x27;;
+          border-style: solid;
+          border-width: 6px 10px;
+          border-color: transparent transparent transparent #c7254e;
+      }
+
+      /* demo文字描述 */
+      .live-demo p.comment {
+          margin-bottom: 10px;
+          color: #666;
+          font-size: 14px;
+      }
+
+      /* demo消息文字 */
+      .live-demo p.message {
+          margin-top: 10px;
+          margin-bottom: 0;
+          color: #999;
+      }
+
+      /* demo消息高亮字 */
+      .live-demo p.message span {
+          margin: 0 4px;
+          color: #666;
+      }
+
+      /* toggle */
+      .live-demo .toggle {
+          padding-top: 10px;
+          color: #999;
+      }
+      .live-demo .toggle label{
+          margin-right: 10px;
+          font-weight: normal;
+      }
+
+      /* demo code */
+      .live-demo code {
+          padding: 2px 4px;
+          margin: 0;
+          font-size: 85%;
+          background-color: rgba(27, 31, 35, 0.05);
+          border-radius: 3px;
+      }
+      /* common end */
+    &lt;/style&gt;
+
+    &lt;!-- 引入Jigsaw需要的依赖，这些依赖没有出umd包，只能配置在这里 --&gt;
+    &lt;script src=&quot;https://unpkg.com/jquery/dist/jquery.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://unpkg.com/jquery-mousewheel/jquery.mousewheel.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://unpkg.com/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://unpkg.com/moment/min/moment.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://unpkg.com/bootstrap/dist/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://unpkg.com/ztree/js/jquery.ztree.all.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://unpkg.com/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js&quot;&gt;&lt;/script&gt;
+
+    &lt;!-- Polyfills --&gt;
+    &lt;script src=&quot;https://unpkg.com/core-js/client/shim.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://unpkg.com/zone.js@0.8.5?main=browser&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://unpkg.com/systemjs@0.19.39/dist/system.src.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;systemjs.config.js&quot;&gt;&lt;/script&gt;
+    &lt;script&gt;
+      System.import(&#x27;main.js&#x27;).catch(function(err){ console.error(err); });
+    &lt;/script&gt;
+  &lt;/head&gt;
+
+  &lt;body&gt;
+    &lt;jigsaw-live-demo&gt;
+      &lt;h3 style=&quot;padding: 6px&quot;&gt;Jigsaw live demo is being loaded...&lt;/h3&gt;
+      &lt;h4 style=&quot;padding: 6px&quot;&gt;Visit &lt;a href=&quot;http://rdk.zte.com.cn&quot; target=&quot;_blank&quot;&gt;http://rdk.zte.com.cn&lt;/a&gt; for more detail.&lt;/h4&gt;
+      &lt;p&gt;We are suffering some error if this message remains for minutes, will you please send us a report by &lt;a href=&quot;https://github.com/rdkmaster/jigsaw/issues/new&quot;&gt;submitting an issue&lt;/a&gt; with the error message. By the way, you can copy the error message in the console of your browser.&lt;/p&gt;
+    &lt;/jigsaw-live-demo&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+" />
+<input type="hidden" name="entries[main.ts][encoding]" value="utf8" />
+<input type="hidden" name="entries[main.ts][content]" value="import { platformBrowserDynamic } from &#x27;@angular/platform-browser-dynamic&#x27;;
+
+import { AppModule } from &#x27;./app/app.module&#x27;;
+
+platformBrowserDynamic().bootstrapModule(AppModule);" />
+<input type="hidden" name="entries[systemjs.config.js][encoding]" value="utf8" />
+<input type="hidden" name="entries[systemjs.config.js][content]" value="(function (global) {
+  System.config({
+    // DEMO ONLY! REAL CODE SHOULD NOT TRANSPILE IN THE BROWSER
+    transpiler: &#x27;ts&#x27;,
+    typescriptOptions: {
+      // Copy of compiler options in standard tsconfig.json
+      &quot;target&quot;: &quot;es5&quot;,
+      &quot;module&quot;: &quot;commonjs&quot;,
+      &quot;moduleResolution&quot;: &quot;node&quot;,
+      &quot;sourceMap&quot;: true,
+      &quot;emitDecoratorMetadata&quot;: true,
+      &quot;experimentalDecorators&quot;: true,
+      &quot;lib&quot;: [&quot;es2015&quot;, &quot;dom&quot;],
+      &quot;noImplicitAny&quot;: true,
+      &quot;suppressImplicitAnyIndexErrors&quot;: true
+    },
+    meta: {
+      &#x27;typescript&#x27;: {
+        &quot;exports&quot;: &quot;ts&quot;
+      }
+    },
+    paths: {
+      // paths serve as alias
+      &#x27;npm:&#x27;: &#x27;https://unpkg.com/&#x27;
+    },
+    // map tells the System loader where to look for things
+    map: {
+      // our app is within the app folder
+      &#x27;app&#x27;: &#x27;app&#x27;,
+
+      // angular bundles
+      &#x27;@angular/animations&#x27;:                  &#x27;npm:@angular/animations/bundles/animations.umd.js&#x27;,
+      &#x27;@angular/animations/browser&#x27;:          &#x27;npm:@angular/animations/bundles/animations-browser.umd.js&#x27;,
+      &#x27;@angular/core&#x27;:                        &#x27;npm:@angular/core/bundles/core.umd.js&#x27;,
+      &#x27;@angular/common&#x27;:                      &#x27;npm:@angular/common/bundles/common.umd.js&#x27;,
+      &#x27;@angular/compiler&#x27;:                    &#x27;npm:@angular/compiler/bundles/compiler.umd.js&#x27;,
+      &#x27;@angular/platform-browser&#x27;:            &#x27;npm:@angular/platform-browser/bundles/platform-browser.umd.js&#x27;,
+      &#x27;@angular/platform-browser/animations&#x27;: &#x27;npm:@angular/platform-browser/bundles/platform-browser-animations.umd.js&#x27;,
+      &#x27;@angular/platform-browser-dynamic&#x27;:    &#x27;npm:@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js&#x27;,
+      &#x27;@angular/http&#x27;:                        &#x27;npm:@angular/http/bundles/http.umd.js&#x27;,
+      &#x27;@angular/router&#x27;:                      &#x27;npm:@angular/router/bundles/router.umd.js&#x27;,
+      &#x27;@angular/router/upgrade&#x27;:              &#x27;npm:@angular/router/bundles/router-upgrade.umd.js&#x27;,
+      &#x27;@angular/forms&#x27;:                       &#x27;npm:@angular/forms/bundles/forms.umd.js&#x27;,
+      &#x27;@angular/upgrade&#x27;:                     &#x27;npm:@angular/upgrade/bundles/upgrade.umd.js&#x27;,
+      &#x27;@angular/upgrade/static&#x27;:              &#x27;npm:@angular/upgrade/bundles/upgrade-static.umd.js&#x27;,
+
+      // other libraries
+      &#x27;rxjs&#x27;:                       &#x27;npm:rxjs@5.0.1&#x27;,
+      &#x27;angular-in-memory-web-api&#x27;:  &#x27;npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js&#x27;,
+      &#x27;ts&#x27;:                         &#x27;npm:plugin-typescript@5.2.7/lib/plugin.js&#x27;,
+      &#x27;typescript&#x27;:                 &#x27;npm:typescript@2.3.2/lib/typescript.js&#x27;,
+
+      // jigsaw needs these
+      &quot;@ngx-translate/core&quot;:        &#x27;npm:@ngx-translate/core&#x27;,
+      &quot;@ngx-translate/http-loader&quot;: &#x27;npm:@ngx-translate/http-loader&#x27;,
+      &quot;echarts&quot;:                    &#x27;npm:echarts@3.5.2/dist/echarts.js&#x27;,
+      &#x27;@rdkmaster/jigsaw&#x27;:          &#x27;npm:@rdkmaster/jigsaw&#x27;
+    },
+    // packages tells the System loader how to load when no filename and/or no extension
+    packages: {
+      app: {
+        main: &#x27;./main.ts&#x27;,
+        defaultExtension: &#x27;ts&#x27;,
+        meta: {
+          &#x27;./*.ts&#x27;: {
+            loader: &#x27;systemjs-angular-loader.js&#x27;
+          }
+        }
+      },
+      rxjs: {
+        defaultExtension: &#x27;js&#x27;
+      }
+    }
+  });
+
+})(this);" />
+<input type="hidden" name="entries[systemjs-angular-loader.js][encoding]" value="utf8" />
+<input type="hidden" name="entries[systemjs-angular-loader.js][content]" value="var templateUrlRegex = /templateUrl\s*:(\s*[&#x27;&quot;\`](.*?)[&#x27;&quot;\`]\s*)/gm;
+var stylesRegex = /styleUrls *:(\s*\[[^\]]*?\])/g;
+var stringRegex = /([&#x27;\`&quot;])((?:[^\\]\\\1|.)*?)\1/g;
+
+module.exports.translate = function(load){
+  if (load.source.indexOf(&#x27;moduleId&#x27;) != -1) return load;
+
+  var url = document.createElement(&#x27;a&#x27;);
+  url.href = load.address;
+
+  var basePathParts = url.pathname.split(&#x27;/&#x27;);
+
+  basePathParts.pop();
+  var basePath = basePathParts.join(&#x27;/&#x27;);
+
+  var baseHref = document.createElement(&#x27;a&#x27;);
+  baseHref.href = this.baseURL;
+  baseHref = baseHref.pathname;
+
+  if (!baseHref.startsWith(&#x27;/base/&#x27;)) { // it is not karma
+    basePath = basePath.replace(baseHref, &#x27;&#x27;);
+  }
+
+  load.source = load.source
+    .replace(templateUrlRegex, function(match, quote, url){
+      var resolvedUrl = url;
+
+      if (url.startsWith(&#x27;.&#x27;)) {
+        resolvedUrl = basePath + url.substr(1);
+      }
+
+      return &#x27;templateUrl: &quot;&#x27; + resolvedUrl + &#x27;&quot;&#x27;;
+    })
+    .replace(stylesRegex, function(match, relativeUrls) {
+      var urls = [];
+
+      while ((match = stringRegex.exec(relativeUrls)) !== null) {
+        if (match[2].startsWith(&#x27;.&#x27;)) {
+          urls.push(&#x27;&quot;&#x27; + basePath + match[2].substr(1) + &#x27;&quot;&#x27;);
+        } else {
+          urls.push(&#x27;&quot;&#x27; + match[2] + &#x27;&quot;&#x27;);
+        }
+      }
+
+      return &quot;styleUrls: [&quot; + urls.join(&#x27;, &#x27;) + &quot;]&quot;;
+    });
+
+  return load;
+};" />
+<input type="hidden" name="title" value="table/addIDWithPaging - Jigsaw Live Demo - Visit http://rdk.zte.com.cn for more detail." /><input type="hidden" name="tags[0]" value="Jigsaw" /><input type="hidden" name="tags[1]" value="component" /><input type="hidden" name="tags[2]" value="zte" /><input type="hidden" name="tags[3]" value="rdk" /><input type="hidden" name="tags[4]" value="angular" /><input type="hidden" name="tags[5]" value="typescript" /><input type="hidden" name="source[type]" value="Jigsaw Live Demo" /><input type="hidden" name="source[url]" value="http://rdk.zte.com.cn" /></form><script>document.getElementById("mainForm").submit();</script></body></html>

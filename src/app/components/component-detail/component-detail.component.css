@@ -1,16 +1,16 @@
 .m-component-detail{
+  height: 100%;
   margin-left: 10px;
-  background-color: #fff;
-}
-.m-component-detail{
-  margin-left: 10px;
-  background-color: #fff;
-  padding: 10px;
+  padding-top: 12px;
+  display: flex;
+  flex-direction: column;
 }
 
 .g-detail-content{
   height: 100%;
-  max-height: 610px;
   overflow-y: auto;
-  padding-right: 8px;
+  padding: 10px 12px;
+  margin: -1px 12px 12px 0;
+  background-color: #fff;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.3);
 }

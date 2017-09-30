@@ -1,40 +1,155 @@
-<div class="container">
-  <div class="row project-detail">
-    <div class="col-lg-9 col-md-9 col-xs-9 cmg">
-      <div class="leftSide">
-        <h2 id="project-name">{{projectDetail.ProjectName}}</h2>
-        <h3 id="project-intro">项目简介</h3>
-        <pre class="projectBrief">{{projectDetail.ProjectBrief}}</pre>
-        <div class="prototype-content" >
-          <h3 id="prototype-presented">原型呈现 &nbsp;&nbsp;<span >共&nbsp;{{ numImgs }}&nbsp;张预览图</span></h3>
-          <button class=" btn btn-info"><a [href]="projectDetail.PrototypeView">查看原型</a></button>
-          <div class="clearfix">
-            <img [src]="projectDetailImg" alt="" *ngFor="let projectDetailImg of projectDetailImgs">
+<div class="row project-detail">
+  <div class="col-lg-9 col-md-9 col-xs-9 cmg">
+    <div class="leftSide">
+      <h2 id="project-name">{{projectDetail?.ProjectName}}</h2>
+      <h4 id="project-intro">项目简介</h4>
+      <div style="padding-left: 10px;">
+        <jigsaw-markdown [mdSource]="projectDetail?.ProjectBrief"></jigsaw-markdown>
+      </div>
+      <div class="prototype-content">
+        <h4 id="prototype-presented" id="project-show">视觉设计 &nbsp;&nbsp;<span>(共&nbsp;{{ numImgs }}&nbsp;张预览图)</span>
+        </h4>
+        <div class="thelid">
+          <strong>{{targetImg+1>9?(targetImg+1):0+""+(targetImg+1)}}/<span>{{(projectDetailImgs?.length)>9?(projectDetailImgs?.length):0+""+(projectDetailImgs?.length)}}</span></strong>
+          <img src="/assets/img/bannar.png" alt="">
+          <div class="img-position">
+            <app-slide-img [imgs]="projectDetailImgs" (currentImg)="getTargetImg($event)"
+                           [current]="targetImg"></app-slide-img>
+          </div>
+        </div>
+        <div class="img-across clearfix">
+          <div  style="width: 1040px;overflow: hidden">
+            <ul class="imgWidth" style="overflow: hidden;width:100000px;">
+              <li  class="pull-left" (click)="banner(i)" [class.imgBorder]="i == targetImg"
+                  *ngFor="let projectDetailImg of projectDetailImgs;let i=index"
+                  style="width: 208px;">
+                <img [src]="projectDetailImg" alt="">
+              </li>
+            </ul>
+          </div>
+          <div class="btn-left" (click)="btnLeft()"><i class="fa fa-angle-right fa-2x"></i></div>
+          <div class="btn-right" (click)="btnRight()"><i class="fa fa-angle-left fa-2x"></i></div>
+        </div>
+        <div>
+          <jigsaw-button><span class="fa fa-download fa-lg"></span>&nbsp;&nbsp;下载视觉效果图</jigsaw-button>
+        </div>
+      </div>
+      <div class="interactive-design">
+        <h4>交互设计</h4>
+        <jigsaw-button><span class="fa fa-download fa-lg"></span><a [href]="">下载原型</a></jigsaw-button>
+        <jigsaw-button><span class="fa fa-eye fa-lg"></span><a [href]="projectDetail?.PrototypeView">查看原型</a>
+        </jigsaw-button>
+      </div>
+      <div class="user-research">
+        <h4>用户研究</h4>
+      </div><!---->
+      <div class="download-list"><!--*ngIf="projectDocsShow"-->
+        <h4 id="project-doc">附件</h4>
+        <!--<ul>-->
+        <!--<li *ngFor="let doc of projectDetail?.RequirementDoc"><a [href]="doc?.url" class="clearfix" >{{doc?.name }}<span class=" pull-right glyphicon glyphicon-download-alt"></span></a></li>-->
+        <!--</ul>-->
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-3 col-xs-3">
+    <div class="rightSide">
+      <div class="project-action clearfix">
+        <a class=" pull-left" (click)="marking()">&nbsp;&nbsp;<span [class.marking]="highlight"
+                                                                    class="fa fa-heart"></span>收藏</a>
+        <a class=" pull-left" (click)="mailCall(tpmail)"> <span class="fa fa-envelope-o"></span>邮件通知</a>
+      </div>
+      <div class="img-bubble">
+        <img src="/assets/img/bubbles.svg" alt="">
+        <span class="fang">发布人 <br>{{projectDetail?.Creator}}</span>
+        <span>&nbsp;&nbsp;最后更新<br>{{projectDetail?.UpdateTime}}</span>
+        <span><img [src]="projectDetail.creatorId | showHeadImg" alt="我的图像"></span>
+        <span>首次发布时间<br>&nbsp;{{projectDetail?.CreatTime}}</span>
+        <span>浏览次数<br>&nbsp;&nbsp;&nbsp;&nbsp;{{projectDetail?.VisitRecord}}</span>
+      </div>
+    </div>
+    <div class="permission">
+      <div class="permissionBtn">
+        <h4>权限开通</h4>
+        <jigsaw-button (click)="permission()">
+          给其它人开通权限
+        </jigsaw-button>
+      </div>
+      <div class="detailPermission" style="white-space:normal">
+        <div>
+          <div class="title clearfix">授权团队及个人
+            <span (click)="searchbl = !searchbl" class="fa fa-search pull-right " style="cursor: pointer">&nbsp;&nbsp;搜索</span>
+          </div>
+          <div class="dropBlock">
+            <jigsaw-input *ngIf="searchbl" id="test-input" #searchInput placeholder="请输入工号~">
+              <a jigsaw-prefix-icon (click)="Onclick()"><span class="fa fa-search"></span></a>
+            </jigsaw-input>
+            <div class="authoriseContent">
+              <div *ngIf="!errorBox" class="errorBox"><i class="fa fa-question-circle fa-lg"></i>没有此人哦!</div>
+              <div *ngIf="errorBox">
+                <h5 ><i *ngIf="!this.stateAuthorise" class="fa fa-exclamation-circle fa-lg"></i><i *ngIf="this.stateAuthorise" class="fa fa-check-circle fa-lg"></i>{{this.stateAuthorise?"已":"未"}}在授权列表中</h5>
+                <ul style="display: table">
+                  <li style="display: table-cell">{{this.searchAuthorise?.name}}</li>
+                  <li style="display: table-cell">{{this.searchAuthorise?.uid}}</li>
+                  <li style="display: table-cell">{{this.searchAuthorise?.deptName}}</li>
+                </ul>
+                <jigsaw-button (click)="addAuthorise()" *ngIf="!this.stateAuthorise">立即添加</jigsaw-button>
+              </div>
+            </div>
+          </div>
+          <div class="PermissionUser clearfix">
+            <div *ngFor="let authorise of authorises;let i=index;">
+              <jigsaw-tag title="{{authorise?.name}}" [closable]="true" (close)="tagClose(authorise?.type,i)">
+                {{authorise?.name}}
+              </jigsaw-tag>
+            </div>
+          </div>
+        </div>
+        <div class="seletPermission">
+          <div class="title">可选组
+            <!--<jigsaw-button>+授权其它人</jigsaw-button>-->
+          </div>
+          <div class="seletOption">
+            <jigsaw-table [data]="tableData"
+                          [additionalColumnDefines]="additionalColumns"
+                          [hideHead]="true"
+                          [columnDefines]="_columns">
+            </jigsaw-table>
+            <div class="seletOptionBtn">
+              <jigsaw-button (click)="permission('cancle')">取消</jigsaw-button>&nbsp;&nbsp;&nbsp;&nbsp;
+              <jigsaw-button (click)="permission('ok')">确定</jigsaw-button>
+            </div>
+
           </div>
         </div>
       </div>
-      <div class="download-list" *ngIf="projectDocsShow">
-        <h4 id="project-doc">项目文档</h4>
+    </div>
+    <div class="commentForm">
+      <h5 class="title">授权团队及个人</h5>
+      <div class="showPermissions clearfix">
+        <jigsaw-tag title="{{val?.name}}" *ngFor="let val of showPermiss">{{val?.name}}</jigsaw-tag>
+        <jigsaw-button *ngIf="showBtn" (click)="viewBtn()">查看更多</jigsaw-button>
+      </div>
+      <div class="relatedProjects">
+        <h5 class="title">项目相关</h5>
         <ul>
-          <li *ngFor="let doc of projectDetail.RequirementDoc"><a [href]="doc.url" class="clearfix" >{{doc?.name }}<span class=" pull-right glyphicon glyphicon-download-alt"></span></a></li>
+          <li><a href="javascript:void(0)">【ADMA】数据挖掘平台低保真原型</a></li>
+          <li><a href="javascript:void(0)">【ADMA】数据挖掘平台低保真原型</a></li>
+          <li><a href="javascript:void(0)">【ADMA】数据挖掘平台低保真原型</a></li>
+          <li><a href="javascript:void(0)">【ADMA】数据挖掘平台低保真原型</a></li>
+          <li><a href="javascript:void(0)">【ADMA】数据挖掘平台低保真原型</a></li>
         </ul>
       </div>
+
     </div>
-    <div class="col-lg-3 col-md-3 col-xs-3">
-      <div class="rightSide">
-        <div><img [src]="projectDetail.ProjectImg" alt=""></div>
-        <p>首次发布 : <time>{{projectDetail.CreatTime}}</time>&nbsp;•&nbsp;{{projectDetail.Creator}}</p>
-        <p>最后更新 : <time>{{projectDetail.UpdateTime}}</time>&nbsp;•&nbsp;{{projectDetail.Updator}}</p>
-        <p>浏览次数 : {{projectDetail.VisitRecord}}</p>
-        <div class="project-action clearfix">
-          <a class="glyphicon glyphicon-heart pull-left" href="">&nbsp;&nbsp;关注</a>
-          <a class="glyphicon glyphicon-pencil -pull-left" href="">&nbsp;&nbsp;编辑</a>
-        </div>
-      </div>
-      <button type="button" class="btn btn-default btn-block"><span class="glyphicon glyphicon-share"></span>可生成分享码</button>
-    </div>
+
   </div>
 </div>
 <div class="container">
   <app-footer></app-footer>
 </div>
+<ng-template #tpmail>
+  <div class="mailSeed">
+    <h3>{{sendPrompting}}!</h3>
+    <!--<time *ngIf=""><strong>{{time}}</strong>&nbsp;秒后关闭</time>-->
+  </div>
+</ng-template>

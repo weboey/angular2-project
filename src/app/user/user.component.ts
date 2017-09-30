@@ -17,9 +17,11 @@ export class UserComponent implements OnInit {
   ngOnInit() {
   }
   onRegister(){
-    debugger;
     this.isRegister=true;
     this.isLogin=!this.isRegister;
+  }
+  onCancel(){
+    this.isRegister=false;
   }
   login(){
     this.isLogin=!this.isLogin;

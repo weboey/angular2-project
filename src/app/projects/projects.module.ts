@@ -1,23 +1,33 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProjectsRoutingModule } from "./projects-routing.module";
-import {ProjectDetailComponent} from "./project-detail/project-detail.component";
+import {MyTableCellOption, MyTableHeadOption, ProjectDetailComponent} from "./project-detail/project-detail.component";
 import {ProjectListComponent} from "./project-list/project-list.component";
 import {ProjectService} from "./project-service/project.service";
 import {FooterComponent} from "../home/footer/footer.component";
-import { KeywordPipe } from './pipe/keyword.pipe';
+import {SlideImgComponent} from "../slide-img/slide-img.component";
+import {AuthGuard} from "./auth-guard";
+import {JigsawModule} from '@rdkmaster/jigsaw';
+import {UedCommonModule} from "../common/ued-common.module";
 
 @NgModule({
   imports: [
     CommonModule,
-    ProjectsRoutingModule
+    ProjectsRoutingModule,
+    JigsawModule,UedCommonModule
   ],
   declarations: [
     ProjectDetailComponent,
     ProjectListComponent,
     FooterComponent,
-    KeywordPipe,
+    SlideImgComponent,
+    MyTableHeadOption,
+    MyTableCellOption,
   ],
-  providers:[ProjectService],
+  entryComponents: [
+    MyTableHeadOption,
+    MyTableCellOption,
+  ],
+  providers:[ProjectService,AuthGuard],
 })
 export class ProjectModule { }

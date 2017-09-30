@@ -1,0 +1,36 @@
+.user-center:hover .user-menu{
+  /*position: relative;*/
+  transform: scale(1);
+}
+.user-center .user-menu {
+  position: absolute;
+  top: 100%;
+  right: 26px;
+  margin-left: 50%;
+  transform-origin: 50% 0;
+  transform: scale(0);
+  z-index: 100;
+  transition: all .35s;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.25);
+}
+.user-center-box{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  height: 60px;
+  line-height: 60px;
+}
+.user-center-box img{
+  max-width: 42px;
+  max-height: 42px;
+  margin-top: 9px;
+  margin-right: 8px;
+  border-radius: 50%;
+}
+.user-center-box i{
+  padding: 21px 5px;
+  vertical-align: bottom;
+}
+.user-center-box .fa{
+  font-size: 18px;
+}

@@ -18,6 +18,7 @@
     </p>
     <p class="comment">
                 <code><a href="https://angular.io/docs/ts/latest/api/core/index/OnInit-interface.html" target="_blank" >OnInit</a></code>
+                <code><a href="https://angular.io/docs/ts/latest/api/core/index/OnDestroy-interface.html" target="_blank" >OnDestroy</a></code>
     </p>
 
 
@@ -42,7 +43,8 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;jigsaw-checkbox  [(checked)]&#x3D;&quot;cellData&quot;                (checkedChange)&#x3D;&quot;_$toggleSelectAll($event)&quot;&gt;&lt;/jigsaw-checkbox&gt;</code></pre></td>
+                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;jigsaw-checkbox [(checked)]&#x3D;&quot;cellData&quot;
+                 (checkedChange)&#x3D;&quot;_$toggleSelectAll($event)&quot;&gt;&lt;/jigsaw-checkbox&gt;</code></pre></td>
             </tr>
 
 
@@ -52,20 +54,60 @@
 </section>
 
 
-
     <section>
         <h3 id="constructor">Constructor</h3>
             <table class="table table-sm table-bordered">
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <code>constructor(tableRendererService: <a routerLink="doc/api/injectables/TableCheckboxService">TableCheckboxService</a>, _changeDetector: <a href="https://angular.io/docs/ts/latest/api/core/index/ChangeDetectorRef-class.html" target="_blank">ChangeDetectorRef</a>)</code>
+                            <code>constructor(_tableRendererService: <a routerLink="doc/api/injectables/TableCheckboxService">TableCheckboxService</a>, _changeDetector: <a href="https://angular.io/docs/ts/latest/api/core/index/ChangeDetectorRef-class.html" target="_blank">ChangeDetectorRef</a>)</code>
                         </td>
                     </tr>
     
+                    <tr>
+                        <td class="col-md-4">
+                                <div>
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                    <td>Type</td>
+                                                    <td>Optional</td>
+                                                    <td>Description</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                      <td>_tableRendererService</td>
+                                                      <td>
+                                                                <code><a routerLink="doc/api/injectables/TableCheckboxService" target="_self" >TableCheckboxService</a></code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                      <td>_changeDetector</td>
+                                                      <td>
+                                                                <code><a href="https://angular.io/docs/ts/latest/api/core/index/ChangeDetectorRef-class.html" target="_blank" >ChangeDetectorRef</a></code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
     </section>
+
+
+
+
 
 
 </div>

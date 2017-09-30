@@ -10,16 +10,9 @@
         <h3>Extends</h3>
     </p>
     <p class="comment">
-            <code><a routerLink="doc/api/classes/AbstractJigsawComponent" target="_self" >AbstractJigsawComponent</a></code>
+            <code><a routerLink="doc/api/classes/AbstractJigsawGroupComponent" target="_self" >AbstractJigsawGroupComponent</a></code>
     </p>
 
-    <p class="comment">
-        <h3>Implements</h3>
-    </p>
-    <p class="comment">
-                <code><a href="https://angular.io/docs/ts/latest/api/core/index/OnInit-interface.html" target="_blank" >OnInit</a></code>
-                <code><a href="https://angular.io/docs/ts/latest/api/core/index/AfterViewInit-interface.html" target="_blank" >AfterViewInit</a></code>
-    </p>
 
 
 <section>
@@ -36,20 +29,28 @@
 
 
 
+            <tr>
+                <td class="col-md-3">providers</td>
+                <td class="col-md-9">
+                    <code>
+                        { provide: NG_VALUE_ACCESSOR, useExisting: , multi:  }
+                    </code>
+                </td>
+            </tr>
 
 
             <tr>
                 <td class="col-md-3">selector</td>
-                <td class="col-md-9"><code>jigsaw-radio-group</code></td>
+                <td class="col-md-9"><code>jigsaw-radios</code></td>
             </tr>
-
 
 
 
             <tr>
-                <td class="col-md-3">templateUrl</td>
-                <td class="col-md-9"><code>radio-group.html</code></td>
+                <td class="col-md-3">template</td>
+                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;ng-content&gt;&lt;/ng-content&gt;</code></pre></td>
             </tr>
+
 
 
         </tbody>
@@ -57,16 +58,91 @@
 </section>
 
     <section>
+        <h3 id="index">Index</h3>
+        <table class="table table-sm table-bordered index-table">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <span class="modifier">Protected</span> <a href="#_items">_items</a>
+                            </li>
+                            <li>
+                                <span class="modifier">Public</span> <a href="#multipleSelect">multipleSelect</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <span class="modifier">Protected</span> <a href="#_updateSelectItemsForForm">_updateSelectItemsForForm</a>
+                            </li>
+                            <li>
+                                <span class="modifier">Public</span> <a href="#writeValue">writeValue</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#selectedItems">selectedItems</a>
+                            </li>
+                            <li>
+                                <a href="#value">value</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#valueChange">valueChange</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+
+    <section>
         <h3 id="inputs">Inputs</h3>
             <table class="table table-sm table-bordered">
                 <tbody>
                     <tr>
                         <td class="col-md-2">
-                            <code>data</code>
+                            <a name="selectedItems"></a>
+                            <code>selectedItems</code>
                         </td>
                         <td class="col-md-10">
                               <p>
-                                <em>Type:</em>    <code><a routerLink="doc/api/classes/ArrayCollection" target="_self" >ArrayCollection&lt;object&gt;</a></code>
+                                <em>Type:</em>    <code><a routerLink="doc/api/classes/ArrayCollection" target="_self" >ArrayCollection | []</a></code>
 
                               </p>
                         </td>
@@ -77,40 +153,12 @@
                 <tbody>
                     <tr>
                         <td class="col-md-2">
-                            <code>labelField</code>
-                        </td>
-                        <td class="col-md-10">
-                              <p>
-                                <em>Type:</em>    <code>string</code>
-
-                              </p>
-                            <p>
-                              <em>Default value: </em><code>label</code>
-                            </p>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-2">
-                            <code>trackItemBy</code>
-                        </td>
-                        <td class="col-md-10">
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-2">
+                            <a name="value"></a>
                             <code>value</code>
                         </td>
                         <td class="col-md-10">
                               <p>
-                                <em>Type:</em>    <code>any</code>
+                                <em>Type:</em>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                               </p>
                         </td>
@@ -125,6 +173,7 @@
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="valueChange"></a>
                             <code>valueChange</code>
                         </td>
                         <td class="col-md-10">
@@ -138,4 +187,196 @@
 
 
 
+    <section>
+        
+            <h3 id="methods">
+                Methods
+            </h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="_updateSelectItemsForForm"></a>
+                            <span class="name"><b><span class="modifier">Protected</span> _updateSelectItemsForForm</b><a href="#_updateSelectItemsForForm"><span class="fa fa-link"></span></a></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <span class="modifier-icon fa fa-lock"></span>
+                            <code>_updateSelectItemsForForm(itemValue: , selected: )</code>
+                        </td>
+                    </tr>
+    
+    
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                    <td>Type</td>
+                                                    <td>Optional</td>
+                                                    <td>Description</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                      <td>itemValue</td>
+                                                      <td>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                      <td>selected</td>
+                                                      <td>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+    
+                                </div>
+                                    <div class="io-description">
+                                        
+                                    </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="writeValue"></a>
+                            <span class="name"><b><span class="modifier">Public</span> writeValue</b><a href="#writeValue"><span class="fa fa-link"></span></a></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <span class="modifier-icon fa fa-reset"></span>
+                            <code>writeValue(newValue: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                        </td>
+                    </tr>
+    
+    
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                    <td>Type</td>
+                                                    <td>Optional</td>
+                                                    <td>Description</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                      <td>newValue</td>
+                                                      <td>
+                                                              <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+    
+                                </div>
+                                    <div class="io-description">
+                                        
+                                    </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </section>
+
+    <section>
+        
+            <h3 id="inputs">
+                Properties
+            </h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="_items"></a>
+                            <span class="name"><b><span class="modifier">Protected</span> _items</b><a href="#_items"><span class="fa fa-link"></span></a></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-lock"></span><code>_items:     <code><a routerLink="doc/api/components/JigsawRadioOption" target="_self" >QueryList&lt;JigsawRadioOption&gt;</a></code>
+    </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Type : </i>    <code><a routerLink="doc/api/components/JigsawRadioOption" target="_self" >QueryList&lt;JigsawRadioOption&gt;</a></code>
+    
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Decorators : </i><code>ContentChildren</code>
+                            </td>
+                        </tr>
+    
+    
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="multipleSelect"></a>
+                            <span class="name"><b><span class="modifier">Public</span> multipleSelect</b><a href="#multipleSelect"><span class="fa fa-link"></span></a></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-reset"></span><code>multipleSelect:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+    </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+    
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Default value : </i><code>false</code>
+                            </td>
+                        </tr>
+    
+    
+                </tbody>
+            </table>
+    </section>
 </div>

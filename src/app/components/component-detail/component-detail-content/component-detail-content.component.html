@@ -1,3 +1,8 @@
-<div style="padding: 10px;">
-  <div [innerHtml]="componentContent | sanitizeHtml"></div>
+<div class="m-detail-content-main">
+  <div [ngSwitch]="contentType" class="detail-content-wrap">
+    <app-norm *ngSwitchCase="'norm'"></app-norm>
+    <app-demo *ngSwitchCase="'demo'"></app-demo>
+    <app-api *ngSwitchCase="'api'"></app-api>
+    <app-api-list *ngSwitchCase="'api-list'"></app-api-list>
+  </div>
 </div>

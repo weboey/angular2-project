@@ -8,8 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class ComponentQuickstartComponent implements OnInit {
 
   constructor() { }
-
+  quickStartUrl:string;
   ngOnInit() {
+    this.quickStartUrl=encodeURI(`rdk/service/app/ued/server/components/norm?name=新手入门`);
   }
 
 }

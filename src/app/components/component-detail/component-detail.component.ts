@@ -1,9 +1,8 @@
 import 'rxjs/add/operator/switchMap'; //这里导入switchMap操作符是因为我们稍后将会处理路由参数的可观察对象Observable。
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { ComponentMenuNav,ComponentMenuNavItems } from '../component-menu-nav-config/component-menu-nav-mock';
 import { ComponentMenuService } from "../service/component.service";
-
+import { ComponentMenuNav } from "../model/menu-nav-model"
 
 @Component({
   selector: 'app-component-detail',
@@ -13,6 +12,8 @@ import { ComponentMenuService } from "../service/component.service";
 export class ComponentDetailComponent implements OnInit {
 
   componentMenuNav: ComponentMenuNav;
+
+  isNav:boolean;
 
   constructor(
     private componentService:ComponentMenuService,
@@ -26,12 +27,19 @@ export class ComponentDetailComponent implements OnInit {
     console.log(this.route.params);
     console.log(this.route.snapshot.params['name']);
     this.route.params
-      .switchMap((params: Params) => this.componentService.getComponentMenuNav(params['name']))
-      .subscribe((componentMenuNav: ComponentMenuNav) => {
-        this.componentMenuNav = componentMenuNav;
+      //.switchMap((params: Params) => this.componentService.getComponentMenuNav(params['name']))
+      .subscribe((params: Params) => {
+        this.componentMenuNav = this.componentService.getComponentMenuNav(params['name']);
+        this.isNav=this.componentMenuNav.parentLabel=="组件";
+
         //this.router.navigate(['norm'], { relativeTo: this.route })
       });
-
+    //this.route.paramMap
+    //  //.switchMap((params: Params) => this.componentService.getComponentMenuNav(params['name']))
+    //  .subscribe((params: Params) => {
+    //    this.componentMenuNav = this.componentService.getComponentMenuNav(params['name']);
+    //    //this.router.navigate(['norm'], { relativeTo: this.route })
+    //  });
    //.switchMap((params: Params) => this.service.getHero(+params['id']))
 
 

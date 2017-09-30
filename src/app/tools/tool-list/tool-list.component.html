@@ -1,7 +1,17 @@
-<ul class="m-tool-list">
-  <li *ngFor="let tool of tools | async"
-      (click)="onSelect(tool)"
-      >
-    <img [src]="tool.img">
-  </li>
-</ul>
+<div class="m-tools" [@animate]="'slideInLeft'">
+  <ul class="tool-group">
+    <li *ngFor="let tool of tools | async">
+      <!--[routerLink]="['../'+category.name]"-->
+      <a [routerLink]="['./',tool.id]" routerLinkActive="active">
+        <img [src]="tool.img">
+      </a>
+      <a  class="tool-download" *ngIf="tool.downloadUrl!==''" [href]="tool.downloadUrl"></a>
+    </li>
+  </ul>
+
+  <div class="tool-detail-box">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+

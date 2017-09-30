@@ -1,0 +1,24 @@
+.m-post-recommend{
+  margin-top: 10px;
+}
+
+.m-post-recommend h4{
+  padding: 8px;
+  border-bottom: 1px solid #ccc;
+}
+
+ul.container li{
+  list-style-type: disc;
+}
+ul.container li a{
+  color: #666;
+  line-height: 32px;
+}
+ul.container li.active{
+  color: #00a8c6;
+}
+ul.container li.active a{
+  color: #00a8c6;
+  border-bottom: 1px solid #00a8c6;
+}
+
