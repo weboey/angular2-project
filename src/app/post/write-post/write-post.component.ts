@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, Params ,RouterState,RouterStateSnapshot} from '@angular/router';
+import { PLATFORM_ID,Inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { Category } from "../model/category-model";
 import { PostCategoryService } from "../post-category/post-category.service";
 import { WritePostService } from "./service/write-post.service";
@@ -10,6 +12,11 @@ import {Message} from 'primeng/components/common/api';
 import {MessageService} from 'primeng/components/common/messageservice';
 import {PostlistService} from "../post-list/service/post-list.service";
 
+import {
+  JigsawConfirmAlert, JigsawErrorAlert, JigsawInfoAlert,
+  JigsawWarningAlert,
+} from "@rdkmaster/jigsaw";
+
 enum EPostStatus {NEW,EDIT}
 
 @Component({
@@ -19,6 +26,7 @@ enum EPostStatus {NEW,EDIT}
 })
 export class WritePostComponent implements OnInit {
 
+  isBrowser:boolean=false;
   categoryList:Category[];
   selectedType:any={};
   imgProgVal:number=0;
@@ -40,11 +48,15 @@ export class WritePostComponent implements OnInit {
     private postService:PostlistService,
     private router: Router,
     private activeRoute: ActivatedRoute,
-    private messageService: MessageService
-  ) {}
+    private messageService: MessageService,
+    @Inject(PLATFORM_ID) private platformId ?: Object
+  ) {
+    if (isPlatformBrowser(platformId)) {
+      this.isBrowser=true;
+    }
+  }
 
   ngOnInit() {
-    const state: RouterState = this.router.routerState;
     this.activeRoute.params.subscribe(params => {
       //继续编辑
       !!params["postId"] && this.getPostDetial(params["postId"]);
@@ -54,14 +66,22 @@ export class WritePostComponent implements OnInit {
   }
 
   getPostDetial(postId:string){
-    return this.postService.getPostDetial(postId)
+    this.postService.getPostDetial(postId)
       .subscribe(
         res=>{
           this.post = res;
           this.selectedType={label:this.post.type};
-          console.log(this.selectedType);
           this.imgUploadUrl=this.post.headPicture;
           this.status=EPostStatus.EDIT;
+        },
+        error => {console.log(error)},
+        () => {}
+      );
+
+    this.postService.getPostAttachList(postId)
+      .subscribe(
+        res=>{
+          this.attachmentFiles=res;
         },
         error => {console.log(error)},
         () => {}
@@ -117,9 +137,14 @@ export class WritePostComponent implements OnInit {
   }
 
   onAttachmentUpload(event){
+    var fileObj;
     for(let file of event.files) {
-      this.attachmentFiles.push(file);
+      fileObj={};
+      fileObj['attachDownloadUrl'] =event.xhr.response;
+      fileObj['attachName'] =file.name;
+      this.attachmentFiles.push(fileObj);
     }
+
     setTimeout(()=>{
       if(this.attProgVal==100){
         this.attUploadStatus=false;
@@ -131,17 +156,59 @@ export class WritePostComponent implements OnInit {
     this.attachmentFiles.splice(fileIndex,1)
   }
   getContent($event){
-    console.log($event);
     this.post.content=$event.content;
+    this.isEmptyContent=this.post.content=="" || this.post.content==null;
     //subTitle:this.smd.value().replace(/#|(\s)/g,'').slice(0,60),
+  }
+  doTitleChange(){
+    this.isEmptyTitle = this.post.title=="" || this.post.title==null;
+  }
+  doTypeChange(){
+    if(typeof this.selectedType.label=="undefined"){
+      return
+    }
+    this.isEmptyType=this.selectedType.label=="";
+  }
+  isEmptyTitle:boolean=false;
+  isEmptyType:boolean=false;
+  isEmptyContent:boolean=false;
+  _valid():boolean{
+    this.isEmptyContent=this.post.content=="" || this.post.content==null;
+    this.isEmptyTitle = this.post.title=="" || this.post.title==null;
+    this.isEmptyType=!this.selectedType.label;
+    return this.post.content=="" || this.post.title=="" || !this.selectedType.label
+  }
+  _validDraft(){
+    this.isEmptyTitle = this.post.title=="" || this.post.title==null;
+  }
+  //路由跳转到详情页
+  _gotoPostDetail(){
+    this.router.navigate(["/post/all/detail/",this.post['articleId']], { relativeTo: this.activeRoute });
+    this.ignoreCanDeactive=true; //发布成功跳转时忽略canDeactive守卫
   }
   //发布
   onSave() {
+    let isValid = this._valid();
+    if(isValid) return;
     this.post.status='1';
     this._commitPost();
   }
+  _saveSuccessMsg(title:string){
+    JigsawInfoAlert.show('管理|删除文章请到个人中心', answer => {
+      if(answer && answer.label=="查看"){
+        this._gotoPostDetail();
+      }
+    },[{label:"查看",type: "primary"}],title, false);
+    setTimeout(()=>{
+      this._gotoPostDetail();
+    },1800)
+  }
   //保存草稿
   onSaveDraft(){
+    this._validDraft();
+    if(this.isEmptyTitle){
+      return
+    }
     this.post.status='0';
     this._commitPost();
   }
@@ -154,23 +221,21 @@ export class WritePostComponent implements OnInit {
     this.post.subTitle=this.post.content && this.post.content.replace(/#|(\s)/g,'').slice(0,60);
     this.post.type=this.selectedType.label;
     this.post.headPicture=this.imgUploadUrl;
-    this.post.attachment="";
+    this.post.attachment=JSON.stringify(this.attachmentFiles);
     let msg:string='';
     if(this.post.status=='0'){
-      msg="保存成功!"
+      msg="文章已保存!"
     }else{
-      msg="发布成功!"
+      msg="文章已成功发布!"
     }
     this.writePostService.commitWritePost(this.post)
       .subscribe(
         data =>{
           if(data.status==1){
-            this.msgs = [];
-            this.msgs.push({severity:'success', summary:msg, detail:'1s后跳转到详情页'});
-            setTimeout(()=>{
-              this.router.navigate(["/post/all/detail/",data.articleId || this.post['articleId']], { relativeTo: this.activeRoute });
-              this.ignoreCanDeactive=true; //发布成功跳转时忽略canDeactive守卫
-            },1000)
+            //this.msgs = [];
+            //this.msgs.push({severity:'success', summary:msg, detail:'1s后跳转到详情页'});
+            this.post["articleId"]=data.articleId || this.post["articleId"];
+            this._saveSuccessMsg(msg);
           }
         },
         error=>{//todo
@@ -194,18 +259,21 @@ export class WritePostComponent implements OnInit {
     if (!this.post.title && !this.post.content) {
       return true;
     }
-    return this.confirm("确定要离开？");
+    return this.confirm('文章未保存，确定要离开?');
   }
   confirm(message?: string) {
     return new Promise<boolean>(resolve => {
-      return resolve(window.confirm(message || 'Is it OK?'));
+      JigsawConfirmAlert.show(message, answer => {
+        if(answer && answer.label=='alert.button.yes'){
+          return resolve(true);
+        }
+        return resolve(false);
+      }, [{label: 'alert.button.no'},{label: 'alert.button.yes'}]);
     });
   };
-  reBack(){
-    this.gotoPostList();
-  }
-  gotoPostList() {
-    history.back(); //history.go(-1)  location.reload()
+
+  onLeave() {
+    this.isBrowser && history.back(); //history.go(-1)  location.reload()
     //this.router.navigate(['../../all'], { relativeTo: this.activeRoute });
   }
 }

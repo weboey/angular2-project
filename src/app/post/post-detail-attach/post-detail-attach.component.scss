@@ -1,0 +1,49 @@
+.m-post-attach{
+  &>h3{
+    display: inline;
+    font-size: 26px;
+    color: #004042;
+    font-weight: 700;
+    font-style: normal;
+    line-height: 1.15;
+    letter-spacing: -.02em;
+    margin-left: 6px;
+    span{
+      display: inline-block;
+      font-size: 12px;
+      margin-left: 10px;
+      font-weight: normal;
+      color: #333;
+    }
+  }
+  .attach-group{
+    margin: 12px 0;
+    .attach-item>a{
+      box-shadow: 0 1px 3px rgba(0,37,55,.05);
+      cursor: pointer;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin: 6px 0;
+      padding: 0 14px;
+      height: 30px;
+      border-radius: 2px;
+      border: 1px solid #e7eaf1;
+      background-color: #fff;
+      transition: all .3s;
+      text-decoration: none;
+      color: #333;
+      line-height: 30px;
+      font-size: 14px;
+      user-select: none;
+      &>span{
+      }
+      &>i{
+        padding: 8px 0;
+      }
+    }
+  }
+}
+
+
+

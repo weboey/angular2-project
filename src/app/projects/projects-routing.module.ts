@@ -3,14 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProjectListComponent } from './project-list/project-list.component';
 import {ProjectDetailComponent} from "./project-detail/project-detail.component";
 import {AuthGuard} from "./auth-guard";
+import {CanActivateGuard} from "../admin/can-acitvate.service";
 const ProjectsRoutes: Routes = [
-  {
-    path: 'projects',
-    children: [
-      {path: '', component: ProjectListComponent},
-      {path: ':id', component: ProjectDetailComponent,canActivate: [AuthGuard]}
-    ]
-  }
+  {path: '', component: ProjectListComponent,canActivate: [CanActivateGuard]},
+  {path: ':id', component: ProjectDetailComponent,canActivate: [CanActivateGuard]}
 ];
 
 @NgModule({

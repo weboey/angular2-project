@@ -1,16 +1,20 @@
-<div class="m-demo-component" *ngIf="demoList.length">
-  <div class="demo-wrap" id="test"  >
-    <div *ngFor="let demoItem of demoList" class="demo-item" [id]="demoItem.desc">
-      <h2>{{demoItem.desc}}<a target="_blank" [href]="demoItem.url" title="在线例子">在页面中打开</a></h2>
-      <iframe [src]="demoItem.url | sanitizeResourceUrL" frameborder="0" width="100%" height="600"></iframe>
-    </div>
+<div class="m-demo-component" *ngIf="demoList.length > 0">
+  <div class="demo-wrap" id="test">
+    <iframe [src]="currentDemo.url | sanitizeResourceUrL" frameborder="0"></iframe>
   </div>
   <div class="demo-nav-wrap">
     <ul>
-      <li *ngFor="let demoItem of demoList" (click)="setSelect(demoItem.desc)" [class.active]="isActive(demoItem.desc)"><a [href]="getHref(demoItem.desc)">{{demoItem.desc}}</a></li>
+      <li *ngFor="let demoItem of demoList" (click)="setSelect(demoItem)"
+          [class.active]="isActive(demoItem.desc)"
+          [class.hidden]="!demoItem.recommended && !showMore">
+        <a [class.recommended]="demoItem.recommended && showMore" [href]="getHref(demoItem.desc)">{{demoItem.desc}}</a>
+      </li>
+      <li [hidden]="demoList.length == 0" (click)="(showMore = !showMore)">
+        <a>{{showMore ? 'less...' : 'more...'}}</a>
+      </li>
     </ul>
   </div>
 </div>
-<div *ngIf="!demoList.length">
-  <h3>{{componentMenuNav.name}} demo 正在完善中...</h3>
+<div *ngIf="demoList.length == 0">
+  <h3>{{selectedComponent}} demo 正在完善中...</h3>
 </div>

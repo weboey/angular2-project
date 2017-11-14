@@ -1,11 +1,13 @@
-import { Directive, ElementRef, HostListener,HostBinding, Input,NgZone} from '@angular/core';
-
+import { Directive, ElementRef, HostListener,HostBinding, Input,Inject,NgZone} from '@angular/core';
+import { PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 @Directive({
   selector: '[uedRipple]'
 })
 export class RippleDirective {
 
-  constructor(private el:ElementRef,private _ngZone: NgZone) {}
+  constructor(private el:ElementRef,private _ngZone: NgZone,
+              @Inject(PLATFORM_ID) private platformId : Object) {}
 
   private _activeRipples = new Set<HTMLElement>();
 
@@ -19,6 +21,9 @@ export class RippleDirective {
 
   @HostListener('mousedown',['$event'])
   private createRipple(event) {
+    if (!isPlatformBrowser(this.platformId)) {
+      return
+    }
     this._isMousedown=true;
     let target = event.target;
     var rect = target.getBoundingClientRect();
@@ -43,6 +48,9 @@ export class RippleDirective {
 
   @HostListener('mouseup',['$event'])  // removeRipple(event) {}
   private onMouseup() {
+    if (!isPlatformBrowser(this.platformId)) {
+      return
+    }
     this._isMousedown = false;
     this._activeRipples.forEach(ripple => {
       this.fadeOutRipple(ripple);

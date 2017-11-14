@@ -3,14 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {TeamComponent} from "./team.component";
 
 const TeamRoutes: Routes = [
-  {
-    path: 'team',
-    children:[
-      {
-        path: '',  component: TeamComponent,
-      }
-    ]
-  }
+  { path: '',  component: TeamComponent}
 ];
 
 @NgModule({

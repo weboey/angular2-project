@@ -1,6 +1,6 @@
 <div class="m-post-recommend">
   <h4>推荐:</h4>
-  <ul class="container">
+  <ul class="recommend-box">
     <li *ngFor="let postItem of postRecommendList"  routerLinkActive="active"><a [routerLink]="['../',postItem.serialNum]">{{postItem.title}}</a></li>
   </ul>
 </div>

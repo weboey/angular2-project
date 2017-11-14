@@ -1,0 +1,50 @@
+.back-top{
+  position: fixed;
+  right: -40px;
+  bottom: 35px;
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  background-color: #4398ef;
+  letter-spacing: 1px;
+  overflow: hidden;
+  opacity: 0;
+  cursor: pointer;
+  transition:right 0.5s,opacity 0.5s;
+  z-index: 9999;
+}
+.back-top>span {
+  position: absolute;
+  color: #fff;
+  top: 12px;
+  right: 2px;
+}
+.back-top:hover:before{
+  opacity:1;
+  transition: opacity 0.2s 0.1s;
+}
+.back-top:hover .box-in{
+  visibility: hidden;
+}
+.back-top:hover {
+  width: 100px;
+  transition: width 0.3s;
+}
+.back-top:before{
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  content:'回到顶部';
+  width: 80px;
+  color: #fff;
+  font-size: 12px;
+  font-weight:bold;
+  opacity:0;
+  transition: opacity 0.2s;
+}
+.left-move{
+  right: 35px;
+  opacity: 1;
+  transition: width 0.3s, right 0.8s, opacity 1s;
+}

@@ -11,7 +11,7 @@ export class TopMenuComponent implements OnInit {
   constructor(private userLoginService:UserLoginService) { }
 
   ngOnInit() {
-    this.currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    this.currentUser = this.userLoginService.currentUserGlobal;
     this.userLoginService.currentUser
       .subscribe(
         data => {

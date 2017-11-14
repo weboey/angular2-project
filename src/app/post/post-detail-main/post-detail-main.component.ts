@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ActivatedRoute, Router, Params } from '@angular/router';
-
-import {Post} from "../model/post-model";
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
-import {PostlistService} from "../post-list/service/post-list.service";
+import { Post } from '../model/post-model';
+import { PostlistService } from "../post-list/service/post-list.service";
 
 @Component({
   selector: 'app-post-detail-main',
   templateUrl: './post-detail-main.component.html',
-  styleUrls: ['./post-detail-main.component.css']
+  styleUrls: ['./post-detail-main.component.scss']
 })
 export class PostDetailMainComponent implements OnInit {
 
@@ -25,8 +24,6 @@ export class PostDetailMainComponent implements OnInit {
   ngOnInit() {
     //从路由里面获取URL参数
     this.activeRoute.params.subscribe(params => {
-      console.log("post detail main!");
-      console.log(params["postId"]);
       this.getPostDetial(params["postId"]);
     });
   }
@@ -41,4 +38,5 @@ export class PostDetailMainComponent implements OnInit {
         () => {}
       );
   }
+
 }

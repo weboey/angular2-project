@@ -3,95 +3,58 @@ import {NgModule} from '@angular/core';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import {HttpModule, Http} from '@angular/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
-import {AppComponent} from './app.component';
-
-import {JigsawModule} from '@rdkmaster/jigsaw';
-
-import { LocationStrategy, HashLocationStrategy } from '@angular/common';
-//
-/* load service  start*/
-import {GlobalService} from "./admin/global.service";
-/* load component  start*/
+/*路由&守卫*/
 import { AppRoutingModule }     from './app-routing.module';
-import { HomeComponent }  from './home/home.component';
-
-
-/* load module  start*/
-import { ToolsModule } from "./tools/tools.module";
-import { ComponentsModule } from "./components/components.module";
-import { ProjectModule } from "./projects/projects.module";
-import { HelpDocModule } from "./help-doc/help-doc.module";
-import { PostModule } from "./post/post.module";
+import { CanActivateGuard} from "./admin/can-acitvate.service";
+import { CanDeactivateGuard } from "./admin/can-deactivate-guard.service";
+/*模块*/
 import { HomeModule } from "./home/home.module";
-/* load module  end*/
-
-// import { UserNavComponent } from "./home/user-nav/user-nav.component";
-
-import { UserLoginService } from "./user/user-login/user-login.service";
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { PermissionComponent } from './permission/permission.component';
-import { UserPipe } from './permission/pipe/user.pipe';
-import { ShowPipe } from './permission/pipe/show.pipe';
-import { GlobalSearchComponent } from './home/global-search/global-search.component';
-import { SearchService } from "./home/global-search/search.service";
-
-//import { FooterComponent } from './footer/footer.component';
-import {GrowlModule} from 'primeng/primeng';
-import {Message} from 'primeng/primeng';
-import {MessageService} from 'primeng/components/common/messageservice';
-import {CanDeactivateGuard} from "./admin/can-deactivate-guard.service";
+import { UserModule } from "./user/user.module";
+import { UedCommonModule } from "./common/ued-common.module";
+/*模块 第三方*/
+import { PerfectScrollbarModule } from "ngx-perfect-scrollbar";
+import { JigsawRootModule }  from "@rdkmaster/jigsaw";
+import { GrowlModule} from 'primeng/primeng';
+/*组件*/
+import { AppComponent } from './app.component';
+import { HomeComponent }  from './home/home.component';
 import { UserCenterComponent } from './user/user-center/user-center.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+/*服务*/
+import { GlobalService} from "./admin/global.service";
+import { UserLoginService } from "./user/user-login/user-login.service";
+import { SearchService } from "./home/global-search/search.service";
+import { MessageService} from 'primeng/components/common/messageservice';
 
-
-import {UserModule} from "./user/user.module";
-import {CanActivateGuard} from "./admin/can-acitvate.service";
-import {UedCommonModule} from "./common/ued-common.module";
-import {TeamModule} from "./team/team.module";
-
-
-export function HttpLoaderFactory(http: Http) {
-  return new TranslateHttpLoader(http, 'app/i18n/', '.json');
-}
+import { Message} from 'primeng/primeng';
 
 @NgModule({
   declarations: [  //declarations数组包含应用中属于该模块的组件、管道和指令的列表
     AppComponent,
     HomeComponent,
     PageNotFoundComponent,
-    PermissionComponent,
-    UserPipe,
-    ShowPipe,
-    GlobalSearchComponent,
-    UserCenterComponent
+    UserCenterComponent,
   ],
   imports: [
-    BrowserModule,GrowlModule,HomeModule,UserModule,UedCommonModule,
+    BrowserModule.withServerTransition({appId: 'zte-ued'}),
+    GrowlModule,
+    HomeModule,
+    UserModule,
+    UedCommonModule,PerfectScrollbarModule,
     FormsModule,ReactiveFormsModule , //<-- import the FormsModule before binding with [(ngModel)]
-    HttpModule,
+    HttpModule,JigsawRootModule,
     BrowserAnimationsModule,
-    JigsawModule,
-    TranslateModule.forRoot({
-        loader: {
-          provide: TranslateLoader,
-          useFactory: HttpLoaderFactory,
-          deps: [Http]
-        },
-        isolate: true
-      }
-    ),
-    ToolsModule,PostModule,
-    ComponentsModule,
-    ProjectModule,
-    HelpDocModule,
-    TeamModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
-  providers: [UserLoginService,SearchService,MessageService,CanDeactivateGuard,CanActivateGuard,GlobalService],
+  providers: [
+    UserLoginService,
+    SearchService,
+    MessageService,
+    CanDeactivateGuard,
+    CanActivateGuard,
+    GlobalService
+  ],
   bootstrap: [AppComponent],
-  entryComponents: []
 })
-export class AppModule {
-}
+export class AppModule {}

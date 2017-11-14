@@ -1,4 +1,5 @@
 {
-  "/rdk/service/": "http://localhost:5812",
-  "/xplan": "http://10.9.233.35:80"
+  "/rdk/service/": "http://10.9.233.35:52580",
+  "/xplan": "http://10.9.233.35:80",
+  "/jigsaw/": "http://10.43.136.117:8800"
 }

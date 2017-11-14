@@ -7,13 +7,12 @@
   height: 100%;
   .g-menu-nav{
     background-color: $menu-left-bg-color;
-    overflow-y:scroll;
     width: 215px;
-    position: absolute; top:0;  bottom: 0;
+    position: absolute !important; top:10px;  bottom: 0;
     /* 菜单 */
     ul.menu-nav-group{
       box-shadow: 5px 5px 5px rgba(204, 204, 204, 0.349019607843137);
-      padding: 8px 0 0 4px;
+      padding: 8px 0 8px 4px;
       li{
         width: 200px;
         line-height: 30px;

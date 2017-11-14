@@ -1,39 +1,28 @@
-<div class="ued-root">
-  <div class="ued-body">
-    <div class="g-head ued-top-menu" [class.home-active]="isHomePage">
-      <div class="top-menu-box">
-        <ued-top-menu></ued-top-menu>
+<jigsaw-root>
+  <div class="ued-root">
+    <div class="ued-body">
+      <div class="g-head ued-top-menu" [class.home-active]="isHomePage">
+        <div class="top-menu-box">
+          <ued-top-menu></ued-top-menu>
+        </div>
+        <div class="top-search">
+          <app-ued-search></app-ued-search>
+        </div>
+        <div class="user-box">
+          <ued-user-main></ued-user-main>
+        </div>
       </div>
-      <ul class="nav navbar-nav">
-        <li *ngIf="searchIf" class="closeInput">
-          <a class="searchIcon "><i class="fa fa-search"></i></a>
-          <a class="closeIcon "  (click)="clearInput($event)"><i class="fa fa-times"></i></a>
-          <input  placeholder="搜索项目，规范与组件" [(ngModel)]="value"  [formControl]="titleFilter">
-          <div class="searchDropDown" [hidden]="dropDown">
-            <ul (click)="dropDown = true">
-              <li title="[{{result?.tag}}]&nbsp;-&nbsp;{{result?.name}}" *ngFor="let result of resultShow.slice(0,4)"><a class="self" [routerLink]="[result?.path,result?.id]" routerLinkActive="active">[{{result?.tag}}]&nbsp;-&nbsp;{{result?.name}}</a></li>
-              <li (click)="msgSend({'keyword':keyword,'target':tag});" class="mainColor" [hidden] = "resultShow?.length<=4"><a  class="self" [routerLink]="['/search']" routerLinkActive="active">更多{{tag=="all"?"内容":resultShow[0]?.tag}}…</a></li>
-            </ul>
-            <section *ngIf="otherModules?.length>0">
-              <h6>其它模块</h6>
-              <ul >
-                <li (click)="msgSend({'keyword':keyword,'target':otherModule.tagEn})" *ngFor="let otherModule of otherModules"><a  class="self" [routerLink]="['/search']">[{{otherModule.tag}}]&nbsp;-&nbsp;{{otherModule.tatolNum}}条相关信息</a></li>
-              </ul>
-            </section>
-          </div>
-        </li>
-        <li *ngIf="!searchIf">
-          <a class="glyphicon glyphicon-search backg" (click)="searchShow($event)" style="font-size: 18px"></a>
-        </li>
-      </ul>
-
-      <div class="user-box">
-        <ued-user-main></ued-user-main>
+      <div *ngIf="isBrowser; else isServer" class="g-main" perfectScrollbar>
+        <router-outlet></router-outlet>
       </div>
+      <ng-template #isServer>
+        <div class="g-main">
+          <router-outlet></router-outlet>
+        </div>
+      </ng-template>
     </div>
-    <div class="g-main">
-      <router-outlet></router-outlet>
-    </div>
+    <!-- [@routeAnimation]="routerStateCode" [@animate]="'slideInRight'"-->
   </div>
-</div>
+</jigsaw-root>
+
 

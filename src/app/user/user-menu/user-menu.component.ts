@@ -14,7 +14,7 @@ export class UserMenuComponent implements OnInit {
   public currentUser: any;
   constructor(private userLoginService:UserLoginService,public router: Router) { }
   ngOnInit(){
-    this.currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    this.currentUser = this.userLoginService.currentUserGlobal;
     this.userLoginService.currentUser
       .subscribe(
         data=>{this.currentUser = data;},

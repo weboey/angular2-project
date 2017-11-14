@@ -21,7 +21,7 @@ export class MyTableHeadOption extends TableCellRenderer {
 
 @Component({
   template: `
-    <a href="javascript:;" (click)="clickHandler('修改')">授权</a>`,
+    <a href="javascript:;" (click)="clickHandler()">授权</a>`,
   styles: [`a {
     color: #333;
     text-decoration: underline;
@@ -54,8 +54,10 @@ export class ProjectDetailComponent implements OnInit, AfterViewInit {
   searchbl: boolean = false;
   errorBox: boolean = true;
   projectID: string;
+  prototypeZip: any;
+  imagesZip:any;
   highlight: boolean;
-  sendPrompting: string ="正在发送中";
+  sendPrompting: string ="邮件通知";
   numImgs: number;
   targetImg: number = 0;
   _columns: ColumnDefine[] = [
@@ -70,9 +72,13 @@ export class ProjectDetailComponent implements OnInit, AfterViewInit {
   showPermiss: any[];
   showBtn: boolean = false;
   authorArr: string[];
+  emailClass: string ="fa fa-envelope-o";
+  hiddenText: boolean = true;
+  isReadMore: boolean = false;
   // stateShow: boolean = true;//点搜索显示内容板,没内容不显示
   _templateRef: PopupInfo;
   @ViewChild('searchInput') searchInput: JigsawInput;
+  @ViewChild('intro') intro;
   additionalColumns: AdditionalColumnDefine[] = [{
     header: {
       renderer: MyTableHeadOption,
@@ -94,14 +100,16 @@ export class ProjectDetailComponent implements OnInit, AfterViewInit {
   getTargetImg(target) {
     this.targetImg = target;
   }
-
+  onEnter(a){
+    console.log(a)
+  }
   marking() { //是否关注此项目
-    this.highlight = !this.highlight
-    console.log(this.highlight);
+    this.highlight = !this.highlight;
+    let userID = this._userLoginService.currentUserGlobal.uid;
     this.route.params
       .switchMap((params: Params) => {
         return this.projectService.updateProjectFollowed({
-          'uId': '6176000041',
+          'uId':"" + userID,
           'SerialNum': params['id'],
           'state': this.highlight
         })
@@ -110,31 +118,56 @@ export class ProjectDetailComponent implements OnInit, AfterViewInit {
       });
 
   }
-  mailCall(tpmail) {//给开通权限的人发送邮件通知
-    this._templateRef = this._popupService.popup(tpmail);
+  mailText: string =  ` <div style="width: 100%; font-family: 'Microsoft Yahei' !important;">
+  <div style="min-width: 400px; max-width: 600px; text-align: center; margin: 0auto -15px;">
+    在E办上的设计项目: 【ADMA】入库任务监控和管理-菜单式 有更新
+  <div style="width: 100%; border-top: 1px solid #eee; margin: 20px 0;"></div>
+  点击链接立刻查看: <a href="http://10.9.233.35/project/20171014165300279375">直达连接</a>
+    <div style="width: 100%; border-top: 1px solid #eee; margin: 20px 0;"></div>
+  如果您正在NOTES中浏览此邮件, 请手动复制右侧地址到Chrome等现代浏览器打开: http://10.9.233.35/project/20171014165300279375
+<div style="width: 100%; border-top: 1px solid #eee; margin: 20px 0;"></div>
+    <span style="font-size: 12px; color: #838383;">
+    您收到这条通知是由于您具有了项目 <strong>【ADMA】入库任务监控和管理-菜单式</strong> 的浏览权限, 且发布者更新了该项目。该邮件地址为通知专用, 请勿回复此邮件。如需获得帮助，请登录网站进行反馈。
+</span>
+<div style="margin-top: 20px; color: #8e8e8e; text-align: center;">
+  <span style="font-size: 12px !important;">E办 | 灵点团队</span>
+    </div>
+    </div>
+    </div>
+  `;
+  mailCall() {//给开通权限的人发送邮件通知
+    this.sendPrompting = "正在发送中";
+    this.emailClass = "fa fa-spinner fa-pulse fa-fw";
     let isUser = !!this._userLoginService.currentUserGlobal;
     let projectName = this.projectDetail.ProjectName;
-    if(isUser){
-      this.projectService.seedMail({
-        "content":{
-          "title":projectName,
-          "text": "内容有修改",
-          "imgs": []
-        },
-        "fromwho":"",
-        "towho":{"resId":"","indv":this.authorArr}
-        })
-        .subscribe(rep=>{
-            if(rep =="done"){
-              this.sendPrompting= "发送成功";
-            }else{
-              this.sendPrompting= "发送失败"
-            }
-            setTimeout(()=>{
-              this._templateRef.dispose();
-            },1000)
-        });
-    }
+    this.projectService.getAuthorOfficer(this.projectID)
+      .subscribe(res=>{
+        this.authorArr = res.data;
+        if(isUser){
+          this.projectService.seedMail({
+            "content":{
+              "title":"[UED] 有一个与您相关的项目更新啦 • "+projectName,
+              "text": this.mailText,
+              "imgs": []
+            },
+            "fromwho":"UED",
+            "towho":{"resId":"","indv":this.authorArr}
+          })
+            .subscribe(rep=>{
+              if(rep =="done"){
+                this.sendPrompting= "发送成功";
+                this.emailClass = "fa fa-check-circle-o";
+              }else{
+                this.sendPrompting= "发送失败";
+                this.emailClass = "fa fa-times-circle-o";
+              }
+              setTimeout(()=>{
+                this.sendPrompting = "邮件通知";
+                this.emailClass = "fa fa-envelope-o"
+              },1000)
+            });
+        }
+      });
   }
 
   btnLeft() {
@@ -183,18 +216,9 @@ export class ProjectDetailComponent implements OnInit, AfterViewInit {
             this.errorBox = true;
             this.searchAuthorise = value.data;
             this.stateAuthorise = value.state;
-            if (!value.state) {
-              let addPerson = [{
-                "username": value.data.name,
-                "uId": value.data.uid,
-                "team": "",
-                "email": value.data.email,
-                "roles": value.data.deptName
-              }]
-              this.projectService.addProjectPermission(addPerson)
-                .subscribe(name => {
-                });
-            }
+            this.projectService.testUserID(value.data.uid)
+              .subscribe(name => {
+              });
           } else {
             this.errorBox = false;
           }
@@ -235,7 +259,10 @@ export class ProjectDetailComponent implements OnInit, AfterViewInit {
     this.showBtn = false;
   }
 
-  permission(state) {// 确定要加权限的人或团队
+  readMore() {
+    console.log(111)
+  }
+  permission(state?:string) {// 确定要加权限的人或团队
     $(".detailPermission").slideToggle("show");
     this.tableData = new TableData(this.tableData.data, this.tableData.field, this.tableData.header)
     let stringId = "";
@@ -268,28 +295,51 @@ export class ProjectDetailComponent implements OnInit, AfterViewInit {
     this.route.params
       .switchMap((params: Params) => {
         this.projectID = params["id"];
-        this.projectService.getAuthorOfficer(this.projectID)
-          .subscribe(res=>{
-            this.authorArr = res.data[0]
-          });
         return this.projectService.getProjectDetail(params["id"]);
       })
       .subscribe(projects => {
+
+        let url= projects.PrototypeView;
+        let reg = /52580\/ux\/ued-resource/;
+        if(reg.test(url)){// 原型自动打包zip
+          let index = url.lastIndexOf("/");
+          let name = projects.ProjectName.replace(/\[.+\]/,"");
+          this.prototypeZip = url.slice(0,index)+"/原型-"+name+".zip";
+          this.projectService.getPrototypeZip(url,projects.ProjectName)
+            .subscribe(rep=>{})
+        }else{
+          this.prototypeZip = projects.PrototypeZip ? this.sanitizer.bypassSecurityTrustUrl(projects.PrototypeZip):""
+        };
+
         projects.CreatTime = projects.CreatTime.slice(0, 10);
         projects.UpdateTime = projects.UpdateTime.slice(0, 10);
         projects.PrototypeView = this.sanitizer.bypassSecurityTrustUrl(projects.PrototypeView);
         this.projectDetail = projects;
+        this.hiddenText = this.projectDetail.ProjectBrief.length>500 ? false : true;
+
         this.projectDocsShow = !projects.RequirementDoc.length;
 
+        this.route.params
+          .switchMap((params: Params) => {
+            return this.projectService.getProjectDetailImgs(params["id"]);
+          })
+          .subscribe(projectImgs => {//图片自己打包zip
+
+            this.numImgs = projectImgs.length;
+            this.projectDetailImgs = projectImgs;
+
+            if(this.numImgs !== 0){
+              if(reg.test(projectImgs[0])){
+                let url = projectImgs[0];
+                let index = url.lastIndexOf("/");
+                this.imagesZip = url.slice(0,index)+"/效果图-"+name+".zip";
+                this.projectService.getImagesZip(projectImgs[0],projects.ProjectName)
+                  .subscribe(rep=>{})
+              }
+            }
+          });
       });
-    this.route.params
-      .switchMap((params: Params) => {
-        return this.projectService.getProjectDetailImgs(params["id"]);
-      })
-      .subscribe(projectImgs => {
-        this.numImgs = projectImgs.length;
-        this.projectDetailImgs = projectImgs;
-      });
+
     this.route.params
       .switchMap((params: Params) => {//得到授权的团队和个人数据
         return this.projectService.getProjectAuthorises(JSON.stringify(params["id"]))
@@ -319,7 +369,8 @@ export class ProjectDetailComponent implements OnInit, AfterViewInit {
       });
     this.route.params
       .switchMap((params: Params) => {
-        return this.projectService.getProjectFollowed('"6176000041"', JSON.stringify(params["id"]))
+      let userID = this._userLoginService.currentUserGlobal.uid;
+        return this.projectService.getProjectFollowed(""+userID, JSON.stringify(params["id"]))
       })
       .subscribe(res => {
         this.highlight = res == 1 ? true : false;
@@ -332,6 +383,7 @@ export class ProjectDetailComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+
 
   }
 }

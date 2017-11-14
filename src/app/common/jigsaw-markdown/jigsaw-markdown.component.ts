@@ -1,6 +1,6 @@
 import { Component, OnInit,Input,AfterViewInit,OnChanges,ViewEncapsulation}from '@angular/core';
 import { SimpleChange } from '@angular/core';
-import {  Http } from '@angular/http';
+import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import  md from 'markdown-it';
 import  hljs from 'highlight.js';
@@ -9,20 +9,29 @@ import  mdContainer from 'markdown-it-container';
 @Component({
   selector: 'jigsaw-markdown',
   template: `
+      <div class="jigsaw-markdown-option" *ngIf="labelTypes.length">
+        <select name="" id="" [(ngModel)]="defaultLabelType" (ngModelChange)="doChangeLabelType()">
+          <option [value]="option" *ngFor="let option of labelTypes">{{option}}</option>
+        </select>
+      </div>
       <div class="jigsaw-markdown" (click)="doMdContent($event)" [innerHTML]="renderContent | sanitizeHtml">
       </div>
     `,
   styleUrls: ['./jigsaw-markdown.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class JigsawMarkdownComponent implements OnInit,AfterViewInit,OnChanges {
+export class JigsawMarkdownComponent implements OnInit,OnChanges {
 
   @Input() mdSource:string;
 
   renderContent:string;
   private marked:any;
+  defaultLabelType:any="R";
+  labelTypes:string[]=[];
+
 
   constructor(private http:Http) {
+
     let option = {
       html:         true,
       breaks:       false,
@@ -42,26 +51,43 @@ export class JigsawMarkdownComponent implements OnInit,AfterViewInit,OnChanges {
     this.marked=md(option);
     this.marked.use(mdContainer, 'left')
                .use(mdContainer, 'right')
+               .use(mdContainer, '',{   // 文字内容也根据项目类型（-R,-O）变化
+                 validate: function(params) {
+                   return !!params.trim().match(/^\*.*$/);
+                 },
+                 render:(tokens, idx)=> {
+                   var m = tokens[idx].info.trim().match(/^R\s+(.*)$/);
+                   var token = tokens[idx];
+                   //md.utils.escapeHtml(m[1])
+                   if (token.nesting === 1) {
+                     // opening tag
+                     console.log(m);
+                     //return '<details><summary></summary>\n';
+                     if(token["info"].trim().replace(/\*/gi,"") != this.defaultLabelType) {
+                       return '<span class="test md-hide">';
+                     }
+                     else {
+                       return '<span class="test">';
+                     }
+                   }else{
+                     return '</span>';
+                   }
+                 },
+                 marker:"@"})
                .use(mdContainer, 'wrap',{marker:"!"});
-
-    this.marked.renderer.rules.image = function (tokens, idx, options, env, slf) {
-      var token = tokens[idx];
-      var src = token.attrs[token.attrIndex('src')][1];
-      token.attrs[token.attrIndex('src')][1] = src.replace(src.slice(0,src.lastIndexOf("/")+1),"doc/ued-design/img/");
-      token.attrs[token.attrIndex('alt')][1] = slf.renderInlineAsText(token.children, options, env);
-      let imgTag = slf.renderToken(tokens, idx, options);
-      return "<div class='image-container'>" + imgTag + "</div>";
-    };
   }
   ngOnInit() {
     this.renderMdSource();
   }
+
   ngOnChanges():void {
     this.renderMdSource();
   }
-  ngAfterViewInit():void {
 
+  doChangeLabelType(){
+    this.renderMdSource();
   }
+
   private renderMdSource(){
     if(!this.mdSource){
       this.renderContent="";
@@ -85,6 +111,28 @@ export class JigsawMarkdownComponent implements OnInit,AfterViewInit,OnChanges {
     }else{
       this.renderContent=this.marked.render(this.mdSource)
     }
+
+    this.labelTypes=[];
+    this.marked.renderer.rules.image =  (tokens, idx, options, env, slf)=>{
+      var token = tokens[idx];
+      if(!this.labelTypes.includes(token["content"]) && token["content"]!=""){
+        this.labelTypes.push(token["content"]);
+        this.defaultLabelType=this.labelTypes[0];
+      }
+
+      var src = token.attrs[token.attrIndex('src')][1];
+      token.attrs[token.attrIndex('src')][1] = src.replace(src.slice(0,src.lastIndexOf("/")+1),"doc/ued-design/img/");
+      token.attrs[token.attrIndex('alt')][1] = slf.renderInlineAsText(token.children, options, env);
+      let imgTag = slf.renderToken(tokens, idx, options);
+
+      if(token["content"]!=this.defaultLabelType && token["content"].indexOf("*")!=-1){ // 图片根据项目类型（-R,-O）切换
+        return "";
+      }
+      else if(token["content"]==this.defaultLabelType && token["content"].indexOf("*")!=-1){
+        return "<div class='image-container'>" + imgTag + "<div class='img-label'>"+token["content"]+"</div></div>";
+      }
+      return "<div class='image-container'>" + imgTag + "</div>"
+    };
   }
 
   isFirst : boolean = true;
@@ -128,14 +176,5 @@ export class JigsawMarkdownComponent implements OnInit,AfterViewInit,OnChanges {
     ele.style.transform="";
     ele.style.cursor="zoom-in";
   }
-
-/*  let cloneImg = target.parentNode.cloneNode(true);
-  cloneImg.classList.add("fixed-img");
-  document.body.appendChild(cloneImg);
-  cloneImg.onclick=function(){
-  var evt = event || window.event;
-  evt.stopPropagation();
-  document.body.removeChild(cloneImg);
-}*/
 }
 

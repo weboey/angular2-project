@@ -4,9 +4,10 @@
     <jigsaw-tab-pane  [async]="true">
       <div jigsaw-title>已发布</div>
       <ng-template>
-        <div class="post-item" *ngFor="let postItem of userPostList | filter:{status:1}">
+        <div class="post-item" *ngFor="let postItem of userPostList | filter:{status:1}"
+            (click)="goToDetail(postItem.serialNum)">
           <div class="left-img">
-            <img [src]="postItem.headPicture" alt="">
+            <img [src]="getImg(postItem.headPicture)" alt="">
           </div>
           <div class="right-text">
             <h1>{{postItem.title}}</h1>
@@ -15,7 +16,7 @@
               <span>{{postItem.createdate}}</span>
               <div class="btn-group">
                 <button class="btn btn-default" [routerLink]="['/post/user/write',postItem.serialNum]"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                <button class="btn btn-default" (click)="doDeleteMyPost(postItem)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                <button class="btn btn-default" (click)="doDeleteMyPost($event,postItem)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
               </div>
             </div>
           </div>
@@ -25,9 +26,10 @@
     <jigsaw-tab-pane  [async]="true">
       <div jigsaw-title>草稿箱</div>
       <ng-template>
-        <div class="post-item" *ngFor="let postItem of userPostList | filter:{status:0}">
+        <div class="post-item" *ngFor="let postItem of userPostList | filter:{status:0}"
+             (click)="goToEdit(postItem.serialNum)">
           <div class="left-img">
-            <img [src]="postItem.headPicture" alt="">
+            <img [src]="getImg(postItem.headPicture)"  alt="">
           </div>
           <div class="right-text">
             <h1>{{postItem.title}}</h1>
@@ -36,7 +38,7 @@
               <span>{{postItem.createdate}}</span>
               <div class="btn-group">
                 <button class="btn btn-default" [routerLink]="['/post/user/write',postItem.serialNum]"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                <button class="btn btn-default" (click)="doDeleteMyPost(postItem)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                <button class="btn btn-default" (click)="doDeleteMyPost($event,postItem)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
               </div>
             </div>
           </div>

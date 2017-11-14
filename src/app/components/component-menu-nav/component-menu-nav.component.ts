@@ -4,11 +4,11 @@ import { ComponentMenuService } from "../service/component.service";
 import { ComponentMenuNav } from "../model/menu-nav-model"
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/filter';
-import {animateFactory} from "../../animations/animate-factory";
+import {fade} from "../../animations/fade";
 @Component({
   templateUrl: './component-menu-nav.component.html',
   styleUrls: ['./component-menu-nav.component.scss'],
-  animations:[animateFactory(500)]
+  animations:[fade]
 })
 export class ComponentMenuNavComponent implements OnInit,OnChanges {
 

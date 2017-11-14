@@ -1,17 +1,34 @@
-
+.panel{
+  margin-bottom: 0;
+}
 .checkbox{
   display: flex;
   justify-content: space-between;
 }
 .panel-default{
   padding: 10px;
+  padding-top: 24px;
 }
-.mg-top-015{
-  margin-top: -15px;
+.mg-top-025{
+  margin-top: 15px;
 }
 .mg-left-15{
   margin-left: 15px;
 }
 .btn{
   padding: 6px 24px;
+}
+
+.forget-pwd{
+  color: #4398ef;
+}
+
+.user-login-container .glyphicon, .fa {
+   margin-right: 0;
+  font-size: 16px;
+}
+
+.flex-between{
+  display: flex;
+  justify-content: space-between;
 }

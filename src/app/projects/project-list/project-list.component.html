@@ -1,7 +1,7 @@
 <div class="navbar contentProject container">
     <div class="selfName">
-      <a [class.projectsState]="boo" (click)="boo=true">全部</a>
-      <a [class.projectsState]="!boo" (click)="boo=false">收藏</a>
+      <a [class.projectsState]="boo" (click)="collect(true)">全部</a>
+      <a [class.projectsState]="!boo" (click)="collect(false)">收藏</a>
       <!--<div class="keyWork" style="display: inline-block">-->
         <!--<input class="btn btn-info"  type="button" (click)="keyWork('软银')" value="软银">-->
       <!--</div>-->
@@ -13,8 +13,8 @@
       </div>
     </div>
     <div class="contentList">
-        <ul class="row">
-          <li   class="col-lg-4 col-md-4 col-xs-6 cardContainer" *ngFor="let projectList of projectLists">
+        <ul class="row clearfix">
+          <li   class="cardContainer" *ngFor="let projectList of projectLists">
             <div class="contentListDistance">
               <a [routerLink]="['./', projectList?.SerialNum ]" style="display: block">
                 <div style="position: relative">
@@ -38,8 +38,8 @@
         </ul>
     </div>
   <div  class="viewport">
-    <img [hidden]="!viewPorthide && !projectBase" src="assets/img/timg.gif" alt="">
-    <span [hidden]="projectBase" >已没有项目可以加载了……</span>
+    <img [hidden]="viewPortHide" src="assets/img/timg.gif" alt="">
+    <span [hidden]="projectBase" >已没有项目可加载了……</span>
   </div>
 </div>
 
@@ -80,4 +80,5 @@
     </div>
   </div>
 </ng-template>
+<app-back-top [element]="'g-main'"></app-back-top>
 

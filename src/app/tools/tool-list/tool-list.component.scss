@@ -1,39 +1,46 @@
 .m-tools{
   display: flex;
-  max-width: 1240px;padding: 0 15px;
+  max-width: 1226px;
   margin: 0 auto;
   max-height: 100%;min-height: 100%;
-  .tool-group{
-    width: 260px;
-    min-height: 100%; max-height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    padding: 15px 0;
-    &>li{
-      position: relative;
-      a{
-        display: inline-block;
-        &>img{
-          max-width: 100%;
-          max-height: 100%;
-        }
-        transition: outline .6s;
-        &.active{
-          outline: 8px solid #66afe9;
-          outline-offset: 0;
-          box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
-        }
+  .tool-box{
+    padding: 22px 0 10px 0;
+    .tool-group{
+      width: 260px;
+      min-height: 100%; max-height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding:5px;
+      &>li:not(:first-child){
+        margin-top: 25px;
       }
-      &>.tool-download{
-        position: absolute;
-        top: 4px;
-        right: 38px;
-        width: 28px;
-        height: 28px;
-        background: url('/assets/img/tools/down-default.png') no-repeat;
-        &:hover{
-          background: url('/assets/img/tools/down-active.png') no-repeat;
+      &>li{
+        position: relative;
+        opacity: 0;
+        a{
+          display: inline-block;
+          &>img{
+            max-width: 100%;
+            max-height: 100%;
+          }
+          transition: outline .6s;
+          &.active{
+            outline: 8px solid #66afe9;
+            outline-offset: 0;
+            box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+          }
+        }
+        &>.tool-download{
+          position: absolute;
+          top: 4px;
+          right: 38px;
+          width: 28px;
+          height: 28px;
+          background: url('/assets/img/tools/down-default.png') no-repeat;
+          &:hover{
+            background: url('/assets/img/tools/down-active.png') no-repeat;
+          }
         }
       }
     }
@@ -43,7 +50,7 @@
     margin-left: 35px;
     margin-top: 18px;
     max-height: 100%;
-    overflow-y: auto;
+
   }
 }
 
@@ -63,4 +70,17 @@
 }
 .m-tool-list li:hover{
   box-shadow: 2px 8px 15px rgba(0,0,0,0.2);
+}
+
+.delay0{
+  animation-delay:1000ms;
+}
+.delay1{
+  animation-delay:2000ms;
+}
+.delay2{
+  animation-delay:3000ms;
+}
+.delay3{
+  animation-delay:4000ms;
 }

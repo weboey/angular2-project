@@ -13,7 +13,6 @@ export class PostDetailComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }

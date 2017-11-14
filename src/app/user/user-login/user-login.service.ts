@@ -2,7 +2,8 @@
  * Created by 6396000843 on 2017/8/4.
  */
 
-import { Injectable } from '@angular/core';
+import { Injectable,PLATFORM_ID ,Inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/distinctUntilChanged';
@@ -13,30 +14,35 @@ import { rsa }  from './rsa';
 
 @Injectable()
 export class UserLoginService {
-  public userLoginURL = 'xplan/common/authentication';
-  public preparekeyURL = 'xplan/common/preparekey';
-  public userCardURL = 'http://api.zte.com.cn/api/zte-km-icenter-address/v1/rest/user/queryUserCard';
-  public userLocalURL = 'rdk/service/app/ued/server/user/local-user';
-
-
+  //private userLoginURL = 'xplan/common/authentication';
+  private userLoginURL = 'rdk/service/app/ued/server/user/user-login';
+  private preparekeyURL = 'xplan/common/preparekey';
+  private userCardURL = 'http://api.zte.com.cn/api/zte-km-icenter-address/v1/rest/user/queryUserCard';
+  private userLocalURL = 'rdk/service/app/ued/server/user/local-user';
 
   public userInfo$: Subject<User> = new Subject<User>();
+
+  public openLoginProp$: Subject<boolean> = new Subject<boolean>();
+
   publicKey:any;
-  rsa = rsa.init();
+  rsa :any;
 
   constructor(
     private http:Http,
     private activeRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    @Inject(PLATFORM_ID) private platformId : Object
   ){
-    // RSA
-    console.log(this.rsa);
-    // 获取公钥
-    this.requestPublicKey()
-      .subscribe(
-        data => {this.publicKey =  data},
-        error => {console.error("获取公钥失败",error);}
-      );
+    if (isPlatformBrowser(platformId)) {
+      // RSA
+      this.rsa = rsa.init();
+      // 获取公钥
+      this.requestPublicKey()
+        .subscribe(
+          data => {this.publicKey =  data},
+          error => {console.error("获取公钥失败",error);}
+        );
+    }
   }
   //获取已登陆用户 Observable
   public get currentUser():Observable<User>{
@@ -44,7 +50,10 @@ export class UserLoginService {
   }
   //获取已登陆用户 Object
   public get currentUserGlobal():User{
-    return JSON.parse(localStorage.getItem("currentUser"))
+    if (isPlatformBrowser(this.platformId)) {
+      return JSON.parse(localStorage.getItem("currentUser"))
+    }
+    return null
   }
 
   // 请求公钥
@@ -160,8 +169,10 @@ export class UserLoginService {
   }
   //todo:暂时保存在localStorage,需要保存在cookie里
   public saveCurrentUser(user:User){
-    localStorage.setItem("currentUser",JSON.stringify(user));
-    this.userInfo$.next(Object.assign({},user));
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.setItem("currentUser",JSON.stringify(user));
+      this.userInfo$.next(Object.assign({},user));
+    }
   }
 
   private _shallowCopy = function(target, source) {
@@ -179,7 +190,9 @@ export class UserLoginService {
     console.error("login service error!!!");
   }
   public logout():void{
-    localStorage.removeItem("currentUser");
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.removeItem("currentUser");
+    }
     this.userInfo$.next(null);
     this.router.navigate(['/home'], { relativeTo: this.activeRoute });
   }

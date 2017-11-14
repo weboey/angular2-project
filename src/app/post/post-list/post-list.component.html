@@ -4,7 +4,9 @@
       <li *ngFor="let postItem of postList" >
         <a [routerLink]="['./detail',postItem.serialNum]"  routerLinkActive="active">
           <div class="post-item">
-            <img [src]="postItem.headPicture" alt="">
+            <div class="post-img">
+              <img [src]="postItem.headPicture">
+            </div>
             <div class="post-title">
               <h3>{{postItem.title}}</h3>
             </div>
@@ -14,8 +16,8 @@
             <div class="post-footer-icon f-top-line">
               <div class="footer-user">
                 <img class="f-img-border" [src]="postItem.uid | showHeadImg" alt="">
-                <span>{{postItem.author}}</span>
-                <span>{{postItem.updatedate}}</span>
+                <span class="user-name">{{postItem.author}}</span>
+                <span class="create-time">{{postItem.updatedate | date:"yyyy-MM-dd HH:mm"}}</span>
               </div>
               <span>
                 {{postItem.saType}}

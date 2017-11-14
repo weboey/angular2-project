@@ -1,6 +1,7 @@
 .team-content {
-  background-color: #fff;
+  background-color: #6fd2f9;
   text-align: center;
+  height: 100%;
   .team-top {
     background-color: #efefef;
     div{
@@ -20,54 +21,76 @@
   }
   .team-style{
     position: relative;
-    height: 660px;
-    background:#6fd2f9 url(/assets/img/team/about-us-bg-empty.png) center center no-repeat;
-    .team-img {
-      position: absolute;
-      top: 0;
-      left: 50%;
-      width: 750px;
-      height: 660px;
-      transform: translate(-50%,0);
-      img{
-        transition:transform 1s;
-        &:hover{
-          transform: scale(1.1);
-        }
-        &:nth-child(1){
-          position: absolute;
-          top: 268px;
-          left: 403px;
-        }
-        &:nth-child(2){
-          position: absolute;
-          top: 516px;
-          left: 346px;
-        }
-        &:nth-child(3){
-          position: absolute;
-          top: 243px;
-          left: 655px;
-        }
-        &:nth-child(4){
-          position: absolute;
-          top: 106px;
-          left: 667px;
-        }
-        &:nth-child(5){
-          position: absolute;
-          top: 337px;
-          left: 5px;
-        }
-        &:nth-child(6){
-          position: absolute;
-          top: 56px;
-          left: 313px;
-        }
-        &:nth-child(7){
-          position: absolute;
-          top: 180px;
-          left: 352px;
+    height: inherit;
+    .team-desc{
+      color: #fff;
+      font-size: 18px;
+      text-align: left;
+      width: 510px;
+      margin: 0 auto;
+      padding: 20px 0;
+    }
+    .bg-box {
+      width: 100%;
+      background: #6fd2f9 url(/assets/img/team/about-us-bg-empty.png) center center no-repeat;
+      .team-img {
+        position: relative;
+        width: 750px;
+        height:600px;
+        margin: 0 auto;
+        img{
+          transition:transform 1s;
+          width: 88px;
+          height: 88px;
+          border-radius: 44px;
+          &:hover{
+            transform: scale(1.1);
+          }
+          &:nth-child(1){
+            position: absolute;
+            top: 238px;
+            left: 403px;
+          }
+          &:nth-child(2){
+            position: absolute;
+            top: 486px;
+            left: 346px;
+          }
+          &:nth-child(3){
+            position: absolute;
+            top: 214px;
+            left: 655px;
+          }
+          &:nth-child(4){
+            position: absolute;
+            top: 76px;
+            left: 667px;
+          }
+          &:nth-child(5){
+            position: absolute;
+            top: 307px;
+            left: 5px;
+          }
+          &:nth-child(6){
+            position: absolute;
+            top: 26px;
+            left: 313px;
+          }
+          &:nth-child(7){
+            position: absolute;
+            top: 150px;
+            left: 352px;
+          }
+          &:nth-child(8){
+            position: absolute;
+            top: 492px;
+            left: 174px;
+          }
+          &:nth-child(9){
+            position: absolute;
+            top: 408px;
+            left: 646px;
+          }
         }
       }
     }

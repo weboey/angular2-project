@@ -1,17 +1,21 @@
 @import "../../../ued-theming.scss";
 .m-category{
-  height: 100%;  display: flex;max-width: 1240px;margin: 0 auto;
-  background-color: #f1f1f1;  padding: 15px;  padding-bottom: 0;
+  height: 100%;
+  display: flex;
+  width: 1426px;
+  margin: 0 auto;
+  padding-top: 15px;
+  background-color: $background-color;
+  padding-bottom: 0;
   .g-category-box{
-    width: 120px;
+    width: 200px;
     .category-group li{
       height: 42px;  padding: 8px 0;
-      margin-left: -18px;
       a{
         display: block;
         text-align: left;
         color: $menu-left-color;
-        padding-left: 36px;
+        padding-left: 30px;
         border-left: 2px solid transparent;
         font-size: 14px;
         //border-bottom: 1px solid #d2d2d2;
@@ -26,8 +30,17 @@
         color: $active-menu-color;
       }
     }
+    .btn-box{
+      margin-top: 20px;
+      opacity: 0;
+      padding: 0 42px
+    }
   }
   .g-content-box{
     flex: 1;
   }
+}
+.category-group{
+  width: 100px;
+  margin: 0 auto;
 }

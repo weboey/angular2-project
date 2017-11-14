@@ -1,0 +1,8 @@
+<div class="m-post-attach" *ngIf="postAttachList?.length">
+  <h3>资源文件 <span>共{{postAttachList.length}}个文件</span></h3>
+  <ul class="attach-group">
+    <li class="attach-item" *ngFor="let attachItem of postAttachList">
+      <a [href]="attachItem.attachDownloadUrl"><span>{{attachItem.attachName}}</span><i class="fa fa-download" aria-hidden="true"></i></a>
+    </li>
+  </ul>
+</div>

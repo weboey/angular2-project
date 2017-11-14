@@ -23,7 +23,7 @@
     }
     .input-group-btn{
       text-align: right;
-      .btn{
+      button{
         margin-left: 15px;
       }
     }
@@ -42,12 +42,22 @@
       .attachment-files{
         li{
           line-height: 32px;
+          white-space: nowrap;
+          overflow: hidden;
+          .attach-file-name{
+            max-width: 255px;
+            overflow: hidden;
+            display: inline-block;
+            vertical-align: bottom;
+            text-overflow: ellipsis;
+          }
           a{
             font-size: 14px;
             margin-left: 22px;
           }
         }
       }
+
     }
   }
 }

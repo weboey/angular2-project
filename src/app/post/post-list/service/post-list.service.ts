@@ -5,16 +5,13 @@ import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-import { Post } from '../../model/post-model';
+import { Post,PostAttach } from '../../model/post-model';
 
 @Injectable()
 export class PostlistService {
   private postListURL:string = 'rdk/service/app/ued/server/post/post-list';
-  //private postListURL:string = 'rdk/service/app/ued/server/post/post-list';
-  // = (uid, size) => `http://zmail.zte.com.cn/Mapi/image/head/m${size || 1}/${uid.toString().substr(-3, 3)}/u${uid}.jpg`;
-  public postListSearchURL = 'mock-data/postlist-search-mock.json';
-
-  public postDetailURL = 'rdk/service/app/ued/server/post/post-detail';
+  private postDetailURL = 'rdk/service/app/ued/server/post/post-detail';
+  private postDetailAttachURL = 'rdk/service/app/ued/server/post/post-detail-attach';
 
   constructor(public http:Http) { }
 
@@ -51,4 +48,17 @@ export class PostlistService {
       .catch((error:any) => Observable.throw(error || 'Server error'));
   }
 
+  public getPostAttachList(serialNum:string):Observable<PostAttach[]>{
+    let url = this.postDetailAttachURL;
+    let params = new URLSearchParams();
+    if (serialNum) {
+      params.set('serialNum',serialNum);
+    }
+    return this.http
+      .get(url,{search:params})
+      .map((res:Response) => {
+        return res.json();
+      })
+      .catch((error:any) => Observable.throw(error || 'Server error'));
+  }
 }

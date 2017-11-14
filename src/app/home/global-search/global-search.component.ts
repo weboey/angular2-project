@@ -4,6 +4,7 @@ import {SearchService} from "./search.service";
 import createHistory from "history/createBrowserHistory"
 import {Observable} from "rxjs/Observable";
 import set = Reflect.set;
+import {UserLoginService} from "app/user/user-login/user-login.service";
 
 
 @Component({
@@ -19,8 +20,12 @@ export class GlobalSearchComponent implements OnInit {
   targetNum: number;
   keyword: any;
   selectedIndex: number = 0;
+  userID: any;
 
-  constructor(private searchService: SearchService) {
+  constructor(
+    private searchService: SearchService,
+    private _userLoginService: UserLoginService
+  ) {
   }
 
   public showTab(index): void {//主动切换tab页，index为tab页下标，第一个为0
@@ -28,7 +33,7 @@ export class GlobalSearchComponent implements OnInit {
   }
 
   onEnter(value) {//输入框 回车事件
-    this.collating(value);
+    this.collating(value,this.userID);
     const history = createHistory()
     this.showTab(this.target);
     history.push('/search?keyword=' + encodeURIComponent(value));
@@ -41,8 +46,8 @@ export class GlobalSearchComponent implements OnInit {
     })
   }
 
-  collating(value) {//搜索后整理的数据
-    this.searchService.getSearchResult(value)
+  collating(keyword,id) {//搜索后整理的数据
+    this.searchService.getSearchResult(keyword,id)
       .subscribe(rep => {
         let projects = [];
         let menus = [];
@@ -104,18 +109,26 @@ export class GlobalSearchComponent implements OnInit {
   }
 
   ngOnInit() {
+    this._userLoginService.currentUser
+      .subscribe(rep=>{
+        if(!rep){
+          this.userID = "";
+        }else{
+          this.userID = rep.uid;
+        }
+      })
+    this.userID = !!this._userLoginService.currentUserGlobal?this._userLoginService.currentUserGlobal.uid: "";
     const history = createHistory();
     const location = history.location;
     this.searchService.setMsg.subscribe((rep) => {
       this.keyword = rep.keyword;
-      console.log(this.keyword);
       if (rep.keyword == "") {
         this.keyword = decodeURIComponent(location.search).slice(9);
       } else {
         history.push('/search?keyword=' + encodeURIComponent(this.keyword));
       }
       this.target = rep.target == "projects" ? 1 : rep.target == "components" ? 2 : rep.target == "post" ? 3 : 0;
-      this.collating(this.keyword)
+      this.collating(this.keyword,this.userID)
 
     });
   }

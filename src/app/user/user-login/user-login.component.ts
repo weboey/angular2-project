@@ -3,6 +3,7 @@ import {User} from "../model/user-model";
 import { fadeIn } from '../../animations/fade-in';
 import { Headers, Http } from '@angular/http';
 import {UserLoginService} from "./user-login.service";
+import { CheckBoxStatus } from "@rdkmaster/jigsaw";
 @Component({
   selector: 'ued-user-login',
   templateUrl: './user-login.component.html',
@@ -17,6 +18,7 @@ export class UserLoginComponent implements OnInit {
   key;
   constructor(private http: Http,private userLoginService:UserLoginService) { }
 
+  autoLogin =  CheckBoxStatus.checked;
   ngOnInit() {
 
   }

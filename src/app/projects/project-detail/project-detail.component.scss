@@ -1,13 +1,11 @@
 
 $normal-padding: 20px;
 .project-detail {
+  position: relative;
+  margin: 0 auto;
   margin-top: 10px;
   text-align: left;
-  padding-right: 60px;
-  padding-left: 60px;
-  .cmg {
-    padding-right: 0;
-  }
+  max-width: 1468px;
   img {
     max-width: 100%;
   }
@@ -61,25 +59,10 @@ $normal-padding: 20px;
       padding-bottom: 20px;
       jigsaw-button {
         position: absolute;
-        top: 35px;
-        right: 20px;
-        border: none;
-        color: #959595;
-        a {
-           color: #959595;
-         }
-        a:hover {
-          color: #288bf0;
-        }
-        &:hover {
-          border: none;
-          color: #288bf0;
-        }
-        &:active {
-          border: none;
-        }
+        top: 28px;
+        right: 0;
         &:nth-child(2) {
-          right: 130px;
+          right: 100px;
         }
       }
     }
@@ -105,18 +88,15 @@ $normal-padding: 20px;
         }
       }
     }
-    div{
-      text-align: center;
-      jigsaw-button {
-        border: none;
-        color: #959595;
-      }
+    div.download{
+      text-align: right;
     }
     div {
       img {
         padding: 6px;
-        cursor: pointer;
         width: 100%;
+        max-height: 550px;
+        cursor: pointer;
       }
     }
     .btn-right {
@@ -126,7 +106,7 @@ $normal-padding: 20px;
       height: 30px;
       width: 30px;
       border-radius: 20px;
-      padding-left: 3px;
+      padding-left: 8px;
       padding-top: 2px;
       transform: translateY(-50%);
       background-color: rgba(160,160,160,.75);
@@ -183,13 +163,13 @@ $normal-padding: 20px;
         color: #fff;
         &:nth-child(2) {
           position: absolute;
-          top: 16%;
-          left: 14%;
+          top: 53px;
+          left: 49px;
         }
         &:nth-child(3) {
           position: absolute;
-          top: 16%;
-          right: 9%;
+          top: 47px;
+          right: 36px;
         }
         &:nth-child(4) {
           position: absolute;
@@ -201,13 +181,13 @@ $normal-padding: 20px;
         }
         &:nth-child(5) {
           position: absolute;
-          bottom: 19%;
-          left: 11%;
+          bottom: 54px;
+          left: 36px;
         }
         &:nth-child(6) {
           position: absolute;
-          bottom: 24%;
-          right: 16%;
+          bottom: 70px;
+          right: 57px;
         }
       }
     }
@@ -219,19 +199,34 @@ $normal-padding: 20px;
       a {
         text-align: center;
         line-height: 46px;
-        color: #666;
+        color: #4398ef;
+        &:hover {
+          color:  #0041fd;
+        }
         &:first-child {
           padding-right: 50px;
         }
         .fa-heart:before {
           font-size: 20px;
         }
+        .fa-check-circle-o {
+          font-size: 20px;
+          color:  #0041fd;
+        }
+        .fa-times-circle-o {
+          font-size: 20px;
+          color:  red;
+        }
+        .fa-spinner{
+          font-size: 20px;
+          color:  #0041fd;
+        }
         .fa-envelope-o:before {
           font-size: 20px;
         }
       }
       .marking {
-        color: #4398ef;
+        color: #f74040;
       }
     }
     + .permission {
@@ -239,9 +234,6 @@ $normal-padding: 20px;
       position: relative;
       .permissionBtn {
         position: relative;
-        > h4 {
-          padding-bottom: 10px;
-        }
         >jigsaw-button {
           position: absolute;
           top: 13px;
@@ -256,7 +248,7 @@ $normal-padding: 20px;
       }
       .detailPermission {
         position: absolute;
-        top: 100%;
+        top: 87%;
         right: 0;
         width: 100%;
         border-radius: 5px;
@@ -272,8 +264,8 @@ $normal-padding: 20px;
           width: 20px;
           height: 20px;
           top: -6px;
-          right: 30px;
-          transform:  rotate(145deg) skewX(26deg);
+          right: 50px;
+          transform: rotate(45deg);
           background-color: #f2f2f2;
           z-index: -2;
         }
@@ -291,7 +283,7 @@ $normal-padding: 20px;
         }
         .authoriseContent {
           position: absolute;
-          top: 72px;
+          top: 47px;
           left: 50%;
           width: 90%;
           border-radius: 5px;
@@ -344,7 +336,6 @@ $normal-padding: 20px;
           }
           & div > jigsaw-button {
             margin-bottom: 15px;
-            margin-top: 15px;
             border-radius: 15px;
             border: 2px solid #288bf0;
             color: #288bf0;
@@ -410,6 +401,7 @@ $normal-padding: 20px;
         text-align: center;
         margin-right: 2%;
         margin-bottom: 2%;
+        border-radius: 14px;
         background-color: #e5e5e5;
         color: #333;
       }
@@ -419,8 +411,8 @@ $normal-padding: 20px;
       }
       & >jigsaw-button {
         border: none;
-        color: #288bf0;
-        background-color: #fff;
+        color: #fff;
+        background-color: #288bf0;
       }
     }
     .relatedProjects {
@@ -470,6 +462,7 @@ $normal-padding: 20px;
   }
 }
 
+
 .yellow {
   background-color: yellow;
 }
@@ -508,3 +501,33 @@ $normal-padding: 20px;
 jigsaw-table {
   border: none;
 }
+.project-detail-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 360px;
+}
+.project-detail-left {
+  margin-right: 360px;
+}
+.intro {
+  &+.intro-read-more {
+    position: relative;
+    height: 104px;
+    margin-top: -130px;
+    text-align: center;
+    background: -webkit-linear-gradient(to top, rgba(255,255,255,1) 10%, rgba(255,255,255,0) 100%);
+    background: linear-gradient(to top, rgba(255,255,255,1) 10%, rgba(255,255,255,0) 100%);
+    z-index: 9999;
+    jigsaw-button {
+          margin-top: 85px;
+    }
+  }
+}
+
+.hidden-text {
+  overflow: hidden;
+  max-height: 184px;
+  margin-bottom: 40px;
+}
+

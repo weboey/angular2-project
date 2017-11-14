@@ -1,26 +1,39 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+/*路由&守卫*/
 import { ProjectsRoutingModule } from "./projects-routing.module";
-import {MyTableCellOption, MyTableHeadOption, ProjectDetailComponent} from "./project-detail/project-detail.component";
-import {ProjectListComponent} from "./project-list/project-list.component";
-import {ProjectService} from "./project-service/project.service";
-import {FooterComponent} from "../home/footer/footer.component";
-import {SlideImgComponent} from "../slide-img/slide-img.component";
-import {AuthGuard} from "./auth-guard";
-import {JigsawModule} from '@rdkmaster/jigsaw';
-import {UedCommonModule} from "../common/ued-common.module";
+import { AuthGuard} from "./auth-guard";
+
+/*模块*/
+import { UedCommonModule } from "../common/ued-common.module";
+import { HomeModule } from "../home/home.module";
+import {
+  JigsawButtonModule,JigsawInputModule,JigsawTagModule,JigsawTableModule
+} from "@rdkmaster/jigsaw";
+/*组件*/
+import { MyTableCellOption, MyTableHeadOption, ProjectDetailComponent} from "./project-detail/project-detail.component";
+import { ProjectListComponent} from "./project-list/project-list.component";
+import { ProjectService} from "./project-service/project.service";
+import { FooterComponent} from "../home/footer/footer.component";
+
+
 
 @NgModule({
   imports: [
     CommonModule,
     ProjectsRoutingModule,
-    JigsawModule,UedCommonModule
+    JigsawButtonModule,
+    JigsawInputModule,
+    JigsawTagModule,
+    JigsawTableModule,
+    UedCommonModule,
+    HomeModule
   ],
   declarations: [
     ProjectDetailComponent,
     ProjectListComponent,
     FooterComponent,
-    SlideImgComponent,
     MyTableHeadOption,
     MyTableCellOption,
   ],

@@ -1,10 +1,165 @@
 
-$menu-left-bg-color:#f1f1f1;
+$menu-left-bg-color:#fff;
 $menu-left-color:#6f7f8e; /* a 链接颜色*/
 
-$background-color:#f1f1f1;
+$background-color:#fff;/*#f1f1f1;*/
 
 $active-menu-color:#288bf0;
 
 $active-menu-2-color:#58b0e8;
 
+//jigsaw-block .jigsaw-block{
+//  background-color: #fff;
+//}
+.jigsaw-alert{
+  box-shadow: 1px -1px 10px 1px rgba(0, 0, 0, 0.15);
+  .jigsaw-alert-head{
+    span.jigsaw-alert-title{
+      font-size: 16px;
+      color: #333;
+    }
+  }
+  .jigsaw-alert-content{
+    color: #333;
+    font-size: 14px;
+    &>label{
+      font-weight: normal;
+    }
+  }
+  .jigsaw-alert-button-group {
+    text-align: right;
+    padding-right: 12px;
+    &>jigsaw-button:first-child {
+      color: #4398EF;
+      border: 2px solid;
+      width: 28px;
+      background-color: transparent;
+      //&:hover {
+      //  color: #fff;
+      //  background-color: #0099ff;
+      //}
+    }
+    &>jigsaw-button[class*='jigsaw-button-color-primary']{
+      background-color: #4398EF;
+      color: #fff;
+      padding: 4px 15px;
+      border-radius: 30px;
+      //&:hover{
+      //  color: #fff;
+      //  background-color: #0099ff;
+      //}
+    }
+  }
+}
+.jigsaw-alert-info{
+  padding-top: 4px;
+  .jigsaw-alert-head{
+    i.fa{
+      display: none;
+    }
+    span.jigsaw-alert-title{
+      padding-left: 18px;
+    }
+    .jigsaw-alert-close{
+      display: none;
+    }
+  }
+  .jigsaw-alert-content {
+    padding-left: 8px;
+    padding-top: 6px;
+    color: #999;
+  }
+}
+.jigsaw-alert-warning{
+  min-width: 430px;
+  .jigsaw-alert-head{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    span.jigsaw-alert-close{
+      display: none;
+    }
+  }
+  .jigsaw-alert-content{
+    display: none;
+  }
+  .jigsaw-alert-button-group{
+    &>jigsaw-button{
+      background-color: #fff;
+      color: #f74040;
+      border: 2px solid;
+      height: 28px;
+      border-radius: 14px;
+      &:nth-child(2):hover{
+        height: 30px;
+        color: #fff;
+        border: 2px solid #f74040;
+        border-radius: 15px;
+        background-color: #f74040;
+      }
+    }
+  }
+}
+.jigsaw-alert-confirm{
+  .jigsaw-alert-button-group{
+    &>jigsaw-button{
+      background-color: #4398EF;
+      color: #fff;
+      padding: 4px 15px;
+      border-radius: 30px;
+      &:hover{
+        color: #fff;
+        background-color: #0099ff;
+      }
+    }
+  }
+}
+
+
+
+
+.ued-btn:focus{
+  outline: none;
+}
+.ued-btn{
+  display: inline-block;
+  padding: 6px 16px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 15px;
+}
+
+.btn-blue{
+  background-color: #4398ef;
+  color: #fff;
+}
+.btn-white{
+  background-color: #fff;
+  color: #4398ef;
+  border-color: #4398ef;
+}
+.btn-red{
+  background-color: #f74040;
+  color: #fff;
+}
+
+.btn-flat{
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+.btn-lg{
+  padding-left: 28px;
+  padding-right: 28px;
+}

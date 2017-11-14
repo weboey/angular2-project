@@ -1,8 +1,8 @@
 
-<div class="m-category" [@animate]="'slideInRight'">
+<div class="m-category" >
   <!--[@animate]="item.key"-->
   <div  class="g-category-box">
-    <ul class="category-group">
+    <ul class="category-group" [@fade]="'fadeIn'">
       <li uedRipple [routerLink]="['../all']"   routerLinkActive="active">
         <a >全部</a>
       </li>
@@ -11,12 +11,19 @@
         <a >{{category.label}} </a>
       </li>
     </ul>
-    <div style="margin-top: 20px">
-      <a class="btn btn-info" [routerLink]="['/post/user/write']">+ 发布文章</a>
+    <div class="btn-box" [@zoom]="'zoomInLeft'">
+      <a class="ued-btn btn-blue" [routerLink]="['/post/user/write']">+ 发布文章</a>
     </div>
   </div>
-  <div class="g-content-box">
+  <div *ngIf="isBrowser; else isServer" class="g-content-box"  uedScroll [perfectScrollbar]="config">
     <router-outlet></router-outlet>
   </div>
+  <ng-template #isServer>
+    <div class="g-content-box">
+      <router-outlet></router-outlet>
+    </div>
+  </ng-template>
 </div>
+<app-back-top [element]="'g-content-box'"></app-back-top>
+
 

@@ -12,8 +12,8 @@ export class SearchService {
   ) {
     this.setMsg = new EventEmitter()
   }
-  getSearchResult(keyword: string): Observable<any> {
-    return this.http.get(`${this.searchResultUrl}?keyword=${keyword}`)
+  getSearchResult(keyword: string,uid: string): Observable<any> {
+    return this.http.get(`${this.searchResultUrl}?keyword=${keyword}&uid=${uid}`)
       .map(response => JSON.parse(response["_body"]))
   }
 

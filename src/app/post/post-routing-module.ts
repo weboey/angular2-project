@@ -8,30 +8,21 @@ import {PostListComponent} from "./post-list/post-list.component";
 import {PostDetailMainComponent} from "./post-detail-main/post-detail-main.component";
 import {WritePostComponent} from "./write-post/write-post.component";
 import {CanDeactivateGuard} from "../admin/can-deactivate-guard.service";
+import {CanActivateGuard} from "../admin/can-acitvate.service";
 
 const PostRoutes: Routes = [
+  {path:'', redirectTo: 'all', pathMatch:'full'},
   {
-    path: 'post',
+    path:':name',
+    component:PostCategoryComponent,
     children:[
-      {path:'', redirectTo:'all', pathMatch:'full'},
-      {
-        path:':name',
-        component:PostCategoryComponent,
-        children:[
-          {
-            path:'',
-            component:PostListComponent,
-          },
-          {
-            path:'detail/:postId',
-            component:PostDetailMainComponent,
-          }
-        ]
-      },
-      {path:'user/write', component:WritePostComponent, canDeactivate: [CanDeactivateGuard]},
-      {path:'user/write/:postId', component:WritePostComponent,canDeactivate: [CanDeactivateGuard]}
+      {path:'', component:PostListComponent,},
+      {path:'detail/:postId', component:PostDetailMainComponent,}
     ]
-  }
+  },
+  {path:'user/write', component:WritePostComponent,canActivate: [CanActivateGuard], canDeactivate: [CanDeactivateGuard]},
+  {path:'user/write/:postId', component:WritePostComponent,canActivate: [CanActivateGuard],canDeactivate: [CanDeactivateGuard]}
+
 ];
 
 @NgModule({

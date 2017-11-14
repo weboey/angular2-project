@@ -2,7 +2,11 @@
   <div class="panel panel-default">
     <div class="panel-body">
       <div class="row">
-        <div class="col-sm-12 comment-title"><i class="fa fa-comment" aria-hidden="true"></i>评论</div>
+        <div class="col-sm-12">
+          <div class=" comment-title">
+            <i class="fa fa-comment" aria-hidden="true"></i>评论
+          </div>
+        </div>
       </div>
       <div class="row">
         <div class="col-sm-12">
@@ -44,13 +48,13 @@
             ></app-write-comment>
           </div>
           <div *ngIf="comments?.length==0" class="comment-empty">
-            还没有评论!!
+            还没有评论!
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-sm-12">
-          <input *ngIf="!showCommentForm" type="text" class="form-control"  (focus)="doOpenCommentForm()" [placeholder]="commentTip">
+      <div class="row comment-box">
+        <div class="col-sm-12 comment-holder" [class.active]="showCommentForm">
+          <input *ngIf="!showCommentForm" type="text"  (focus)="doOpenCommentForm()" [placeholder]="commentTip">
           <app-write-comment
             *ngIf="showCommentForm"
             (onWriteCommentClose)="onWriteCommentClose()"

@@ -41,10 +41,9 @@ export class ApiComponent implements OnInit {
       this.route.queryParams
         .map(params => {console.log(params["apiItem"]); return params["apiItem"]})
         .subscribe((queryParams:string) => this.apiDetailFile = queryParams);
-      return this.http.get(`doc/${this.componentMenuNav.name}-frag/${this.apiDetailFile}.html`)
+      return this.http.get(`/jigsaw/doc/${this.componentMenuNav.name}/${this.apiDetailFile}.html`)
         .map(html => {console.log(html);return html.text()})
         .map(this.fixHtmlHrefOfB.bind(this))
-        .map(this.fixHtmlRouterlink.bind(this))
         .catch(err=>{console.error("jigsaw 找不到这个文档！！");
           return Observable.create(subscriber =>{
               subscriber.next(`<h1>Sorry! Jigsaw 找不到${this.componentMenuNav.name}文档！！</h1>`);
@@ -54,7 +53,7 @@ export class ApiComponent implements OnInit {
         })
     }else{
       let apiFileName = this.transformJigsaw(this.componentMenuNav.name);
-      return this.http.get(`doc/components-frag/${apiFileName}.html`)
+      return this.http.get(`/jigsaw/doc/components/${apiFileName}.html`)
         .map(html => {console.log(html);return html.text()})
         .map(this.fixHtmlHrefOfA.bind(this))
         .catch(err=>{console.error("jigsaw 找不到这个文档！！");
@@ -93,21 +92,6 @@ export class ApiComponent implements OnInit {
     });
   }
 
-  //修复html文档链接a标签的routerlink属性
-  private fixHtmlRouterlink(html:string):string{
-    //匹配html所有a标签
-    let regA =/<a[^>]+?routerLink=[\"\']?([^\"\']+)[\"\']?[^>]*>([^<]+)<\/a>/g;
-    //匹配a标签 路径指令routerlink属性值
-    let regRouterLink =/routerLink=[\'\"]([^\'\"]+)[\'\"][^>\/>]*/g;
-    return html.replace(regA,matchV => {
-      return  matchV.replace(regRouterLink,routerLink=>{
-        let apiItem = routerLink.slice(routerLink.lastIndexOf("/")+1);
-        return  `href="/components/${this.componentMenuNav.name}/api?apiItem=${apiItem}`
-      })
-    });
-
-
-  }
   private transformJigsaw(str:string):string{
     // return "Jigsaw" + str.slice(0, 1).toUpperCase() + str.slice(1);
     return "Jigsaw" + str.toLowerCase().replace(/( |^)[a-z]/g, (L) => L.toUpperCase());

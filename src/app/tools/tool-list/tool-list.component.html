@@ -1,17 +1,24 @@
-<div class="m-tools" [@animate]="'slideInLeft'">
-  <ul class="tool-group">
-    <li *ngFor="let tool of tools | async">
-      <!--[routerLink]="['../'+category.name]"-->
-      <a [routerLink]="['./',tool.id]" routerLinkActive="active">
-        <img [src]="tool.img">
-      </a>
-      <a  class="tool-download" *ngIf="tool.downloadUrl!==''" [href]="tool.downloadUrl"></a>
-    </li>
-  </ul>
+<div class="m-tools">
+  <div class="tool-box">
+    <ul class="tool-group">
+      <li *ngFor="let tool of tools | async;let i=index" [@slide]="getAnimate(i)">
+        <!--[routerLink]="['../'+category.name]"-->
+        <a [routerLink]="['./',tool.id]" routerLinkActive="active">
+          <img [src]="tool.img">
+        </a>
+        <a  class="tool-download" *ngIf="tool.downloadUrl!==''" [href]="tool.downloadUrl"></a>
+      </li>
+    </ul>
+  </div>
 
-  <div class="tool-detail-box">
+  <div *ngIf="isBrowser; else isServer" class="tool-detail-box" uedScroll perfectScrollbar>
     <router-outlet></router-outlet>
   </div>
+  <ng-template #isServer>
+    <div class="tool-detail-box" uedScroll>
+      <router-outlet></router-outlet>
+    </div>
+  </ng-template>
 </div>
 
 

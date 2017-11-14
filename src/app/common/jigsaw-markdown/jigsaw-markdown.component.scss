@@ -134,6 +134,10 @@
     margin-bottom: 0;
   }
 
+  ul li{
+    list-style-type: disc;
+  }
+
   dl {
     padding: 0;
   }
@@ -371,3 +375,37 @@
   width: 468px;
   height: 369px;
 }*/
+
+.image-container{
+  display: flex;
+}
+
+.img-label{
+  text-align: center;
+  font-size: 26px;
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
+  color: #fff;
+  border-radius: 50%;
+  background-color: #00b3ee;
+}
+
+
+.jigsaw-markdown-option{
+  position: absolute;
+  right: 22px;
+  top: 45px;
+  select{
+    width: 50px;
+  }
+}
+
+
+.test{
+  display: inline-block;
+  float: left;
+}
+.md-hide{
+  display: none !important;
+}

@@ -1,12 +1,12 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "project": {
-    "name": "first-app"
+    "name": "zte-ued"
   },
   "apps": [
     {
       "root": "src",
-      "outDir": "dist",
+      "outDir": "dist/web",
       "assets": [
         "assets",
         "favicon.ico",
@@ -25,6 +25,46 @@
       "prefix": "app",
       "styles": [
         "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+        "../node_modules/font-awesome/css/font-awesome.min.css",
+        "../node_modules/@rdkmaster/jigsaw/prebuilt-themes/zte.css",
+        "../node_modules/highlight.js/styles/monokai-sublime.css",
+        "../node_modules/simplemde/dist/simplemde.min.css",
+        "../node_modules/primeng/resources/themes/omega/theme.css",
+        "../node_modules/primeng/resources/primeng.min.css",
+        "compodoc.css",
+        "perfect-scrollbar-style.css",
+        "styles.scss",
+        "ued-theming.scss"
+      ],
+      "scripts": [
+        "../node_modules/jquery/dist/jquery.min.js",
+        "../node_modules/jquery-mousewheel/jquery.mousewheel.js",
+        "../node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js",
+        "../node_modules/bootstrap/dist/js/bootstrap.min.js",
+        "../src/app/common/md-editor/simplemde.min.js"
+      ],
+      "environmentSource": "environments/environment.ts",
+      "environments": {
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
+      }
+    },
+    {
+      "platform": "server",
+      "root": "src",
+      "outDir": "dist/server",
+      "assets": [
+        "assets",
+        "favicon.ico"
+      ],
+      "index": "index.html",
+      "main": "main.server.ts",
+      "test": "test.ts",
+      "tsconfig": "tsconfig.server.json",
+      "testTsconfig": "tsconfig.spec.json",
+      "prefix": "app",
+      "styles": [
+        "../node_modules/bootstrap/dist/css/bootstrap.min.css",
         "../node_modules/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css",
         "../node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css",
         "../node_modules/font-awesome/css/font-awesome.min.css",
@@ -34,20 +74,12 @@
         "../node_modules/simplemde/dist/simplemde.min.css",
         "../node_modules/primeng/resources/themes/omega/theme.css",
         "../node_modules/primeng/resources/primeng.min.css",
+        "../src/app/animations/service/page-loading.css",
         "compodoc.css",
-        "./app/animations/animation.css",
         "styles.scss",
         "ued-theming.scss"
       ],
-      "scripts": [
-        "../node_modules/jquery/dist/jquery.min.js",
-        "../node_modules/jquery-mousewheel/jquery.mousewheel.js",
-        "../node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js",
-        "../node_modules/moment/min/moment.min.js",
-        "../node_modules/bootstrap/dist/js/bootstrap.min.js",
-        "../node_modules/ztree/js/jquery.ztree.all.js",
-        "../node_modules/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"
-      ],
+      "scripts": [],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

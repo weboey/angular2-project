@@ -4,20 +4,27 @@
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common'; //指令
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+
 import { JigsawMarkdownComponent } from './jigsaw-markdown/jigsaw-markdown.component';
 import { SanitizeHtmlPipe } from "./pipe/sanitize.pipe";
 import { SearchFilter } from "./pipe/filter.pipe";
 import { ShowHeadImgPipe } from "./pipe/show-headimg.pipe";
-import {IncludeHtml} from "./pipe/include-html";
+import { IncludeHtml } from "./pipe/include-html";
 import { NgIncludeDirective } from './ng-include.directive';
 import { MdEditorComponent } from './md-editor/md-editor.component';
-import { FormsModule }   from '@angular/forms';
-import {JigsawModule} from '@rdkmaster/jigsaw';
-import {SexPipe} from "./pipe/sex.pipe";
-import {RippleDirective} from "./directive/ripple.directive";
+import { SexPipe} from "./pipe/sex.pipe";
+import { RippleDirective} from "./directive/ripple.directive";
+import { BackTopComponent } from './back-top/back-top.component';
+import { ScrollDirective} from "./directive/scroll-directive";
+import { InputComponent } from './input/input.component';
+import { SlideImgComponent} from "./slide-img/slide-img.component";
+
 @NgModule({
   imports: [
-    CommonModule,FormsModule,JigsawModule
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [
     JigsawMarkdownComponent,
@@ -25,15 +32,26 @@ import {RippleDirective} from "./directive/ripple.directive";
     SexPipe,
     SearchFilter,
     ShowHeadImgPipe,IncludeHtml,
-    NgIncludeDirective, MdEditorComponent,RippleDirective],
+    NgIncludeDirective,
+    MdEditorComponent,
+    RippleDirective,ScrollDirective,
+    BackTopComponent,
+    SlideImgComponent,
+    InputComponent],
   providers: [],
   exports:[
     JigsawMarkdownComponent,
-    SanitizeHtmlPipe,SearchFilter,
+    SanitizeHtmlPipe,
+    SearchFilter,
     ShowHeadImgPipe,
     IncludeHtml,
     SexPipe,
     NgIncludeDirective,
-    MdEditorComponent,RippleDirective],
+    MdEditorComponent,
+    RippleDirective,
+    ScrollDirective,
+    BackTopComponent,
+    SlideImgComponent,
+    ],
 })
 export class UedCommonModule { }

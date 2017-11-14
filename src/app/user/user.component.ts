@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from "./model/user-model";
+import {UserLoginService} from "./user-login/user-login.service";
 
 @Component({
   selector: 'ued-user',
@@ -8,13 +9,16 @@ import {User} from "./model/user-model";
 })
 export class UserComponent implements OnInit {
   public currentUser: User;
-  constructor() { }
+  constructor(private userLoginService:UserLoginService) {
+
+}
   isRegister:boolean;
   isLogin:boolean;
   user:{
     isLogin:boolean
   };
-  ngOnInit() {
+  ngOnInit(){
+    this.userLoginService.openLoginProp$.subscribe(isLogin=>this.isLogin=isLogin)
   }
   onRegister(){
     this.isRegister=true;

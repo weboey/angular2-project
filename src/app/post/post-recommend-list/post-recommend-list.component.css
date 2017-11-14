@@ -7,17 +7,17 @@
   border-bottom: 1px solid #ccc;
 }
 
-ul.container li{
+ul.recommend-box li{
   list-style-type: disc;
 }
-ul.container li a{
+ul.recommend-box li a{
   color: #666;
   line-height: 32px;
 }
-ul.container li.active{
+ul.recommend-box li.active{
   color: #00a8c6;
 }
-ul.container li.active a{
+ul.recommend-box li.active a{
   color: #00a8c6;
   border-bottom: 1px solid #00a8c6;
 }

@@ -3,7 +3,7 @@ import { ActivatedRoute, Router, Params } from '@angular/router';
 import {PostCommentService} from "../post-comment.service";
 import {PostComment} from "../../model/comment-model";
 import * as moment from "moment";
-
+import {fade} from "../../../animations/fade";
 @Component({
   selector: 'app-write-comment',
   templateUrl: './write-comment.component.html',
@@ -11,6 +11,7 @@ import * as moment from "moment";
   host: {
     "(click)": "toggleClick($event)",
   },
+  animations:[fade]
 })
 export class WriteCommentComponent implements OnInit,AfterViewInit, OnDestroy {
 
@@ -51,8 +52,10 @@ export class WriteCommentComponent implements OnInit,AfterViewInit, OnDestroy {
 
   ngAfterViewInit():void {
     setTimeout(()=>{
-      const textEl:HTMLTextAreaElement = this.el.nativeElement.querySelector("form .comment-text");
+      let textEl:HTMLTextAreaElement = this.el.nativeElement.querySelector("form .comment-text");
       textEl.focus();
+      let scrollBox = document.querySelector(".m-category .g-content-box");
+      scrollBox.scrollTop=9999;
     },0);
     this._documentListen = this.renderer.listen('document', 'click',
       () => {this.onWriteCommentClose.emit()});

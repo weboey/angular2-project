@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {UserCenterService} from "../service/user-center.service";
-import {Post} from "../../../post/model/post-model";
 import {User} from "../../model/user-model";
 import {UserLoginService} from "../../user-login/user-login.service";
-
+import { Router, ActivatedRoute} from '@angular/router';
+import {JigsawWarningAlert} from "@rdkmaster/jigsaw";
 @Component({
   selector: 'app-user-post',
   templateUrl: './user-post.component.html',
@@ -12,9 +12,11 @@ import {UserLoginService} from "../../user-login/user-login.service";
 export class UserPostComponent implements OnInit {
 
   constructor(private userCenterService:UserCenterService,
-              public userLoginService: UserLoginService) { }
+              public userLoginService: UserLoginService,
+              private activeRoute: ActivatedRoute,
+              private router: Router) { }
 
-  userPostList:Post[];
+  userPostList:any[];
   currentUser:User;
   ngOnInit() {
     this.reloadMyPostData();
@@ -29,15 +31,35 @@ export class UserPostComponent implements OnInit {
       )
   }
 
-  doDeleteMyPost(delPost:Post){
+  doDeleteMyPost(event,delPost){
+    event.stopPropagation();
+    JigsawWarningAlert.show(' ', answer => {
+      if(answer && answer.label=='删除'){
+        this._deletePost(delPost);
+      }
+    },[{label: '取消'}, {label: '删除'}],"确认要删除此文章吗？删除后无法恢复!");
+  }
+  _deletePost(delPost){
     this.userCenterService.deleteMyPost(delPost.serialNum)
       .subscribe(
         data=>{
-          console.log(data);
           this.reloadMyPostData();
-          this.userCenterService.sendMsg('remove');
         },
         err=>console.log("删除失败:"+err)
       )
+  }
+
+  getImg(url:string):string{
+    if(url==null || url==""){
+      return "assets/img/article.png"
+    }
+    return url
+  }
+
+  goToDetail(id:string){
+    this.router.navigate(['/post/all/detail',id], { relativeTo: this.activeRoute });
+  }
+  goToEdit(id:string){
+    this.router.navigate(['/post/user/write',id], { relativeTo: this.activeRoute });
   }
 }

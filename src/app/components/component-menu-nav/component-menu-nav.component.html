@@ -1,6 +1,6 @@
-<div class="m-component-menu-nav" [@animate]="'zoomInRight'">
-  <div  class="g-menu-nav">
-    <ul class="menu-nav-group">
+<div class="m-component-menu-nav">
+  <div  class="g-menu-nav" perfectScrollbar>
+    <ul class="menu-nav-group" [@fade]="'fadeIn'">
       <li *ngFor="let menuNavItem of ComponentMenuNavItems  | menuFilter:1 ">
         <span>{{menuNavItem.label}}</span>
         <ul class="menu-nav-group-child">
@@ -10,6 +10,8 @@
                [class.active]="isSelected(menuNavChildItem)">
               {{menuNavChildItem.label}}
             </a>
+          </li>
+          <li uedRipple *ngIf="menuNavItem.label=='组件'"><a href="http://10.9.233.68:9953/webgis/default/index.html" target= _blank>WebGis</a>
           </li>
         </ul>
       </li>

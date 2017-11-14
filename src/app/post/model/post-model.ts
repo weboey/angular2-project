@@ -14,3 +14,14 @@ export class Post {
   type:string;
   status:string;
 }
+
+export class PostAttach {
+  constructor(
+    attachName:string,
+    attachDownloadUrl:string,
+    articleId:string,
+    attachId?:number,
+    createDate?:string,
+    updateDate?:string
+  ) { }
+}

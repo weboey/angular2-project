@@ -68,7 +68,7 @@ export class ComponentDetailContentComponent implements OnInit {
 
   private getApiContent():Observable<string>{
     let componentName = this.transformJigsaw(this.componentMenuNav.name);
-    return this.http.get(`doc/components-frag/${componentName}.html`)
+    return this.http.get(`/jigsaw/doc/components/${componentName}.html`)
       .map(html => html.text())
       .catch(err=>{console.error("jigsaw 找不到这个文档！！");
         return Observable.create(subscriber =>{

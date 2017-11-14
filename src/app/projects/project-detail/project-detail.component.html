@@ -1,12 +1,13 @@
-<div class="row project-detail">
-  <div class="col-lg-9 col-md-9 col-xs-9 cmg">
+<div class="project-detail">
+  <div class="project-detail-left">
     <div class="leftSide">
       <h2 id="project-name">{{projectDetail?.ProjectName}}</h2>
       <h4 id="project-intro">项目简介</h4>
-      <div style="padding-left: 10px;">
+      <div style="padding-left: 10px;" class="intro" #intro [class.hidden-text] = "!hiddenText">
         <jigsaw-markdown [mdSource]="projectDetail?.ProjectBrief"></jigsaw-markdown>
       </div>
-      <div class="prototype-content">
+      <div class="intro-read-more" *ngIf="!hiddenText"><jigsaw-button (click)="hiddenText = true">查看全部</jigsaw-button></div>
+      <div class="prototype-content" *ngIf="!!projectDetailImgs?.length">
         <h4 id="prototype-presented" id="project-show">视觉设计 &nbsp;&nbsp;<span>(共&nbsp;{{ numImgs }}&nbsp;张预览图)</span>
         </h4>
         <div class="thelid">
@@ -18,26 +19,26 @@
           </div>
         </div>
         <div class="img-across clearfix">
-          <div  style="width: 1040px;overflow: hidden">
+          <div  style="max-width: 1040px;overflow: hidden">
             <ul class="imgWidth" style="overflow: hidden;width:100000px;">
               <li  class="pull-left" (click)="banner(i)" [class.imgBorder]="i == targetImg"
                   *ngFor="let projectDetailImg of projectDetailImgs;let i=index"
                   style="width: 208px;">
-                <img [src]="projectDetailImg" alt="">
+                <img [src]="projectDetailImg" alt="projectDetailImg">
               </li>
             </ul>
           </div>
           <div class="btn-left" (click)="btnLeft()"><i class="fa fa-angle-right fa-2x"></i></div>
           <div class="btn-right" (click)="btnRight()"><i class="fa fa-angle-left fa-2x"></i></div>
         </div>
-        <div>
-          <jigsaw-button><span class="fa fa-download fa-lg"></span>&nbsp;&nbsp;下载视觉效果图</jigsaw-button>
+        <div class="download" *ngIf="!!imagesZip">
+          <jigsaw-button class="jg-btn-a"><a [href]="imagesZip" class="fa fa-download fa-lg">&nbsp;&nbsp;下载视觉效果图</a></jigsaw-button>
         </div>
       </div>
-      <div class="interactive-design">
+      <div class="interactive-design" *ngIf="!!projectDetail?.PrototypeView">
         <h4>交互设计</h4>
-        <jigsaw-button><span class="fa fa-download fa-lg"></span><a [href]="">下载原型</a></jigsaw-button>
-        <jigsaw-button><span class="fa fa-eye fa-lg"></span><a [href]="projectDetail?.PrototypeView">查看原型</a>
+        <jigsaw-button  class="jg-btn-a"><a *ngIf="!!prototypeZip" [href]="prototypeZip"  class="fa fa-download fa-lg">下载原型</a></jigsaw-button>
+        <jigsaw-button class="jg-btn-a"><a [href]="projectDetail?.PrototypeView"  target="view_window" class="fa fa-eye fa-lg">查看原型</a>
         </jigsaw-button>
       </div>
       <div class="user-research">
@@ -51,12 +52,11 @@
       </div>
     </div>
   </div>
-  <div class="col-lg-3 col-md-3 col-xs-3">
+  <div class="project-detail-right">
     <div class="rightSide">
       <div class="project-action clearfix">
-        <a class=" pull-left" (click)="marking()">&nbsp;&nbsp;<span [class.marking]="highlight"
-                                                                    class="fa fa-heart"></span>收藏</a>
-        <a class=" pull-left" (click)="mailCall(tpmail)"> <span class="fa fa-envelope-o"></span>邮件通知</a>
+        <a class=" pull-left" (click)="marking()">&nbsp;&nbsp;<span [class.marking]="highlight" class="fa fa-heart"></span>收藏</a>
+        <a class=" pull-left" (click)="mailCall()"> <span [class]="emailClass"></span>{{sendPrompting}}</a>
       </div>
       <div class="img-bubble">
         <img src="/assets/img/bubbles.svg" alt="">
@@ -69,18 +69,18 @@
     </div>
     <div class="permission">
       <div class="permissionBtn">
-        <h4>权限开通</h4>
+        <h4>项目授权及管理</h4>
         <jigsaw-button (click)="permission()">
-          给其它人开通权限
+          开通|查询权限
         </jigsaw-button>
       </div>
       <div class="detailPermission" style="white-space:normal">
         <div>
-          <div class="title clearfix">授权团队及个人
+          <div class="title clearfix" *ngIf="!searchbl">授权团队及个人
             <span (click)="searchbl = !searchbl" class="fa fa-search pull-right " style="cursor: pointer">&nbsp;&nbsp;搜索</span>
           </div>
           <div class="dropBlock">
-            <jigsaw-input *ngIf="searchbl" id="test-input" #searchInput placeholder="请输入工号~">
+            <jigsaw-input (keyup.enter)="Onclick()" *ngIf="searchbl" id="test-input" #searchInput placeholder="请输入工号~">
               <a jigsaw-prefix-icon (click)="Onclick()"><span class="fa fa-search"></span></a>
             </jigsaw-input>
             <div class="authoriseContent">
@@ -90,7 +90,7 @@
                 <ul style="display: table">
                   <li style="display: table-cell">{{this.searchAuthorise?.name}}</li>
                   <li style="display: table-cell">{{this.searchAuthorise?.uid}}</li>
-                  <li style="display: table-cell">{{this.searchAuthorise?.deptName}}</li>
+                  <li style="display: table-cell" class="text-overflow">{{this.searchAuthorise?.deptName}}</li>
                 </ul>
                 <jigsaw-button (click)="addAuthorise()" *ngIf="!this.stateAuthorise">立即添加</jigsaw-button>
               </div>
@@ -115,7 +115,7 @@
                           [columnDefines]="_columns">
             </jigsaw-table>
             <div class="seletOptionBtn">
-              <jigsaw-button (click)="permission('cancle')">取消</jigsaw-button>&nbsp;&nbsp;&nbsp;&nbsp;
+              <jigsaw-button (click)="permission()">取消</jigsaw-button>&nbsp;&nbsp;&nbsp;&nbsp;
               <jigsaw-button (click)="permission('ok')">确定</jigsaw-button>
             </div>
 
@@ -124,7 +124,7 @@
       </div>
     </div>
     <div class="commentForm">
-      <h5 class="title">授权团队及个人</h5>
+      <h5 class="title">已授权团队及个人</h5>
       <div class="showPermissions clearfix">
         <jigsaw-tag title="{{val?.name}}" *ngFor="let val of showPermiss">{{val?.name}}</jigsaw-tag>
         <jigsaw-button *ngIf="showBtn" (click)="viewBtn()">查看更多</jigsaw-button>
@@ -139,17 +139,10 @@
           <li><a href="javascript:void(0)">【ADMA】数据挖掘平台低保真原型</a></li>
         </ul>
       </div>
-
     </div>
-
   </div>
 </div>
 <div class="container">
   <app-footer></app-footer>
 </div>
-<ng-template #tpmail>
-  <div class="mailSeed">
-    <h3>{{sendPrompting}}!</h3>
-    <!--<time *ngIf=""><strong>{{time}}</strong>&nbsp;秒后关闭</time>-->
-  </div>
-</ng-template>
+<app-back-top [element]="'g-main'"></app-back-top>

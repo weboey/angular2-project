@@ -11,6 +11,7 @@ import {Subject} from "rxjs/Subject";
 export class GlobalService{
 
   public ifHomePage$: Subject<boolean> = new Subject<boolean>();
+  public LoginMsg$: Subject<any> = new Subject<any>();
 
   public get ifHomePage():Observable<boolean>{
     return this.ifHomePage$.asObservable();
